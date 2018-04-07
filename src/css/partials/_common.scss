@@ -5,8 +5,17 @@
  */
 
 *, *::before, *::after {
-	box-sizing:border-box;
-	margin:0;
-	padding:0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
+a, a:link, a:hover, a:visited {
+	color: $primary-color;
+	// text-decoration: underline;
+}
+
+img, video {
+	width: 100%;
+	max-width: 100%;
+}

@@ -61,7 +61,7 @@ var svgoOptions = {
 var settings = {
 	
 	browserSync: {
-		proxy:	pkg.name + '.localhost',
+		proxy:	'https://' + pkg.name + '.localhost',
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
 		notify: false	// Don't notify on every change
 	},

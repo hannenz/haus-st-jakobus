@@ -1,0 +1,32 @@
+/**
+ * src/css/partials/_layout.scss
+ *
+ * Layout specific styles
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+.inner-bound {
+	max-width: calc(#{$inner-bound-width} - 2rem);
+	margin: 0 auto;
+	padding: 0 1rem;
+
+	@media (min-width: $inner-bound-width) {
+		padding: 0;
+	}
+}
+
+.main-content {
+	padding-top: 3 * $vertical-unit;
+	padding-bottom: 3 * $vertical-unit;
+}
