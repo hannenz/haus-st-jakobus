@@ -3,26 +3,28 @@
  *
  * Typography related styles
  *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
  */
 
 
-/************
- * Webfonts *
- ************/
 
-// Woff2 is preferered and - if available - the only format needed.
-// Use a font-face include line for each font face (regular, bold, italic, bold-italic, like shown below
+////////////////
+//  Webfonts  //
+////////////////
 
-/**
- * @example
- *
- * @include font-face('FontName', '../fonts/FontName-Regular', normal, normal, $file-types: woff2);
- * @include font-face('FontName', '../fonts/FontName-Bold', bold, normal, $file-types: woff2);
- * @include font-face('FontName', '../fonts/FontName-Italic', normal, italic, $file-types: woff2);
- */
-@include font-face ('Bona Nova', '../fonts/BonaNova-Regular.woff', normal, normal, $file-formats: woff);
-@include font-face ('Bona Nova', '../fonts/BonaNova-Italic.woff', normal, italic, $file-formats: woff);
-@include font-face ('Bona Nova', '../fonts/BonaNova-Bold', bold, normal, $file-formats: woff);
+@include font-face ('Bona Nova', '../fonts/BonaNova-Regular.woff', $file-formats: woff) {
+	font-weight: normal;
+	font-style: normal;
+}
+@include font-face ('Bona Nova', '../fonts/BonaNova-Italic.woff', $file-formats: woff) {
+	font-weight: normal;
+	font-style: italic;
+}
+@include font-face ('Bona Nova', '../fonts/BonaNova-Bold', $file-formats: woff) {
+	font-weight: bold;
+	font-style: normal;
+}
 
 
 html {
@@ -41,7 +43,7 @@ body {
 
 
 .headline {
-	@include type-setting(3);
+	@include type-setting(1);
 	margin-top: 2 * $vertical-unit;
 	margin-bottom: 1 * $vertical-unit;
 }

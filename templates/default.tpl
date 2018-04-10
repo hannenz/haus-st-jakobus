@@ -17,7 +17,8 @@
 	<script type="text/javascript" src="/js/vendor/modernizr/modernizr.custom.js"></script>
 	{ENDIF}
 </head>
-<body>
+<body class="debug-base-line-grid--is-visible">
+	<div class="debug-base-line-grid"> </div>
 	<!-- Inject SVG sprites -->
 	<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
 

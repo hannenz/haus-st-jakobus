@@ -1,0 +1,31 @@
+/**
+ * src/css/mixins/_utils.scss
+ *
+ * Utility mixins and functions
+ *
+ * @author Johannes Braun <j.braun@agentur-halma.de>
+ * @package libhalma
+ */
+
+
+
+/**
+ * pow
+ *
+ * Return the number risen to the power of n
+ * From: https://css-tricks.com/snippets/sass/power-function/
+ *
+ * @param number 	The operator
+ * @param exp 		The exponent
+ * @return number
+ */
+@function pow ($number, $exp) {
+	$val: 1;
+	@if $exp > 0 {
+		@for $i from 1 through $exp {
+			$val: $val * $number;
+		}
+	}
+	@return $val;
+}
+

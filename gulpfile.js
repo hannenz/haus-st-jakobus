@@ -76,8 +76,8 @@ var settings = {
 				precision: 3,
 				errLogToConsole: true,
 				includePaths: [
-					$.nodeBourbon.includePaths,
-					$.nodeNeat.includePaths
+					$.bourbon.includePaths,
+					$.bourbonNeat.includePaths
 				]
 			},
 			autoprefixer: {

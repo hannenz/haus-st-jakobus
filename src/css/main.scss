@@ -3,16 +3,13 @@
  */
 
 @import "bourbon";
-@import "neat";
-
 @import "settings";
-
-@import "mixins/fluid-type";
-@import "mixins/vertical-rhythm";
+@import "libhalma/libhalma";
 
 @import "partials/common";
 @import "partials/typography";
 @import "partials/layout";
+@import "partials/courses";
 
 @import "components/header";
 @import "components/main-nav";
