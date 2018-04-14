@@ -3,16 +3,18 @@ namespace Jakobus;
 
 use Contentomat\Contentomat;
 use Contentomat\TableMedia;
+use Contentomat\DBCex;
 
 class Course extends Model {
 
-	private $detailPageId = 7;
+	private $detailPageId = 10;
 
 	protected $cmt; 
 
 	protected $TableMedia;
 
 	protected $language;
+
 
 	
 	public function init () {
@@ -24,9 +26,26 @@ class Course extends Model {
 		$this->TableMedia = new TableMedia ();
 	}
 
+
+
 	public function setLanguage ($language = 'de') {
 		$this->language = $language;
 	}
+
+
+
+	public function findEventsByMonth ($year, $month) {
+		$this->db = new DBCex ();
+		$query = sprintf ("SELECT Media.media_date_begin,Media.media_date_end,Media.media_title,Course.* FROM cmt_tables_media AS Media LEFT JOIN jakobus_courses AS Course ON media_entry_id=Course.id WHERE YEAR(media_date_begin)=%u AND MONTH(media_date_begin)=%u", $year, $month);
+		if ($this->db->query ($query) !== 0) {
+			die ("Query failed: " . $query);
+		}
+		$events = $this->db->getAll ();
+		$events = $this->afterReadEvents ($events);
+		return $events;
+	}
+
+
 
 	protected function afterRead ($results) {
 
@@ -60,6 +79,29 @@ class Course extends Model {
 		}
 
 		return $results;
+	}
+
+	protected function afterReadEvents ($events) {
+		foreach ($events as $n => $event) {
+			$events[$n]['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
+			$events[$n]['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_end']));
+			if ($event['media_date_begin'] == $event['media_date_end']) {
+				$events[$n]['event_date_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
+			}
+			else {
+				$events[$n]['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
+					$events[$n]['event_begin_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_begin'])),
+					$events[$n]['event_end_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_end']))
+				);
+			}
+			$events[$n]['course_detail_url'] = sprintf ('/%s/%u/%s,%u.html',
+				$this->language,
+				$this->detailPageId,
+				$this->cmt->makeNameWebSave ($event['course_title']),
+				$event['id']
+			);
+		}
+		return $events;
 	}
 }
 ?>

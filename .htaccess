@@ -4,20 +4,17 @@ RewriteBase /
 # Disable all PHP messages on production servers
 # (https://stackoverflow.com/a/8652987)
 php_flag display_startup_errors off
-php_flag display_errors off
-php_flag html_errors off
-php_value error_reporting -1
+php_flag display_errors on
+php_flag html_errors on
+# php_value error_reporting 1
 
 # Force www
 RewriteCond %{HTTP_HOST} ^haus-st-jakob.de [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 #Force HTTPS
-# ..but not for "EM Special" and "Tetris" since we need an iframe to http here
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} haus-st-jakob.de
-RewriteCond %{REQUEST_URI} !110|104
-RewriteCOnd %{QUERY_STRING} !110|104
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Own error documents
