@@ -6,6 +6,7 @@ use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\Debug;
 use Jakobus\Course;
+use Jakobus\CourseCategory;
 
 use \Exception;
 
@@ -16,14 +17,17 @@ class CoursesController extends Controller {
 	public function init () {
 		$this->Course = new Course ();
 		$this->Course->setLanguage ($this->pageLang);
-		// $this->Course->order([
-		// 	'movie_position' => 'asc'
-		// ]);
+
+		$this->CourseCategory = new CourseCategory ();
+		$this->CourseCategory->setLanguage ($this->pageLang);
+		$this->CourseCategory->order (['course_category_position' => 'asc']);
+
 		$this->templatesPath = $this->templatesPath . 'courses/';
 	}
 
 	public function initActions ($action = '') {
 		parent::initActions ();
+		// $this->action = 'overview';
 		if (preg_match ('/\,([0-9]+)\.html/', $_SERVER['REQUEST_URI'], $matches)) {
 			$this->courseId = (int)$matches[1];
 			$this->action = 'detail';
@@ -45,16 +49,25 @@ class CoursesController extends Controller {
 	}
 
 
-	// public function actionDetail () {
-	// 	$course = $this->Course->filter([
-	// 		'id' => $this->courseId
-	// 	])
-	// 	->findOne ();
-    //
-	// 	$this->parser->setMultipleParserVars ($course);
-	// 	$this->content = $this->parser->parseTemplate ($this->templatesPath . 'detail.tpl');
-	// }
+	/**
+	 * Courses by category
+	 */
+	public function actionByCategory () {
 
+		$categories = $this->CourseCategory->findAll ();
+		foreach ($categories as &$category) {
+			$category['courses_in_category'] = $this->Course
+				->filter([
+					'course_category_id' => $category['id'],
+					'course_is_active' => true
+				])
+				->findAll ()
+			;
+		}
+
+		$this->parser->setParserVar ('categories', $categories);
+		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'by_category.tpl');
+	}
 
 
 	/**
@@ -82,6 +95,8 @@ class CoursesController extends Controller {
 
 	public function actionDetail () {
 		$course = $this->Course->filter(['id' => $this->courseId])->findOne ();
+		Debug::debug ($course);
+		die ();
 		$this->parser->setMultipleParserVars ($course);
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'detail.tpl');
 	}

@@ -2,6 +2,7 @@
 namespace Jakobus;
 
 use Contentomat\DBCex;
+use Contentomat\Contentomat;
 use \Exception;
 
 class Model {
@@ -10,6 +11,12 @@ class Model {
 	 * @var Object
 	 */
 	protected $db;
+
+	/**
+	 * Contentomat Object instance
+	 * @var Object
+	 */
+	protected $cmt;
 
 	/**
 	 * @var String
@@ -31,44 +38,101 @@ class Model {
 	 */
 	protected $order;
 
-	
 	/**
 	 * @var Int
 	 */
 	protected $limit;
 
+	/**
+	 * @var string
+	 */
+	protected $language;
+
+
+	/**
+	 * @var Array
+	 */
+	protected $belongsTo;
+
+	/**
+	 * @var Array
+	 */
+	protected $hasMany;
+
 
 	public function __construct () {
 		$this->db = new DBCex ();
+		$this->cmt = Contentomat::getContentomat ();
 		$this->fields = [];
 		$this->filter = [];
 		$this->order = [];
 		$this->limit = -1;
+		$this->belongsTo = [];
+		$this->hasMany = [];
+
 		$this->init ();
 	}
 
+
+
 	public function init () {
 	}
+
+
+
+	/**
+	 * Setter for `language`
+	 *
+	 * @access public
+	 * @param string 			The language to use, defaults to 'de'
+	 * @return void
+	 */
+	public function setLanguage ($language = 'de') {
+		$this->language = $language;
+	}
+
+
+
+	/**
+	 * Setter for `tableName`
+	 *
+	 * @access public
+	 * @param string 			The mysql table name
+	 * @return void
+	 */
+	public function setTableName ($tableName) {
+		$this->tableName = $tableName;
+	}
+
+
 
 	public function order ($order = []) {
 		$this->order = $order;
 		return $this;
 	}
 
+
+
 	public function filter ($filter = []) {
 		$this->filter = $filter;
 		return $this;
 	}
+
+
 
 	public function limit ($limit = -1) {
 		$this->limit = $limit;
 		return $this;
 	}
 
+
+
 	public function fields ($fields = []) {
 		$this->fields = $fields;
 		return $this;
 	}
+
+
 
 	public function findAll () {
 		$query = sprintf ("SELECT %s FROM %s %s %s %s",
@@ -82,9 +146,14 @@ class Model {
 			throw new Exception ("Query failed: " . $query);
 		}
 		$results = $this->db->getAll ();
+		foreach ($results as &$result) {
+			$result = $this->fetchAssociations ();
+		}
 
 		return $this->afterRead ($results);
 	}
+
+
 
 	public function findOne () {
 		$query = sprintf ("SELECT %s FROM %s %s %s LIMIT 1",
@@ -108,6 +177,7 @@ class Model {
 	}
 
 
+
 	/**
 	 * A filter is passed like this:
 	 * [
@@ -129,6 +199,8 @@ class Model {
 
 		return join (' AND ', $strings);
 	}
+
+
 
 	/**
 	 * An order is passed like this:
@@ -164,5 +236,18 @@ class Model {
 		return $results;
 	}
 
+	protected function fetchAssociations ($result) {
+		foreach ($this->belongsTo as $assoc) {
+
+			$className = $assoc['className'];
+			$instance = new $className ();
+
+			$result[$className] = $instance->filter([
+
+			]);
+
+
+		}
+	}
 }
 ?>
