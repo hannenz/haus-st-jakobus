@@ -14,7 +14,8 @@ class Course extends Model {
 
 	protected $belongsTo = [
 		[
-			'className' => 'CourseCategory',
+			'name' => 'CourseCategory', 
+			'className' => 'Jakobus\CourseCategory',
 			'foreignKey' => 'course_category_id',
 			'foreignKeyField' => 'id'
 		]

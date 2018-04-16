@@ -3,6 +3,8 @@ namespace Jakobus;
 
 use Contentomat\DBCex;
 use Contentomat\Contentomat;
+use Contentomat\PsrAutoloader;
+use Contentomat\Debug;
 use \Exception;
 
 class Model {
@@ -17,6 +19,11 @@ class Model {
 	 * @var Object
 	 */
 	protected $cmt;
+
+	/**
+	 * @var Object
+	 */
+	protected $PsrAutoloader;
 
 	/**
 	 * @var String
@@ -52,23 +59,29 @@ class Model {
 	/**
 	 * @var Array
 	 */
-	protected $belongsTo;
+	protected $belongsTo = [];
 
 	/**
 	 * @var Array
 	 */
-	protected $hasMany;
+	protected $hasOne = [];
+
+	/**
+	 * @var Array
+	 */
+	protected $hasMany = [];
 
 
 	public function __construct () {
 		$this->db = new DBCex ();
 		$this->cmt = Contentomat::getContentomat ();
+		$this->PsrAutoloader = new PsrAutoloader ();
 		$this->fields = [];
 		$this->filter = [];
 		$this->order = [];
 		$this->limit = -1;
-		$this->belongsTo = [];
-		$this->hasMany = [];
+		// $this->belongsTo = [];
+		// $this->hasMany = [];
 
 		$this->init ();
 	}
@@ -147,7 +160,7 @@ class Model {
 		}
 		$results = $this->db->getAll ();
 		foreach ($results as &$result) {
-			$result = $this->fetchAssociations ();
+			$result = $this->fetchAssociations ($result);
 		}
 
 		return $this->afterRead ($results);
@@ -236,18 +249,59 @@ class Model {
 		return $results;
 	}
 
-	protected function fetchAssociations ($result) {
-		foreach ($this->belongsTo as $assoc) {
+	/**
+	 * Fetch the associations of that model for a given record
+	 *
+	 * @param Array
+	 * @param Boolean 			$merge: Default: true. Whether to merge the associations into tje
+	 * 							results array or create a subarray for each association
+	 * @return Array
+	 */ 			
+	protected function fetchAssociations ($result, $merge = true) {
+		foreach ((array)$this->belongsTo as $assoc) {
 
 			$className = $assoc['className'];
+
+			$this->PsrAutoloader->loadClass ($className);
 			$instance = new $className ();
 
-			$result[$className] = $instance->filter([
+			$assocData = $instance
+				->filter([
+					$assoc['foreignKey'] => $result[$assoc['foreignKeyField']]
+				])
+				->findOne ()
+			;
+			if ($merge) {
+				$result = array_merge ($result, $assocData);
+			}
+			else {
+				$result[$name] = $assocData;
+			}
+		}
 
-			]);
+		foreach ((array)$this->hasOne as $assoc) {
 
 
 		}
+
+		foreach ((array)$this->hasMany as $assoc) {
+
+			$className = $assoc['className'];
+
+			$this->PsrAutoloader->loadClass ($className);
+			$instance = new $className ();
+
+			$assocData = $instance
+				->filter([
+					$assoc['foreignKeyField'] => $result[$assoc['foreignKey']]
+				])
+				->findAll ()
+			;
+
+			$result[$name] = $assocData;
+		}
+
+		return $result;
 	}
 }
 ?>
