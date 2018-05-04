@@ -58,16 +58,22 @@ class CoursesController extends Controller {
 	 */
 	public function actionByCategory () {
 
-		$categories = $this->CourseCategory->findAll ();
-		foreach ($categories as &$category) {
-			$category['courses_in_category'] = $this->Course
-				->filter([
-					'course_category_id' => $category['id'],
-					'course_is_active' => true
-				])
-				->findAll ()
-			;
-		}
+		$categories = $this->CourseCategory->findAll ([
+			'fetchAssociations' => true
+		]);
+		// Debug::debug ($categories);
+		// die ();
+		// foreach ($categories as &$category) {
+		// 	$category['courses_in_category'] = $this->Course
+		// 		->filter([
+		// 			'course_category_id' => $category['id'],
+		// 			'course_is_active' => true
+		// 		])
+		// 		->findAll ([
+		// 			'fetchAssociations' => false
+		// 		])
+		// 	;
+		// }
 
 		$this->parser->setParserVar ('categories', $categories);
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'by_category.tpl');

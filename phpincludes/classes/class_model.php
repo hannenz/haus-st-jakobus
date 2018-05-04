@@ -147,7 +147,25 @@ class Model {
 
 
 
-	public function findAll () {
+	/**
+	 * findAll
+	 *
+	 * apply all filters and options and fetch all records
+	 *
+	 * @access public
+	 * @param Array 		Options
+	 * @return Array
+	 * @throws Exception
+	 *
+	 * Available Options
+	 * - fetchAssociations 		Boolean 	Whether to fetch asscoiated records too
+	 */
+	public function findAll ($options = []) {
+
+		$options = array_merge ([
+			'fetchAssociations' => true
+		], $options);
+
 		$query = sprintf ("SELECT %s FROM %s %s %s %s",
 			empty ($this->fields) ? "*" : join (',', $this->fields),
 			$this->tableName,
@@ -159,8 +177,11 @@ class Model {
 			throw new Exception ("Query failed: " . $query);
 		}
 		$results = $this->db->getAll ();
-		foreach ($results as &$result) {
-			$result = $this->fetchAssociations ($result);
+
+		if ($options['fetchAssociations']) {
+			foreach ($results as &$result) {
+				$result = $this->fetchAssociations ($result);
+			}
 		}
 
 		return $this->afterRead ($results);
@@ -168,7 +189,25 @@ class Model {
 
 
 
-	public function findOne () {
+	/**
+	 * findOne
+	 *
+	 * apply all filters and options and fetch one record
+	 *
+	 * @access public
+	 * @param Array 		Options
+	 * @return Array 		The record's data
+	 * @throws Exception
+	 *
+	 * Available Options
+	 * - fetchAssociations 		Boolean 	Whether to fetch asscoiated records too
+	 */
+	public function findOne ($options = []) {
+
+		$options = array_merge ([
+			'fetchAssociations' => true
+		], $options);
+
 		$query = sprintf ("SELECT %s FROM %s %s %s LIMIT 1",
 			empty ($this->fields) ? "*" : join (',', $this->fields),
 			$this->tableName,
@@ -258,6 +297,7 @@ class Model {
 	 * @return Array
 	 */ 			
 	protected function fetchAssociations ($result, $merge = true) {
+
 		foreach ((array)$this->belongsTo as $assoc) {
 
 			$className = $assoc['className'];
@@ -269,13 +309,15 @@ class Model {
 				->filter([
 					$assoc['foreignKey'] => $result[$assoc['foreignKeyField']]
 				])
-				->findOne ()
+				->findOne ([
+					'fetchAssociations' => false
+				])
 			;
 			if ($merge) {
 				$result = array_merge ($result, $assocData);
 			}
 			else {
-				$result[$name] = $assocData;
+				$result[$assoc['name']] = $assocData;
 			}
 		}
 
@@ -295,10 +337,12 @@ class Model {
 				->filter([
 					$assoc['foreignKeyField'] => $result[$assoc['foreignKey']]
 				])
-				->findAll ()
+				->findAll ([
+					'fetchAssociations' => false
+				])
 			;
 
-			$result[$name] = $assocData;
+			$result[$assoc['name']] = $assocData;
 		}
 
 		return $result;

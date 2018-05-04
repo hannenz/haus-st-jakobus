@@ -1,3 +1,4 @@
+<h2 class="headline">Kurse nach Kategorie</h2>
 <ul>
 	{LOOP VAR(categories)}
 		<li>
@@ -5,7 +6,7 @@
 			<dl>
 				<h4>Kurse</h4>
 				<ul>
-					{LOOP VAR(courses_in_category)}
+					{LOOP VAR(Courses)}
 					<li>
 						<h5><a href="{VAR:course_detail_url}">{VAR:course_title}</a></h5>
 						<h6>Termine</h6>
