@@ -37,8 +37,8 @@ class CoursesController extends Controller {
 	public function actionDefault () {
 
 		$categories = $this->CourseCategory->findAll ();
-		Debug::debug ($categories);
-		die ();
+		// Debug::debug ($categories);
+		// die ();
 
 		$courses = $this->Course
 			->filter ([
