@@ -37,17 +37,33 @@ class CoursesController extends Controller {
 	public function actionDefault () {
 
 		$categories = $this->CourseCategory->findAll ();
-		// Debug::debug ($categories);
-		// die ();
 
 		$courses = $this->Course
 			->filter ([
 				'course_is_active' => 1
 			])
 			->limit ()
-			->findAll ()
+			->findAll (['fetchAssociations' => false])
 		;
 		$this->parser->setParserVar ('courses', $courses);
+		$this->parser->setParserVar ('categories', $categories);
+
+		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'overview.tpl');
+	}
+
+	public function actionListByCategory () {
+		$categoryId = $this->getvars ['categoryId'];
+
+		$courses = $this->Course
+			->filter ([
+				'course_is_active' => 1,
+				'course_category_id' => $categoryId
+			])
+			->limit ()
+			->findAll (['fetchAssociations' => false]);
+
+		$this->parser->setParserVar ('courses', $courses);
+		$this->parser->setParserVar ('categories', $this->CourseCategory->findAll ());
 
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'overview.tpl');
 	}

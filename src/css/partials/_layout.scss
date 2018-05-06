@@ -27,7 +27,21 @@ body {
 	}
 }
 
-.main-content {
+.main-container {
 	padding-top: 3 * $vertical-unit;
 	padding-bottom: 3 * $vertical-unit;
+
+	display: flex;
+	flex-direction: row;
 }
+
+.main-content {
+	padding-right: $gutter;
+}
+
+.sidebar {
+	width: 300px;
+	order: 2;
+}
+
+

@@ -1,4 +1,16 @@
-<section class="courses">
+<aside class="sidebar">
+	<nav class="courses-by-category">
+		<p>Nach Kategorie</p>
+		<ul>
+			{LOOP VAR(categories)}
+				<li>
+					<a href="{PAGEURL}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
+				</li>
+			{ENDLOOP VAR}
+		</ul>
+	</nav>
+</aside>
+<section class="main-content courses">
 	{LOOP VAR(courses)}
 		<article class="course">
 			<header class="course__header">

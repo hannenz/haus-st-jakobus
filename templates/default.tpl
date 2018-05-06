@@ -24,7 +24,7 @@
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
-	<section class="main-content inner-bound">
+	<section class="main-container inner-bound">
 		{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 	</section>
 
