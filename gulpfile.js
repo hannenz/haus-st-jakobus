@@ -63,7 +63,11 @@ var settings = {
 	browserSync: {
 		proxy:	'https://' + pkg.name + '.localhost',
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
-		notify: false	// Don't notify on every change
+		notify: false,	// Don't notify on every change
+		https: {
+			key: '/etc/ssl/private/ssl-cert-snakeoil.key',
+			cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+		}
 	},
 	
 	css: {
@@ -81,7 +85,7 @@ var settings = {
 				]
 			},
 			autoprefixer: {
-				browsers: ['last 2 versions', '>2%']
+				browsers: ['last 2 versions', '>2%', 'IE 11']
 			}
 		}
 	},
@@ -149,15 +153,15 @@ gulp.task ('clean:dist', function () {
  *  Task: process SASS 
  */
 gulp.task('css', function (done) {
-	return gulp.src(settings.css.srcMain)
+	return gulp
+		.src(settings.css.srcMain)
 		.pipe($.plumber({ errorHandler: onError}))
 		.pipe($.sourcemaps.init())
-		.pipe($.autoprefixer())
 		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
-		.pipe($.header(banner, {pkg: pkg}))
+		.pipe($.autoprefixer(settings.css.options.autoprefixer))
 		.pipe($.sourcemaps.write('./'))
+		.pipe($.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(settings.css.dest))
-		// .pipe(gulp.dest('.'))
 		.pipe($.browserSync.stream())
 	;	
 	done();
