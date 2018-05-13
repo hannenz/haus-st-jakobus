@@ -40,8 +40,24 @@ body {
 }
 
 .sidebar {
-	width: 300px;
+	width: 400px;
 	order: 2;
-}
 
+	// Position sticky inside flex container:
+	// https://stackoverflow.com/a/44446672
+	position: sticky;
+	align-self: flex-start;
+	height: auto;
+	top: $vertical-unit;
+
+	@include type-setting(-1);
+
+	.widget {
+
+		background: rgba($primary-color, 0.1);
+		padding: $vertical-unit $gutter;
+		border-top: 4px solid $primary-color;
+		margin-bottom: $vertical-unit;
+	}
+}
 

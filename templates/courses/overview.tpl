@@ -1,16 +1,16 @@
-<aside class="sidebar">
-	<nav class="courses-by-category">
-		<p>Nach Kategorie</p>
-		<ul>
-			{LOOP VAR(categories)}
-				<li>
-					<a href="{PAGEURL}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
-				</li>
-			{ENDLOOP VAR}
-		</ul>
-	</nav>
-</aside>
-<section class="main-content courses">
+<!-- <aside class="sidebar"> -->
+<!-- 	<nav class="courses&#45;by&#45;category"> -->
+<!-- 		<p>Nach Kategorie</p> -->
+<!-- 		<ul> -->
+<!-- 			{LOOP VAR(categories)} -->
+<!-- 				<li> -->
+<!-- 					<a href="{PAGEURL}?action=listByCategory&#38;categoryId={VAR:id}">{VAR:course_category_name}</a> -->
+<!-- 				</li> -->
+<!-- 			{ENDLOOP VAR} -->
+<!-- 		</ul> -->
+<!-- 	</nav> -->
+<!-- </aside> -->
+<!-- <section class="main&#45;content courses"> -->
 	{LOOP VAR(courses)}
 		<article class="course">
 			<header class="course__header">
@@ -20,6 +20,8 @@
 			<div class="course__description">
 				{VAR:course_description}
 			</div>
+
+			<p> <a class="button" href="#">Details</a></p>
 
 			<footer class="course__footer">
 				{IF({ISSET:course_elements})}
@@ -36,11 +38,11 @@
 				{LOOP VAR(course_events)}
 					<dl class="course__detail event">
 						<dt class="event__title">{VAR:media_title}</dt>
-						<dd class="event__date">{VAR:event_date_begin_fmt} &ndash; {VAR:event_date_end_fmt}</dd>
+						<dd class="event__date">{VAR:event_begin_fmt} &ndash; {VAR:event_end_fmt}</dd>
 					</dl>
 				{ENDLOOP VAR}
 
 			</footer>
 		</article>
 	{ENDLOOP VAR}
-</section>
+<!-- </section> -->

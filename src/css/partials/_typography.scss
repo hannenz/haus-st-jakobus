@@ -48,6 +48,10 @@ body {
 	margin-bottom: 1 * $vertical-unit;
 }
 
+:first-child .headline {
+	margin-top: 0;
+}
+
 .body-text {
 	@include type-setting(0, $vertical-unit);
 }
@@ -59,13 +63,14 @@ ul, p {
 ul {
 	li {
 		list-style-type: none;
-		padding-left: 1rem;
+		padding-left: 1em;
 		position: relative;
 
 		&::before {
-			content: '-';
+			content: '►';
 			position: absolute;
 			left: 0;
+			@include type-setting(-2);
 		}
 	}
 }

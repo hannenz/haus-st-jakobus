@@ -1,0 +1,52 @@
+/**
+ * src/css/components/_button.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @see https://fvsch.com/code/styling-buttons/
+ * @package jakobus
+ */
+
+@mixin button-reset {
+	padding: 0;
+	border: 0;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.button {
+	@include button-reset;
+
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+
+	margin: 2px 0;
+
+	border: 1px solid transparent;
+	border-radius: 4px;
+
+	padding: 0.5em 1em;
+
+	color: #fff;
+	background-color: $primary-color;
+
+	outline: none;
+	&::-moz-focus-inner {
+		border: none;
+	}
+
+	&:active {
+		transform: translateY(1px);
+		filter: saturate(150%);
+	}
+
+	&:hover,
+	&:focus {
+		color: $primary-color;
+		border-color: currentColor;
+		background-color: #fff;
+	}
+}
+

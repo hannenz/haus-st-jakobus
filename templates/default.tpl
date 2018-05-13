@@ -25,7 +25,12 @@
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 	<section class="main-container inner-bound">
-		{LOOP CONTENT(1)}{ENDLOOP CONTENT}
+		<div class="main-content">
+			{LOOP CONTENT(1)}{ENDLOOP CONTENT}
+		</div>
+		<aside class="sidebar">
+			{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+		</aside>
 	</section>
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}

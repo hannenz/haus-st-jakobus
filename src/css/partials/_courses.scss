@@ -7,13 +7,16 @@
 .course__description {
 	max-width: 40em;
 
-	> p:first-of-type:first-letter {
-		@include type-setting(1);
+	> p:first-of-type::first-letter {
+		@include type-setting(2);
+		line-height: 1;
 		color: $primary-color;
 		font-weight: bold;
 		vertical-align: baseline;
 	}
 }
+
+
 
 table.courses-overview {
 	width: 100%;

@@ -1,0 +1,14 @@
+/**
+ * src/css/components/_calendar.scss
+ */
+
+.calendar {
+	width: 100%;
+	border-collapse: collapse;
+
+	th, td {
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
