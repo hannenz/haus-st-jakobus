@@ -1,19 +1,12 @@
 <header class="main-header">
-	<div class="main-header__top">
-		<div class="main-header__inner inner-bound">
-			<blockquote class="main-header__quote">
-				&bdquo;Kommt und ruht ein wenig aus &hellip;&rdquo;
-			</blockquote>
-			<a href="/" class="main-header__brand brand">
-				<img class="brand__logo" src="/dist/img/logo.png" alt="" />
-				<span class="brand__name">Haus St. Jakobus</span>
-			</a>
-		</div>
-	</div>
 	<nav class="main-nav">
-		<div class="inner-bound">
+		<a href="/" class="main-header__brand brand">
+			<img class="brand__logo" src="/dist/img/logo.png" alt="" />
+			<span class="brand__name">Haus St. Jakobus</span>
+		</a>
+		<ul class="main-nav__menu">
 			{LOOP NAVIGATION(1)}
-				<a href="{NAVIGATION:link}" title="">{NAVIGATION:title}</a>
+			<li class="nav-item{IF("{NAVIGATION:id}" == "{PAGEID}")} current{ENDIF}"><a href="{NAVIGATION:link}" class="nav-item__link" title="">{NAVIGATION:title}</a></li>
 			{ENDLOOP NAVIGATION}
 		</div>
 	</nav>

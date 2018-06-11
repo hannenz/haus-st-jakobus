@@ -24,6 +24,14 @@
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
+	{IF("{PAGEID}" == "2")}
+	<div class="hero">
+		<blockquote class="hero__title">
+			Kommt und ruht ein wenig aus &hellip;
+		</blockquote>
+	</div>
+	{ENDIF}
+
 	<section class="main-container inner-bound">
 		<div class="main-content">
 			{LOOP CONTENT(1)}{ENDLOOP CONTENT}

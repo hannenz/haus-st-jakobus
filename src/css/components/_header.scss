@@ -1,24 +1,19 @@
-.main-header {
-
-	&__top {
-		background-color: $primary-color;
-		color: #fff;
-	}
-
-	&__inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: $vertical-unit 1rem;
-		@media (min-width: $inner-bound-width) {
-			padding: $vertical-unit 0;
-		}
-	}
-
-	&__quote {
-		@include type-setting(1);
-	}
+body {
+	background-color: #f0f0f0;
 }
+
+.main-header {
+	padding: $vertical-unit $gutter;
+
+	background-color: $primary-color;
+	// background-image: linear-gradient darken($primary-color, 90%), $primary-color;
+	background-image: linear-gradient($primary-color, darken($primary-color, 3%));
+	border-bottom: 2px solid #fff;
+
+	position: sticky;
+	top: 0;
+}
+
 
 .brand {
 	display: flex;
@@ -35,5 +30,28 @@
 		text-align: right;
 		color: #fff;
 		@include type-setting(-1);
+	}
+}
+
+.hero {
+	height: 100vh;
+	background-image: url('/media/mood.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+
+	&__title {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+			// bottom: $vertical-unit;
+		right: $gutter;
+		color: #fff;
+		font-size: 2.5rem;
+		background-color: #fff;
+		color: $primary-color;
+		line-height: 1.3em;
+		padding: 0 1em;
+
 	}
 }
