@@ -8,7 +8,7 @@
 
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 
 
 	&__menu {
@@ -22,6 +22,7 @@
 		margin-left: $gutter;
 
 		&__link {
+            @include type-setting (-1);
 			display: inline-block;
 			transition: 50ms;
 			color: #fff;
@@ -35,11 +36,12 @@
 			border-bottom: 2px solid #fff;
 			transform: translateY(5px) scaleX(0);
 			position: absolute;
-			top: 0;
+			top: 0px;
 			left: 0;
 			right: 0;
-			bottom: 0;
+			bottom: 4px;
 			transition: 150ms;
+            pointer-events: none;
 		}
 
 

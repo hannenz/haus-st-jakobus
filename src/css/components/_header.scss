@@ -3,7 +3,7 @@ body {
 }
 
 .main-header {
-	padding: $vertical-unit $gutter;
+	padding: 0.5 * $vertical-unit $gutter;
 
 	background-color: $primary-color;
 	// background-image: linear-gradient darken($primary-color, 90%), $primary-color;
@@ -12,17 +12,18 @@ body {
 
 	position: sticky;
 	top: 0;
+    z-index: 100;
 }
 
 
 .brand {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
 	color: #fff;
 
 	&__logo {
-		height: 2 * $vertical-unit;
+		height: 1.5 * $vertical-unit;
 		width: auto;
 	}
 

@@ -30,6 +30,8 @@
 			Kommt und ruht ein wenig aus &hellip;
 		</blockquote>
 	</div>
+    {ELSE}
+        <div class="mood"></div>
 	{ENDIF}
 
 	<section class="main-container inner-bound">
