@@ -38,6 +38,7 @@
 
 	<section class="main-container inner-bound">
 		<div class="main-content">
+			{INCLUDE:PATHTOWEBROOT . 'phpincludes/breadcrumbs_controller.php'}
 			{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 		</div>
 		<aside class="sidebar">
