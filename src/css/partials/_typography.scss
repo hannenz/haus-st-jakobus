@@ -11,48 +11,34 @@
 //  Webfonts  //
 ////////////////
 
-// @include font-face ('Bona Nova', '../fonts/BonaNova-Regular.woff', $file-formats: woff) {
-// 	font-weight: normal;
-// 	font-style: normal;
-// }
-// @include font-face ('Bona Nova', '../fonts/BonaNova-Italic.woff', $file-formats: woff) {
-// 	font-weight: normal;
-// 	font-style: italic;
-// }
-// @include font-face ('Bona Nova', '../fonts/BonaNova-Bold', $file-formats: woff) {
-// 	font-weight: bold;
-// 	font-style: normal;
-// }
-//
-
 @include font-face ('Crimson', '../fonts/crimson/crimson-roman-webfont', $file-formats: woff2) {
-    font-weight: 400;
-    font-style: normal;
+	font-weight: 400;
+	font-style: normal;
 }
 
 @include font-face ('Crimson', '../fonts/crimson/crimson-italic-webfont', $file-formats: woff2) {
-    font-weight: 400;
-    font-style: italic;
+	font-weight: 400;
+	font-style: italic;
 }
 
 @include font-face ('Crimson', '../fonts/crimson/crimson-semibold-webfont', $file-formats: woff2) {
-    font-weight: 600;
-    font-style: normal;
+	font-weight: 600;
+	font-style: normal;
 }
 
 @include font-face ('Crimson', '../fonts/crimson/crimson-semibolditalic-webfont', $file-formats: woff2) {
-    font-weight: 600;
-    font-style: italic;
+	font-weight: 600;
+	font-style: italic;
 }
 
 @include font-face ('Crimson', '../fonts/crimson/crimson-bold-webfont', $file-formats: woff2) {
-    font-weight: 700;
-    font-style: normal;
+	font-weight: 700;
+	font-style: normal;
 }
 
 @include font-face ('Crimson', '../fonts/crimson/crimson-bolditalic-webfont', $file-formats: woff2) {
-    font-weight: 700;
-    font-style: italic;
+	font-weight: 700;
+	font-style: italic;
 }
 
 
@@ -70,15 +56,20 @@ body {
 	color: $text-color;
 }
 
-
 .headline {
 	@include type-setting(1);
 	margin-top: 2 * $vertical-unit;
 	margin-bottom: 1 * $vertical-unit;
 }
 
-:first-child .headline {
+:first-child .headline:first-of-type {
 	margin-top: 0;
+}
+
+.subheadline {
+	@include type-setting(0);
+	margin-top: $vertical-unit;
+	margin-bottom: 0;
 }
 
 .body-text {
@@ -89,10 +80,11 @@ ul, p {
 	margin-bottom: $vertical-unit;
 }
 
+.body-text ul,
 ul.bullets {
 	li {
 		list-style-type: none;
-		padding-left: 1em;
+		padding-left: 0.75em;
 		position: relative;
 
 		&::before {
@@ -100,6 +92,12 @@ ul.bullets {
 			position: absolute;
 			left: 0;
 			@include type-setting(-2);
+
+			content: '';
+			width: 6px;
+			height: 6px;
+			background-color: $primary-color;
+			top: 30%;
 		}
 	}
 }

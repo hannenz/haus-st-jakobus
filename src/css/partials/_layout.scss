@@ -29,31 +29,42 @@ body {
 	padding-top: 3 * $vertical-unit;
 	padding-bottom: 3 * $vertical-unit;
 
+	min-height: 50vh;
+
 	display: flex;
 	flex-direction: row;
+	/* overflow: hidden; */
 
-    position: relative;
-    top: -32px;
-    background-color: #fff;
-    padding: $vertical-unit 2 * $gutter;
-    box-shadow: 0 0 10px rgba(30, 30, 30, 0.2);
-    border-radius: $border-radius;
+	position: relative;
+	background-color: #fff;
+	padding: $vertical-unit 2 * $gutter;
+	box-shadow: 0 0 10px rgba(30, 30, 30, 0.2);
+	border-radius: $border-radius;
+	margin-top: -32px;
+	margin-bottom: -32px;
+
+	z-index: 1;
 }
 
 .main-content {
 	padding-right: 3 * $gutter;
+	flex: 1;
+	overflow: hidden;
 }
 
 .sidebar {
-	width: 400px;
 	order: 2;
+	flex: 0 0 15rem;
+	width: 15rem;
 
 	// Position sticky inside flex container:
 	// https://stackoverflow.com/a/44446672
 	position: sticky;
 	align-self: flex-start;
 	height: auto;
-	top: $vertical-unit;
+
+	top: 4 * $vertical-unit;
+	// background-color: rgba(skyblue, 0.2);
 
 	@include type-setting(-1);
 
@@ -63,15 +74,38 @@ body {
 		padding: $vertical-unit $gutter;
 		border-top: 4px solid $primary-color;
 		margin-bottom: $vertical-unit;
-        border-radius: $border-radius;
+		border-radius: $border-radius;
 	}
 }
 
 
 .mood {
-    height: 300px;
-    background-image:url('/media/mood.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+	height: 300px;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+
+// TODO: This is just a draft
+.sidebar {
+	figure {
+		img {
+			float: left;
+			display: block;
+			margin-right: $gutter;
+		}
+		figcaption {
+		}
+	}
+}
+
+
+figure {
+	margin-bottom: $vertical-unit;
+	figcaption {
+		font-style: italic;
+		color: $text-color-light;
+	}
 }

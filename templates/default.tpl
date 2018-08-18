@@ -14,7 +14,9 @@
 
 	{LAYOUTMODE_STARTSCRIPT}
 	{IF (!{LAYOUTMODE})}
-	<script type="text/javascript" src="/js/vendor/modernizr/modernizr.custom.js"></script>
+	<script type="text/javascript" src="/dist/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script type="text/javascript" src="/dist/js/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
 	{ENDIF}
 </head>
 <body class="debug-base-line-grid--is-visible">
@@ -25,13 +27,13 @@
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 	{IF("{PAGEID}" == "2")}
-	<div class="hero">
+	<div class="hero" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}'">
 		<blockquote class="hero__title">
 			Kommt und ruht ein wenig aus &hellip;
 		</blockquote>
 	</div>
     {ELSE}
-        <div class="mood"></div>
+	<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}"></div>
 	{ENDIF}
 
 	<section class="main-container inner-bound">
@@ -46,7 +48,7 @@
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 
 	{IF(!{LAYOUTMODE})}
-		<script src="dist/js/main.js"></script>
+		<script src="/dist/js/main.min.js"></script>
 	{ENDIF}
 	{LAYOUTMODE_ENDSCRIPT}
 </body>

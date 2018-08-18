@@ -2,6 +2,9 @@
  * main.scss
  */
 
+@import "foundation-settings";
+@import "foundation";
+
 @import "bourbon";
 @import "settings";
 @import "libhalma/libhalma";
@@ -12,7 +15,9 @@
 @import "partials/courses";
 
 @import "components/header";
+@import "components/footer";
 @import "components/main-nav";
+@import "components/secnav";
 @import "components/calendar";
 @import "components/button";
 

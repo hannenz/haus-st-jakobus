@@ -12,7 +12,7 @@ body {
 
 	position: sticky;
 	top: 0;
-    z-index: 100;
+	z-index: 100;
 }
 
 
@@ -35,7 +35,7 @@ body {
 }
 
 .hero {
-	height: 100vh;
+	height: 66vh;
 	background-image: url('/media/mood.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -45,14 +45,14 @@ body {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-			// bottom: $vertical-unit;
+		// bottom: $vertical-unit;
 		right: $gutter;
 		color: #fff;
-		font-size: 2.5rem;
-		background-color: #fff;
+		font-size: 1.5rem;
+		font-weight: bold;
+		background-color: rgba(#fff, 0.8125);
 		color: $primary-color;
 		line-height: 1.3em;
-		padding: 0 1em;
-
+		padding: 0.25em 1em;
 	}
 }

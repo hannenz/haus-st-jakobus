@@ -1,1 +1,1 @@
-<div>{TEXT:1:all}</div>
+<div class="body-text">{TEXT:1:all}</div>

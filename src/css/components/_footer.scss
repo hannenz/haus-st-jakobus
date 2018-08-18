@@ -1,0 +1,45 @@
+/**
+ * src/css/components/_footer.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+
+$footer-text-color: lighten($dark-grey, 66%);
+.main-footer {
+	padding: calc(#{$vertical-unit} + 32px) 0 #{$vertical-unit} 0;
+	background-color: $dark-grey;
+	color: $footer-text-color;
+	position: relative;
+	@include type-setting(-1);
+
+	a {
+		color: $footer-text-color;
+		text-decoration: underline !important;
+		&:hover {
+			text-decoration: none !important;
+		}
+	}
+
+	&__inner {
+		display: flex;
+	}
+
+	.footer-column {
+		width: calc(100% / 3 - #{$gutter});
+
+		&:nth-child(1) {
+			order: 1;
+		}
+		&:nth-child(2) {
+			order: 2;
+		}
+		&:nth-child(3) {
+			order: 3;
+		}
+	}
+
+	blockquote {
+		font-style: italic;
+	}
+}

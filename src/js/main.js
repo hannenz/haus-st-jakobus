@@ -8,7 +8,7 @@ function APP () {
 
 	var self = this;
 
-	self.debug = false;
+	self.debug = true;
 
 	this.init = function() {
 		
@@ -32,18 +32,27 @@ function APP () {
 
 	this.main = function() {
 
-		this.initThrottleResize();
+		// this.initThrottleResize();
 
 		// Lazy loadiong images
-		this.bLazy = new Blazy({
-			selector: '.lazy',
+		// this.bLazy = new Blazy({
+		// 	selector: '.lazy',
+		// 	offset: 100,
+		// 	successClass: 'lazy--loaded',
+		// 	errorClass: 'lazy--failed',
+		// 	error: function(el) {
+		// 	 	el.src = '/img/noimage.svg';
+		// 	}
+		// });
+        //
+		var $secnav = $('.secnav');
+		console.log ($secnav);
+		var options = {
+			threshold: 50,
 			offset: 100,
-			successClass: 'lazy--loaded',
-			errorClass: 'lazy--failed',
-			error: function(el) {
-			 	el.src = '/img/noimage.svg';
-			}
-		});
+			activeClass: 'menu__link--is-active'
+		};
+		var elem = new Foundation.Magellan ($secnav, options);
 	};
 };
 

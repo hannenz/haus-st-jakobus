@@ -80,8 +80,8 @@ var settings = {
 				precision: 3,
 				errLogToConsole: true,
 				includePaths: [
-					$.bourbon.includePaths,
-					$.bourbonNeat.includePaths
+					'node_modules/foundation-sites/scss',
+					$.bourbon.includePaths
 				]
 			},
 			autoprefixer: {
@@ -98,7 +98,9 @@ var settings = {
 	
 	jsvendor: {
 		src:	[
-				'./src/js/vendor/**/*.js'
+				'./src/js/vendor/**/*.js',
+				'./node_modules/foundation-sites/dist/js/**/*.js',
+				'./node_modules/jquery/dist/jquery.min.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},

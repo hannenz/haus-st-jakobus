@@ -8,8 +8,8 @@
 
 $primary-color: #af1e23;
 $text-color: #303036;
-
-
+$text-color-light: lighten($text-color, 15%);
+$dark-grey: darken(#505852, 10%);
 
 //////////////////
 //  Typography  //
@@ -28,8 +28,8 @@ $visual-base-line-grid-above: false;
 //  Measures  //
 ////////////////
 
-$gutter:1rem;
-$inner-bound-width:54rem;
+$gutter: 1rem;
+$inner-bound-width: 60rem;
 
 
 
@@ -40,4 +40,4 @@ $inner-bound-width:54rem;
 $debug-base-line-grid: false;
 
 
-$border-radius: 2px;
+$border-radius: 0px;
