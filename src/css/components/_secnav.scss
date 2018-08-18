@@ -8,9 +8,10 @@
 		display: inline-block;
 		padding-left: 1em;
 		position: relative;
+		color: $primary-color;
 	}
 
-	.menu__link--is-active {
+	.is-active {
 		&::before {
 			content: '';
 			position: absolute;

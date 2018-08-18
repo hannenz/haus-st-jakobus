@@ -10,6 +10,13 @@
 	justify-content: space-between;
 	align-items: flex-end;
 
+	.submenu {
+		padding: 0.5rem;
+	}
+
+	.submenu a {
+		color: $primary-color;
+	}
 
 	&__menu {
 		margin-bottom: 0;
@@ -22,6 +29,7 @@
 		margin-left: $gutter;
 
 		&__link {
+			background: transparent;
             @include type-setting (-1);
 			display: inline-block;
 			transition: 50ms;

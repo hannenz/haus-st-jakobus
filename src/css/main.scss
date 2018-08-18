@@ -2,8 +2,31 @@
  * main.scss
  */
 
+//////////////////
+//  Foundation  //
+//////////////////
+
 @import "foundation-settings";
 @import "foundation";
+
+@include foundation-forms;
+@include foundation-menu;
+@include foundation-dropdown-menu;
+@include foundation-drilldown-menu;
+@include foundation-accordion-menu;
+@include foundation-button;
+@include foundation-breadcrumbs;
+@include foundation-card;
+@include foundation-callout;
+@include foundation-pagination;
+@include foundation-tabs;
+@include foundation-orbit;
+
+
+
+//////////////////
+//  Own styles  //
+//////////////////
 
 @import "bourbon";
 @import "settings";

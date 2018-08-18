@@ -70,7 +70,7 @@ body {
 
 	.widget {
 
-		background: rgba($primary-color, 0.1);
+		background: $primary-color-soft;
 		padding: $vertical-unit $gutter;
 		border-top: 4px solid $primary-color;
 		margin-bottom: $vertical-unit;

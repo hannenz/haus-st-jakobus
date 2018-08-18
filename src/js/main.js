@@ -45,15 +45,9 @@ function APP () {
 		// 	}
 		// });
         //
-		var $secnav = $('.secnav');
-		console.log ($secnav);
-		var options = {
-			threshold: 50,
-			offset: 100,
-			activeClass: 'menu__link--is-active'
-		};
-		var elem = new Foundation.Magellan ($secnav, options);
+
 	};
+
 };
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -63,3 +57,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+$(document).foundation ();
