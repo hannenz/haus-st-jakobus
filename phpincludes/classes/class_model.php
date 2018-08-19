@@ -445,6 +445,41 @@ class Model {
 	}
 
 
+
+	public function validateFormField ($fieldName, $value) {
+
+		$success = true;
+
+		if (!isset ($this->validationRules[$fieldName])) {
+			return $success;
+		}
+
+
+		foreach ((array)$this->validationRules[$fieldName] as $ruleName => $rule) {
+
+			if (method_exists (getClass ($this), $rule)) {
+				$result = call_user_func ([__NAMESPACE__ . '\\' . getClass(), $data[$field]]);
+			}
+			else {
+				$result = preg_match ($rule, $data[$field]);
+			}
+
+			if (!$result) {
+				$success = false;
+				if (!is_array ($this->validationErrors[$field])) {
+					$this->validationErrors[$fields] = [ $ruleName ];
+				}
+				else {
+					$this->validationErrors[$field][] = $ruleName;
+				}
+			}
+		}
+		
+		return $success;
+	}
+
+
+
 	public function getFormField ($fieldName, $params = []) {
 
 		$fieldData = $this->FieldHandler->getField ([
@@ -477,9 +512,9 @@ class Model {
 			}
 			$this->Parser->setParserVar ('options', $_options);
 		}
-		if (!empty ($this->validationErrors)) {
-			$this->Parser->setParserVar ('validationErrors', $this->getValidationErrors ());
-			$this->Parser->setParserVar ('validationRules', $this->getValidationRules ());
+		$success = $this->validateField ($fieldName, $params[$value]);
+		if (!$success) {
+			$this->Parser->setParserVar ('validationErrors', $this->getValidationErrors[$fieldName]);
 		}
 		$content = $this->Parser->parseTemplate (PATHTOWEBROOT . 'templates/forms/' . $fieldData['cmt_fieldtype']. '.tpl');
 		return $content;
@@ -501,5 +536,4 @@ class Model {
 		return $_fields;
 	}
 }
-
 ?>
