@@ -24,13 +24,15 @@ class BreadcrumbsController extends Controller {
 	public function actionDefault () {
 
 		$breadcrumbs = array_reverse ($this->Page->getAncestors (PAGEID));
+		array_shift ($breadcrumbs);
+
 		foreach ($breadcrumbs as &$crumb) {
 			$crumb['url'] = sprintf("/%s/%u/%s", PAGELANG, $crumb['id'], $this->Page->makePageFileName ($crumb['id']));
 		}
+
 		$this->parser->setParserVar ('breadcrumbs', $breadcrumbs);
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'breadcrumbs.tpl');
 	}
-
 }
 
 $autoload = new PsrAutoloader ();

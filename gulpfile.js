@@ -81,6 +81,7 @@ var settings = {
 				errLogToConsole: true,
 				includePaths: [
 					'node_modules/foundation-sites/scss',
+					'node_modules/motion-ui/src',
 					$.bourbon.includePaths
 				]
 			},

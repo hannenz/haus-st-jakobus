@@ -5,6 +5,8 @@ use Contentomat\DBCex;
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Debug;
+use Contentomat\FieldHandler;
+use Contentomat\Parser;
 use \Exception;
 
 class Model {
@@ -72,10 +74,32 @@ class Model {
 	protected $hasMany = [];
 
 
+	/**
+	 * @var Object
+	 */
+	protected $FieldHandler;
+
+	/**
+	 * @var Object
+	 */
+	protected $Parser;
+
+	/**
+	 * @var Array;
+	 */
+	protected $validationErrors = [];
+
+	/**
+	 * @var Array
+	 */
+	protected $validationRules = [];
+
 	public function __construct () {
 		$this->db = new DBCex ();
 		$this->cmt = Contentomat::getContentomat ();
 		$this->PsrAutoloader = new PsrAutoloader ();
+		$this->Parser = new Parser ();
+		$this->FieldHandler = new FieldHandler ();
 		$this->fields = [];
 		$this->filter = [];
 		$this->order = [];
@@ -347,5 +371,135 @@ class Model {
 
 		return $result;
 	}
+
+
+
+	/**
+	 * Getter for validationErrors
+	 *
+	 * @return Array 
+	 */
+	public function getValidationErrors () {
+		return $this->validationErrors;
+	}
+
+
+
+	/**
+	 * Setter for validationRules
+	 *
+	 * @param Array
+	 * @return void
+	 */
+	public function setValidationRules ($validationRules) {
+		$this->validationRules = $validationRules;
+	}
+
+
+
+	/**
+	 * Getter for validationRules
+	 *
+	 * @return Array 
+	 */
+	public function getValidationRules () {
+		return $this->validationRules;
+	}
+
+
+	/**
+	 * Validate
+	 *
+	 * @param Array The data to validate
+	 * @return boolean
+	 */
+	public function validate ($data) {
+
+		$this->validationErrors = [];
+
+		foreach ((array)$this->validationRules as $field => $rules) {
+
+			if (!isset ($data[$field])) {
+				$this->validationErrors[$field] = [ "Missing field: $field" ];
+				continue;
+			}
+
+			$value = $data[$field];
+
+			foreach ((array)$rules as $rule) {
+				if (method_exists (getClass ($this), $rule)) {
+					$result = call_user_func ([__NAMESPACE__ . '\\' . getClass(), $data[$field]]);
+				}
+				else {
+					$result = preg_match ($rule, $data[$field]);
+				}
+
+				if (!$result) {
+					$this->validationErrors[$field][] = true;
+
+				}
+			}	
+		}
+
+		return (empty ($this->validationErrors));
+	}
+
+
+	public function getFormField ($fieldName, $params = []) {
+
+		$fieldData = $this->FieldHandler->getField ([
+			'tableName' => $this->tableName,
+			'fieldName' => $fieldName
+		]);
+
+		$defaultParams = [
+			'label' => $fieldData['cmt_fieldalias'],
+			'value' => $_POST[$fieldName],
+			'required' => false
+		];
+		$params = array_merge ($defaultParams, $params);
+
+		$this->Parser->setMultipleParserVars ($fieldData);
+		$this->Parser->setParserVar ('fieldName', $fieldName);
+		$this->Parser->setParserVar ('fieldValue', $params['value']);
+		$this->Parser->setParserVar ('fieldLabel', $params['label']);
+		$this->Parser->setParserVar ('required', $params['required']);
+
+		if ($fieldData['cmt_fieldtype'] == 'select') {
+			$_options = [];
+			$options = split("\n", $fieldData['cmt_option_select_aliases']);
+			$values = split("\n", $fieldData['cmt_option_select_values']);
+			foreach ($options as $n => $option) {
+				$_options[] = [
+					'optionValue' => $values[$n],
+					'optionName' => $option
+				];
+			}
+			$this->Parser->setParserVar ('options', $_options);
+		}
+		if (!empty ($this->validationErrors)) {
+			$this->Parser->setParserVar ('validationErrors', $this->getValidationErrors ());
+			$this->Parser->setParserVar ('validationRules', $this->getValidationRules ());
+		}
+		$content = $this->Parser->parseTemplate (PATHTOWEBROOT . 'templates/forms/' . $fieldData['cmt_fieldtype']. '.tpl');
+		return $content;
+	}
+
+
+
+	public function getFormFields () {
+		$fields = $this->FieldHandler->getAllFields ([
+			'tableName' => $this->tableName,
+			'getAll' => true
+		]);
+
+		$_fields = [];
+		foreach ($fields as $field) {
+			$_fields[$field['cmt_fieldname']] = $this->getFormField ($field['cmt_fieldname']);
+		}
+
+		return $_fields;
+	}
 }
+
 ?>

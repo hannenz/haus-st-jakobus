@@ -268,10 +268,10 @@ $breadcrumbs-item-font-size: rem-calc(11);
 $breadcrumbs-item-color: $primary-color;
 $breadcrumbs-item-color-current: $black;
 $breadcrumbs-item-color-disabled: $medium-gray;
-$breadcrumbs-item-margin: 0.75rem;
-$breadcrumbs-item-uppercase: true;
+$breadcrumbs-item-margin: 0.33rem;
+$breadcrumbs-item-uppercase: false;
 $breadcrumbs-item-separator: true;
-$breadcrumbs-item-separator-item: '/';
+$breadcrumbs-item-separator-item: '»';
 $breadcrumbs-item-separator-item-rtl: '\\';
 $breadcrumbs-item-separator-color: $medium-gray;
 
@@ -289,10 +289,10 @@ $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;
 $button-sizes: (
-  tiny: 0.6rem,
-  small: 0.75rem,
-  default: 0.9rem,
-  large: 1.25rem,
+	tiny: 0.6rem,
+	small: 0.75rem,
+	default: 0.9rem,
+	large: 1.25rem,
 );
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;

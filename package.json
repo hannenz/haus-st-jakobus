@@ -38,7 +38,8 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "jquery": "^3.3.1",
-    "moment": "^2.18.1"
+    "moment": "^2.18.1",
+    "motion-ui": "^2.0.3"
   },
   "project_settings": {
     "prefix": "./dist/"

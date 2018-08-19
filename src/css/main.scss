@@ -8,6 +8,9 @@
 
 @import "foundation-settings";
 @import "foundation";
+@import "motion-ui";
+@include motion-ui-transitions;
+@include motion-ui-animations;
 
 @include foundation-forms;
 @include foundation-menu;
