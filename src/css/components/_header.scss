@@ -8,9 +8,9 @@ body {
 	background-color: $primary-color;
 	// background-image: linear-gradient darken($primary-color, 90%), $primary-color;
 	background-image: linear-gradient($primary-color, darken($primary-color, 3%));
-	border-bottom: 2px solid #fff;
+	/* border-bottom: 2px solid #fff; */
 
-	position: sticky;
+	/* position: sticky; */
 	top: 0;
 	z-index: 100;
 
@@ -20,26 +20,6 @@ body {
 	align-items: center;
 }
 
-
-.brand {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	color: #fff;
-	color: $primary-color;
-
-	&__logo {
-		height: 1.5 * $vertical-unit;
-		width: auto;
-	}
-
-	&__name {
-		text-align: right;
-		color: #fff;
-		color: $primary-color;
-		@include type-setting(-1);
-	}
-}
 
 .motto {
 	font-style: italic;

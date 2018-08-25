@@ -408,9 +408,9 @@ $flexbox-responsive-breakpoints: true;
 // 20. Forms
 // ---------
 
-$fieldset-border: 1px solid $medium-gray;
-$fieldset-padding: rem-calc(20);
-$fieldset-margin: rem-calc(18 0);
+$fieldset-border: none;
+$fieldset-padding: rem-calc(16);
+$fieldset-margin: rem-calc(14 0);
 $legend-padding: rem-calc(0 3);
 $form-spacing: rem-calc(16);
 $helptext-color: $black;
@@ -430,7 +430,7 @@ $select-radius: $global-radius;
 $input-color: $black;
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
-$input-font-size: rem-calc(16);
+$input-font-size: rem-calc(13);
 $input-font-weight: $global-weight-normal;
 $input-line-height: $global-lineheight;
 $input-background: $white;
@@ -859,8 +859,8 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  small: 20px,
-  medium: 30px
+  small: 10px,
+  medium: 15px
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;

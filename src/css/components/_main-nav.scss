@@ -1,34 +1,63 @@
-.main-header {
-	// position: sticky;
-	// top: 0;
-	// z-index: 1;
-}
-
+/**
+ * src/css/components/_main-nav.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakob
+ */
 .main-nav {
 
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-	position: absolute;
-	bottom: -42px;
-	height: 40px;
-	left: 0;
-	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	/* top: 0; */
+	/* bottom: -40px; */
+	height: 48px;
+	/* left: 0; */
+	/* width: 100%; */
 	background-color: rgba(tint($primary-color, 80%), 0.85);
 	padding: 0 $gutter;
 	border-bottom: 2px solid $primary-color;
+
+
+
+	.brand {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: #fff;
+		color: $primary-color;
+		position: absolute;
+
+		&__logo {
+			height: 1.5 * $vertical-unit;
+			width: auto;
+		}
+
+		&__name {
+			text-align: right;
+			color: #fff;
+			color: $primary-color;
+			@include type-setting(-1);
+		}
+	}
+
 
 	.submenu {
 		padding: 0.5rem;
 	}
 
-	.submenu a {
+	.submenu .nav-item__link {
 		color: $primary-color;
+		margin: 0;
 	}
 
 	&__menu {
 		height: 100%;
 		margin-bottom: 0;
+		margin-left: auto;
 		display: flex;
 		align-items: center;
 	}
@@ -63,16 +92,17 @@
 
 		&::after {
 			content: '';
-			background-color: rgba(255, 255, 255, 0.5);
+			/* background-color: rgba(255, 255, 255, 0.5); */
+			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.6));
 			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
-			bottom: -2px;
+			bottom: -0px;
 			transform: scaleX(0);
 			transition: 150ms ease-in;
 			z-index: 0;
-			border-bottom: 2px solid #fff;
+			/* border-bottom: 2px solid #fff; */
 		}
 
 		&:hover::after {

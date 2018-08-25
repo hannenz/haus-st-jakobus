@@ -27,13 +27,13 @@
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 	{IF("{PAGEID}" == "2")}
-	<div class="hero" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}'">
+	<div class="hero" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');">
 		<blockquote class="hero__title">
 			Kommt und ruht ein wenig aus &hellip;
 		</blockquote>
 	</div>
     {ELSE}
-	<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}"></div>
+	<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
 	{ENDIF}
 
 	<section class="main-container inner-bound">
