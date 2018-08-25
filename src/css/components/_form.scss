@@ -1,0 +1,30 @@
+/**
+ * src/css/components/_form.scss
+ *
+ * @author Johannes Braun
+ * @package haus-st-jakobus
+ */
+
+form {
+	.fieldset {
+		#{$all-text-inputs} {
+		}
+		input, textarea, label, .help-text {
+		}
+	}
+}
+
+.fieldset {
+	background-color: $primary-color-soft;
+	border: none;
+	/* margin-bottom: $vertical-unit; */
+	legend {
+		background-color: $primary-color;
+		color: #fff;
+		padding: 4px 6px;
+	}
+}
+
+label {
+	@include type-setting(-1);
+}
