@@ -4,26 +4,89 @@
 <form action="" method="post">
 	<fieldset class="fieldset">
 		<legend>Persönliche Angaben</legend>
-		{VAR:pilgrimpass_firstname}
-		{VAR:pilgrimpass_lastname}
-		{VAR:pilgrimpass_birthday}
-		{VAR:pilgrimpass_street_address}
-		{VAR:pilgrimpass_country}
-		{VAR:pilgrimpass_zip}
-		{VAR:pilgrimpass_city}
-		{VAR:pilgrimpass_phone}
-		{VAR:pilgrimpass_email}
-		{VAR:pilgrimpass_idnr}
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_firstname}
+			</div>
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_lastname}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell">
+				{VAR:pilgrimpass_street_address}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell small-3">
+				{VAR:pilgrimpass_zip}
+			</div>
+			<div class="cell small-9">
+				{VAR:pilgrimpass_city}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_country}
+			</div>
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_birthday}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_phone}
+			</div>
+			<div class="cell medium-6">
+				{VAR:pilgrimpass_email}
+			</div>
+		</div>
+		
+		<div class="grid-x grid-padding-x">
+			<div class="cell">
+				{VAR:pilgrimpass_idnr}
+			</div>
+		</div>
 	</fieldset>
+
+
 	<fieldset class="fieldset">
 		<legend>Pilgerweg</legend>
-		{VAR:pilgrimpass_route}
-		{VAR:pilgrimpass_start_date}
-		{VAR:pilgrimpass_message}
-		{VAR:pilgrimpass_start_location}
-		{VAR:pilgrimpass_motivation}
-		{VAR:pilgrimpass_transportation}
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-4">
+				{VAR:pilgrimpass_route}
+			</div>
+			<div class="cell medium-4">
+				{VAR:pilgrimpass_start_date}
+			</div>
+			<div class="cell medium-4">
+				{VAR:pilgrimpass_start_location}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-4">
+				{VAR:pilgrimpass_motivation}
+			</div>
+			<div class="cell medium-4">
+				{VAR:pilgrimpass_transportation}
+			</div>
+		</div>
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell">
+				{VAR:pilgrimpass_message}
+			</div>
+		</div>
 	</fieldset>
+
+
 	<fieldset class="fieldset">
 		<legend>Bezahlung</legend>
 		{VAR:pilgrimpass_payment_method}

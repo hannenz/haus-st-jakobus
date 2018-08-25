@@ -1,7 +1,9 @@
 <?php
 namespace Jakobus;
-
-error_reporting (E_ALL & ~E_WARNING & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+/**
+ * A model class that supports
+ * data fetching, validation and saving
+ */
 
 use Contentomat\DBCex;
 use Contentomat\Contentomat;
