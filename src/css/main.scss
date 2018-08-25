@@ -47,3 +47,8 @@
 @import "components/calendar";
 @import "components/button";
 
+
+.error {
+	outline: 1px solid firebrick;
+	background-color: rgba(firebrick, 0.2);
+}

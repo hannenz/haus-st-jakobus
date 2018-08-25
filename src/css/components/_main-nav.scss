@@ -9,6 +9,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	position: absolute;
+	bottom: -42px;
+	height: 40px;
+	left: 0;
+	width: 100%;
+	background-color: rgba(tint($primary-color, 80%), 0.85);
+	padding: 0 $gutter;
+	border-bottom: 2px solid $primary-color;
 
 	.submenu {
 		padding: 0.5rem;
@@ -19,21 +27,35 @@
 	}
 
 	&__menu {
+		height: 100%;
 		margin-bottom: 0;
+		display: flex;
+		align-items: center;
 	}
 
 	.nav-item {
+
 		text-decoration: none;
 		position: relative;
 		display: inline-block;
-		margin-left: $gutter;
+		padding: 0 0.75 * $gutter;
+		height: 100%;
+		display: flex;
 
 		&__link {
+
 			background: transparent;
-            @include type-setting (-1);
+			@include type-setting (-1);
+			line-height: 1;
 			display: inline-block;
 			transition: 50ms;
 			color: #fff;
+			color: $primary-color;
+			margin: auto;
+			padding: 0;
+			position: relative;
+			z-index: 1;
+
 			&:hover {
 				text-decoration: none;
 			}
@@ -41,23 +63,27 @@
 
 		&::after {
 			content: '';
-			border-bottom: 2px solid #fff;
-			transform: translateY(5px) scaleX(0);
+			background-color: rgba(255, 255, 255, 0.5);
 			position: absolute;
-			top: 0px;
+			top: 0;
 			left: 0;
 			right: 0;
-			bottom: 4px;
-			transition: 150ms;
-            pointer-events: none;
+			bottom: -2px;
+			transform: scaleX(0);
+			transition: 150ms ease-in;
+			z-index: 0;
+			border-bottom: 2px solid #fff;
 		}
 
+		&:hover::after {
+			transform: scaleX(1);
+		}
 
 		&.current::after,
 		&:focus::after,
 		&:active::after,
 		&:hover::after {
-			transform: translateY(5px) scaleX(1);
+			/* transform: translateY(5px) scaleX(1); */
 		}
 
 		&:active .nav-item__label {

@@ -1,4 +1,5 @@
 <header class="main-header">
+	<blockquote class="motto">Kommt und ruht ein wenig aus &hellip;</blockquote>
 	<nav class="main-nav">
 
 		<a href="/" class="main-header__brand brand">
@@ -23,6 +24,6 @@
 			{ENDLOOP NAVIGATION}
 		</div>
 	</nav>
-</header>
 
+</header>
 

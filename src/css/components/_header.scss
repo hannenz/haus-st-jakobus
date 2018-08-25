@@ -13,6 +13,11 @@ body {
 	position: sticky;
 	top: 0;
 	z-index: 100;
+
+	height: 100px;
+
+	display: flex;
+	align-items: center;
 }
 
 
@@ -21,6 +26,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	color: #fff;
+	color: $primary-color;
 
 	&__logo {
 		height: 1.5 * $vertical-unit;
@@ -30,8 +36,16 @@ body {
 	&__name {
 		text-align: right;
 		color: #fff;
+		color: $primary-color;
 		@include type-setting(-1);
 	}
+}
+
+.motto {
+	font-style: italic;
+	margin-left: auto;
+	color: #fff;
+	@include type-setting(1);
 }
 
 .hero {

@@ -1,3 +1,6 @@
+{IF({ISSET:saveFailed:VAR})}
+<div class="error">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
+{ENDIF}
 <form action="" method="post">
 	<fieldset class="fieldset">
 		<legend>Persönliche Angaben</legend>

@@ -1,6 +1,8 @@
 <?php
 namespace Jakobus;
 
+error_reporting (E_ALL & ~E_WARNING & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+
 use Contentomat\DBCex;
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
@@ -94,6 +96,13 @@ class Model {
 	 */
 	protected $validationRules = [];
 
+	/**
+	 * @var string
+	 */
+	protected $formTemplatesPath = PATHTOWEBROOT . 'templates/forms/';
+
+
+
 	public function __construct () {
 		$this->db = new DBCex ();
 		$this->cmt = Contentomat::getContentomat ();
@@ -139,6 +148,28 @@ class Model {
 	 */
 	public function setTableName ($tableName) {
 		$this->tableName = $tableName;
+	}
+
+	/**
+	 * Setter for formTemplatesPath
+	 * 
+	 * @access public
+	 * @param string
+	 * @return void
+	 */
+	public function setFormTemplatesPath ($formTemplatesPath) {
+		$this->formTemplatesPath = $formTemplatesPath;
+	}
+
+
+	/**
+	 * Getter for formrTemplatesPath
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getFormTemplatesPath () {
+		return $this->formrTemplatesPath;
 	}
 
 
@@ -417,18 +448,18 @@ class Model {
 
 		$this->validationErrors = [];
 
-		foreach ((array)$this->validationRules as $field => $rules) {
+		foreach ((array)$this->validationRules as $fieldName => $rules) {
 
-			if (!isset ($data[$field])) {
-				$this->validationErrors[$field] = [ "Missing field: $field" ];
+			if (!isset ($data[$fieldName])) {
+				$this->validationErrors[$fieldName] = [ "Missing field: $fieldName" ];
 				continue;
 			}
 
-			$value = $data[$field];
+			$value = $data[$fieldName];
 
 			foreach ((array)$rules as $rule) {
-				if (method_exists (getClass ($this), $rule)) {
-					$result = call_user_func ([__NAMESPACE__ . '\\' . getClass(), $data[$field]]);
+				if (method_exists (get_class ($this), $rule)) {
+					$result = call_user_func ([__NAMESPACE__ . '\\' . get_class(), $rule], $data[$field]);
 				}
 				else {
 					$result = preg_match ($rule, $data[$field]);
@@ -436,7 +467,6 @@ class Model {
 
 				if (!$result) {
 					$this->validationErrors[$field][] = true;
-
 				}
 			}	
 		}
@@ -446,6 +476,14 @@ class Model {
 
 
 
+	/**
+	 * Validate one form field
+	 *
+	 * @access public
+	 * @param string 	The name of the field to validate
+	 * @param mixed 	The value to validat against
+	 * @return boolen 	Whether the data validates or nut
+	 */
 	public function validateFormField ($fieldName, $value) {
 
 		$success = true;
@@ -455,30 +493,47 @@ class Model {
 		}
 
 
+
 		foreach ((array)$this->validationRules[$fieldName] as $ruleName => $rule) {
 
-			if (method_exists (getClass ($this), $rule)) {
-				$result = call_user_func ([__NAMESPACE__ . '\\' . getClass(), $data[$field]]);
+			if (method_exists ($this, $rule)) {
+				$result = call_user_func ([$this, $rule], $value);
 			}
 			else {
-				$result = preg_match ($rule, $data[$field]);
+				$result = preg_match ($rule, (string)$value) === 1;
 			}
+
 
 			if (!$result) {
 				$success = false;
-				if (!is_array ($this->validationErrors[$field])) {
-					$this->validationErrors[$fields] = [ $ruleName ];
+				if (!is_string ($ruleName)) {
+					$ruleName = 'default';
+				}
+				if (!is_array ($this->validationErrors[$fieldName])) {
+					$this->validationErrors[$fieldName] = [ $ruleName ];
 				}
 				else {
-					$this->validationErrors[$field][] = $ruleName;
+					$this->validationErrors[$fieldName][] = $ruleName;
 				}
 			}
 		}
-		
 		return $success;
 	}
 
 
+
+	/**
+	 * Returns the markup for a form field, ready with 
+	 * validated data, errror messages etc.
+	 *
+	 * This function requires that for each cmt field type there is a 
+	 * template in 'templates/forms/` (path is configurable)
+	 * e.g. `templates/forms/string.tpl`
+	 *
+	 * @access public
+	 * @param string 	$fieldName
+	 * @param array 	$options 	Options
+	 */
 
 	public function getFormField ($fieldName, $params = []) {
 
@@ -487,10 +542,18 @@ class Model {
 			'fieldName' => $fieldName
 		]);
 
+		// Determine the template fiel to  use
+		// if it does not exist, dont waste computing time and skip
+		$templateFile = $this->formTemplatesPath . $fieldData['cmt_fieldtype'] . '.tpl';
+		if (!file_exists ($templateFile)) {
+			return "...";
+		}
+
 		$defaultParams = [
 			'label' => $fieldData['cmt_fieldalias'],
 			'value' => $_POST[$fieldName],
-			'required' => false
+			'required' => false,
+			'validate' => false
 		];
 		$params = array_merge ($defaultParams, $params);
 
@@ -502,8 +565,8 @@ class Model {
 
 		if ($fieldData['cmt_fieldtype'] == 'select') {
 			$_options = [];
-			$options = split("\n", $fieldData['cmt_option_select_aliases']);
-			$values = split("\n", $fieldData['cmt_option_select_values']);
+			$options = explode ("\n", $fieldData['cmt_option_select_aliases']);
+			$values = explode ("\n", $fieldData['cmt_option_select_values']);
 			foreach ($options as $n => $option) {
 				$_options[] = [
 					'optionValue' => $values[$n],
@@ -512,28 +575,155 @@ class Model {
 			}
 			$this->Parser->setParserVar ('options', $_options);
 		}
-		$success = $this->validateField ($fieldName, $params[$value]);
-		if (!$success) {
-			$this->Parser->setParserVar ('validationErrors', $this->getValidationErrors[$fieldName]);
+
+		$this->Parser->deleteParserVar ('validationErrors');
+		if ($params['validate']) {
+			$success = $this->validateFormField ($fieldName, $params['value']);
+			if (!$success) {
+
+				// Normalize for use as parser var
+				// TODO: Maybe this should happen in validation method
+				$rules = [];
+				foreach ($this->validationErrors[$fieldName] as $ruleName) {
+					$rules[] = [ 'ruleName' => $ruleName ];
+				}
+				$this->Parser->setParserVar ('validationErrors', $rules) ; //$this->validationErrors[$fieldName]);
+			}
 		}
-		$content = $this->Parser->parseTemplate (PATHTOWEBROOT . 'templates/forms/' . $fieldData['cmt_fieldtype']. '.tpl');
+
+		$content = $this->Parser->parseTemplate ($templateFile);
 		return $content;
 	}
 
 
 
-	public function getFormFields () {
-		$fields = $this->FieldHandler->getAllFields ([
-			'tableName' => $this->tableName,
-			'getAll' => true
-		]);
+	/**
+	 * Get markup for all form fields to be used in frontend forms
+	 *
+	 * This function requires that for each cmt field type there is a 
+	 * template in 'templates/forms/` (path is configurable)
+	 * e.g. `templates/forms/string.tpl`
+	 *
+	 * @param array $fieldNames 		Array of fieldnames to fetch, optional.
+	 * 									Leave empty for all fields
+	 * @param array $options 			Array of options as passed to `getFormField`, @see there
+	 * @return Array 					An array with HTML markup for each form field
+	 * 									in the form
+	 * 									```
+	 * 									[
+	 * 										fieldName => "<MARKUP />"
+	 * 									]
+	 * 									```
+	 */
+	public function getFormFields ($fieldNames = [], $options = []) {
+
+		if (empty ($fieldNames)) {
+			// If $fields is empty, get all fields
+			$fields = $this->FieldHandler->getAllFields ([
+				'tableName' => $this->tableName,
+				'getAll' => true
+			]);
+		}
+		else {
+			// else get only the specified fields
+			$fields = [];
+			foreach ($fieldNames as $fieldName) {
+				$fields[] = $this->FieldHandler->getField ([
+					'tableName' => $this->tableName,
+					'fieldName' => $fieldName
+				]);
+			}
+		}
 
 		$_fields = [];
 		foreach ($fields as $field) {
-			$_fields[$field['cmt_fieldname']] = $this->getFormField ($field['cmt_fieldname']);
+			$_fields[$field['cmt_fieldname']] = $this->getFormField ($field['cmt_fieldname'], $options);
 		}
 
 		return $_fields;
+	}
+
+
+
+	/**
+	 * Save data from $_POST
+	 * Optionally validate it (better done manually before save though)
+	 * 
+	 * @access public
+	 * @param Array 		$data The data to save (defaults to $_POST)
+	 * @param Array 		$options
+	 * 						'fields' => array
+	 * 						'validate' => boolean
+	 * 						'callback' => executable
+	 * @return boolean
+	 */
+	public function save ($data = null, $options = []) {
+		$defaultOptions = [
+			'fields' => [],
+			'validate' => true,
+			'callback' => false
+		];
+		$options = array_merge ($defaultOptions, $options);
+
+
+		// Default data to postvars
+		if (empty ($data)) {
+			$data = $_POST;
+		}
+
+
+
+		// Determine fields to save, either from options or
+		// save all fields that are set in $data
+		if (!empty ($options['fields'])) {
+			$_fields = $options['fields'];
+		}
+		else {
+			$_fields = array_keys ($data);
+		}
+
+		// Be sure to only use fields that are actually
+		// available in the table
+		$availableFields = $this->FieldHandler->getFieldNames ($this->tableName, true);
+
+
+		$fields = [];
+		foreach ($_fields as $fieldName) {
+			if (isset ($availableFields[$fieldName]) && isset ($data[$fieldName])) {
+				$fields[$fieldName] = $data[$fieldName];
+			}
+		}
+
+
+
+		$success = true;
+		if ($options['validate']) {
+			foreach ($fields as $fieldName => $value) {
+				if (!$this->validateFormField ($fieldName, $value)) {
+					$success = false;
+					break;
+				}
+			}
+		}
+		if ($success) {
+			$setQuery = $this->db->makeSetQuery ($fields);
+
+			if (isset ($fields['id'])) {
+				$query = sprintf ('UPDATE %s SET %s WHERE id=%u', $this->tableName, $setQuery, (int)id);
+			}
+			else {
+				$query = sprintf ('INSERT INTO %s SET %s', $this->tableName, $setQuery);
+			}
+
+			$ret = $this->db->query ($query);
+			$success = ($ret === 0);
+		}
+
+		if (is_callable ($options['callback'])) {
+			$success = call_user_func ($options['callback'], $success, $data, $options);
+		}
+		
+		return $success;
 	}
 }
 ?>

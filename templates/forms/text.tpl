@@ -1,6 +1,6 @@
-<div class="form-field form-field--text{IF({ISSET:validationErrors})} error{ENDIF}{IF({ISSET:required})} required{ENDIF}">
+<div class="form-field form-field--textarea{IF({ISSET:validationErrors})} error{ENDIF}{IF({ISSET:required})} required{ENDIF}>
 	<label for="{VAR:fieldName}">{VAR:fieldLabel}</label>
-	<input type="text" id="{VAR:fieldName}" name="{VAR:fieldName}" value="{IF({ISSET:fieldValue})}{VAR:fieldValue}{ELSE}{VAR:cmt_default}{ENDIF}"{IF({ISSET:required})} required{ENDIF}/>
+	<textarea id="{VAR:fieldName}" name="{VAR:fieldName}"{IF({ISSET:required})} required{ENDIF}>{IF({ISSET:fieldValue})}{VAR:fieldValue}{ELSE}{VAR:cmt_default}{ENDIF}</textarea>
 
 	{IF ({ISSET:cmt_fielddesc})}
 		<p class="form-field__info">
