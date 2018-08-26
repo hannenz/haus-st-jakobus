@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
 	{ENDIF}
 </head>
-<body class="debug-base-line-grid--is-visible">
+<body id="top" class="debug-base-line-grid--is-visible">
 	<div class="debug-base-line-grid"> </div>
 	<!-- Inject SVG sprites -->
 	<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
