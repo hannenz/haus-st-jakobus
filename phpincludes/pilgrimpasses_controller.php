@@ -30,7 +30,7 @@ class PilgrimpassesController extends Controller {
 
 		if (!empty ($this->postvars)) {
 			if (!$this->Pilgrimpass->save ($this->postvars, [ 'callback' => __NAMESPACE__ . '\PilgrimpassesController::afterSave'])) {
-				$this->parser->setParserVar ('save-failed', true);
+				$this->parser->setParserVar ('saveFailed', true);
 			}
 			else {
 				return $this->changeAction ('success');

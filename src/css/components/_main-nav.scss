@@ -4,6 +4,9 @@
  * @author Johannes Braun <johannes.braun@hannenz.de>
  * @package haus-st-jakob
  */
+
+$transition-duration: 100ms;
+
 .main-nav {
 
 	display: flex;
@@ -17,10 +20,9 @@
 	height: 48px;
 	/* left: 0; */
 	/* width: 100%; */
-	background-color: rgba(tint($primary-color, 80%), 0.85);
+	background-color: rgba($primary-color-soft, 0.85);
 	padding: 0 $gutter;
 	border-bottom: 2px solid $primary-color;
-
 
 
 	.brand {
@@ -53,6 +55,24 @@
 		color: $primary-color;
 		margin: 0;
 	}
+
+
+
+	// Overrid submenu open animation
+	.is-dropdown-submenu {
+		opacity: 0;
+		display: block;
+		transform-origin: top left;
+		transform: scale(0);
+		transition: $transition-duration ease-in;
+	}
+
+	.is-active .is-dropdown-submenu {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+
 
 	&__menu {
 		height: 100%;
@@ -92,15 +112,15 @@
 
 		&::after {
 			content: '';
-			/* background-color: rgba(255, 255, 255, 0.5); */
-			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6));
+			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
 			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
 			bottom: -0px;
+			transform-origin: left center;
 			transform: scaleX(0);
-			transition: 150ms ease-in;
+			transition: $transition-duration ease-in;
 			z-index: 0;
 			/* border-bottom: 2px solid #fff; */
 		}
@@ -119,5 +139,13 @@
 		&:active .nav-item__label {
 			transform: translateY(1px);
 		}
+	}
+}
+
+.page-has-scrolled .main-nav {
+	background-color: rgba($primary-color-soft, 1);
+
+	.brand__logo {
+		display: none;
 	}
 }

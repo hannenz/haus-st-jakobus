@@ -710,12 +710,18 @@ class Model {
 		if ($success) {
 			$setQuery = $this->db->makeSetQuery ($fields);
 
-			if (isset ($fields['id'])) {
-				$query = sprintf ('UPDATE %s SET %s WHERE id=%u', $this->tableName, $setQuery, (int)id);
-			}
-			else {
-				$query = sprintf ('INSERT INTO %s SET %s', $this->tableName, $setQuery);
-			}
+
+			// if (isset ($fields['id'])) {
+			// 	$query = sprintf ('UPDATE %s SET %s WHERE id=%u', $this->tableName, $setQuery, (int)id);
+			// }
+			// else {
+			// 	$query = sprintf ('INSERT INTO %s SET %s', $this->tableName, $setQuery);
+			// }
+			$query = sprintf ('INSERT INTO %s SET %s ON DUPLICATE KEY UPDATE %s',
+				$this->tableName,
+				$setQuery,
+				$setQuery
+			);
 
 			$ret = $this->db->query ($query);
 			$success = ($ret === 0);
