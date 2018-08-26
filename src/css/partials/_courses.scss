@@ -29,3 +29,14 @@ table.courses-overview {
 		padding: 0.3em;
 	}
 }
+
+.course__detail {
+	margin-bottom: 0.5 * $vertical-unit;
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+	}
+}
