@@ -8,6 +8,7 @@ use Contentomat\Debug;
 class Course extends Model {
 
 	private $detailPageId = 10;
+	private $registrationsPageId = 35;
 
 	protected $TableMedia;
 
@@ -50,6 +51,7 @@ class Course extends Model {
 				$this->cmt->makeNameWebsave ($result['course_title']),
 				$result['id']
 			);
+
 
 			$events = $this->TableMedia->getMedia ([
 				'tableName' => $this->tableName,
@@ -95,6 +97,13 @@ class Course extends Model {
 				$this->cmt->makeNameWebSave ($event['course_title']),
 				$event['id']
 			);
+			$events[$n]['event_subscribe_url'] = sprintf('/%s/%u/%s,%u.html',
+				$this->language,
+				$this->registrationsPageId,
+				$this->cmt->makeNameWebsave('Anmeldung zu ' . $event['course_title']),
+				$event['id']
+			);
+
 		}
 		return $events;
 	}

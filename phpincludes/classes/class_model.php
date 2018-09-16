@@ -141,6 +141,12 @@ class Model {
 
 
 
+	public function getLanguage() {
+		return $this->language;
+	}
+
+
+
 	/**
 	 * Setter for `tableName`
 	 *

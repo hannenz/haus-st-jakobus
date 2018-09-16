@@ -21,7 +21,7 @@
 				{VAR:course_description}
 			</div>
 
-			<p> <a class="button" href="#">Details</a></p>
+			<p> <a class="button" href="{VAR:course_detail_url}">Details</a></p>
 
 			<footer class="course__footer">
 				{IF({ISSET:course_elements})}

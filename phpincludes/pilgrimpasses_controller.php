@@ -29,7 +29,7 @@ class PilgrimpassesController extends Controller {
 		$this->parser->setMultipleParserVars ($fields);
 
 		if (!empty ($this->postvars)) {
-			if (!$this->Pilgrimpass->save ($this->postvars, [ 'callback' => __NAMESPACE__ . '\PilgrimpassesController::afterSave'])) {
+			if (!$this->Pilgrimpass->save ($this->postvars, ['callback' => __NAMESPACE__ . '\PilgrimpassesController::afterSave'])) {
 				$this->parser->setParserVar ('saveFailed', true);
 			}
 			else {

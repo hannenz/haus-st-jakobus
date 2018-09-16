@@ -159,13 +159,30 @@ gulp.task('css', function (done) {
 	return gulp
 		.src(settings.css.srcMain)
 		.pipe($.plumber({ errorHandler: onError}))
-		// .pipe($.sourcemaps.init())
+
+		.pipe($.sourcemaps.init())
 		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
 		.pipe($.autoprefixer(settings.css.options.autoprefixer))
-		// .pipe($.sourcemaps.write('./'))
-		.pipe($.header(banner, {pkg: pkg}))
+		.pipe($.sourcemaps.write('./'))
+
 		.pipe(gulp.dest(settings.css.dest))
 		.pipe($.browserSync.stream())
+	;	
+	done();
+});
+
+/*
+ *  Task: process SASS PRODUCTION
+ */
+gulp.task('css-production', function (done) {
+	return gulp
+		.src(settings.css.srcMain)
+		// .pipe($.plumber({ errorHandler: onError}))
+
+		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
+		.pipe($.autoprefixer(settings.css.options.autoprefixer))
+		.pipe($.header(banner, {pkg: pkg}))
+		.pipe(gulp.dest(settings.css.dest))
 	;	
 	done();
 });

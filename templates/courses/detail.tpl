@@ -27,6 +27,9 @@
 						<dt class="event__title">{VAR:media_title}</dt>
 						<dd class="event__date">{VAR:event_date_begin_fmt} &ndash; {VAR:event_date_end_fmt}</dd>
 					</dl>
+					<div>
+						<a class="button" href="{VAR:event_subscribe_url}">Anmelden</a>
+					</div>
 				{ENDLOOP VAR}
 
 			</footer>

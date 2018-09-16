@@ -10,7 +10,7 @@
     "type": "git",
     "url": "ssh://git@github.com/hannenz/haus-st-jakobus.git"
   },
-  "author": "CHANGE-ME",
+  "author": "Johannes Braun <johannes.braun@hannenz.de>",
   "license": "MIT",
   "copyright": "Johannes Braun <johannes.braun@hannenz.de>",
   "devDependencies": {

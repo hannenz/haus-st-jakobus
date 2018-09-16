@@ -3,9 +3,6 @@ RewriteBase /
 
 # Disable all PHP messages on production servers
 # (https://stackoverflow.com/a/8652987)
-php_flag display_startup_errors off
-php_flag display_errors on
-php_flag html_errors on
 # php_value error_reporting 1
 
 # Force www

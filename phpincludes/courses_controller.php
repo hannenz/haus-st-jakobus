@@ -14,13 +14,13 @@ class CoursesController extends Controller {
 
 	protected $courseId;
 
-	public function init () {
-		$this->Course = new Course ();
-		$this->Course->setLanguage ($this->pageLang);
+	public function init() {
+		$this->Course = new Course();
+		$this->Course->setLanguage($this->pageLang);
 
-		$this->CourseCategory = new CourseCategory ();
-		$this->CourseCategory->setLanguage ($this->pageLang);
-		$this->CourseCategory->order (['course_category_position' => 'asc']);
+		$this->CourseCategory = new CourseCategory();
+		$this->CourseCategory->setLanguage($this->pageLang);
+		$this->CourseCategory->order(['course_category_position' => 'asc']);
 
 		$this->templatesPath = $this->templatesPath . 'courses/';
 	}
@@ -121,11 +121,11 @@ class CoursesController extends Controller {
 
 	public function actionDetail () {
 		$course = $this->Course->filter(['id' => $this->courseId])->findOne ();
-		Debug::debug ($course);
-		die ();
 		$this->parser->setMultipleParserVars ($course);
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'detail.tpl');
 	}
+
+
 }
 
 $autoLoad = new PsrAutoloader ();

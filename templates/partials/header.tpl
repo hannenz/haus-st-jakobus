@@ -10,7 +10,7 @@
 		<span class="brand__name">Haus St. Jakobus</span>
 	</a>
 
-	<ul class="main-nav__menu dropdown menu" data-dropdown-menu data-click-open="true" data-close-on-click-inside="true" data-disable-hover="false" data-closing-time="100ms">
+	<ul class="main-nav__menu dropdown menu" data-dropdown-menu data-click-open="true" data-close-on-click-inside="true" data-disable-hover="true" data-closing-time="100ms">
 		{LOOP NAVIGATION(1)}
 		<li class="nav-item{IF("{NAVIGATION:id}" == "{PAGEID}")} current{ENDIF}">
 			{IF("{NAVIGATION:children}" != "0")}
