@@ -78,34 +78,44 @@ class Course extends Model {
 		return $results;
 	}
 
-	protected function afterReadEvents ($events) {
+	public function afterReadEvents ($events) {
 		foreach ($events as $n => $event) {
-			$events[$n]['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
-			$events[$n]['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_end']));
-			if ($event['media_date_begin'] == $event['media_date_end']) {
-				$events[$n]['event_date_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
-			}
-			else {
-				$events[$n]['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
-					$events[$n]['event_begin_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_begin'])),
-					$events[$n]['event_end_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_end']))
-				);
-			}
-			$events[$n]['course_detail_url'] = sprintf ('/%s/%u/%s,%u.html',
-				$this->language,
-				$this->detailPageId,
-				$this->cmt->makeNameWebSave ($event['course_title']),
-				$event['id']
-			);
-			$events[$n]['event_subscribe_url'] = sprintf('/%s/%u/%s,%u.html',
-				$this->language,
-				$this->registrationsPageId,
-				$this->cmt->makeNameWebsave('Anmeldung zu ' . $event['course_title']),
-				$event['id']
-			);
-
+			$events[$n] = $this->afterReadEvent($event);
 		}
+
 		return $events;
+	}
+
+	public function afterReadEvent($event) {
+
+		$event['event_title'] = $event['media_title']; // for convenience and consistency..
+		$event['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
+		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_end']));
+		if ($event['media_date_begin'] == $event['media_date_end']) {
+			$event['event_date_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
+		}
+		else {
+			$event['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
+				$event['event_begin_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_begin'])),
+				$event['event_end_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_end']))
+			);
+		}
+
+		$event['course_detail_url'] = sprintf ('/%s/%u/%s,%u.html',
+			$this->language,
+			$this->detailPageId,
+			$this->cmt->makeNameWebSave ($event['course_title']),
+			$event['id']
+		);
+
+		$event['event_subscribe_url'] = sprintf('/%s/%u/%s,%u.html',
+			$this->language,
+			$this->registrationsPageId,
+			$this->cmt->makeNameWebsave('Anmeldung zu ' . $event['course_title']),
+			$event['id']
+		);
+
+		return $event;
 	}
 }
 ?>

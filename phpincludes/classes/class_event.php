@@ -30,9 +30,12 @@ class Event extends TableMedia {
 			return false;
 		}
 
-		$event['Course'] = $this->Course->filter([
+		$event = array_merge($event, $this->Course->filter([
 			'id' => $event['media_entry_id']
-		])->findOne();
+		])->findOne());
+		$event['id'] = $eventId;
+
+		$event = $this->Course->afterReadEvent($event);
 
 		return $event;
 	}

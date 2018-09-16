@@ -572,7 +572,14 @@ class Model {
 		$this->Parser->setParserVar ('required', $params['required']);
 
 		if ($fieldData['cmt_fieldtype'] == 'select') {
+			// var_dump($fieldData); die();
 			$_options = [];
+			if (!empty($fieldData['cmt_option_select_noselection'])) {
+				$_options[] = [
+					'optionValue' => '',
+					'optionName' => $fieldData['cmt_option_select_noselection']
+				];
+			}
 			$options = explode ("\n", $fieldData['cmt_option_select_aliases']);
 			$values = explode ("\n", $fieldData['cmt_option_select_values']);
 			foreach ($options as $n => $option) {

@@ -39,18 +39,20 @@ class RegistrationsController extends Controller {
 	public function actionDefault () {
 
 		$event = $this->Event->findById($this->eventId);
-		var_dump($event); die();
-
-		
+		$this->parser->setMultipleParserVars($event);
 
 		$fields = $this->Registration->getFormFields(null, ['validate' => !empty ($this->postvars)]);
 		$this->parser->setMultipleParserVars($fields);
 
 		if (!empty ($this->postvars)) {
-			if (!$this->Pilgrimpass->save ($this->postvars, ['callback' => __NAMESPACE__ . '\PilgrimpassesController::afterSave'])) {
+			$data = $this->postvars;
+			$data['registration_date'] = strftime('%Y-%m-%d %H:%I:%S');
+			$data['registration_is_member'] = !empty($this->postvars['registration_is_member']);
+			if (!$this->Registration->save ($data, ['callback' => __NAMESPACE__ . '\RegistrationsController::afterSave'])) {
 				$this->parser->setParserVar('saveFailed', true);
 			}
 			else {
+				$this->Registration->notifyUser(array_merge($data, $event));
 				return $this->changeAction('success');
 			}
 		}
@@ -60,10 +62,10 @@ class RegistrationsController extends Controller {
 
 
 
-	public function afterSave ($success, $data, $options) {
-		// E.g. send an email notification etc.
-		return $success;
-	}
+	// public function afterSave ($success, $data, $options) {
+	// 	Registration::notifyUser($data);
+	// 	return $success;
+	// }
 
 
 
