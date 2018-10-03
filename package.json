@@ -45,6 +45,7 @@
     "prefix": "./dist/"
   },
   "dependencies": {
-    "foundation-sites": "^6.5.0-rc.2"
+    "foundation-sites": "^6.5.0-rc.2",
+    "jquery.appendgrid": "^1.7.1"
   }
 }

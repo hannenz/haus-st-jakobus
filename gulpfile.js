@@ -96,18 +96,22 @@ var settings = {
 		dest:	pkg.project_settings.prefix + 'js/',
 		destFile:	'main.min.js'
 	},
-	
+
 	jsvendor: {
 		src:	[
 				'./src/js/vendor/**/*.js',
 				'./node_modules/foundation-sites/dist/js/**/*.js',
-				'./node_modules/jquery/dist/jquery.min.js'
+				'./node_modules/jquery/dist/jquery.min.js',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
-	
+
 	cssvendor: {
-		src:	'./src/css/vendor/**/*.css',
+		src:	[
+				'./src/css/vendor/**/*.css',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css'
+		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},
 
@@ -115,11 +119,11 @@ var settings = {
 		src:	'./src/fonts/**/*',
 		dest:	pkg.project_settings.prefix + 'fonts/'
 	},
-	
+
 	images: {
 		src:	'./src/img/**/*',
 		dest:	pkg.project_settings.prefix + 'img/',
-		options: [ 
+		options: [
 			$.imagemin.optipng ({ optimizationLevel: 5 }),
 			$.imagemin.svgo (svgoOptions)
 		]

@@ -20,7 +20,10 @@
 				<dl class="course__detail">
 					<dt>Leitung</dt>
 					<dd>{VAR:course_instructor}</dd>
-				</dl>
+					<dt>Kosten</dt>
+					<dd>
+						{VAR:course_costs_fmt}
+					</dd>
 				</dl>
 				{LOOP VAR(course_events)}
 					<dl class="course__detail event">

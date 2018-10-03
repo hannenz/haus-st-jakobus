@@ -4,6 +4,7 @@ namespace Jakobus;
 use Contentomat\TableMedia;
 use Contentomat\DBCex;
 use Contentomat\Debug;
+use Contentomat\Parser;
 
 class Course extends Model {
 
@@ -27,6 +28,7 @@ class Course extends Model {
 		setlocale (LC_ALL, 'de_DE.utf-8');
 		$this->setTableName ('jakobus_courses');
 		$this->TableMedia = new TableMedia ();
+		$this->Parser = new Parser();
 	}
 
 
@@ -73,6 +75,16 @@ class Course extends Model {
 			]);
 
 			$results[$n]['images'] = $images;
+
+			$costsData = (array)json_decode($result['course_costs'], true);
+			$costsItemsContent = '';
+			foreach ($costsData as $costsItem) {
+				$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
+				$this->Parser->setMultipleParserVars($costsItem);
+				$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
+			}
+			$this->Parser->setParserVar('costsItemsContent', $costsItemsContent);
+			$results[$n]['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
 		}
 
 		return $results;
