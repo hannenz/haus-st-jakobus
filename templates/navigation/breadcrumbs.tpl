@@ -1,4 +1,5 @@
 <nav class="breadcrumbs-navigation">
+	<span class="breadcrumbs__prefix">Sie befinden sich hier: </span>
 	<ul class="breadcrumbs">
 		{LOOP VAR(breadcrumbs)}
 			<li>

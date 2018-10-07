@@ -22,10 +22,11 @@ body {
 
 
 .motto {
-	font-style: italic;
+	font-family: 'Dynalight';
+	font-style: normal;
 	margin-left: auto;
 	color: #fff;
-	@include type-setting(1);
+	@include type-setting(2);
 }
 
 .hero {

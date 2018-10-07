@@ -5,7 +5,7 @@
  * @package haus-st-jakob
  */
 
-$transition-duration: 100ms;
+$transition-duration: 250ms;
 
 .main-nav {
 
@@ -22,7 +22,7 @@ $transition-duration: 100ms;
 	/* width: 100%; */
 	background-color: rgba($primary-color-soft, 0.85);
 	padding: 0 $gutter;
-	border-bottom: 2px solid $primary-color;
+	// border-bottom: 2px solid $primary-color;
 
 
 	.brand {
@@ -65,6 +65,7 @@ $transition-duration: 100ms;
 		transform-origin: top left;
 		transform: scale(0);
 		transition: $transition-duration ease-in;
+		border-top: 3px solid $primary-color;
 	}
 
 	.is-active .is-dropdown-submenu {
@@ -88,16 +89,12 @@ $transition-duration: 100ms;
 		position: relative;
 		display: inline-block;
 		padding: 0 0.75 * $gutter;
-
-		/* &.is-submenu-item { */
-		/* 	padding: 0; */
-		/* } */
-        /*  */
 		height: 100%;
 		display: flex;
 
 		&__link {
 
+			transform: translateY(3px);
 			background: transparent;
 			@include type-setting (-1);
 			line-height: 1.5;
@@ -125,16 +122,18 @@ $transition-duration: 100ms;
 			left: 0;
 			right: 0;
 			bottom: -0px;
-			transform-origin: left center;
+			transform-origin: center center;
 			transform: scaleX(0);
-			transition: $transition-duration ease-in;
+			transition: opacity $transition-duration ease-in;
 			z-index: 0;
+			opacity: 0;
 			/* border-bottom: 2px solid #fff; */
 		}
 
 		&.is-active::after,
 		&:hover::after {
 			transform: scaleX(1);
+			opacity: 1;
 		}
 
 		&.current::after,

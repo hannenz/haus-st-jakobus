@@ -1,0 +1,11 @@
+.fotoalbum {
+	@include xy-grid;
+
+}
+
+.fotoalbum__image {
+	@include xy-cell(4);
+}
+.thumbnail {
+	@include thumbnail;
+}

@@ -1,0 +1,42 @@
+.post {
+
+	&--teaser {
+		border-bottom: 1px solid $medium-grey;
+		margin-bottom: 3rem;
+		padding-bottom: 3rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__image {
+		order: 1;
+	}
+
+	&__meta {
+		color: $medium-grey;
+		margin-bottom: 0;
+		order: 2;
+		line-height: 1.25;
+	}
+
+	&__kicker {
+		@include type-setting(1, 0);
+		color: $primary-color;
+		line-height: 1.25;
+		order: 3;
+	}
+
+	&__title {
+		order: 4;
+		@include type-setting(2);
+		line-height: 1.25;
+	}
+
+	&__teaser {
+		order: 5;
+	}
+
+	&__link {
+		order: 6;
+	}
+}
