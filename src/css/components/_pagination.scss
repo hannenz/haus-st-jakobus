@@ -1,0 +1,13 @@
+.pagination {
+	a:hover {
+		text-decoration: none !important;
+	}
+
+	.current a {
+		color: #fff !important;
+		&:hover {
+			background-color: transparent;
+		}
+	}
+}
+

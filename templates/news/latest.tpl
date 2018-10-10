@@ -4,15 +4,16 @@
 	{ENDLOOP VAR}
 </div>
 
-
 <nav aria-label="Pagination">
 	<ul class="pagination">
 		{IF({ISSET:prevPageUrl})}<li class="pagination-previous disabled"><a href="{VAR:prevPageUrl}">Neuere Artikel</a></li>{ENDIF}
 		{LOOP VAR(pagingLinks)}
-			<li class="{IF("{VAR:isCurrent}" == "1")}current{ENDIF}">
-				<a href="{VAR:pagingLink}">{VAR:iter}</a>
-			</li>
+			{IF("{VAR:isCurrent}" == "1")}
+				<li class="current"> <span>{VAR:iter}</span> </li>
+			{ELSE}
+				<li> <a href="{VAR:pagingLink}">{VAR:iter}</a> </li>
+			{ENDIF}
 		{ENDLOOP VAR}
-		{IF({ISSET:nextPageUrl})}<li class="pagination-next"><a href="{VAR:nextPageUrl}">Ältere Artikel</a></li>{ENDIF}
+		{IF({ISSET:nextPageUrl})}<li class="pagination-next"><a href="{VAR:nextPageUrl}">| Ältere Artikel</a></li>{ENDIF}
 	</ul>
 </nav>
