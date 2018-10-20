@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{PAGETITLE} - Cursillo-Haus St. Jakobus</title>
+	<title>{IF({ISSET:POSTTITLE})}{CONSTANT:POSTTITLE}{ELSE}{PAGETITLE}{ENDIF} - Cursillo-Haus St. Jakobus</title>
 	<meta name="description" content="{PAGEVAR:cmt_meta_description:recursive}">
 	<meta name="keywords" content="{PAGEVAR:cmt_meta_keywords:recursive}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,8 @@
 	<link rel="shortcut icon" href="/favicon.png" />
 
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
+
+	<!-- TODO: ADD MICRODATA (JSONLD) -->
 
 	{LAYOUTMODE_STARTSCRIPT}
 	{IF (!{LAYOUTMODE})}
@@ -37,13 +39,13 @@
 	{ENDIF}
 
 	<section class="main-container inner-bound">
-		<div class="main-content">
-			{INCLUDE:PATHTOWEBROOT . 'phpincludes/breadcrumbs_controller.php'}
-			{LOOP CONTENT(1)}{ENDLOOP CONTENT}
-		</div>
-		<aside class="sidebar">
-			{LOOP CONTENT(2)}{ENDLOOP CONTENT}
-		</aside>
+		{INCLUDE:PATHTOWEBROOT . 'phpincludes/breadcrumbs_controller.php'}
+			<div class="main-content">
+				{LOOP CONTENT(1)}{ENDLOOP CONTENT}
+			</div>
+			<aside class="sidebar">
+				{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+			</aside>
 	</section>
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}

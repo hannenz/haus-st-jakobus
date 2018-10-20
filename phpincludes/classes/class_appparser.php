@@ -222,5 +222,9 @@ class AppParser extends Parser {
 
 		return $replaceData;
 	}
+
+	protected function macro_DATEFMT($varName, $params) {
+		var_dump($varName); var_dump($params); die();
+	}
 }
 

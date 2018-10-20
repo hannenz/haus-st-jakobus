@@ -24,6 +24,13 @@ class BreadcrumbsController extends Controller {
 	public function actionDefault () {
 
 		$breadcrumbs = array_reverse ($this->Page->getAncestors (PAGEID));
+
+		// If POSTTITLE is set, it must be a news article, so we insert it's
+		// title as PAGETITLE
+		if (defined('POSTTITLE')) {
+			$breadcrumbs[count($breadcrumbs) - 1]['cmt_title'] = POSTTITLE;
+		}
+
 		array_shift ($breadcrumbs);
 
 		foreach ($breadcrumbs as &$crumb) {

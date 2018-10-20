@@ -148,6 +148,8 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			$post = $this->News->getPost([
 				'postID' => $this->postId
 			]);
+
+			define('POSTTITLE', $post['post_title']);
 			$this->parser->setMultipleParserVars($post);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');
 		}

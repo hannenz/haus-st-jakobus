@@ -104,7 +104,9 @@ class CoursesController extends Controller {
 		$currentMonth = (int)date('m');
 		$currentYear = (int)date('Y');
 
-		for ($month = 1; $month <= 12; $month++) {
+		$currentMonth = 1;
+
+		for ($month = $currentMonth; $month <= 12; $month++) {
 			$events = $this->Course->findEventsByMonth ($currentYear, $month);
 
 			if ( !empty ($events)) {
@@ -119,13 +121,12 @@ class CoursesController extends Controller {
 		}
 	}
 
+
 	public function actionDetail () {
 		$course = $this->Course->filter(['id' => $this->courseId])->findOne ();
 		$this->parser->setMultipleParserVars ($course);
 		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'detail.tpl');
 	}
-
-
 }
 
 $autoLoad = new PsrAutoloader ();

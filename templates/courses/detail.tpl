@@ -24,16 +24,34 @@
 					<dd>
 						{VAR:course_costs_fmt}
 					</dd>
+					<dt>Termine</dt>
+					<dd>
+						<table class="table">
+							{LOOP VAR(course_events)}
+							<tr>
+								<td>
+									<dt class="event__title">{VAR:media_title}</dt>
+									<dd class="event__date">{VAR:event_begin_fmt} &ndash; {VAR:event_end_fmt}</dd>
+								</td>
+								<td style="text-align:right;">
+									<a class="button" href="{VAR:event_subscribe_url}">Anmelden</a>
+								</td>
+							</tr>
+							{ENDLOOP VAR}
+						</table>
+					</dd>
 				</dl>
+				<!--
 				{LOOP VAR(course_events)}
 					<dl class="course__detail event">
 						<dt class="event__title">{VAR:media_title}</dt>
-						<dd class="event__date">{VAR:event_date_begin_fmt} &ndash; {VAR:event_date_end_fmt}</dd>
+						<dd class="event__date">{VAR:event_begin_fmt} &ndash; {VAR:event_end_fmt}</dd>
 					</dl>
 					<div>
 						<a class="button" href="{VAR:event_subscribe_url}">Anmelden</a>
 					</div>
 				{ENDLOOP VAR}
+				-->
 
 			</footer>
 		</article>

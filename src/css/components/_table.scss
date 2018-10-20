@@ -1,0 +1,24 @@
+.table {
+	width: 100%;
+	border-collapse: collapse;
+
+	// tr:nth-child(odd) {
+	// 	background-color: $light-grey;
+	// }
+	tr {
+		border-bottom: 1px solid $light-grey;
+		transition: 200ms;
+
+		&:first-child {
+			border-top: 1px solid $light-grey;
+		}
+
+		&:hover {
+			background-color: $light-grey;
+		}
+	}
+
+	td {
+		padding: 0.5rem 0.25rem;
+	}
+}
