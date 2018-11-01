@@ -58,39 +58,30 @@ class News extends Posts {
 	public function getLatestPosts($params) {
 
 		$posts = $this->getLastPosts($params);
-		return $this->afterRead($posts);
+		foreach ($posts as $n => $post) {
+			$posts[$n] = $this->afterRead($post);
+		}
+		return $posts;
 	}
 
 
 	public function getPosts($params) {
 
 		$posts = $this->search($params);
-		return $this->afterRead($posts);
+		foreach ($posts as $n => $post) {
+			$posts[$n] = $this->afterRead($post);
+		}
+		return $posts;
 	}
 
 
 	public function getPost($id) {
 		$post = parent::getPost($id);
-		return $this->afterReadOne($post);
+		return $this->afterRead($post);
 	}
 
 
-	protected function afterRead($posts) {
-
-		if (is_array($posts)) {
-			foreach ($posts as &$post) {
-				$post = $this->afterReadOne($post);
-			}
-			return $posts;
-		}
-		else {
-			return $this->_afterRead($post);
-		}
-	}
-
-
-
-	protected function afterReadOne($post) {
+	protected function afterRead($post) {
 		$post['postDetailUrl'] = sprintf("%s%s-%s,%u,%u,%u.html", 
 			$this->CmtPage->makePageFilePath($this->detailPageId),
 			strftime('%Y-%m-%d', strtotime($post['post_date'])),

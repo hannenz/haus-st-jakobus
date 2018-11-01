@@ -223,31 +223,37 @@ class Model {
 	 * Available Options
 	 * - fetchAssociations 		Boolean 	Whether to fetch asscoiated records too
 	 */
-	public function findAll ($options = []) {
+	public function findAll($options = []) {
 
-		$options = array_merge ([
+		$options = array_merge([
 			'fetchAssociations' => true
 		], $options);
 
-		$query = sprintf ("SELECT %s FROM %s %s %s %s",
-			empty ($this->fields) ? "*" : join (',', $this->fields),
+		$query = sprintf("SELECT %s FROM %s %s %s %s",
+			empty($this->fields) ? "*" : join(',', $this->fields),
 			$this->tableName,
-			empty ($this->filter) ? "" : "WHERE " . $this->getFilterString (),
-			empty ($this->order) ? "" : "ORDER BY " . $this->getOrderString (),
-			$this->limit == -1 ? "" : sprintf ("LIMIT %u", $this->limit)
+			empty($this->filter) ? "" : "WHERE " . $this->getFilterString(),
+			empty($this->order) ? "" : "ORDER BY " . $this->getOrderString(),
+			$this->limit == -1 ? "" : sprintf("LIMIT %u", $this->limit)
 		);
-		if ($this->db->query ($query) != 0) {
-			throw new Exception ("Query failed: " . $query);
+
+		
+		if ($this->db->query($query) != 0) {
+			throw new Exception("Query failed: " . $query);
 		}
-		$results = $this->db->getAll ();
+		$results = $this->db->getAll();
 
 		if ($options['fetchAssociations']) {
 			foreach ($results as &$result) {
-				$result = $this->fetchAssociations ($result);
+				$result = $this->fetchAssociations($result);
 			}
 		}
 
-		return $this->afterRead ($results);
+		foreach ($results as &$result) {
+			$result = $this->afterRead($result);
+		}
+
+		return $results;
 	}
 
 
@@ -265,17 +271,17 @@ class Model {
 	 * Available Options
 	 * - fetchAssociations 		Boolean 	Whether to fetch asscoiated records too
 	 */
-	public function findOne ($options = []) {
+	public function findOne($options = []) {
 
 		$options = array_merge ([
 			'fetchAssociations' => true
 		], $options);
 
-		$query = sprintf ("SELECT %s FROM %s %s %s LIMIT 1",
-			empty ($this->fields) ? "*" : join (',', $this->fields),
+		$query = sprintf("SELECT %s FROM %s %s %s LIMIT 1",
+			empty($this->fields) ? "*" : join(',', $this->fields),
 			$this->tableName,
-			empty ($this->filter) ? "" : "WHERE " . $this->getFilterString (),
-			empty ($this->order) ? "" : "ORDER BY " . $this->getOrderString ()
+			empty($this->filter) ? "" : "WHERE " . $this->getFilterString (),
+			empty($this->order) ? "" : "ORDER BY " . $this->getOrderString ()
 		);
 		if ($this->db->query ($query) != 0) {
 			throw new Exception ("Query failed: " . $query);
@@ -283,8 +289,15 @@ class Model {
 
 		$results = $this->db->getAll ();
 		if (count ($results) > 0)  {
-			$results = $this->afterRead ($results);
-			return array_shift($results);
+
+			$result = array_shift($results);
+
+			// if ($options['fetchAssociations']) {
+			// 	$result = $this->fetchAssociations($result);
+			// }
+
+			$result = $this->afterRead($result);
+			return $result;
 		}
 		else {
 			return null;
@@ -347,8 +360,8 @@ class Model {
 		return join (',', $strings);
 	}
 
-	protected function afterRead ($results) {
-		return $results;
+	protected function afterRead ($result) {
+		return $result;
 	}
 
 	/**

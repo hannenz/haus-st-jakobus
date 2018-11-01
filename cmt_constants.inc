@@ -71,16 +71,15 @@ define ('INCLUDEPATHTOADMIN', INCLUDEPATH.ADMINPATH);
 
 define ('PATHTOTMP', INCLUDEPATH . 'tmp' . DIRECTORY_SEPARATOR);
 
-/*
+
 @require_once(PATHTOADMIN . 'includes' . DIRECTORY_SEPARATOR . 'logger.inc');
 // Log Level (see admin/classes/class_logger.php for available values and their meanings)
 // Only log messages with this or higher log level
-define ('CMT_LOG_LEVEL', LOG_LEVEL_INFO);
+define ('CMT_LOG_LEVEL', LOG_LEVEL_ALL);
 
 // Log Target(s)
 define ('CMT_LOG_TARGET', LOG_TARGET_FILE);
 
 // Path to Log File, if log target LOG_TARGET_FILE is selected (must be writable by web server user)
 define ('CMT_LOG_FILE', PATHTOTMP . 'logs' . DIRECTORY_SEPARATOR . 'contentomat.log');
-*/
 ?>

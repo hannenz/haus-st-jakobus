@@ -30,8 +30,9 @@
 							{LOOP VAR(course_events)}
 							<tr>
 								<td>
-									<dt class="event__title">{VAR:media_title}</dt>
+									<dt class="event__title">{VAR:event_title}</dt>
 									<dd class="event__date">{VAR:event_begin_fmt} &ndash; {VAR:event_end_fmt}</dd>
+									{IF(!empty("{VAR:event_remark}"))}<dd class="event_remark">{VAR:event_remark}</dd>{ENDIF}
 								</td>
 								<td style="text-align:right;">
 									<a class="button" href="{VAR:event_subscribe_url}">Anmelden</a>

@@ -15,10 +15,19 @@ class Course extends Model {
 
 
 	protected $belongsTo = [
-		[
+		'CourseCategory' => [
 			'name' => 'CourseCategory', 
 			'className' => 'Jakobus\CourseCategory',
 			'foreignKey' => 'course_category_id',
+			'foreignKeyField' => 'id'
+		]
+	];
+
+	protected $hasMany = [
+		'Event' => [
+			'name' => 'Event',
+			'className' => 'Jakobus\Event',
+			'foreignKey' => 'event_course_id',
 			'foreignKeyField' => 'id'
 		]
 	];
@@ -39,95 +48,51 @@ class Course extends Model {
 			die ("Query failed: " . $query);
 		}
 		$events = $this->db->getAll ();
-		$events = $this->afterReadEvents ($events);
-		return $events;
-	}
-
-
-	protected function afterRead ($results) {
-
-		foreach ((array)$results as $n => $result) {
-			$results[$n]['course_detail_url'] = sprintf ("/%s/%u/%s,%u.html",
-				$this->language,
-				$this->detailPageId,
-				$this->cmt->makeNameWebsave ($result['course_title']),
-				$result['id']
-			);
-
-
-			$events = $this->TableMedia->getMedia ([
-				'tableName' => $this->tableName,
-				'entryID' => $result['id'],
-				'mediaType' => 'date'
-				// TODO: Check/make sure that they are in chronological order!
-			]);
-			
-			// foreach ($events as $j => $event) {
-			// 	$events[$j]['event_date_begin_fmt'] = strftime ('%a, %d.%B %Y', strtotime ($event['media_date_begin']));
-			// 	$events[$j]['event_date_end_fmt'] = strftime ('%a, %d.%B %Y', strtotime ($event['media_date_end']));
-			// }
-			$results[$n]['course_events'] = $this->afterReadEvents ($events);
-
-			$images = $this->TableMedia->getMedia ([
-				'tableName' => $this->tableName,
-				'entryID' => $result['id'],
-				'mediaType' => 'image'
-			]);
-
-			$results[$n]['images'] = $images;
-
-			$costsData = (array)json_decode($result['course_costs'], true);
-			$costsItemsContent = '';
-			foreach ($costsData as $costsItem) {
-				$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
-				$this->Parser->setMultipleParserVars($costsItem);
-				$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
-			}
-			$this->Parser->setParserVar('costsItemsContent', $costsItemsContent);
-			$results[$n]['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
-		}
-
-		return $results;
-	}
-
-	public function afterReadEvents ($events) {
 		foreach ($events as $n => $event) {
-			$events[$n] = $this->afterReadEvent($event);
+			$events[$n] = $this->afterRead($events);
 		}
-
 		return $events;
 	}
 
-	public function afterReadEvent($event) {
 
-		$event['event_title'] = $event['media_title']; // for convenience and consistency..
-		$event['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
-		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_end']));
-		if ($event['media_date_begin'] == $event['media_date_end']) {
-			$event['event_date_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['media_date_begin']));
-		}
-		else {
-			$event['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
-				$event['event_begin_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_begin'])),
-				$event['event_end_fmt'] = strftime ('%d.%m', strtotime ($event['media_date_end']))
-			);
-		}
+	protected function afterRead ($result) {
 
-		$event['course_detail_url'] = sprintf ('/%s/%u/%s,%u.html',
+		$result['course_detail_url'] = sprintf ("/%s/%u/%s,%u.html",
 			$this->language,
 			$this->detailPageId,
-			$this->cmt->makeNameWebSave ($event['course_title']),
-			$event['id']
+			$this->cmt->makeNameWebsave ($result['course_title']),
+			$result['id']
 		);
 
-		$event['event_subscribe_url'] = sprintf('/%s/%u/%s,%u.html',
-			$this->language,
-			$this->registrationsPageId,
-			$this->cmt->makeNameWebsave('Anmeldung zu ' . $event['course_title']),
-			$event['id']
-		);
+		
+		// foreach ($events as $j => $event) {
+		// 	$events[$j]['event_date_begin_fmt'] = strftime ('%a, %d.%B %Y', strtotime ($event['media_date_begin']));
+		// 	$events[$j]['event_date_end_fmt'] = strftime ('%a, %d.%B %Y', strtotime ($event['media_date_end']));
+		// }
 
-		return $event;
+
+		// Read images
+		$images = $this->TableMedia->getMedia ([
+			'tableName' => $this->tableName,
+			'entryID' => $result['id'],
+			'mediaType' => 'image'
+		]);
+
+		$result['images'] = $images;
+
+
+		// Read costs
+		$costsData = (array)json_decode($result['course_costs'], true);
+		$costsItemsContent = '';
+		foreach ($costsData as $costsItem) {
+			$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
+			$this->Parser->setMultipleParserVars($costsItem);
+			$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
+		}
+		$this->Parser->setParserVar('costsItemsContent', $costsItemsContent);
+		$result['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
+
+		return $result;
 	}
 }
 ?>
