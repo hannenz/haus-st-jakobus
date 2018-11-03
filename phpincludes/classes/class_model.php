@@ -118,7 +118,14 @@ class Model {
 		// $this->belongsTo = [];
 		// $this->hasMany = [];
 
+
+		// Set system default language
+		$this->setLanguage(DEFAULTLANGUAGE);
+
+		
+
 		$this->init ();
+
 	}
 
 
@@ -302,6 +309,16 @@ class Model {
 		else {
 			return null;
 		}
+	}
+
+
+	/**
+	 * find by id, for convenience
+	 * @param integer
+	 * @return Array
+	 */
+	public function findById($id) {
+		return $this->filter(compact('id'))->findOne();
 	}
 
 

@@ -54,6 +54,7 @@ class CoursesController extends Controller {
 			$this->courseId = (int)$matches[1];
 			$this->action = 'detail';
 		}
+
 	}
 
 	public function actionDefault() {
@@ -117,31 +118,6 @@ class CoursesController extends Controller {
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'by_category.tpl');
 	}
 
-
-	/**
-	 * Overview of upcoming events in a given month
-	 * Year and month are read from GET parameters
-	 */
-	public function actionOverview() {
-		$currentMonth = (int)date('m');
-		$currentYear = (int)date('Y');
-
-		$currentMonth = 1;
-
-		for ($month = $currentMonth; $month <= 12; $month++) {
-			$events = $this->Course->findEventsByMonth($currentYear, $month);
-
-			if (!empty($events)) {
-				$this->parser->setMultipleParserVars([
-					'month' => $month,
-					'month_fmt' => strftime('%B', strtotime(sprintf("%04u-%02u-01", $currentYear, $month))),
-				]);	
-
-				$this->parser->setParserVar('events', $events);
-				$this->content .= $this->parser->parseTemplate($this->templatesPath . 'events_by_month.tpl');
-			}
-		}
-	}
 
 
 	public function actionDetail() {

@@ -10,7 +10,6 @@ class Registration extends Model {
 
 
 	public function init () {
-		parent::init ();
 
 		$this->Mail = new Mail();
 		$this->Event = new Event();
@@ -51,6 +50,29 @@ class Registration extends Model {
 			'senderName' => 'Haus St. Jakobus',
 			'recipient' => $data['registration_email'],
 			'subject' => "[Haus St. Jakobus] Anmeldebestätigung",
+			'text' => $text,
+			'html' => $html
+		]);
+	}
+
+
+
+	public function notifyAdmin($data) {
+		$parser = new Parser();
+		$event = $this->Event->findById($data['registration_event_id']);
+
+		$parser->setMultipleParserVars($data);
+		$html = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.html.tpl");
+		$text = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.txt.tpl");
+
+		/* TODO: Read from settings */
+		$recipient = 'me@hannenz.de';
+
+		return $this->Mail->send([
+			'senderMail' => 'noreply@haus-st-jakobus.de',
+			'senderName' => 'Haus St. Jakobus',
+			'recipient' => $recipient,
+			'subject' => sprintf('[Haus St. Jakobus] Anmeldung zu %s' , $event['event_title']),
 			'text' => $text,
 			'html' => $html
 		]);

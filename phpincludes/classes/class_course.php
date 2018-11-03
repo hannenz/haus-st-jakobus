@@ -5,14 +5,19 @@ use Contentomat\TableMedia;
 use Contentomat\DBCex;
 use Contentomat\Debug;
 use Contentomat\Parser;
+use Contentomat\CmtPage;
+use Jakobus\Event;
 
 class Course extends Model {
 
-	private $detailPageId = 10;
-	private $registrationsPageId = 35;
+	private $detailPageId = 39;
+	private $overviewPageId = 39;
 
 	protected $TableMedia;
 
+	protected $CmtPage;
+
+	
 
 	protected $belongsTo = [
 		'CourseCategory' => [
@@ -38,21 +43,9 @@ class Course extends Model {
 		$this->setTableName ('jakobus_courses');
 		$this->TableMedia = new TableMedia ();
 		$this->Parser = new Parser();
+		$this->CmtPage = new CmtPage();
 	}
 
-
-
-	public function findEventsByMonth ($year, $month) {
-		$query = sprintf ("SELECT Media.media_date_begin,Media.media_date_end,Media.media_title,Course.* FROM cmt_tables_media AS Media LEFT JOIN jakobus_courses AS Course ON media_entry_id=Course.id WHERE YEAR(media_date_begin)=%u AND MONTH(media_date_begin)=%u", $year, $month);
-		if ($this->db->query ($query) !== 0) {
-			die ("Query failed: " . $query);
-		}
-		$events = $this->db->getAll ();
-		foreach ($events as $n => $event) {
-			$events[$n] = $this->afterRead($events);
-		}
-		return $events;
-	}
 
 
 	protected function afterRead ($result) {
@@ -63,6 +56,12 @@ class Course extends Model {
 			$this->cmt->makeNameWebsave ($result['course_title']),
 			$result['id']
 		);
+
+		$result['course_overview_url'] = sprintf('%s%s',
+			$this->CmtPage->makePageFilePath($this->overviewPageId, $this->language),
+			$this->CmtPage->makePageFileName($this->overviewPageId, $this->language)
+		);
+
 
 		
 		// foreach ($events as $j => $event) {
@@ -93,6 +92,16 @@ class Course extends Model {
 		$result['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
 
 		return $result;
+	}
+
+	/**
+	 * Getter for overviewPageId
+	 *
+	 * @return string
+	 */
+	public function getOverviewPageId()
+	{
+	    return $this->overviewPageId;
 	}
 }
 ?>

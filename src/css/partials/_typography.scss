@@ -60,6 +60,7 @@ body {
 	@include type-setting(1);
 	margin-top: 2 * $vertical-unit;
 	margin-bottom: 1 * $vertical-unit;
+	line-height: $vertical-unit;
 }
 
 :first-child .headline:first-of-type {

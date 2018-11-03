@@ -31,8 +31,14 @@
 							<tr>
 								<td>
 									<dt class="event__title">{VAR:event_title}</dt>
-									<dd class="event__date">{VAR:event_begin_fmt} &ndash; {VAR:event_end_fmt}</dd>
+									<dd class="event__date">{VAR:event_date_fmt}</dd>
 									{IF(!empty("{VAR:event_remark}"))}<dd class="event_remark">{VAR:event_remark}</dd>{ENDIF}
+									{IF("{VAR:event_needs_registration}" == "1")}
+										<dd>Noch {VAR:EventSeatsLeft} Plätze frei</dd>
+										<dd>Anmeldung erforderlich bis {VAR:event_registration_before_fmt}</dd>
+									{ELSE}
+										<dd>Eine Anmeldung ist nicht erforderlich</dd>
+									{ENDIF}
 								</td>
 								<td style="text-align:right;">
 									<a class="button" href="{VAR:event_subscribe_url}">Anmelden</a>

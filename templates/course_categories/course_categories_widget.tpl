@@ -1,9 +1,9 @@
 <nav class="widget courses-by-category">
-	<p>Nach Kategorie</p>
+	<p>Kurse</p>
 	<ul>
 		{LOOP VAR(course_categories)}
 			<li>
-				<a href="{PAGEURL}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
+				<a href="{VAR:course_overview_url}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
 			</li>
 		{ENDLOOP VAR}
 	</ul>

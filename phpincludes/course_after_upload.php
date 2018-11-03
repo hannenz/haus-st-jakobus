@@ -21,27 +21,51 @@ $field = $FieldHandler->getField([
 	'fieldName' => 'course_image'
 ]);
 
-$imageSourcePath = PATHTOWEBROOT . $field['cmt_option_upload_dir'] . $cmtTableDataRaw['course_image'];
+$imageSourcePath = $_FILES['course_image_newfile']['tmp_name'];
 $thumbnailDestPath = PATHTOWEBROOT . $field['cmt_option_upload_dir'] . 'thumbnails' . DIRECTORY_SEPARATOR . $cmtTableDataRaw['course_image'];
 $squareThumbnailDestPath = PATHTOWEBROOT . $field['cmt_option_upload_dir'] . 'thumbnails' . DIRECTORY_SEPARATOR . 'square'. DIRECTORY_SEPARATOR . $cmtTableDataRaw['course_image'];
 
+$info = getimagesize($imageSourcePath);
+switch ($info['mime']) {
+	case 'image/jpeg':
+		$sourceImageType = 'jpg';
+		break;
+	case 'image/png':
+		$sourceImageType = 'png';
+		break;
+	case 'image/gif':
+		$sourceImageType = 'gif';
+		break;
+	default:
+		$sourceImageType = null;
+		break;
+}
 
-Logger::log("Creating thumbnail");
-$Image->createThumbnail([
-	'sourceImage' => $imageSourcePath,
-	'destinationImage' => $thumbnailDestPath,
-	'width' => 320,
-	'preserveRatio' => true
-]);
+if ($sourceImageType != null) {
 
-Logger::log("Creating square thumbnail");
-$Image->createSquareThumbnail($imageSourcePath, $squareThumbnailDestPath, 320);
+	Logger::log(sprintf("Creating thumbnail: %s", $thumbnailDestPath));
+	$check = $Image->createThumbnail([
+		'sourceImage' => $imageSourcePath,
+		'sourceImageType' => $sourceImageType,
+		'destinationImage' => $thumbnailDestPath,
+		'width' => 320,
+		'preserveRatio' => true
+	]);
+	if (!$check) {
+		die ($Image->getErrorMessage());
+	}
 
-Logger::log("Resizing image");
-$Image->createThumbnail([
-	'sourceImage' => $imageSourcePath,
-	'destinationImage' => $imageSourcePath,
-	'width' => 1024,
-	'preserveRatio' => true
-]);
+	Logger::log(sprintf("Creating thumbnail: %s", $squareThumbnailDestPath));
+	$Image->createSquareThumbnail($imageSourcePath, $squareThumbnailDestPath, 320);
+
+	Logger::log("Resizing image");
+	$Image->createThumbnail([
+		'sourceImage' => $imageSourcePath,
+		'sourceImageTpye' => $sourceImageTpye,
+		'destinationImage' => $imageSourcePath,
+		'width' => 1024,
+		'preserveRatio' => true
+	]);
+}
+
 ?>

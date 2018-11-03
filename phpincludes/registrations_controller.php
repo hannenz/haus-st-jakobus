@@ -53,6 +53,7 @@ class RegistrationsController extends Controller {
 			}
 			else {
 				$this->Registration->notifyUser(array_merge($data, $event));
+				$this->Registration->notifyAdmin(array_merge($data, $event));
 				return $this->changeAction('success');
 			}
 		}

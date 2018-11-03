@@ -5,7 +5,8 @@ use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\Debug;
-use Jakobus\Course;
+use Contentomat\CmtPage;
+use Jakobus\Event;
 use Jakobus\CourseCategory;
 use Jakobus\Calendar;
 
@@ -13,39 +14,46 @@ use \Exception;
 
 class CourseCalendarWidgetController extends Controller {
 
-	protected $Course;
+	protected $Event;
 
-	public function init () {
+	public function init() {
 
-		$this->Calendar = new Calendar ();
+		$this->Calendar = new Calendar();
+		$this->CmtPage = new CmtPage();
 
-		$this->Course = new Course ();
+		$this->Event = new Event();
 		// $this->CourseCategory = new CourseCategory ();
 		// $this->CourseCategory->setLanguage ($this->pageLang);
 		// $this->CourseCategory->order (['course_category_position' => 'asc']);
 		// $this->templatesPath = $this->templatesPath . 'course_categories/';
 	}
 
-	public function actionDefault () {
+	public function actionDefault() {
 		$year = date('Y');
 		$month = date('m');
-		$courses = $this->Course->findEventsByMonth ($year, $month);
+		$events = $this->Event->findByPeriod($year, $month);
 		$daysWithLink = [];
 
-		foreach ($courses as $course) {
+		foreach ($events as $event) {
 
-			$dayOfMonth = strftime ('%d', strtotime ($course['media_date_begin']));
-			$daysWithLink[$dayOfMonth] = sprintf ('%s?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
+			$dayOfMonth = strftime('%d', strtotime ($event['event_begin']));
+			$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
 		}
 		// var_dump($daysWithLink); die();
 		
-		$this->Calendar->setDaysWithLink ($daysWithLink);
-		$this->content = '<nav class="widget">' . $this->Calendar->createCalendar () . '</div>';
+		$this->Calendar->setDaysWithLink($daysWithLink);
+		$calendarContent = $this->Calendar->createCalendar([
+			'link' => sprintf('%s%s?year={YEAR}&month={MONTH}&day={DAY}',
+				$this->CmtPage->makePageFilePath($this->Event->getOverviewPageId()),
+				$this->CmtPage->makePageFileName($this->Event->getOverviewPageId())
+			)
+		]);
+		$this->content = '<nav class="widget">' . $calendarContent . '</div>';
 	}
 }
 
-$autoLoad = new PsrAutoloader ();
-$autoLoad->addNamespace ('Jakobus', PATHTOWEBROOT . 'phpincludes/classes');
-$ctl = new CourseCalendarWidgetController ();
-$content = $ctl->work ();
+$autoLoad = new PsrAutoloader();
+$autoLoad->addNamespace('Jakobus', PATHTOWEBROOT . 'phpincludes/classes');
+$ctl = new CourseCalendarWidgetController();
+$content = $ctl->work();
 ?>
