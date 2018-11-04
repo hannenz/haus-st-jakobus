@@ -1,24 +1,37 @@
 {IF (!{LAYOUTMODE})}
 {EVAL}
 if ($cmt_content['head1']) {
-	include(PATHTOWEBROOT."phpincludes/widgets/".$cmt_content['head1']);
+	$db = new Contentomat\DBCex();
+	$db->query(sprintf('SELECT * FROM widgets WHERE id=%u', (int)$cmt_content['head1']));
+	$widget = $db->get();
+
+	if (!empty($widget['widget_include']) && is_readable(PATHTOWEBROOT."phpincludes/widgets/".$widget['widget_include'])) {
+		include(PATHTOWEBROOT."phpincludes/widgets/".$widget['widget_include']);
+	}
+		
+
+	$parser = new Contentomat\Parser();
+
+	$content .= $parser->parse($widget['widget_html']);
 }
 {ENDEVAL}
 {ELSE}
-{EVAL}
-$id = rand();
-{ENDEVAL}
-<div>Widget verwenden:<br />
-<select name="widget_file" id="widget{USERVAR:id}" onchange="document.getElementById('damalsSelectedWidgetInclude{USERVAR:id}').firstChild.innerHTML = this.value">
-<option value="">-- Widget aussuchen --</option>
-{LOOP TABLE(widgets:ORDER BY widget_name)}<option value="{FIELD:widget_include}"{IF ("{HEAD:1}" == "{FIELD:widget_include}")} selected="selected"{ENDIF}>{FIELD:widget_name}</option>{ENDLOOP TABLE}
-</select>
-</div>
 <div>
-<div id="damalsSelectedWidgetInclude{USERVAR:id}" style="display: none;"><div>{HEAD:1}</div></div>
-<script type="text/javascript">
-var head1 = document.getElementById('damalsSelectedWidgetInclude{USERVAR:id}').firstChild.firstChild.innerHTML;
-console.log (head1);
-document.getElementById('widget{USERVAR:id}').value = document.getElementById('damalsSelectedWidgetInclude{USERVAR:id}').firstChild.firstChild.innerHTML;
-</script>
+	<div>
+		Widget verwenden:<br />
+		<select name="widget_file" id="widget{UNIQUEID:new}" onchange="document.getElementById('selectedWidget{UNIQUEID}').innerHTML = this.value">
+			<option value="">-- Widget aussuchen --</option>
+			{LOOP TABLE(widgets:ORDER BY widget_name)}
+				<option value="{FIELD:id}"{IF ("{HEAD:1}" == "{FIELD:id}")} selected="selected"{ENDIF}>{FIELD:widget_name}</option>
+			{ENDLOOP TABLE}
+		</select>
+	</div>
+	<div id="selectedWidget{UNIQUEID}" style="display: none;">{HEAD:1}</div>
+
+	<script>
+		var head1 = document.getElementById('selectedWidget{UNIQUEID}').innerText;
+		console.log (head1);
+		document.getElementById('widget{UNIQUEID}').value = head1;
+	</script>
+</div>
 {ENDIF}

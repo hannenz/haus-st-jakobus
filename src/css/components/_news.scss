@@ -20,7 +20,7 @@
 	}
 
 	&__kicker {
-		@include type-setting(1, 0);
+		@include type-setting(0, 0);
 		color: $primary-color;
 		line-height: 1.25;
 		order: 3;
@@ -40,3 +40,34 @@
 		order: 6;
 	}
 }
+
+.post-teaser {
+	@include media-object-container;
+	margin-bottom: 3 * $vertical-unit;
+
+	&__image {
+		width: 33%;
+		@include media-object-section;
+		@include media-object-stack;	
+	}
+
+	&__body {
+		width: 66%;
+		@include media-object-section;
+		@include media-object-stack;	
+	}
+
+	&__meta {
+		color: $text-color-light;
+		margin-bottom: 0;
+	}
+
+	&__title {
+		@include type-setting(1, 0);
+	}
+
+	&__teaser {
+		margin-bottom: $vertical-unit;
+	}
+}
+

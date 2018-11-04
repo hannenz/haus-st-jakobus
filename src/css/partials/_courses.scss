@@ -40,3 +40,38 @@ table.courses-overview {
 	dd {
 	}
 }
+
+.course.media-object {
+	.media-object-section:nth-child(1) {
+		width: 33%;
+		img {
+			max-width: 100%;
+		}
+	}
+	.media-object-section:nth-child(2) {
+		width: 66%;
+	}
+}
+
+.course-teaser {
+	@include media-object-container;
+
+	&__image {
+		@include media-object-section;
+		@include media-object-stack;
+		width: 33%;
+		flex: 0 1 auto;
+	}
+
+	&__body {
+		@include media-object-section;
+		@include media-object-stack;
+		// width: 66%;
+		flex: 1;
+	}
+
+	&__action-area {
+		margin-top: $vertical-unit;
+	}
+}
+

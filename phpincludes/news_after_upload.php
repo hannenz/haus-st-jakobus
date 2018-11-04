@@ -7,10 +7,7 @@ use Contentomat\PsrAutoloader;
 $autoLoad = new PsrAutoloader();
 $autoLoad->addNamespace('Jakobus', PATHTOWEBROOT . "phpincludes/classes");
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-ini_set('display_errors', true);
-
-$thumbnailer = new Thumbnailer('jakobus_courses', 'course_image');
+$thumbnailer = new Thumbnailer('mlog_posts', 'post_image');
 $success = $thumbnailer->createThumbnails([
 	[
 		'width' => 480,
@@ -28,3 +25,4 @@ if (!$success) {
 	// $cmt_abortsave = true;
 }
 ?>
+

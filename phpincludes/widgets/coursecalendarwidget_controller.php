@@ -48,7 +48,7 @@ class CourseCalendarWidgetController extends Controller {
 				$this->CmtPage->makePageFileName($this->Event->getOverviewPageId())
 			)
 		]);
-		$this->content = '<nav class="widget">' . $calendarContent . '</div>';
+		$this->content = '<nav class="widget">' . $calendarContent . '</nav>';
 	}
 }
 
