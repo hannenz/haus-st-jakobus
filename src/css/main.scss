@@ -25,6 +25,16 @@
 @include foundation-tabs;
 @include foundation-orbit;
 @include foundation-media-object;
+@include foundation-xy-grid-classes(
+	$base-grid: true,
+	$margin-grid: true,
+	$padding-grid: true,
+	$block-grid: true,
+	$collapse: true,
+	$offset: true,
+	$vertical-grid: true,
+	$frame-grid: true
+);
 // @include foundation-table;
 
 //////////////////

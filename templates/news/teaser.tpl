@@ -1,6 +1,6 @@
 <article class="post-teaser">
 	<figure class="post-teaser__image">
-		<img src="/media/mlog/static/thumbnails/square/{VAR:post_image}" alt="" />
+		<a href="{VAR:postDetailUrl}"><img src="/media/mlog/static/thumbnails/square/{VAR:post_image}" alt="" /></a>
 	</figure>
 	<div class="post-teaser__body">
 		<p class="post-teaser__meta">{VAR:post_date_fmt_date} &middot; {VAR:post_categories_fmt}</p>

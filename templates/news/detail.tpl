@@ -9,6 +9,7 @@
 	<div class="post__text">{VAR:post_text}</div>
 
 	<p><mark>Hier kommen noch die Bilder</mark></p>
-	<p><mark>Hier kommt noch ein Zurück-Link</mark></p>
+
+	<p><a  class="button" href="{VAR:backLink}">Zurück zur Übersicht</a></p>
 
 </article>

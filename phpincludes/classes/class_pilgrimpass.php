@@ -2,11 +2,17 @@
 namespace Jakobus;
 
 use Contentomat\DBCex;
+use Contentomat\Mail;
 
 class Pilgrimpass extends Model {
 
+	protected $adminNotificationRecipient = 'johannes.braun@hannenz.de';
+
 	public function init () {
 		parent::init ();
+
+		$this->Mail = new Mail();
+
 		$this->setTableName ('jakobus_pilgrimpasses');
 		$this->setValidationRules([
 			'pilgrimpass_firstname' => [
@@ -23,7 +29,7 @@ class Pilgrimpass extends Model {
 			// 'pilgrimpass_city' => '/^.+$/',
 			'pilgrimpass_city' => [
 				'not-emppty' => '/^.+$/',
-				'custom' => 'validateIsUlm'
+				// 'custom' => 'validateIsUlm'
 			],
 			'pilgrimpass_phone' => '/^.+$/',
 			'pilgrimpass_email' => '/^.+@.+\..{2,3}$/',
@@ -31,7 +37,7 @@ class Pilgrimpass extends Model {
 			'pilgrimpass_route' => '/^.+$/',
 			'pilgrimpass_start_date' => '/^\d{4}-\d{2}-\d{2}$/',
 			'pilgrimpass_start_location' => '/^.+$/',
-			'pilgrimpass_message' => '/^.+$/',
+			// 'pilgrimpass_message' => '/^.+$/',
 			'pilgrimpass_motivation' => '/^.+$/',
 			'pilgrimpass_transportation' => '/^.+$/',
 			'pilgrimpass_payment_method' => '/^.+$/',
@@ -47,6 +53,39 @@ class Pilgrimpass extends Model {
 		$ret = ($value === "Ulm");
 		return $ret;
 	}
+
+
+	public function notifyUser($data) {
+
+		$this->Parser->setMultipleParserVars($data);
+		$html = $this->Parser->parseTemplate(PATHTOWEBROOT."templates/pilgrimpasses/notifications/notify_user.html.tpl");
+		$text = $this->Parser->parseTemplate(PATHTOWEBROOT."templates/pilgrimpasses/notifications/notify_user.txt.tpl");
+
+		return $this->Mail->send([
+			'senderMail' => 'noreply@haus-st-jakobus.de',
+			'senderName' => 'Haus St. Jakobus',
+			'recipient' => $data['pilgrimpass_email'],
+			'subject' => "[Haus St. Jakobus] Eingangsbestätigung ",
+			'text' => $text,
+			'html' => $html
+		]);
+	}
+
+	public function notifyAdmin($data) {
+		$this->Parser->setMultipleParserVars($data);
+		$html = $this->Parser->parseTemplate(PATHTOWEBROOT."templates/pilgrimpasses/notifications/notify_admin.html.tpl");
+		$text = $this->Parser->parseTemplate(PATHTOWEBROOT."templates/pilgrimpasses/notifications/notify_admin.txt.tpl");
+
+		return $this->Mail->send([
+			'senderMail' => 'noreply@haus-st-jakobus.de',
+			'senderName' => 'Haus St. Jakobus',
+			'recipient' => $this->adminNotificationRecipient,
+			'subject' => "[Haus St. Jakobus] Antrag Pilgerausweis",
+			'text' => $text,
+			'html' => $html
+		]);
+	}
+
 }
 ?>
 

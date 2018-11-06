@@ -1,3 +1,3 @@
-<h2> Vielen Dank, {VAR:pilgrimpass_firstname} {VAR:pilgrimpass_lastname}</h2>
+<h2 class="headline"> Vielen Dank, {VAR:pilgrimpass_firstname} {VAR:pilgrimpass_lastname}</h2>
 <p>Überweisen Sie {VAR:pilgrimpass_amount} auf Lorem laboris fugiat qui, eiusmod quis quis Excepteur sunt fugiat culpa irure. Duis elit velit et officia magna et. Quis ex laborum eu nulla ut adipisicing, elit dolor occaecat amet Excepteur. Elit nisi voluptate enim ut id. Aute dolor Excepteur tempor laborum minim, dolor sunt enim reprehenderit. Dolore sed tempor adipisicing sed dolor labore incididunt laboris proident eu aute. Cillum ad pariatur ut veniam nostrud ut magna laborum ut officia. Mollit tempor qui anim minim minim. Cupidatat nostrud laboris eu ipsum incididunt in.</p>
 

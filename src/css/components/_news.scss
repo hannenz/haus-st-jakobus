@@ -49,6 +49,7 @@
 		width: 33%;
 		@include media-object-section;
 		@include media-object-stack;	
+		flex-basis: auto;
 	}
 
 	&__body {
@@ -68,6 +69,17 @@
 
 	&__teaser {
 		margin-bottom: $vertical-unit;
+	}
+}
+
+.sidebar {
+	.post-teaser {
+		flex-wrap: wrap;
+
+		&__image, 
+		&__body {
+			width: 100%;
+		}
 	}
 }
 

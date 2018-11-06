@@ -8,10 +8,13 @@
 		<legend>Persönliche Angaben</legend>
 
 		<div class="grid-x grid-padding-x">
-			<div class="cell medium-6">
+			<div class="cell medium-2">
+				{VAR:pilgrimpass_salutation}
+			</div>
+			<div class="cell medium-5">
 				{VAR:pilgrimpass_firstname}
 			</div>
-			<div class="cell medium-6">
+			<div class="cell medium-5">
 				{VAR:pilgrimpass_lastname}
 			</div>
 		</div>

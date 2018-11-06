@@ -4,31 +4,31 @@
 			{IMAGE:1:media/gallery}
 			<figcaption>{TEXT:1}</figcaption>
 		</figure>
-	<div>
+	</div>
 	<div>
 		<figure>
 			{IMAGE:2:media/gallery}
 			<figcaption>{TEXT:2}</figcaption>
 		</figure>
-	<div>
+	</div>
 	<div>
 		<figure>
 			{IMAGE:3:media/gallery}
 			<figcaption>{TEXT:3}</figcaption>
 		</figure>
-	<div>
+	</div>
 	<div>
 		<figure>
 			{IMAGE:4:media/gallery}
 			<figcaption>{TEXT:4}</figcaption>
 		</figure>
-	<div>
+	</div>
 	<div>
 		<figure>
 			{IMAGE:5:media/gallery}
 			<figcaption>{TEXT:5}</figcaption>
 		</figure>
-	<div>
+	</div>
 {ELSE}
 <div class="orbit" data-orbit data-no-options="animInFromLeft:fade-in;animInFromRight:fade-in;animOutToLeft:fade-out;animOutToRight:fade-out">
 	<div class="orbit-wrapper">

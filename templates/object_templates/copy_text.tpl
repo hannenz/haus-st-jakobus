@@ -1,1 +1,1 @@
-<p class="copy-text">{TEXT:1}</p>
+<p class="copy-text">{TEXT:1:all}</p>

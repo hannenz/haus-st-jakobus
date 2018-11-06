@@ -614,8 +614,8 @@ class Model {
 			$values = explode ("\n", $fieldData['cmt_option_select_values']);
 			foreach ($options as $n => $option) {
 				$_options[] = [
-					'optionValue' => $values[$n],
-					'optionName' => $option
+					'optionValue' => trim($values[$n]),
+					'optionName' => trim($option)
 				];
 			}
 			$this->Parser->setParserVar ('options', $_options);
