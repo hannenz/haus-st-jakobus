@@ -12,7 +12,7 @@
 
 	<ul class="main-nav__menu dropdown menu" data-dropdown-menu data-click-open="true" data-close-on-click-inside="true" data-disable-hover="true" data-closing-time="100ms">
 		{LOOP NAVIGATION(1)}
-		<li class="nav-item{IF("{NAVIGATION:id}" == "{PAGEID}")} current{ENDIF}">
+		<li class="nav-item{IF({NAVIGATION:isancestor})} current{ENDIF}">
 			{IF("{NAVIGATION:children}" != "0")}
 				<a href="javascript:void(0);" class="nav-item__link">{NAVIGATION:title}</a>
 				<ul class="menu">

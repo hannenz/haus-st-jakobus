@@ -61,9 +61,35 @@
 @import "components/news";
 @import "components/table";
 @import "components/breadcrumbs";
+@import "components/slideshow";
 
 .error {
 	outline: 1px solid firebrick;
 	background-color: rgba(firebrick, 0.2);
+}
+
+
+.two-images {
+	display: flex;
+	justify-content: space-between;
+
+	figure {
+		height: 300px;
+		overflow:hidden;
+		width:  48%;
+	}
+
+	img {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.course-description-with-image-left {
+	figure {
+		float: left;
+		max-width: 20rem;
+		margin-right: $gutter;
+	}
 }
 

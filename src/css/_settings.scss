@@ -12,7 +12,7 @@ $text-color: #303036;
 $text-color-light: lighten($text-color, 15%);
 $dark-grey: darken(#505852, 10%);
 $medium-grey: tint($dark-grey, 40%);
-$light-grey: tint($dark-grey, 90%);
+$light-grey: #f0f0f0; //tint($dark-grey, 90%);
 
 
 

@@ -1,0 +1,62 @@
+/**
+ * src/css/components/_slideshow.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de
+ * @package haus-st-jakobus
+ */
+.slideshow {
+	
+}
+
+.orbit-controls  {
+
+	button {
+		@include button-reset;
+
+		background-color: rgba($dark-grey, 0.7);
+		transform: translateY(-50%);
+		width: 3rem;
+		height: 3rem;
+		display: flex;
+
+		transition: opacity 275ms ease-in;
+		opacity: 0;
+
+		svg {
+			width: 60%;
+			height: 60%;
+			margin: auto;
+		}
+
+		path {
+			fill: #fff;
+		}
+	}
+}
+
+.slideshow:hover .orbit-controls button {
+	opacity: 1;
+}
+
+.orbit-bullets {
+	position: absolute;
+	bottom: -3rem;
+	width: 100%;
+
+	button {
+		@include button-reset;
+		background-color: $light-grey;
+		transition: 150ms ease-in;
+		width: 22px;
+		height: 22px;
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	button.is-active {
+		background-color: $dark-grey;
+	}
+}
+
+

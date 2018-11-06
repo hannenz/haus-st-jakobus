@@ -13,6 +13,10 @@ ul.breadcrumbs {
 
 	> li {
 
+		&:first-child {
+			padding-left: 2rem;
+		}
+
 		background-color: $light-grey;
 		position: relative;
 		margin-right: 0.5em;
@@ -28,6 +32,10 @@ ul.breadcrumbs {
 		a, span {
 			display: inline-block;
 			line-height: 52px;
+		}
+
+		&:first-child {
+			font-weight: bold;
 		}
 
 		&:not(:first-child)::before {
@@ -51,5 +59,6 @@ ul.breadcrumbs {
 			right: -34px;
 			top: 0;
 		}
+
 	}
 }

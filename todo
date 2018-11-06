@@ -5,14 +5,51 @@
 - Programm: Tabellenlayouts
 - Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 - Newsletter
+- Favicon
 
+- Refactoring:
+	- phpincludes/{component}/...
+	- templates/notifications/{component}/*.txt|html.tpl   << really? Think about it
+	- slideshow: 5 Images with orbit. Name it so.
+
+- Bildupload: In Dateinamen werden - / _ getauscht.
 
 
 Besprechen / Klären
 
-- Hosting: Hosteurope Virtual Server
+- Hosting: Hosteurope Virtual Server Starter + SSL Zert.:
+	>> 9.99 + 2.49 mtl.
+
+- grobe visuelle Linie, kurz zeigen
+
+	- Typografie und Details sind nicht final
+	- Idee z. Bsp. auch Bilderwechsler auf Startseite als Hero / Mood
+
+- Einrichtung Staging zur weiteren Abstimmung (geht dann schneller)
+
+- weiteres Timing:
+
+	### bis Weihnachten
+
+	- Einrichtung Staging
+
+	- Abstimmung finale Visualitäte, Style Guide, alle Elemente definiert
+
+	### Q1 / 2019
+
+	- Fertigstellung aller Programmierungen
+
+	- finale Abstimmungen
+
+	- CMS-Einweisung
+
+	- Inhalte einpflegen
+
+	- GoLive
+
 - Programm: Brauchen wir eine Unterscheidung nach Jahren / Saison, ggf. Archiv?
+
 - Input Texte für Benachrichtigungs-Mails: Pilgerausweis, Anmeldungen zu Kursen (inkl. Betreffszeile)
-  
 
-
+- 
+ 

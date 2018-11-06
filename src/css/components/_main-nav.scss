@@ -65,7 +65,7 @@ $transition-duration: 250ms;
 		transform-origin: top left;
 		transform: scale(0);
 		transition: $transition-duration ease-in;
-		border-top: 3px solid $primary-color;
+		// border-top: 3px solid $primary-color;
 	}
 
 	.is-active .is-dropdown-submenu {
@@ -113,28 +113,39 @@ $transition-duration: 250ms;
 		}
 
 		&::after {
-			content: '';
-			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
-			background-image: none;
-			background-color: rgba(255, 255, 255, 1);
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: -0px;
-			transform-origin: center center;
-			transform: scaleX(0);
-			transition: opacity $transition-duration ease-in;
-			z-index: 0;
-			opacity: 0;
-			/* border-bottom: 2px solid #fff; */
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 3px;
+				background-color: #fff;
+				transform: scaleX(0);
+				transition: 200ms ease-in;
+			// content: '';
+			// background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
+			// background-image: none;
+			// background-color: rgba(255, 255, 255, 1);
+			// position: absolute;
+			// top: 0;
+			// left: 0;
+			// right: 0;
+			// bottom: -0px;
+			// transform-origin: center center;
+			// transform: scaleX(0);
+			// transition: opacity $transition-duration ease-in;
+			// z-index: 0;
+			// opacity: 0;
+			// /* border-bottom: 2px solid #fff; */
 		}
 
+		&.current::after,
 		&.is-active::after,
 		&:hover::after {
 			transform: scaleX(1);
 			opacity: 1;
 		}
+
 
 		&.current::after,
 		&:focus::after,

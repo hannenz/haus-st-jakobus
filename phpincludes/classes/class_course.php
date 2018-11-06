@@ -10,11 +10,32 @@ use Jakobus\Event;
 
 class Course extends Model {
 
+	/**
+	 * @access private
+	 * @var int
+	 */
 	private $detailPageId = 39;
+
+	/**
+	 * @access private
+	 * @var int
+	 */
 	private $overviewPageId = 39;
 
+	/**
+	 * @access private
+	 * @var int
+	 */
+	private $tableId;
+
+	/**
+	 * @var Contentomat\TableMedia
+	 */
 	protected $TableMedia;
 
+	/**
+	 * @var Contentomat\CmtPage
+	 */
 	protected $CmtPage;
 
 	
@@ -41,6 +62,12 @@ class Course extends Model {
 	public function init () {
 		setlocale (LC_ALL, 'de_DE.utf-8');
 		$this->setTableName ('jakobus_courses');
+
+		// Get table id (for table data layout)
+		$this->db->query(sprintf("SELECT id FROM cmt_tables WHERE cmt_tablename='%s'", $this->tableName));
+		$r = $this->db->get();
+		$this->tableId = (int)$r['id'];
+
 		$this->TableMedia = new TableMedia ();
 		$this->Parser = new Parser();
 		$this->CmtPage = new CmtPage();
@@ -99,9 +126,17 @@ class Course extends Model {
 	 *
 	 * @return string
 	 */
-	public function getOverviewPageId()
-	{
+	public function getOverviewPageId() {
 	    return $this->overviewPageId;
+	}
+
+	/**
+	 * Getter for tableId
+	 *
+	 * @return int
+	 */
+	public function getTableId() {
+	    return $this->tableId;
 	}
 }
 ?>

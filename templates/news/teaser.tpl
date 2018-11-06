@@ -8,7 +8,7 @@
 		<h2 class="post-teaser__title">{VAR:post_title}</h2>
 		<div class="post-teaser__teaser">{VAR:post_teaser}</div>
 		<p class="post-teaser__link">
-			<a href="{VAR:postDetailUrl}" class="button">weiter lesen …</a>
+			<a href="{VAR:postDetailUrl}">weiter lesen …</a>
 		</p>
 	</div>
 </article>

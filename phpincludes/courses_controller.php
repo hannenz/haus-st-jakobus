@@ -5,9 +5,12 @@ use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\Debug;
+use Contentomat\TableMedia;
+use Contentomat\TableDataLayout;
 use Jakobus\Course;
 use Jakobus\Event;
 use Jakobus\CourseCategory;
+use Jakobus\CourseParser;
 
 use \Exception;
 
@@ -27,12 +30,24 @@ class CoursesController extends Controller {
 	 */
 	protected $Event;
 
+	/**
+	 * @var Contentomat\TableDataLayout
+	 */
+	protected $TablelDataLayout;
+
+	/**
+	 * @var Contentomat\TableMedia
+	 */
+	protected $TablelMedia;
 
 
 	public function init() {
 
 		$this->Course = new Course();
 		$this->Event = new Event();
+		$this->TableDataLayout = new TableDataLayout();
+		$this->TableMedia = new TableMedia();
+		$this->parser = new CourseParser();
 
 		$this->Course->setLanguage($this->pageLang);
 
@@ -57,14 +72,21 @@ class CoursesController extends Controller {
 
 		$categories = $this->CourseCategory->findAll();
 
-		$courses = $this->Course
-			->filter([
-				'course_is_active' => 1
-			])
-			->limit()
-			->findAll(['fetchAssociations' => false])
-		;
-		$this->parser->setParserVar('courses', $courses);
+		// foreach ($categories as $category) {
+        //
+		// 	$courses = $this->Course
+		// 		->filter([
+		// 			'course_is_active' => 1
+		// 		])
+		// 		->limit()
+		// 		->findAll(['fetchAssociations' => false])
+		// 	;
+		// 	$data[] = array_merge($category, $courses);
+		// }
+		// var_dump($data); die();
+		// 	
+
+		// $this->parser->setParserVar('courses', $courses);
 		$this->parser->setParserVar('categories', $categories);
 
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'overview.tpl');
@@ -117,6 +139,19 @@ class CoursesController extends Controller {
 
 
 	public function actionDetail() {
+
+		$dataLayout = $this->TableDataLayout->getWithTemplates($this->Course->getTableId(), $this->courseId);
+		// Only set table data layout if at least one is used, else 
+		// we just use the default "static" layout. (see dateil.tpl)
+		if (!empty($dataLayout['templates'][0])) {
+			$this->parser->setParserVar('templates', $dataLayout['templates']);
+			$courseImages = $this->TableMedia->getMedia([
+				'tableId' => $this->Course->getTableId(),
+				'entryId' => $this->courseId,
+				'mediaType' => 'image'
+			]);
+			$this->parser->setImages($courseImages);
+		}
 
 		$course = $this->Course->filter([
 			'id' => $this->courseId

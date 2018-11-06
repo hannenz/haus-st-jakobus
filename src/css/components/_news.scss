@@ -21,6 +21,7 @@
 
 	&__kicker {
 		@include type-setting(0, 0);
+		font-weight: normal;
 		color: $primary-color;
 		line-height: 1.25;
 		order: 3;

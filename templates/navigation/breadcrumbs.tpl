@@ -1,14 +1,14 @@
 <nav class="breadcrumbs-navigation">
-	<!-- <span class="breadcrumbs__prefix">Sie befinden sich hier: </span> -->
 	<ul class="breadcrumbs">
-		{LOOP VAR(breadcrumbs)}
+		<li><span>{VAR:current}</span></li>
+		{LOOP VAR(siblings)}
 			<li>
-				{IF("{PAGEID}" == "{VAR:id}")}
+				{IF("{VAR:id}" == "{PAGEID}")}
 					<span>{VAR:cmt_title}</span>
 				{ELSE}
-					<a href="{VAR:url}">{VAR:cmt_title}</a>
+					<a href="{VAR:linkUrl}">{VAR:cmt_title}</a>
 				{ENDIF}
-				</li>
+			</li>
 		{ENDLOOP VAR}
 	</ul>
 </nav>
