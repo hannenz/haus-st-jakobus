@@ -1,7 +1,10 @@
-- MLog: REsize/ thumbnails on upload
+- MLog: Resize/ thumbnails on upload
 - Courses: Pagination
+- Giropay
+- Benachrichtigungsmails: Footer mit Sende-Daten... (`{EVAL}sprintf("[%s] %s", $_REQUEST['SERVER_NAME'], strftime(...)){ENDEVAL}`)
+- Programm: Tabellenlayouts
+- Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 - Newsletter
-- 
 
 
 
@@ -9,5 +12,7 @@ Besprechen / Klären
 
 - Hosting: Hosteurope Virtual Server
 - Programm: Brauchen wir eine Unterscheidung nach Jahren / Saison, ggf. Archiv?
--
+- Input Texte für Benachrichtigungs-Mails: Pilgerausweis, Anmeldungen zu Kursen (inkl. Betreffszeile)
+  
+
 
