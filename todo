@@ -1,4 +1,6 @@
+- Header: Muschel groß, beim Scrollen klein
 - MLog: Resize/ thumbnails on upload
+- MLog: Zurück Button falsch velinkt
 - Courses: Pagination
 - Giropay
 - Benachrichtigungsmails: Footer mit Sende-Daten... (`{EVAL}sprintf("[%s] %s", $_REQUEST['SERVER_NAME'], strftime(...)){ENDEVAL}`)
@@ -6,6 +8,12 @@
 - Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 - Newsletter
 - Favicon
+- Programm-Übersicht: Paginieren
+- Programm: Veranstaltungslinks falsch
+- Alle Abendtermine als Menüpunkt
+- "Events" (Veranstaltungen ohne Kurscharakter)
+- CMT: Programm: Als Application:
+- Veranstaltungen umbennenne in Jahresübersicht
 
 - Refactoring:
 	- phpincludes/{component}/...
