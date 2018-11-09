@@ -1,16 +1,56 @@
 <?php
-namespace Jakobus;
 /**
- * Generate thumbnails upon upload
- *
  * @author  Johannes Braun <johannes.braun@hannenz.de>
  * @package haus-st-jakobus
  * @version 2018-11-01
  */
+namespace Jakobus;
+
 use Contentomat\Contentomat;
 use Contentomat\Image;
 use Contentomat\FieldHandler;
 use Contentomat\Logger;
+
+
+
+/**
+ * @class Thumbnailer
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @description Generate thumbnails upon upload
+ * @usage
+ *
+ * In CodeManager add a callback script like this:
+ *
+ * ```
+ * <?php
+ * namespace FooBar;
+ * 
+ * use FooBar\Thumbnailer;
+ * use Contentomat\PsrAutoloader;
+ * 
+ * $autoLoad = new PsrAutoloader();
+ * $autoLoad->addNamespace('FooBar', PATHTOWEBROOT . "phpincludes/classes");
+ * 
+ * $thumbnailer = new Thumbnailer('your_table_name', 'your_upload_field_name');
+ * $success = $thumbnailer->createThumbnails([
+ * 		[
+ * 			'width' => 480,
+ * 			'dir' => 'thumbnails'
+ * 		],
+ * 		[
+ * 			'width' => 320,
+ * 			'dir' => 'thumbnails/square',
+ * 			'square' => true
+ * 		]
+ * ]);
+ * ?>
+ * ```
+ *
+ * Pass the table's and field's name to the Constructor.
+ * Pass an array of thumbnail parameters to the methon `createThumbnails`
+ * Thumbnailer class can generate multiple thumbnails at once, pass an  array
+ * shown above...
+ *
 
 class Thumbnailer extends \Contentomat\Image {
 	/**
@@ -24,12 +64,13 @@ class Thumbnailer extends \Contentomat\Image {
 	private $Cmt;
 
 	/**
-	 * @var Array
+	 * @var String
 	 */
-	private $fieldInfo;
-
-
 	private $tableName;
+
+	/**
+	 * @var String
+	 */
 	private $fieldName;
 
 
@@ -74,16 +115,22 @@ class Thumbnailer extends \Contentomat\Image {
 	}
 
 	public function createThumbnails($thumbnails) {
-		$this->fieldInfo = $this->FieldHandler->getField([
+		$fieldInfo = $this->FieldHandler->getField([
 			'tableName' => $this->tableName,
 			'fieldName' => $this->fieldName
 		]);
-		if (empty($this->fieldInfo)) {
+		if (empty($fieldInfo)) {
 			$this->errorMessage = sprintf('Could not get field info for %s.%s', $this->tableName, $this->fieldName);
 			return false;
 		}
+
+
+		$cmtFileName = $this->Cmt->getVar('cmt_filename');
+		$cmtUploadPath = $this->Cmt->getVar('cmt_uploadpath');
+		$cmtSourcePath = $this->Cmt->getVar('cmt_sourcepath');
+
 		
-		$sourceImage = $_FILES[$this->fieldInfo['cmt_fieldname'].'_newfile']['tmp_name'];
+		$sourceImage = $cmtSourcePath;
 		$sourceImageType = $this->getImageType($sourceImage);
 
 		if ($sourceImageType == null) {
@@ -92,7 +139,7 @@ class Thumbnailer extends \Contentomat\Image {
 
 		$success = true;
 		foreach ($thumbnails as $options) {
-			$thumbnailDestPath = $this->Cmt->cleanPath(join(DIRECTORY_SEPARATOR, [PATHTOWEBROOT , $this->fieldInfo['cmt_option_upload_dir'], $options['dir'] , $_FILES[$this->fieldInfo['cmt_fieldname'].'_newfile']['name']]));
+			$thumbnailDestPath = $this->Cmt->cleanPath(join(DIRECTORY_SEPARATOR, [PATHTOWEBROOT , $fieldInfo['cmt_option_upload_dir'], $options['dir'] , $cmtFileName]));
 			
 			if ($options['square']) {
 
