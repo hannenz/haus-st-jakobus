@@ -5,7 +5,7 @@ use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\CmtPage;
 
-class BreadcrumbsController extends Controller {
+class TopbarnavController extends Controller {
 
 	/**
 	 * @var Object
@@ -45,32 +45,13 @@ class BreadcrumbsController extends Controller {
 		}
 
 		$this->parser->setParserVar('current', $pageData['cmt_title']);
-		$this->content = $this->parser->parseTemplate($this->templatesPath . 'breadcrumbs.tpl');
+		$this->content = $this->parser->parseTemplate($this->templatesPath . 'topbarnav.tpl');
 	}
 
-	public function __actionDefault () {
-
-		$breadcrumbs = array_reverse ($this->CmtPage->getAncestors (PAGEID));
-
-		// If POSTTITLE is set, it must be a news article, so we insert it's
-		// title as PAGETITLE
-		if (defined('POSTTITLE')) {
-			$breadcrumbs[count($breadcrumbs) - 1]['cmt_title'] = POSTTITLE;
-		}
-
-		array_shift ($breadcrumbs);
-
-		foreach ($breadcrumbs as &$crumb) {
-			$crumb['url'] = sprintf("/%s/%u/%s", PAGELANG, $crumb['id'], $this->CmtPage->makePageFileName ($crumb['id']));
-		}
-
-		$this->parser->setParserVar ('breadcrumbs', $breadcrumbs);
-		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'breadcrumbs.tpl');
-	}
 }
 
 $autoload = new PsrAutoloader ();
 $autoload->addNamespace ('Contentomat', PATHTOADMIN . 'classes');
-$ctl = new BreadcrumbsController ();
+$ctl = new TopbarnavController ();
 $content = $ctl->work ();
 ?>

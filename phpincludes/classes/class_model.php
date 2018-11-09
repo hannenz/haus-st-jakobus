@@ -335,7 +335,7 @@ class Model {
 
 		foreach ($this->filter as $operand1 => $operand2) {
 			$operator = '=';
-			if (preg_match ('/^(.*)\s+([\=\!\>\<\%])\s+$/', $operand1, $matches)) {
+			if (preg_match('/^(.*)\s+([\=\!\>\<\%]+)\s*$/', $operand1, $matches)) {
 				$operand1 = $matches[1];
 				$operator = $matches[2];
 			}

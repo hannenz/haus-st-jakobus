@@ -99,6 +99,24 @@ class Event extends Model {
 	}
 
 
+	public function getPast() {
+		$events = $this->filter([
+			'event_end <' => 'NOW()'
+		])
+		->findAll();
+
+		return $events;
+	}
+
+	public function getUpcoming() {
+		$events = $this->filter([
+			'event_begin >' => 'NOW()'
+		])
+		->findAll();
+
+		return $events;
+	}
+
 	// public function findByDay($year, $month, $day) {
 	// 	$query = sprintf ("SELECT Event.* FROM jakobus_events AS Event WHERE YEAR(event_begin)=%u AND MONTH(event_begin)=%u AND DAY(event_begin)=%u", $year, $month, $day);
 	// 	if ($this->db->query ($query) !== 0) {

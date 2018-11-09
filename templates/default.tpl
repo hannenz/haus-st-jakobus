@@ -41,7 +41,7 @@
 	{ENDIF}
 
 	<section class="main-container inner-bound">
-		{INCLUDE:PATHTOWEBROOT."phpincludes/breadcrumbs_controller.php"}
+		{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
 			<div class="main-content">
 				{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 			</div>

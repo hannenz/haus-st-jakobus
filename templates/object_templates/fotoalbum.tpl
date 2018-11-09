@@ -18,5 +18,5 @@
 		});
 	</script>
 {ELSE}
-	{INCLUDE:PATHTOWEBROOT.'phpincludes/fotoalbum_controller.php'}
+	{INCLUDE:PATHTOWEBROOT.'phpincludes/fotoalbum/fotoalbum_controller.php'}
 {ENDIF}
