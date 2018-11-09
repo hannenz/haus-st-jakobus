@@ -15,6 +15,7 @@ use Contentomat\Logger;
 
 /**
  * @class Thumbnailer
+ * @extends \Contentomat\Image
  * @author Johannes Braun <johannes.braun@hannenz.de>
  * @description Generate thumbnails upon upload
  * @usage
@@ -50,11 +51,11 @@ use Contentomat\Logger;
  * Pass an array of thumbnail parameters to the methon `createThumbnails`
  * Thumbnailer class can generate multiple thumbnails at once, pass an  array
  * shown above...
- *
+ */
 
 class Thumbnailer extends \Contentomat\Image {
 	/**
-	 * @var Contentomat\FieldHandler
+	 * @var \Contentomat\FieldHandler
 	 */
 	protected $FieldHandler;
 
@@ -73,9 +74,21 @@ class Thumbnailer extends \Contentomat\Image {
 	 */
 	private $fieldName;
 
+	/**
+	 * @var Boolean
+	 */
+	protected $log;
 
-	public function __construct($tableName, $fieldName) {
+
+
+	public function __construct($tableName, $fieldName, $options) {
 		parent::__construct();
+
+		$defaultOptions = [
+			'log' => true
+		];
+		$options = array_merge($defaultOptions, $options);
+		$this->log = $options['log'];
 
 
 		$this->FieldHandler = new FieldHandler();
@@ -141,13 +154,16 @@ class Thumbnailer extends \Contentomat\Image {
 		foreach ($thumbnails as $options) {
 			$thumbnailDestPath = $this->Cmt->cleanPath(join(DIRECTORY_SEPARATOR, [PATHTOWEBROOT , $fieldInfo['cmt_option_upload_dir'], $options['dir'] , $cmtFileName]));
 			
+			if ($this->log) {
+				Logger::log(sprintf("Creating%s thumbnail: %s",
+					$options['square'] ? ' square' : '',
+					$thumbnailDestPath
+				));
+			}
 			if ($options['square']) {
-
-				Logger::log(sprintf("Creating square thumbnail: %s", $thumbnailDestPath));
 				$this->createSquareThumbnail($sourceImage, $thumbnailDestPath, $options['width']);
 			}
 			else {
-				Logger::log(sprintf("Creating thumbnail: %s", $thumbnailDestPath));
 				$success = $this->createThumbnail([
 					'sourceImage' => $sourceImage,
 					'sourceImageType' => $sourceImageType,
@@ -160,18 +176,6 @@ class Thumbnailer extends \Contentomat\Image {
 				}
 			}
 		}
-
-		// Logger::log("Resizing image");
-		// $success = $this->createThumbnail([
-		// 	'sourceImage' => $sourceImage,
-		// 	'sourceImageTpye' => $sourceImageTpye,
-		// 	'destinationImage' => $sourceImage,
-		// 	'width' => 1024,
-		// 	'preserveRatio' => true
-		// ]);
-		// if (!$success) {
-		// 	return false;
-		// }
 
 		return $success;
 	}
