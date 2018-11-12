@@ -14,11 +14,11 @@ function APP () {
 
 
 	this.init = function() {
-		
+
 		if (this.debug) {
 			console.log('APP::init');
 		}
-		
+
 		this.pageInit();
 	};
 
@@ -55,34 +55,51 @@ function APP () {
 		if (!ticking) {
 			window.requestAnimationFrame (function () {
 
-				console.log (y);
 				document.body.classList.toggle ('page-has-scrolled', y > 100);
-		
+
 				ticking = false;
 			});
 		}
 	}
 
+
 	this.initCalendarWidget = function() {
+
 		console.log('initCalendarWidget');
-		var links = document.querySelectorAll('.calendar-widget-link');
+
+		var links = document.querySelectorAll('.calendar-widget__link');
 
 		links.forEach(function(el, i) {
+
 			el.addEventListener('click', function(ev) {
 				ev.preventDefault();
+
+				var url = el.getAttribute('href');
+
 				var xhr = new XMLHttpRequest();
-				xhr.open('GET', el.getAttribute('href'), true);
+				xhr.open('GET', url, true);
+
 				xhr.onload = function() {
-					if (xhr.status >= 200 && xhr.status < 400) {
-						var data = xhr.responseText;
-						console.log(data);
 
-						var container = document.querySelector('.calendar-widget');
-						self.initCalendarWidget();
+					if (xhr.readyState == 4) {
+						if (xhr.status >= 200 && xhr.status < 400) {
+							var data = xhr.responseText;
+							var divNode = document.createElement('div');
+							divNode.innerHTML = xhr.responseText;
+							var widgetNode = divNode.querySelector('.calendar-widget');
+							console.log(widgetNode);
 
+							var container = document.querySelector('.calendar-widget').parentNode;
+							container.innerHTML = '';
+							container.appendChild(widgetNode);
+
+							self.initCalendarWidget();
+						}
 					}
 				};
+
 				xhr.send();
+
 				return false;
 			});
 		});

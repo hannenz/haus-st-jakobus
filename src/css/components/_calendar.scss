@@ -12,3 +12,24 @@
 	}
 }
 
+.calendar-widget {
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	&__link {
+		// flex: 0 1 auto;
+		width: 28px;
+		height: 28px;
+		// background-color: rgba($primary-color, 0.2);
+		text-align: center;
+	}
+
+	&__month {
+		flex: 1 0 auto;
+		text-align: center;
+	}
+}
