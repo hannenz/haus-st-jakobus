@@ -64,8 +64,14 @@
 		margin-bottom: 0;
 	}
 
+	&__kicker {
+		display: none;
+	}
+
 	&__title {
 		@include type-setting(1, 0);
+		line-height: 1;
+		margin-bottom: 0.5 * $vertical-unit;
 	}
 
 	&__teaser {

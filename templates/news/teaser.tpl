@@ -4,7 +4,7 @@
 	</figure>
 	<div class="post-teaser__body">
 		<p class="post-teaser__meta">{VAR:post_date_fmt_date} &middot; {VAR:post_categories_fmt}</p>
-		{IF({ISSET:post_subtitle})}<h3 class="post__kicker">{VAR:post_subtitle}</h3>{ENDIF}
+		{IF({ISSET:post_subtitle})}<h3 class="post-teaser__kicker">{VAR:post_subtitle}</h3>{ENDIF}
 		<h2 class="post-teaser__title">{VAR:post_title}</h2>
 		<div class="post-teaser__teaser">{VAR:post_teaser}</div>
 		<p class="post-teaser__link">

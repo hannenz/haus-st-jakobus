@@ -92,7 +92,7 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			}
 
 			$posts = $this->News->getPosts([
-				'postsPerPage' => 3,
+				'postsPerPage' => 10,
 				'categoryID' => $categoryId,
 				'currentPage' => $currentPage
 			]);

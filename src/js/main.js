@@ -43,6 +43,8 @@ function APP () {
 		self.headerHeight = rect.height;
 		window.addEventListener ('scroll', self.onWindowScroll);
 
+		this.initCalendarWidget();
+
 	};
 
 
@@ -59,6 +61,31 @@ function APP () {
 				ticking = false;
 			});
 		}
+	}
+
+	this.initCalendarWidget = function() {
+		console.log('initCalendarWidget');
+		var links = document.querySelectorAll('.calendar-widget-link');
+
+		links.forEach(function(el, i) {
+			el.addEventListener('click', function(ev) {
+				ev.preventDefault();
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', el.getAttribute('href'), true);
+				xhr.onload = function() {
+					if (xhr.status >= 200 && xhr.status < 400) {
+						var data = xhr.responseText;
+						console.log(data);
+
+						var container = document.querySelector('.calendar-widget');
+						self.initCalendarWidget();
+
+					}
+				};
+				xhr.send();
+				return false;
+			});
+		});
 	}
 };
 

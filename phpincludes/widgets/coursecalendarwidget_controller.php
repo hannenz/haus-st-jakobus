@@ -12,9 +12,23 @@ use Jakobus\Calendar;
 
 use \Exception;
 
+
+// error_reporting(E_ALL);
+// ini_set('display_errors', true);
+
 class CourseCalendarWidgetController extends Controller {
 
+
+
 	protected $Event;
+
+	protected $year;
+
+	protected $month;
+
+	protected $widgetPageId = 41;
+
+
 
 	public function init() {
 
@@ -26,11 +40,25 @@ class CourseCalendarWidgetController extends Controller {
 		// $this->CourseCategory->setLanguage ($this->pageLang);
 		// $this->CourseCategory->order (['course_category_position' => 'asc']);
 		// $this->templatesPath = $this->templatesPath . 'course_categories/';
+
+
+		if (!empty($this->getvars['year']) && !empty($this->getvars['month'])) {
+			$this->year = $this->getvars['year'];
+			$this->month = $this->getvars['month'];
+		}
+		else {
+			$this->year = date('Y');
+			$this->month = date('m');
+		}
+
+		if ($this->pageId == $this->widgetPageId) {
+			$this->action = 'getCalendatWidget';
+		}
 	}
 
 	public function actionDefault() {
-		$year = date('Y');
-		$month = date('m');
+		$year = date('Y', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
+		$month = date('m', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
 		$events = $this->Event->findByPeriod($year, $month);
 		$daysWithLink = [];
 
@@ -46,9 +74,27 @@ class CourseCalendarWidgetController extends Controller {
 			'link' => sprintf('%s%s?year={YEAR}&month={MONTH}&day={DAY}',
 				$this->CmtPage->makePageFilePath($this->Event->getOverviewPageId()),
 				$this->CmtPage->makePageFileName($this->Event->getOverviewPageId())
-			)
+			),
+			'year' => $year,
+			'month' => $month
 		]);
-		$this->content = '<nav class="widget">' . $calendarContent . '</nav>';
+		$this->parser->setMultipleParserVars([
+			'calendarContent' => $calendarContent,
+			'month' => strftime('%B %Y', strtotime(sprintf('%4u-%02u', $year, $month))),
+			'year' => $year,
+			'nextMonth' => strftime('%m', strtotime(sprintf('%4u-%02u + 1 month', $year, $month))),
+			'nextYear' => strftime('%Y', strtotime(sprintf('%4u-%02u + 1 month', $year, $month))),
+			'prevMonth' =>strftime('%m', strtotime(sprintf('%4u-%02u - 1 month', $year, $month))),
+			'prevYear' => strftime('%Y', strtotime(sprintf('%4u-%02u - 1 month', $year, $month))),
+			'baseUrl' => sprintf('%s%s', $this->CmtPage->makePageFilePath($this->widgetPageId), $this->CmtPage->makePageFileName($this->widgetPageId))
+		]);
+		$this->content = $this->parser->parseTemplate(PATHTOWEBROOT . "templates/widgets/calendar_widget.tpl");
+		// $this->content = '<nav class="widget">' . $calendarContent . '</nav>';
+	}
+
+	public function actionGetCalendarWidget() {
+		$this->isAjax = true;
+		$this->changeAction('default');
 	}
 }
 

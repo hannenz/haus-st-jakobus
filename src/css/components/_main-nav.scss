@@ -35,6 +35,7 @@ $transition-duration: 250ms;
 
 		&__logo {
 			height: 1.5 * $vertical-unit;
+			height: 3.5 * $vertical-unit;
 			width: auto;
 		}
 
@@ -163,7 +164,15 @@ $transition-duration: 250ms;
 .page-has-scrolled .main-nav {
 	background-color: rgba($primary-color-soft, 1);
 
+	.brand {
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+
 	.brand__logo {
-		display: none;
+		height: 1.5 * $vertical-unit;
+		margin: 0 6px 8px 0;
 	}
 }
+
+
