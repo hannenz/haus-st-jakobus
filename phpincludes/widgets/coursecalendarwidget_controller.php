@@ -64,8 +64,15 @@ class CourseCalendarWidgetController extends Controller {
 
 		foreach ($events as $event) {
 
-			$dayOfMonth = strftime('%d', strtotime ($event['event_begin']));
-			$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
+			$beginTs = strtotime($event['event_begin']);
+			$endTs = strtotime($event['event_end']);
+			for ($ts = $beginTs; $ts < $endTs; $ts += 86400) {
+				$dayOfMonth = strftime('%d', $ts);
+				$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
+			}
+
+			// $dayOfMonth = strftime('%d', strtotime ($event['event_begin']));
+			// $daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
 		}
 		// var_dump($daysWithLink); die();
 		

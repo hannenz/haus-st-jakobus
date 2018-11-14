@@ -14,7 +14,7 @@ class Course extends Model {
 	 * @access private
 	 * @var int
 	 */
-	private $detailPageId = 39;
+	private $detailPageId = 42;
 
 	/**
 	 * @access private
@@ -109,14 +109,16 @@ class Course extends Model {
 
 		// Read costs
 		$costsData = (array)json_decode($result['course_costs'], true);
-		$costsItemsContent = '';
-		foreach ($costsData as $costsItem) {
-			$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
-			$this->Parser->setMultipleParserVars($costsItem);
-			$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
+		if (!empty($costsData)) {
+			$costsItemsContent = '';
+			foreach ($costsData as $costsItem) {
+				$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
+				$this->Parser->setMultipleParserVars($costsItem);
+				$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
+			}
+			$this->Parser->setParserVar('costsItemsContent', $costsItemsContent);
+			$result['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
 		}
-		$this->Parser->setParserVar('costsItemsContent', $costsItemsContent);
-		$result['course_costs_fmt'] = $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_frame.tpl');
 
 		return $result;
 	}

@@ -9,6 +9,14 @@
 	th, td {
 		vertical-align: middle;
 		text-align: center;
+		padding: 1px;
+		width: calc(100% / 7);
+	}
+
+	a {
+		color: #fff;
+		background-color: $primary-color;
+		display: block;
 	}
 }
 

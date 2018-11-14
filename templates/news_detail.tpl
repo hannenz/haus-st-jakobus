@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{PAGETITLE} - Cursillo-Haus St. Jakobus</title>
+	<title>{CONSTANT:POSTTITLE} - Cursillo-Haus St. Jakobus</title>
 	<meta name="description" content="{PAGEVAR:cmt_meta_description:recursive}">
 	<meta name="keywords" content="{PAGEVAR:cmt_meta_keywords:recursive}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,17 +28,7 @@
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
-	{IF("{PAGEID}" == "2")}
-	<div class="hero" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');">
-		<div class="inner-bound">
-			<blockquote class="hero__title">
-				Kommt und ruht ein wenig aus &hellip;
-			</blockquote>
-		</div>
-	</div>
-    {ELSE}
-		<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
-	{ENDIF}
+	<div class="mood" style="background-image:url('/media/mlog/static/{CONSTANT:POSTIMAGE}');"></div>
 
 
 	<section class="main-container inner-bound">
@@ -59,3 +49,4 @@
 	{LAYOUTMODE_ENDSCRIPT}
 </body>
 </html>
+

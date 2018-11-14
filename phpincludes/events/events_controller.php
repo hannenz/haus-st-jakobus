@@ -55,6 +55,10 @@ class EventsController extends Controller {
 			$this->action = 'byYear';
 			return;
 		}
+
+		if ($this->pageId == 43) {
+			$this->action = 'soirees';
+		}
 	}
 
 
@@ -119,6 +123,16 @@ class EventsController extends Controller {
 		$this->parser->setParserVar('events', $events);
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'by_year.tpl');
 	}
+
+	public function actionSoirees() {
+		$events = $this->Event->filter([
+			'event_is_soiree' => 1
+		])->findAll();
+
+		$this->parser->setParserVar('events', $events);
+		$this->content = $this->parser->parseTemplate($this->templatesPath . 'soirees.tpl');
+	}
+
 }
 
 $autoLoad = new PsrAutoloader();

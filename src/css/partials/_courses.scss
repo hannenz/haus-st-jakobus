@@ -4,6 +4,11 @@
  * @author Johannes Braun <johannes.braun@hannenz.de>
  * @package haus-st-jakobus
  */
+
+.course__headline {
+	line-height: 1.5;
+}
+
 .course__description {
 	max-width: 40em;
 
@@ -38,6 +43,41 @@ table.courses-overview {
 	}
 
 	dd {
+		margin-bottom: 0.5 * $vertical-unit;
+		padding-bottom: 0.5 * $vertical-unit;
+		border-bottom: 1px solid $light-grey;
+	}
+}
+
+.course__footer {
+	@include type-setting(-1);
+}
+
+.course__events {
+	margin: $vertical-unit 0;
+
+	caption {
+		text-align: left;
+		font-weight: bold;
+	}
+
+	td, th {
+		vertical-align: top;
+		padding: 0.5 * $vertical-unit $gutter !important;
+
+		&:first-child {
+			padding-left: 0 !important;
+		}
+
+		&:last-child {
+			padding-right: 0 !important;
+			vertical-align: bottom;
+			text-align: right;
+		}
+	}
+
+	.event__date {
+		white-space: nowrap;
 	}
 }
 

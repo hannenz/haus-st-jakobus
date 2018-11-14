@@ -68,15 +68,6 @@ body {
 	// background-color: rgba(skyblue, 0.2);
 
 	@include type-setting(-1);
-
-	.widget {
-
-		background: $primary-color-soft;
-		padding: $vertical-unit $gutter;
-		border-top: 4px solid $primary-color;
-		margin-bottom: $vertical-unit;
-		border-radius: $border-radius;
-	}
 }
 
 

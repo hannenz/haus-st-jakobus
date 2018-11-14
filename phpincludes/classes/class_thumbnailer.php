@@ -81,7 +81,7 @@ class Thumbnailer extends \Contentomat\Image {
 
 
 
-	public function __construct($tableName, $fieldName, $options) {
+	public function __construct($tableName, $fieldName, $options = []) {
 		parent::__construct();
 
 		$defaultOptions = [
@@ -97,6 +97,8 @@ class Thumbnailer extends \Contentomat\Image {
 		$this->errorMessage = '';
 		$this->tableName = $tableName;
 		$this->fieldName = $fieldName;
+
+
 	}
 
 

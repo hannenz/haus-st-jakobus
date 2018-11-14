@@ -15,6 +15,31 @@
 	cursor: pointer;
 }
 
+.more, .back {
+	@include button-reset;
+	display: inline-block;
+	text-decoration: none;
+	color: $primary-color;
+	vertical-align: middle;
+	white-space: nowrap;
+
+	&::before {
+		content: '▶ ';
+		vertical-align: middle;
+		font-size: 0.8125em;
+		margin-right: 0.5em;
+	}
+
+	&:hover::before {
+		display: inline-block;
+	}
+}
+
+.back::before {
+	content: '◀ ';
+}
+
+
 .button {
 	@include button-reset;
 

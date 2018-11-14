@@ -150,6 +150,7 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			]);
 
 			define('POSTTITLE', $post['post_title']);
+			define('POSTIMAGE', $post['post_image']);
 			$this->parser->setMultipleParserVars($post);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');
 		}

@@ -164,6 +164,10 @@ class CoursesController extends Controller {
 		->findAll();
 
 
+		define('COURSETITLE', $course['course_title']);
+		define('COURSEIMAGE', $course['course_image']);
+
+
 		$this->parser->setMultipleParserVars($course);
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');
 	}

@@ -84,16 +84,16 @@ class News extends Posts {
 	protected function afterRead($post) {
 		$post['postDetailUrl'] = sprintf("%s%s-%s,%u,%u,%u.html", 
 			$this->CmtPage->makePageFilePath($this->detailPageId),
-			strftime('%Y-%m-%d', strtotime($post['post_date'])),
+			strftime('%Y-%m-%d', strtotime($post['post_online_date'])),
 			Contentomat::makeNameWebSave($post['post_title']),
 			$this->currentCategoryId,
 			$this->currentPage,
 			$post['id']
 		);
 
-		$post['post_date_fmt_date'] = strftime('%d.%m.%Y', strtotime($post['post_date']));
-		$post['post_date_fmt_datetime'] = strftime('%d.%m.%Y %H:%M', strtotime($post['post_date']));
-		$post['post_time_fmt_time'] = strftime('%H:%M', strtotime($post['post_date']));
+		$post['post_date_fmt_date'] = strftime('%d.%m.%Y', strtotime($post['post_online_date']));
+		$post['post_date_fmt_datetime'] = strftime('%d.%m.%Y %H:%M', strtotime($post['post_online_date']));
+		$post['post_time_fmt_time'] = strftime('%H:%M', strtotime($post['post_online__date']));
 
 		$post['post_categories_fmt'] = '';
 		$categories = [];

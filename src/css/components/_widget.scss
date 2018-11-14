@@ -1,0 +1,30 @@
+/**
+ * src/css/components/_widget.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+.widget {
+
+	background: $primary-color-soft;
+	border-top: 4px solid $primary-color;
+	margin-bottom: $vertical-unit;
+	border-radius: $border-radius;
+
+	&__header {
+		padding: 0.5 * $vertical-unit $gutter 0.5 * $vertical-unit $gutter;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		
+	}
+
+	&__body {
+		padding: 0.5 * $vertical-unit $gutter 0.5 * $vertical-unit $gutter;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+	}
+}
+
+

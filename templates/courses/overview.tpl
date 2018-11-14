@@ -3,7 +3,9 @@
 	{LOOP VAR(Courses)}
 		<article class="course-teaser">
 			<figure class="course-teaser__image">
-				<img src="/media/courses/thumbnails/square/{VAR:course_image}" />
+				<a href="{VAR:course_detail_url}">
+					<img src="/media/courses/thumbnails/square/{VAR:course_image}" />
+				</a>
 			</figure>
 			<div class="course-teaser__body">
 				<header class="course-teaser__header">
@@ -14,7 +16,7 @@
 					</div>
 				</header>
 
-				<p class="course-teaser__action-area"> <a class="button" href="{VAR:course_detail_url}">Details</a></p>
+				<p class="course-teaser__action-area"> <a class="more" href="{VAR:course_detail_url}">Details</a></p>
 			</div>
 		</article>
 	{ENDLOOP VAR}
