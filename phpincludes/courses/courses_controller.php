@@ -165,7 +165,7 @@ class CoursesController extends Controller {
 
 
 		define('COURSETITLE', $course['course_title']);
-		define('COURSEIMAGE', $course['course_image']);
+		define('MOODIMAGE', '/media/courses/'.$course['course_image']);
 
 
 		$this->parser->setMultipleParserVars($course);

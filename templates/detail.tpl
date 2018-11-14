@@ -28,7 +28,7 @@
 
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
-	<div class="mood" style="background-image:url('/media/mlog/static/{CONSTANT:POSTIMAGE}');"></div>
+	<div class="mood" style="background-image:url('{CONSTANT:MOODIMAGE}');"></div>
 
 
 	<section class="main-container inner-bound">

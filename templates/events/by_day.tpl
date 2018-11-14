@@ -1,4 +1,4 @@
-<table class="courses-overview">
+<table class="courses-overview unstriped">
 	<caption><h2 class="headline">Veranstaltungen am {VAR:date_fmt}</h2></caption>
 	<tbody>
 		{LOOP VAR(events)}
