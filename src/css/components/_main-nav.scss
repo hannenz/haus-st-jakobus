@@ -43,7 +43,7 @@ $transition-duration: 250ms;
 			text-align: right;
 			color: #fff;
 			color: $primary-color;
-			@include type-setting(-1);
+			@include type-setting(0);
 		}
 	}
 
@@ -89,7 +89,7 @@ $transition-duration: 250ms;
 		text-decoration: none;
 		position: relative;
 		display: inline-block;
-		padding: 0 0.75 * $gutter;
+		padding: 0 $gutter;
 		height: 100%;
 		display: flex;
 
@@ -97,7 +97,7 @@ $transition-duration: 250ms;
 
 			transform: translateY(3px);
 			background: transparent;
-			@include type-setting (-1);
+			@include type-setting (0);
 			line-height: 1.5;
 			display: inline-block;
 			transition: 50ms;

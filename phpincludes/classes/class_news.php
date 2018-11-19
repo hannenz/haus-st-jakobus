@@ -91,7 +91,7 @@ class News extends Posts {
 			$post['id']
 		);
 
-		$post['post_date_fmt_date'] = strftime('%d.%m.%Y', strtotime($post['post_online_date']));
+		$post['post_date_fmt_date'] = strftime('%a. %d. %b %Y', strtotime($post['post_online_date']));
 		$post['post_date_fmt_datetime'] = strftime('%d.%m.%Y %H:%M', strtotime($post['post_online_date']));
 		$post['post_time_fmt_time'] = strftime('%H:%M', strtotime($post['post_online__date']));
 

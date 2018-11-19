@@ -1,0 +1,35 @@
+/**
+ * src/css/components/_teaser.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+
+.teaser {
+	@include media-object-container;
+	// margin-bottom: 1 * $vertical-unit;
+
+
+	&__image {
+		@include media-object-section;
+		@include media-object-stack;
+		width: 200px;
+		flex: 0 1 auto;
+	}
+
+	&__body {
+		@include media-object-section;
+		@include media-object-stack;
+		flex: 1;
+	}
+
+	&__meta {
+		text-color: $light-grey;
+	}
+
+	&__action-area {
+		margin-top: $vertical-unit;
+	}
+}
+
+

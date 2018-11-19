@@ -14,7 +14,10 @@
 	&__header {
 		padding: 0.5 * $vertical-unit $gutter 0.5 * $vertical-unit $gutter;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-		
+	}
+
+	&__title {
+		color: $text-color-dark;
 	}
 
 	&__body {

@@ -7,9 +7,13 @@
 //////////////
 
 $primary-color: #af1e23;
-$primary-color-soft: tint($primary-color, 80%); // #f7e8e8;
-$text-color: #303036;
+$primary-color-soft: tint($primary-color, 80%);
+
+
+
+$text-color: lighten(#303036, 5%);
 $text-color-light: lighten($text-color, 15%);
+$text-color-dark: darken($text-color, 15%);
 $dark-grey: darken(#505852, 10%);
 $medium-grey: tint($dark-grey, 40%);
 $light-grey: #f0f0f0; //tint($dark-grey, 90%);
@@ -22,10 +26,12 @@ $light-grey: #f0f0f0; //tint($dark-grey, 90%);
 
 $bourbon: (
 	"modular-scale-base": 1rem,
-	"modular-scale-ratio": $perfect-fourth
+	"modular-scale-ratio": $augmented-fourth
 );
-$vertical-unit: 1.3rem;
+$vertical-unit: 1.35rem;
 $visual-base-line-grid-above: false;
+$min-font-size: 12px;
+$max-font-size: 17px;
 
 
 
@@ -34,7 +40,7 @@ $visual-base-line-grid-above: false;
 ////////////////
 
 $gutter: 1rem;
-$inner-bound-width: 60rem;
+$inner-bound-width: 80rem;
 
 
 

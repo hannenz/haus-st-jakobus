@@ -84,6 +84,9 @@ use \Contentomat\DBCex;
 	 */
 	$pid = $page->getPageID();
 	$lang = $page->getPageLang();
+	if ($lang == 'de') {
+		$loc = setlocale(LC_TIME, 'de_DE.UTF-8');
+	}
 	
 	$selfURL = SELF;
 	if (CMT_FORCECOOKIES == '0') {

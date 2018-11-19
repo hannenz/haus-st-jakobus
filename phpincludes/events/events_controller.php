@@ -80,6 +80,7 @@ class EventsController extends Controller {
 				$this->parser->setMultipleParserVars([
 					'month' => $month,
 					'month_fmt' => strftime('%B', strtotime(sprintf("%04u-%02u-01", $currentYear, $month))),
+					'year' => $currentYear
 				]);	
 
 				$this->parser->setParserVar('events', $events);

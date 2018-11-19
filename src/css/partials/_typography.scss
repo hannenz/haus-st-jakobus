@@ -44,7 +44,7 @@
 
 html {
 	// Fluid type
-	@include fluid-type (font-size, $bp1, $bp3, 12px, 18px);
+	@include fluid-type (font-size, $bp1, $bp3, $min-font-size, $max-font-size);
 }
 
 body {
@@ -57,10 +57,23 @@ body {
 }
 
 .headline {
-	@include type-setting(1);
+	@include type-setting(1, 1);
 	margin-top: 2 * $vertical-unit;
-	margin-bottom: 1 * $vertical-unit;
 	line-height: $vertical-unit;
+	color: $text-color-dark;
+	font-weight: 600;
+
+	&--small {
+		@include type-setting(0, 0);
+	}
+
+	&--large {
+		@include type-setting(2, 0);
+	}
+}
+
+.kicker {
+	color: $primary-color;
 }
 
 :first-child .headline:first-of-type {

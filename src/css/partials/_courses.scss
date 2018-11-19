@@ -95,11 +95,12 @@ table.courses-overview {
 
 .course-teaser {
 	@include media-object-container;
+	margin-bottom: 2 * $vertical-unit;
 
 	&__image {
 		@include media-object-section;
 		@include media-object-stack;
-		width: 33%;
+		width: 200px;
 		flex: 0 1 auto;
 	}
 

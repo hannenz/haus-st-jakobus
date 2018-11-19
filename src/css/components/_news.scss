@@ -1,3 +1,10 @@
+/**
+ * src/css/components/_news.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+
 .post {
 
 	&--teaser {
@@ -9,7 +16,7 @@
 	}
 
 	&__meta {
-		@include type-setting(-1, 0);
+		@include type-setting(0, 0);
 		color: $medium-grey;
 		margin-bottom: 0;
 		line-height: 1.25;
@@ -28,10 +35,11 @@
 	}
 
 	.back {
-		@include type-setting(-1, 0);
+		@include type-setting(0, 0);
 	}
-
 }
+
+
 
 .news-teaser {
 	@include media-object-container;
@@ -51,7 +59,7 @@
 	}
 
 	&__meta {
-		@include type-setting(-1, 0);
+		@include type-setting(0, 0);
 		color: lighten($text-color-light, 35%);
 		margin-bottom: 0;
 	}
@@ -77,7 +85,7 @@
 	}
 
 	.more {
-		@include type-setting(-1);
+		@include type-setting(0);
 		&::after {
 			content: '';
 			position: absolute;
@@ -93,7 +101,7 @@
 }
 
 .sidebar {
-	.news-teaser {
+	.teaser {
 		flex-wrap: wrap;
 
 		&__meta {

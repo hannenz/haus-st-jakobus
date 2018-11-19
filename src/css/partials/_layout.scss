@@ -53,10 +53,12 @@ body {
 	overflow: hidden;
 }
 
+$sidebar-width: 18rem;
+
 .sidebar {
 	order: 2;
-	flex: 0 0 15rem;
-	width: 15rem;
+	flex: 0 0 $sidebar-width;
+	width: $sidebar-width;
 
 	// Position sticky inside flex container:
 	// https://stackoverflow.com/a/44446672
@@ -67,7 +69,7 @@ body {
 	top: 4 * $vertical-unit;
 	// background-color: rgba(skyblue, 0.2);
 
-	@include type-setting(-1);
+	// @include type-setting(-1);
 }
 
 

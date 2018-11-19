@@ -1,4 +1,4 @@
-<h2 class="headline">Kurse nach Kategorie</h2>
+<h2 class="headline headline--large">Kurse nach Kategorie</h2>
 <ul>
 	{LOOP VAR(categories)}
 		<li>
