@@ -29,13 +29,15 @@
 	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 	{IF("{PAGEID}" == "2")}
-	<div class="hero" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');">
-		<div class="inner-bound">
-			<blockquote class="hero__title">
-				Kommt und ruht ein wenig aus &hellip;
-			</blockquote>
-		</div>
-	</div>
+		{INCLUDE:PATHTOWEBROOT."phpincludes/slider/homepageslider_controller.php"}
+
+	<!-- <div class="hero" style="background&#45;image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"> -->
+	<!-- 	<div class="inner&#45;bound"> -->
+	<!-- 		<blockquote class="hero__title"> -->
+	<!-- 			Kommt und ruht ein wenig aus &#38;hellip; -->
+	<!-- 		</blockquote> -->
+	<!-- 	</div> -->
+	<!-- </div> -->
     {ELSE}
 		<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
 	{ENDIF}

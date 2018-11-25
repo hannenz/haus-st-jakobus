@@ -43,8 +43,25 @@ function APP () {
 		self.headerHeight = rect.height;
 		window.addEventListener ('scroll', self.onWindowScroll);
 
+		this.initHomepageSlider();
 		this.initCalendarWidget();
+	};
 
+	this.initHomepageSlider = function() {
+
+		var $homepageSlider = $('.homepage-slider');
+		if ($homepageSlider.length == 1) {
+			self.HomepageSlider = new Foundation.Orbit($homepageSlider, {
+				autoPlay: true,
+				timerDelay: 6000,
+				animInFromLeft: 'fade-in',
+				animInFromRight: 'fade-in',
+				animOutToLeft: 'fade-out',
+				animOutToRight: 'fade-out',
+				containerClass: 'homepage-slider__container',
+				slideClass: 'homepage-slider__slide'
+			});
+		}
 	};
 
 
