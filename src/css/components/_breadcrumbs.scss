@@ -17,11 +17,11 @@ ul.breadcrumbs {
 			padding-left: 2rem;
 		}
 
-		background-color: $light-grey;
+		background-color: $grey7; //$light-grey;
 		position: relative;
 		margin-right: 0.5em;
 		height: 48px;
-		padding: 0 1rem;
+		padding: 0 1rem 0 1.75rem;
 		flex: 0 0 auto;
 
 		&:last-child {
@@ -54,8 +54,8 @@ ul.breadcrumbs {
 			position: absolute;
 			width: 0;
 			height: 0;
-			border: 24px solid rgba($light-grey, 0);
-			border-left: 10px solid rgba($light-grey, 1);
+			border: 24px solid rgba($grey7, 0);
+			border-left: 10px solid rgba($grey7, 1);
 			right: -34px;
 			top: 0;
 		}

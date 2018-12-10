@@ -6,17 +6,33 @@
 //  Colors  //
 //////////////
 
-$primary-color: #af1e23;
-$primary-color-soft: tint($primary-color, 80%);
 
+/////////////////////////
+//  New color palette  //
+/////////////////////////
 
+$grey1: #111;
+$grey2: #2e3436;
+$grey3: #555753;
+$grey4: #888a85;
+$grey5: #babdb6;
+$grey6: #d3d7cf;
+$grey7: #eeeeec;
 
-$text-color: lighten(#303036, 5%);
-$text-color-light: lighten($text-color, 15%);
-$text-color-dark: darken($text-color, 15%);
-$dark-grey: darken(#505852, 10%);
-$medium-grey: tint($dark-grey, 40%);
-$light-grey: #f0f0f0; //tint($dark-grey, 90%);
+$red1: #af1e23;
+$red2: #ea8082;
+$red3: #efd2d3;
+$red4: #faecec;
+
+$primary-color: $red1;
+$primary-color-soft: $red3;
+
+$text-color: $grey2;
+$text-color-light: $grey4;
+$text-color-dark: $grey1;
+$dark-grey: $grey1;
+$medium-grey: $grey4;
+$light-grey: $grey6;
 
 
 
@@ -26,7 +42,7 @@ $light-grey: #f0f0f0; //tint($dark-grey, 90%);
 
 $bourbon: (
 	"modular-scale-base": 1rem,
-	"modular-scale-ratio": $augmented-fourth
+	"modular-scale-ratio": 1.6 //$augmented-fourth
 );
 $vertical-unit: 1.35rem;
 $visual-base-line-grid-above: false;

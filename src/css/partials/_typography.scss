@@ -61,7 +61,7 @@ body {
 	margin-top: 2 * $vertical-unit;
 	line-height: $vertical-unit;
 	color: $text-color-dark;
-	font-weight: 600;
+	font-weight: 700;
 
 	&--small {
 		@include type-setting(0, 0);

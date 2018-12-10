@@ -8,7 +8,7 @@
 	<meta name="keywords" content="{PAGEVAR:cmt_meta_keywords:recursive}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/favicon.png" />
+	<link rel="shortcut icon" href="/dist/img/favicon.png" />
 
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
 

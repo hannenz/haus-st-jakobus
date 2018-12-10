@@ -8,7 +8,7 @@
 	
 }
 
-.orbit-controls  {
+.orbit-controls {
 
 	button {
 		@include button-reset;
@@ -92,6 +92,9 @@
 
 	&__caption {
 		position: relative;
+		max-width: $inner-bound-width;
+		margin: 0 auto;
+		height: 100%;
 		// @include inner-bound;
 	}
 

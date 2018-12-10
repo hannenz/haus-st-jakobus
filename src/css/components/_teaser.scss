@@ -7,13 +7,15 @@
 
 .teaser {
 	@include media-object-container;
-	// margin-bottom: 1 * $vertical-unit;
-
+	margin-bottom: 2 * $vertical-unit;
 
 	&__image {
 		@include media-object-section;
 		@include media-object-stack;
-		width: 200px;
+
+		padding-right: 2 * $gutter !important;
+
+		width: 300px;
 		flex: 0 1 auto;
 	}
 
@@ -24,12 +26,15 @@
 	}
 
 	&__meta {
-		text-color: $light-grey;
+		color: $grey4;
 	}
 
 	&__action-area {
 		margin-top: $vertical-unit;
 	}
-}
 
+	.headline.headline {
+		margin: 16px 0;
+	}
+}
 

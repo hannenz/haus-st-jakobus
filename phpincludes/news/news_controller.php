@@ -73,16 +73,6 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 		public function actionDefault() {
 
-			// $this->Paging = new Paging();
-			// $result = $this->Paging->makePaging([
-			// 	'pagingLinks' => 10,
-			// 	'entriesPerPage' => 10,
-			// 	'totalEntries' => 1000,
-			// 	'currentPage' => 1
-			// ]);
-			// var_dump($result); die();
-
-
 			$currentPage = $this->News->getCurrentPage();
 			$categoryId = $this->News->getCurrentCategoryId();
 
@@ -116,14 +106,13 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 			for ($i = 1; $i <= $countPages; $i++) {
 				$pagingLinks[] = [
-					
-						'pagingLink' => sprintf('%s/%s,%u,%u.html',
-							$this->CmtPage->makePageFilePath(),
-							$this->CmtPage->makePageFileName(),
-							$categoryId,
-							$i),
-						'iter' => $i,
-						'isCurrent' => $i == $currentPage ? 1 : 0
+					'pagingLink' => sprintf('%s/%s,%u,%u.html',
+						$this->CmtPage->makePageFilePath(),
+						$this->CmtPage->makePageFileName(),
+						$categoryId,
+						$i),
+					'iter' => $i,
+					'isCurrent' => $i == $currentPage ? 1 : 0
 				];
 			}
 
@@ -151,6 +140,18 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 			define('POSTTITLE', $post['post_title']);
 			define('MOODIMAGE', '/media/mlog/static/'.$post['post_image']);
+
+
+			if ($post['hasMedia']) {
+				if ($post['hasMedia']['hasimage']) {
+					$this->parser->setMultipleParserVars([
+						'hasImage' => $post['hasMedia']['hasimage'],
+						'images' => $post['postMedia']['image']
+					]);
+				}
+				// ..
+			}
+
 			$this->parser->setMultipleParserVars($post);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');
 		}
