@@ -8,14 +8,18 @@
 .teaser {
 	@include media-object-container;
 	margin-bottom: 2 * $vertical-unit;
+	flex-wrap: wrap;
 
 	&__image {
 		@include media-object-section;
 		@include media-object-stack;
 
-		padding-right: 2 * $gutter !important;
+		padding-right: 0;
 
-		width: 300px;
+		@include for-size(tablet-landscape-up) {
+			padding-right: 2 * $gutter !important;
+			width: 300px;
+		}
 		flex: 0 1 auto;
 	}
 

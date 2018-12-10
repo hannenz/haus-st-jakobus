@@ -67,8 +67,9 @@
 @import "components/teaser";
 
 .error {
-	outline: 1px solid firebrick;
-	background-color: rgba(firebrick, 0.2);
+	outline: 1px solid $red1;
+	background-color: $red3;
+	color: $red1;
 }
 
 
@@ -78,8 +79,8 @@
 
 	figure {
 		height: 300px;
-		overflow:hidden;
-		width:  48%;
+		overflow: hidden;
+		width: 48%;
 	}
 
 	img {

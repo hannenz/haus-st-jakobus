@@ -2,15 +2,15 @@
 
 - Test git webhook
 
-- Header: Muschel groß, beim Scrollen klein
+[✓] - Header: Muschel groß, beim Scrollen klein
 - MLog: Resize/ thumbnails on upload
 - MLog: Zurück Button falsch velinkt
 - Courses: Pagination
 - Giropay
 - Benachrichtigungsmails: Footer mit Sende-Daten... (`{EVAL}sprintf("[%s] %s", $_REQUEST['SERVER_NAME'], strftime(...)){ENDEVAL}`)
-- Programm: Tabellenlayouts
+[✓] - Programm: Tabellenlayouts
 - Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
-- Newsletter
+- Newsletter: PageMailer einrichten
 - Favicon
 - Programm-Übersicht: Paginieren
 - Programm: Veranstaltungslinks falsch
@@ -29,15 +29,15 @@
 
 Besprechen / Klären
 
-- Hosting: Hosteurope Virtual Server Starter + SSL Zert.:
-	>> 9.99 + 2.49 mtl.
+[✓] - Hosting: Hosteurope Virtual Server Starter + SSL Zert.:
+[✓] >> 9.99 + 2.49 mtl.
 
-- grobe visuelle Linie, kurz zeigen
+[✓] - grobe visuelle Linie, kurz zeigen
 
-	- Typografie und Details sind nicht final
-	- Idee z. Bsp. auch Bilderwechsler auf Startseite als Hero / Mood
+	[✓] - Typografie und Details sind nicht final
+	[✓] - Idee z. Bsp. auch Bilderwechsler auf Startseite als Hero / Mood
 
-- Einrichtung Staging zur weiteren Abstimmung (geht dann schneller)
+[✓] - Einrichtung Staging zur weiteren Abstimmung (geht dann schneller)
 
 - weiteres Timing:
 

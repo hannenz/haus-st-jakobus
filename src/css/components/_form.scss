@@ -8,6 +8,7 @@
 form {
 	.fieldset {
 		#{$all-text-inputs} {
+			border: 1px solid $grey6;
 		}
 		input, textarea, label, .help-text {
 		}
@@ -15,13 +16,15 @@ form {
 }
 
 .fieldset {
-	background-color: $light-grey;//$primary-color-soft;
+	background-color: $grey7;//$primary-color-soft;
 	border: none;
+	box-shadow: 0 0 6px $grey5;
 	/* margin-bottom: $vertical-unit; */
 	legend {
 		background-color: $primary-color;
+		background-color: $grey3;
 		color: #fff;
-		padding: 4px 6px;
+		padding: 6px 10px;
 	}
 }
 
