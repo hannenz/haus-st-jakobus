@@ -57,18 +57,18 @@ body {
 }
 
 .headline {
-	@include type-setting(1, 1);
+	@include type-setting(2, 1);
 	margin-top: 2 * $vertical-unit;
 	line-height: $vertical-unit;
 	color: $text-color-dark;
 	font-weight: 700;
 
 	&--small {
-		@include type-setting(0, 0);
+		@include type-setting(1, 0);
 	}
 
 	&--large {
-		@include type-setting(2, 0);
+		@include type-setting(3, 0);
 	}
 }
 
@@ -81,8 +81,8 @@ body {
 }
 
 .subheadline {
-	@include type-setting(0);
-	margin-top: $vertical-unit;
+	@include type-setting(1);
+	margin-top: 3 * $vertical-unit;
 	margin-bottom: 0;
 }
 
