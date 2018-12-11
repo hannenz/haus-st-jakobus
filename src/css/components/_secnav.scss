@@ -6,40 +6,37 @@
  */
 .secnav {
 
+	visibility: hidden;
+	height: 0;
+	@include for-size(tablet-landscape-up) {
+		visibility: visible;
+		height: auto;
+	}
+
+	color: $primary-color;
+	.widget__title {
+		display: flex;
+		align-items: center;
+	}
+
+	svg {
+		width: 10px;
+		height: 10px;
+		fill: currentColor;
+	}
+
 	.menu {
 		list-style: none;
 	}
 
-	.menu__item {
-
-		&:first-child {
-			margin-bottom: 0.5 * $vertical-unit;
-			padding-bottom: 0.5 * $vertical-unit;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-		}
-
-		&:first-child .menu__link {
-			font-weight: bold;
-		}
-
-		&:first-child .menu__link::before {
-			/* visibility: visible; */
-			transform: rotate(-90deg);
-			top: 6px;
-		}
-	}
-
 	.menu__link {
-		display: inline-block;
 		padding-left: 1em;
-		position: relative;
-		color: $primary-color;
 		position: relative;
 		&::before {
 			content: '';
 			position: absolute;
 			left: 0;
-			top: 13px;
+			top: 16px;
 			transform: translateY(-50%);
 			border: 5px solid rgba($primary-color, 0);
 			border-left: 10px solid rgba($primary-color, 1);
@@ -47,11 +44,14 @@
 			height: 0;
 			visibility: hidden;
 		}
-
-
-
 	}
 
+	// .widget__header .menu__link::before {
+	// 	transform-origin: top center;
+	// 	transform: rotate(-90deg);
+	// 	visibility: visible;
+	// }
+  
 	.is-active {
 		&::before {
 			visibility: visible;
