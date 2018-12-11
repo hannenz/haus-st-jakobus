@@ -8,10 +8,10 @@
 $footer-text-color: lighten($dark-grey, 66%);
 .main-footer {
 	padding: calc(#{$vertical-unit} + 32px) 0 #{$vertical-unit} 0;
-	background-color: $dark-grey;
+	background-color: $grey2;
 	color: $footer-text-color;
 	position: relative;
-	@include type-setting(-1);
+	@include type-setting(0);
 
 	a {
 		color: $footer-text-color;
@@ -23,6 +23,10 @@ $footer-text-color: lighten($dark-grey, 66%);
 
 	&__inner {
 		display: flex;
+
+		@include for-size(desktop-up) {
+			padding: 0 2 * $gutter;
+		}
 	}
 
 	.footer-column {
