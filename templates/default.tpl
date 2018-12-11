@@ -43,13 +43,15 @@
 	{ENDIF}
 
 
-	<section class="main-container inner-bound">
+	<section id="main-container" class="main-container inner-bound" data-sticky-container>
 		{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
 			<div class="main-content">
 				{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 			</div>
 			<aside class="sidebar">
-				{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+				<div class="sticky" data-sticky data-margin-top="5" data-top-anchor="main-container">
+					{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+				</div>
 			</aside>
 	</section>
 
