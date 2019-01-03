@@ -23,6 +23,11 @@ $footer-text-color: lighten($dark-grey, 66%);
 
 	&__inner {
 		display: flex;
+		flex-wrap: wrap;
+
+		@include for-size(tablet-portrait-up) {
+			flex-wrap: nowrap;
+		}
 
 		@include for-size(desktop-up) {
 			padding: 0 2 * $gutter;
@@ -30,17 +35,20 @@ $footer-text-color: lighten($dark-grey, 66%);
 	}
 
 	.footer-column {
-		width: calc(100% / 3 - #{$gutter});
+		width: 100%;
+		@include for-size(tablet-portrait-up) {
+			width: calc(100% / 3 - #{$gutter});
+		}
 
-		&:nth-child(1) {
-			order: 1;
-		}
-		&:nth-child(2) {
-			order: 2;
-		}
-		&:nth-child(3) {
-			order: 3;
-		}
+		// &:nth-child(1) {
+		// 	order: 1;
+		// }
+		// &:nth-child(2) {
+		// 	order: 2;
+		// }
+		// &:nth-child(3) {
+		// 	order: 3;
+		// }
 	}
 
 	blockquote {
