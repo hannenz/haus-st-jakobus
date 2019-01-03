@@ -20,7 +20,6 @@ SASS_COMPILER_OPTIONS:=-t compressed -g -I node_modules/foundation-sites/scss:no
 
 
 
-
 JS_COMPRESSOR:=uglifyjs
 JS_COMPRESSOR_OPTIONS:=--compress --
 
@@ -68,8 +67,12 @@ COPYDIRS = fonts
 
 # Vendor files to be copied
 # You might want to add stuff like `node_modules/jquery/dist/jquery.min.js`
-JS_VENDOR_FILES = $(shell find $(JS_SRC_DIR)/vendor -type f -iname '*.js'))
-CSS_VENDOR_FILES = $(shell find $(CSS_SRC_DIR)/vendor -type f -iname '*.css'))
+JS_VENDOR_FILES = $(shell find $(JS_SRC_DIR)/vendor -type f -iname '*.js') \
+				  $(shell find ./node_modules/foundation-sites/dist/js/ -type f -iname '*.js') \
+				  ./node_modules/jquery/dist/jquery.min.js \
+				  ./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js
+
+CSS_VENDOR_FILES = $(shell find $(CSS_SRC_DIR)/vendor -type f -iname '*.css')
 JS_VENDOR_DEST = $(DIST)/js/vendor
 CSS_VENDOR_DEST = $(DIST)/css/vendor
 
@@ -248,14 +251,16 @@ $(COPYDIRS):
 jsvendor: $(JS_VENDOR_FILES)
 $(JS_VENDOR_FILES):
 	@echo "Copying js vendor file: $@"
-	@cp -af $@ $(JS_VENDOR_DEST)
+	@mkdir -p $(JS_VENDOR_DEST)
+	@cp -af $@ $(JS_VENDOR_DEST)/
 
 
 
 cssvendor: $(CSS_VENDOR_FILES)
 $(CSS_VENDOR_FILES):
 	@echo "Copying css vendor file: $@"
-	@cp -af $@ $(CSS_VENDOR_DEST)
+	@mkdir -p $(CSS_VENDOR_DEST)
+	@cp -af $@ $(CSS_VENDOR_DEST)/
 
 
 

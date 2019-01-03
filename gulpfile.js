@@ -59,7 +59,7 @@ var svgoOptions = {
 
 // project settings (enhance if you need to ;-) )
 var settings = {
-	
+
 	browserSync: {
 		proxy:	'https://' + pkg.name + '.localhost',
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
@@ -69,7 +69,7 @@ var settings = {
 			cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
 		}
 	},
-	
+
 	css: {
 		src: './src/css/**/*.scss',
 		dest: pkg.project_settings.prefix + 'css/',
