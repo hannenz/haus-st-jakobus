@@ -28,11 +28,12 @@
 		vertical-align: middle;
 		font-size: 0.8125em;
 		margin-right: 0.5em;
-	}
-
-	&:hover::before {
 		display: inline-block;
 	}
+
+	// &:hover::before {
+	// 	display: inline-block;
+	// }
 }
 
 .back::before {
