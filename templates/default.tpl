@@ -22,41 +22,44 @@
 	{ENDIF}
 </head>
 <body id="top" class="debug-base-line-grid--is-visible">
-	<div class="debug-base-line-grid"> </div>
-	<!-- Inject SVG sprites -->
-	<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
+	<div class="outer-container">
+		
+		<div class="debug-base-line-grid"> </div>
+		<!-- Inject SVG sprites -->
+		<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
 
-	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
+		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
-	{IF("{PAGEID}" == "2")}
-		{INCLUDE:PATHTOWEBROOT."phpincludes/slider/homepageslider_controller.php"}
+		{IF("{PAGEID}" == "2")}
+			{INCLUDE:PATHTOWEBROOT."phpincludes/slider/homepageslider_controller.php"}
 
-	<!-- <div class="hero" style="background&#45;image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"> -->
-	<!-- 	<div class="inner&#45;bound"> -->
-	<!-- 		<blockquote class="hero__title"> -->
-	<!-- 			Kommt und ruht ein wenig aus &#38;hellip; -->
-	<!-- 		</blockquote> -->
-	<!-- 	</div> -->
-	<!-- </div> -->
-    {ELSE}
-		<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
-	{ENDIF}
+		<!-- <div class="hero" style="background&#45;image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"> -->
+		<!-- 	<div class="inner&#45;bound"> -->
+		<!-- 		<blockquote class="hero__title"> -->
+		<!-- 			Kommt und ruht ein wenig aus &#38;hellip; -->
+		<!-- 		</blockquote> -->
+		<!-- 	</div> -->
+		<!-- </div> -->
+		{ELSE}
+			<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
+		{ENDIF}
 
 
-	<section id="main-container" class="main-container inner-bound" data-sticky-container>
-		{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
-			<div class="main-content">
-				{LOOP CONTENT(1)}{ENDLOOP CONTENT}
-			</div>
-			<aside class="sidebar">
-				<div class="sticky" data-sticky data-margin-top="5" data-top-anchor="main-container">
-					{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+		<section id="main-container" class="main-container inner-bound" data-sticky-container>
+			{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
+				<div class="main-content">
+					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
-			</aside>
-	</section>
+				<aside class="sidebar">
+					<div class="sticky" data-sticky data-margin-top="5" data-top-anchor="main-container">
+						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+					</div>
+				</aside>
+		</section>
 
-	{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
+		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 
+	</div>
 	{IF(!{LAYOUTMODE})}
 		<script src="/dist/js/main.min.js"></script>
 	{ENDIF}

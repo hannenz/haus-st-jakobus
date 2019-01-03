@@ -22,26 +22,29 @@
 	{ENDIF}
 </head>
 <body id="top" class="debug-base-line-grid--is-visible">
-	<div class="debug-base-line-grid"> </div>
-	<!-- Inject SVG sprites -->
-	<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
+	<div class="outer-container">
+		
+		<div class="debug-base-line-grid"> </div>
+		<!-- Inject SVG sprites -->
+		<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
 
-	{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
+		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
-	<div class="mood" style="background-image:url('{CONSTANT:MOODIMAGE}');"></div>
+		<div class="mood" style="background-image:url('{CONSTANT:MOODIMAGE}');"></div>
 
 
-	<section class="main-container inner-bound">
-		{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
-			<div class="main-content">
-				{LOOP CONTENT(1)}{ENDLOOP CONTENT}
-			</div>
-			<aside class="sidebar">
-				{LOOP CONTENT(2)}{ENDLOOP CONTENT}
-			</aside>
-	</section>
+		<section class="main-container inner-bound">
+			{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
+				<div class="main-content">
+					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
+				</div>
+				<aside class="sidebar">
+					{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+				</aside>
+		</section>
 
-	{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
+		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
+	</div>
 
 	{IF(!{LAYOUTMODE})}
 		<script src="/dist/js/main.min.js"></script>
