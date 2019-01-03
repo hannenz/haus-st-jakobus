@@ -3,9 +3,9 @@
 		<h3 class="widget__title">Kurse</h3>
 	</div>
 	<div class="widget__body">
-		<ul>
+		<ul class="menu">
 			{LOOP VAR(course_categories)}
-				<li>
+				<li class="menu__item">
 					<a href="{VAR:course_overview_url}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
 				</li>
 			{ENDLOOP VAR}
