@@ -1,6 +1,5 @@
 <?php
 namespace Jakobus;
-
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
@@ -52,7 +51,7 @@ class CourseCalendarWidgetController extends Controller {
 		}
 
 		if ($this->pageId == $this->widgetPageId) {
-			$this->action = 'getCalendatWidget';
+			$this->action = 'getCalendarWidget';
 		}
 	}
 
@@ -67,7 +66,7 @@ class CourseCalendarWidgetController extends Controller {
 			$beginTs = strtotime($event['event_begin']);
 			$endTs = strtotime($event['event_end']);
 			for ($ts = $beginTs; $ts < $endTs; $ts += 86400) {
-				$dayOfMonth = strftime('%d', $ts);
+				$dayOfMonth = (int)strftime('%d', $ts);
 				$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
 			}
 
@@ -83,7 +82,8 @@ class CourseCalendarWidgetController extends Controller {
 				$this->CmtPage->makePageFileName($this->Event->getOverviewPageId())
 			),
 			'year' => $year,
-			'month' => $month
+			'month' => $month,
+			'linkPastDays' => true
 		]);
 		$this->parser->setMultipleParserVars([
 			'calendarContent' => $calendarContent,

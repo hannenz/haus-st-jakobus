@@ -45,12 +45,12 @@ table.courses-overview {
 	dd {
 		margin-bottom: 0.5 * $vertical-unit;
 		padding-bottom: 0.5 * $vertical-unit;
-		border-bottom: 1px solid $light-grey;
+		// border-bottom: 1px solid $light-grey;
 	}
 }
 
 .course__footer {
-	@include type-setting(-1);
+	// @include type-setting(-1);
 }
 
 .course__events {

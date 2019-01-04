@@ -47,13 +47,25 @@
 
 						{IF(!empty("{VAR:event_remark}"))}<div class="event_remark">{VAR:event_remark}</div>{ENDIF}
 						{IF("{VAR:event_needs_registration}" == "1")}
-							<div>Noch {VAR:EventSeatsLeft} Plätze frei</div>
-							<div>Anmeldung erforderlich bis {VAR:event_registration_before_fmt}</div>
+
+							<p>
+							{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
+							{IF("{VAR:event_seats_available}" > "0")}
+								Noch {VAR:event_seats_available} Plätze frei
+							{ELSE}
+								Diese Veranstaltung ist ausgebucht
+							{ENDIF}
+							<p>
+
+							{IF("{VAR:event_registration_before}" != "0000-00-00")}
+								<p>Anmeldung erforderlich bis {VAR:event_registration_before_fmt}</p>
+							{ENDIF}
 						{ELSE}
 							<div>Eine Anmeldung ist nicht erforderlich</div>
 						{ENDIF}
 					</td>
 					<td>
+						<!-- <a class="more" href="{VAR:event_detail_url}">Details</a><br> -->
 						<a class="more" href="{VAR:event_subscribe_url}">Anmelden</a>
 					</td>
 				</tr>

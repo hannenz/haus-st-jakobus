@@ -94,6 +94,7 @@ class CoursesController extends Controller {
 
 	public function actionListByCategory() {
 		$categoryId = $this->getvars ['categoryId'];
+		$category = $this->CourseCategory->findById($categoryId);
 
 		$courses = $this->Course
 			->filter([
@@ -103,9 +104,9 @@ class CoursesController extends Controller {
 			->limit()
 			->findAll(['fetchAssociations' => false]);
 
-		$this->parser->setParserVar('courses', $courses);
-		$this->parser->setParserVar('categories', $this->CourseCategory->findAll());
-
+		$category['Courses'] = $courses;
+		$categories = [ $category ];
+		$this->parser->setParserVar('categories', $categories);
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'overview.tpl');
 	}
 
@@ -118,20 +119,6 @@ class CoursesController extends Controller {
 		$categories = $this->CourseCategory->findAll([
 			'fetchAssociations' => true
 		]);
-		// Debug::debug ($categories);
-		// die ();
-		// foreach ($categories as &$category) {
-		// 	$category['courses_in_category'] = $this->Course
-		// 		->filter([
-		// 			'course_category_id' => $category['id'],
-		// 			'course_is_active' => true
-		// 		])
-		// 		->findAll ([
-		// 			'fetchAssociations' => false
-		// 		])
-		// 	;
-		// }
-
 		$this->parser->setParserVar('categories', $categories);
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'by_category.tpl');
 	}
@@ -159,7 +146,8 @@ class CoursesController extends Controller {
 		->findOne();
 
 		$course['course_events'] = $this->Event->filter([
-			'event_course_id' => $course['id']
+			'event_course_id' => $course['id'],
+			'event_begin >' => "'" . strftime("%Y-%m-%d 00:00:00") . "'"
 		])
 		->findAll();
 

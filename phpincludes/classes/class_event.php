@@ -11,11 +11,21 @@ class Event extends Model {
 	 */
 	private $registrationsPageId = 35;
 
-
 	/**
 	 * @var int
 	 */
 	private $overviewPageId = 38;
+
+	/**
+	 * @var int
+	 */
+	private $detailPageId = 44;
+
+	/**
+	 * @var int
+	 */
+	private $courseDetailPageId = 42;
+
 
 	/**
 	 * @var Jakobus\Course
@@ -99,6 +109,34 @@ class Event extends Model {
 	}
 
 
+
+	/**
+	 * Find events at a given day
+	 * Will also find events that are in progress at a given day (which
+	 * findByPeriod does not)
+	 *
+	 * @param int year
+	 * @param int month
+	 * @param int day
+	 * @return array
+	 * @access public
+	 */
+	public function findByDay($year, $month, $day) {
+		$query = sprintf("SELECT * FROM jakobus_events WHERE '%4u-%02u-%02u' BETWEEN event_begin AND event_end", $year, $month, $day);
+		if ($this->db->query($query) !== 0) {
+			throw new Exception("Query failed: " . $query);
+		}
+
+		$events = $this->db->getAll();
+		foreach ($events as &$event) {
+			$event = $this->afterRead($event);
+		}
+
+		return $events;
+	}
+
+
+
 	public function getPast() {
 		$events = $this->filter([
 			'event_end <' => 'NOW()'
@@ -170,37 +208,49 @@ class Event extends Model {
 		$event['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_begin']));
 		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_end']));
 
-		if ($event['event_end'] == '0000-00-00 00:00:00') {
+		// Test if begin and end date are at the same day
+		$y1 = date('y', strtotime($event['event_begin']));
+		$m1 = date('m', strtotime($event['event_begin']));
+		$d1 = date('d', strtotime($event['event_begin']));
+		$y2 = date('y', strtotime($event['event_end']));
+		$m2 = date('m', strtotime($event['event_end']));
+		$d2 = date('d', strtotime($event['event_end']));
+		if ($y1 == $y2 && $m1 == $m2 && $d1 == $d2) {
+		// if ($event['event_end'] == '0000-00-00 00:00:00') {
 			$event['event_date_fmt'] = strftime ('%a, %d.%m.%Y', strtotime ($event['event_begin']));
 		}
 		else {
 			$event['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
-				$event['event_begin_fmt'] = strftime ('%d.%m.', strtotime ($event['event_begin'])),
-				$event['event_end_fmt'] = strftime ('%d.%m.', strtotime ($event['event_end']))
+				strftime ('%d.%m.', strtotime ($event['event_begin'])),
+				strftime ('%d.%m.', strtotime ($event['event_end']))
 			);
 		}
 
 		$event['event_registration_before_fmt'] = strftime('%d.%m.%Y', strtotime($event['event_registration_before']));
+		if (!empty($event['event_course_id'])) {
+			$course = $this->Course->filter([
+				'id' => $event['event_course_id']
+			])
+			->findOne();
+			unset($course['id']);
+			$event = array_merge($event, $course);
+		}
+		else {
+			$event['event_course_id'] = 0;
+		}
 
-		$course = $this->Course->filter([
-			'id' => $event['event_course_id']
-		])
-		->findOne();
-		unset($course['id']);
-		$event = array_merge($event, $course);
-
-		$Registration = new Registration();
-		$registrations = $Registration->filter([
-			'registration_event_id' => $event['id']
-		])->findAll(['fetchAssociations' => false]);
-
-		$event['EventSeatsLeft'] = $event['event_seats_max'] - count($registrations);
+		// $Registration = new Registration();
+		// $registrations = $Registration->filter([
+		// 	'registration_event_id' => $event['id']
+		// ])->findAll(['fetchAssociations' => false]);
+        //
+		// $event['eventSeatsLeft'] = $event['event_seats_max'] - count($registrations);
 
 		$event['course_detail_url'] = sprintf ('/%s/%u/%s,%u.html',
 			$this->language,
-			$this->detailPageId,
+			$this->courseDetailPageId,
 			$this->cmt->makeNameWebSave ($event['course_title']),
-			$event['id']
+			$event['event_course_id']
 		);
 
 		$event['event_subscribe_url'] = sprintf('/%s/%u/%s,%u.html',
@@ -209,6 +259,35 @@ class Event extends Model {
 			$this->cmt->makeNameWebsave('Anmeldung zu ' . $event['course_title']),
 			$event['id']
 		);
+
+		$event['event_detail_url'] = sprintf('/%s/%u/%s,%u.html',
+			$this->language,
+			$this->detailPageId,
+			$this->cmt->makeNameWebsave($event['event_title']),
+			$event['id']
+		);
+
+		$event['event_can_registrate'] = true;
+		// If event does not require registration ...
+
+		if (!$event['event_needs_registration']) {
+			$event['event_can_registrate'] = false;
+		}
+
+		// If event (start date) has passed yet, no registation is possible any more
+		if (strtotime($event['event_begin']) < time()) {
+			$event['event_can_registrate'] = false;
+		}
+		// If registrate_before date has passed, no registration is possible any more
+		if ($event['event_needs_registration']) {
+			if ($event['event_registration_before'] != '0000-00-00' && strtotime($event['event_registration_before']) < time()) {
+				$event['event_can_registrate'] = false;
+			}
+		}
+		// If no more seats available, ... no luck ;-)
+		if ($event['event_seats_available'] == 0) {
+			$event['event_can_registrate'] = false;
+		}
 
 		return $event;
 	}
