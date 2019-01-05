@@ -44,7 +44,7 @@
 .button {
 	@include button-reset;
 
-	@include type-setting(-1, 0);
+	@include type-setting(0, 0);
 	display: inline-block;
 	text-align: center;
 	text-decoration: none;

@@ -49,10 +49,10 @@ class Pilgrimpass extends Model {
 
 
 
-	protected function validateIsUlm ($value) {
-		$ret = ($value === "Ulm");
-		return $ret;
-	}
+	// protected function validateIsUlm ($value) {
+	// 	$ret = ($value === "Ulm");
+	// 	return $ret;
+	// }
 
 
 	public function notifyUser($data) {

@@ -45,6 +45,10 @@ function APP () {
 
 		this.initHomepageSlider();
 		this.initCalendarWidget();
+
+		if (document.getElementById('pilgrimpass-form')) {
+			this.initPilgrimpassForm();
+		}
 	};
 
 	this.initHomepageSlider = function() {
@@ -120,6 +124,37 @@ function APP () {
 				return false;
 			});
 		});
+	}
+
+	this.initPilgrimpassForm = function() {
+		var addBtn = document.getElementById('add-button');
+		var fs = document.querySelector('.fieldset');
+		var container = document.getElementById('form-container');
+		var countInput = document.getElementById('count');
+
+		addBtn.addEventListener('click', function(event) {
+			event.preventDefault();
+			var newfs = fs.cloneNode(true);
+			container.appendChild(newfs);
+			var rmBtn = newfs.querySelector('.remove-button');
+			countInput.value = container.children.length;
+			rmBtn.addEventListener('click', onRemoveButtonClicked);
+		});
+
+		var removeButtons = document.querySelectorAll('.remove-button');
+		for (var i = 0; i < removeButtons.length; i++) {
+			removeButtons[i].addEventListener('click', onRemoveButtonClicked);
+		}
+
+		function onRemoveButtonClicked(event) {
+			event.preventDefault();
+
+			if (confirm("Sind Sie sicher, dass Sie diesen Pilgerausweis entfernen möchten?")) {
+				this.parentNode.parentNode.removeChild(this.parentNode);
+				countInput.value = container.children.length;
+			}
+			return false;
+		}
 	}
 };
 

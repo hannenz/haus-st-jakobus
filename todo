@@ -1,29 +1,21 @@
 # Todos
 
-- Test git webhook
-
-[ ] Header: Hamburger Menu ist sichtbar bei Desktop
-[ ] Dropdown Menü: Geht nicht
-[ ] Home: Slider geht nicht
-
-
-
 [✓] - Header: Muschel groß, beim Scrollen klein
-- MLog: Resize/ thumbnails on upload
-- MLog: Zurück Button falsch velinkt
-- Courses: Pagination
-- Giropay
-- Benachrichtigungsmails: Footer mit Sende-Daten... (`{EVAL}sprintf("[%s] %s", $_REQUEST['SERVER_NAME'], strftime(...)){ENDEVAL}`)
+[ ] MLog: Resize/ thumbnails on upload
+[ ] MLog: Zurück Button falsch velinkt
+[ ] Courses: Pagination
+[ ] Giropay
+[ ] Benachrichtigungsmails: Footer mit Sende-Daten... (`{EVAL}sprintf("[%s] %s", $_REQUEST['SERVER_NAME'], strftime(...)){ENDEVAL}`)
 [✓] - Programm: Tabellenlayouts
-- Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
-- Newsletter: PageMailer einrichten
-- Favicon
-- Programm-Übersicht: Paginieren
-- Programm: Veranstaltungslinks falsch
-- Alle Abendtermine als Menüpunkt
-- "Events" (Veranstaltungen ohne Kurscharakter)
-- CMT: Programm: Als Application:
-- Veranstaltungen umbennenne in Jahresübersicht
+[ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
+[ ] Newsletter: PageMailer einrichten
+[ ] Favicon
+[ ] Programm-Übersicht: Paginieren
+[ ] Programm: Veranstaltungslinks falsch
+[ ] Alle Abendtermine als Menüpunkt
+[ ] "Events" (Veranstaltungen ohne Kurscharakter)
+[ ] CMT: Programm: Als Application:
+[ ] Veranstaltungen umbennenne in Jahresübersicht
 
 - Refactoring:
 	- phpincludes/{component}/...

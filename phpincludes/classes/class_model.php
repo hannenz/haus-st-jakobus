@@ -520,7 +520,7 @@ class Model {
 	 * @access public
 	 * @param string 	The name of the field to validate
 	 * @param mixed 	The value to validat against
-	 * @return boolen 	Whether the data validates or nut
+	 * @return boolean 	Whether the data validates or not
 	 */
 	public function validateFormField ($fieldName, $value) {
 
