@@ -1,26 +1,65 @@
-Ein Pilgerausweis wurde beantragt
+{IF("{VAR:passes_count}" == "1")}
+Ein Pilgerausweis wurde beantragt mit folgenden Daten:
+{ELSE}
+Es wurden {VAR:passes_count} Pilgerausweise beantragt mit folgenden Daten:
+{ENDIF}
 
-Anrede:                 {VAR:pilgrimpass_salutation}
-Vorname:                {VAR:pilgrimpass_firstname}
-Nachname:               {VAR:pilgrimpass_lastname}
-Anrede:                 {VAR:pilgrimpass_salutation}
-Geburtstag:             {VAR:pilgrimpass_birthday}
-Adresse:                {VAR:pilgrimpass_street_address}
-Land:                   {VAR:pilgrimpass_country}
-PLZ:                    {VAR:pilgrimpass_zip}
-Ort:                    {VAR:pilgrimpass_city}
-Telefon:                {VAR:pilgrimpass__phone}
-E-Mail:                 {VAR:pilgrimpass__email}
-Personalausweis-Nummer: {VAR:pilgrimpass_idnr}
-Pilgerweg:              {SWITCH("{VAR:pilgrimpass_route}")} {CASE("camino-de-santiago")}Camino de Santiago{BREAK} {CASE("via-francigena")}Via Francigena{BREAK} {ENDSWITCH}
-Startdatum:             {VAR:pilgrimpass_start_date}
-Start (Ort):            {VAR:pilgrimpass_start_location}
-Motivation:             {SWITCH("{VAR:pilgrimpass_motivation}")} {CASE("religiös")}religiös{BREAK} {CASE("religiös-kulturell")}religiös/kulturell{BREAK} {CASE("kulturell-sportlich")}kulturell/sportlich{BREAK} {CASE("religiös-sportlich")}religiös/sportlich{BREAK} {ENDSWITCH}
-Fortbewegungsmittel:    {SWITCH("{VAR:pilgrimpass_transportation}")} {CASE("zu-fuss")}Zu Fuß{BREAK} {CASE("mit-dem-fahrrad")}Mit dem Fahrrad{BREAK} {CASE("auf-dem-pferd")}Auf dem Pferd{BREAK} {ENDSWITCH}
+-----
+
+1. Pilgerausweise:
+
+{LOOP VAR(pilgrimpasses)}
+	Anrede:                 {VAR:pilgrimpass_salutation}
+	Vorname:                {VAR:pilgrimpass_firstname}
+	Nachname:               {VAR:pilgrimpass_lastname}
+	Adresse:                {VAR:pilgrimpass_street_address}
+	PLZ:                    {VAR:pilgrimpass_zip}
+	Ort:                    {VAR:pilgrimpass_city}
+	Land:                   {VAR:pilgrimpass_country}
+	Telefon:                {VAR:pilgrimpass__phone}
+	E-Mail:                 {VAR:pilgrimpass__email}
+	Geburtstag:             {VAR:pilgrimpass_birthday}
+	Personalausweis-Nummer: {VAR:pilgrimpass_idnr}
+	Pilgerweg:              {SWITCH("{VAR:pilgrimpass_route}")} {CASE("camino-de-santiago")}Camino de Santiago{BREAK} {CASE("via-francigena")}Via Francigena{BREAK} {ENDSWITCH}
+	Startdatum:             {VAR:pilgrimpass_start_date}
+	Start (Ort):            {VAR:pilgrimpass_start_location}
+	Motivation:             {SWITCH("{VAR:pilgrimpass_motivation}")} {CASE("religiös")}religiös{BREAK} {CASE("religiös-kulturell")}religiös/kulturell{BREAK} {CASE("kulturell-sportlich")}kulturell/sportlich{BREAK} {CASE("religiös-sportlich")}religiös/sportlich{BREAK} {ENDSWITCH}
+	Fortbewegungsmittel:    {SWITCH("{VAR:pilgrimpass_transportation}")} {CASE("zu-fuss")}Zu Fuß{BREAK} {CASE("mit-dem-fahrrad")}Mit dem Fahrrad{BREAK} {CASE("auf-dem-pferd")}Auf dem Pferd{BREAK} {ENDSWITCH}
+
+	---
+
+{ENDLOOP VAR}
+
+
+-----
+
+2. Lieferadresse
+
+Anrede:                 {VAR:pilgrimpass_delivery_address_salutation}
+Vorname:                {VAR:pilgrimpass_delivery_address_firstname}
+Nachname:               {VAR:pilgrimpass_delivery_address_lastname}
+Adresse:                {VAR:pilgrimpass_delivery_address_street_address}
+PLZ:                    {VAR:pilgrimpass_delivery_address_zip}
+Ort:                    {VAR:pilgrimpass_delivery_address_city}
+Land:                   {VAR:pilgrimpass_delivery_address_country}
+E-Mail:                 {VAR:pilgrimpass_delivery_address_email}
+
+-----
+
+3. Bezahlung
+
 Zahlungsmethode:        {SWITCH("{VAR:pilgrimpass_payment_method}")} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
-Betrag:                 {VAR:pilgrimpass_amount}
+Betrag:                 {VAR:pilgrimpass_amount} EUR
 Express:                {IF("{VAR:pilgrimpass_express}" == "0")}Nein{ELSE}Ja{ENDIF}
 {IF("{VAR:pilgrimpass_payment_method}" == "giropay")}
 BLZ:                    {VAR:pilgrimpass_blz}
 {ENDIF}
-Nachricht:              {VAR:pilgrimpass_message}
+
+{IF({ISSET:pilgrimpass_message})}
+-----
+
+4. Nachricht
+
+{VAR:pilgrimpass_message}
+{ENDIF}
+

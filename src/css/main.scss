@@ -132,9 +132,47 @@
 	}
 
 	.action-area {
+		border-top: 1px solid rgba(200, 200, 200, 0.3);
+		margin-top: 1 * $vertical-unit;
+		padding-top: 1 * $vertical-unit;
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+	}
+
+	ol {
+		list-style-position: inside;
+	}
+
+
+	.headline {
+		margin-bottom: $vertical-unit;
+	}
+
+	.card {
+		@extend .fieldset;
+		color: $grey3;
+		margin-bottom: $vertical-unit;
+	}
+
+	table {
+		tr {
+		}
+
+		td {
+			padding: 1px 6px;
+		}
+
+		th {
+			padding: 1px 8px 1px 0;
+			font-weight: normal;
+			color: $grey4;
+			text-align: left;
+			&::after {
+				content: ':';
+			}
+		}
+
 	}
 }
 

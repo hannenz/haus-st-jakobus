@@ -1,6 +1,5 @@
-
 {IF({ISSET:saveFailed:VAR})}
-	<div class="error">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
+	<p class="error message">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</p>
 {ENDIF}
 
 <form id="pilgrimpass-form" action="" method="post" novalidate>
@@ -17,8 +16,8 @@
 						<div class="form-field form-field--select">
 							<label for="pilgrimpass_salutation">Anrede</label>
 							<select id="pilgrimpass_salutation" name="pilgrimpass_salutation[]">
-								<option value="Herr">Herr</option>
-								<option value="Frau">Frau</option>
+								<option value="Herr" {IF("{VAR:pilgrimpass_salutation}" == "Herr")}selected{ENDIF}>Herr</option>
+								<option value="Frau" {IF("{VAR:pilgrimpass_salutation}" == "Frau")}selected{ENDIF}>Frau</option>
 							</select>
 						</div>
 					</div>
@@ -109,8 +108,8 @@
 						<div class="form-field form-field--select {IF({ISSET:error_pilgrimpass_route})}error{ENDIF}">
 							<label for="pilgrimpass_route">Pilgerweg</label>
 							<select name="pilgrimpass_route[]" id="pilgrimpass_route">
-								<option value="camino-de-santiago">Camino de Santiago</option>
-								<option value="via-francigena">Via Francigena</option>
+								<option value="camino-de-santiago" {IF("{VAR:pilgrimpass_route}" == "camino-de-santiago")}selected{ENDIF}>Camino de Santiago</option>
+								<option value="via-francigena" {IF("{VAR:pilgrimpass_route}" == "via-francigena")}selected{ENDIF}>Via Francigena</option>
 							</select>
 						</div>
 					</div>
@@ -133,10 +132,10 @@
 						<div class="form-field form-field--select {IF({ISSET:error_pilgrimpass_motivation})}error{ENDIF}">
 							<label for="pilgrimpass_motivation">Motivation</label>
 							<select name="pilgrimpass_motivation[]" id="pilgrimpass_motivation">
-								<option value="religiös">religiös</option>
-								<option value="religiös-kulturell">religiös-kulturell</option>
-								<option value="kulturell-sportlich">kulturell-sportlich</option>
-								<option value="religiös-sportlich">religiös-sportlich</option>
+								<option value="religiös" {IF("{VAR:pilgrimpass_motivation}" == "religiös")}selected{ENDIF}>religiös</option>
+								<option value="religiös-kulturell" {IF("{VAR:pilgrimpass_motivation}" == "religiös-kulturell")}selected{ENDIF}>religiös-kulturell</option>
+								<option value="kulturell-sportlich" {IF("{VAR:pilgrimpass_motivation}" == "kulturell-sportlich")}selected{ENDIF}>kulturell-sportlich</option>
+								<option value="religiös-sportlich" {IF("{VAR:pilgrimpass_motivation}" == "religiös-sportlich")}selected{ENDIF}>religiös-sportlich</option>
 							</select>
 						</div>
 					</div>
@@ -144,9 +143,9 @@
 						<div class="form-field form-field--select {IF({ISSET:error_pilgrimpass_transportation})}error{ENDIF}">
 							<label for="pilgrimpass_transportation">Fortbewegungsmittel</label>
 							<select name="pilgrimpass_transportation[]" id="pilgrimpass_transportation">
-								<option value="zu-fuss">Zu Fuß</option>
-								<option value="mit-dem-fahrrad">Mit dem Fahrrad</option>
-								<option value="auf-dem-pferd">Auf dem Pferd</option>
+								<option value="zu-fuss" {IF("{VAR:pilgrimpass_transportation}" == "zu-fuss")}selected{ENDIF}>Zu Fuß</option>
+								<option value="mit-dem-fahrrad" {IF("{VAR:pilgrimpass_transportation}" == "mit-dem-fahrrad")}selected{ENDIF}>Mit dem Fahrrad</option>
+								<option value="auf-dem-pferd" {IF("{VAR:pilgrimpass_transportation}" == "auf-dem-pferd")}selected{ENDIF}>Auf dem Pferd</option>
 							</select>
 						</div>
 					</div>
@@ -155,11 +154,11 @@
 		{ENDLOOP VAR}
 	</div>
 
-	<input type="hidden" name="action" value="step1" />
-	<input type="hidden" value="{VAR:count}" name="count" id="count" />
 	<div class="action-area"> 
+		<input type="hidden" value="{VAR:count}" name="count" id="count" />
+		<input type="hidden" name="step" value="1" />
 		<button class="button" id="add-button">Pilgerpass hinzufügen</button>
-		<button type="submit" class="button">Weiter</button>
+		<button type="submit" class="button" name="action" value="step1">Weiter</button>
 	</div>
 </form>
 

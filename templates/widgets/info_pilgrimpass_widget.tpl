@@ -3,7 +3,6 @@
 		<h4 class="widget__title">Info</h4>
 	</div>
 	<div class="widget__body">
-		<p>Bitte für jede Person, die einen Ausweis benötigt, ein eigenes Antragsformular ausfüllen.</p>
-		<p>Wenn die Versandadresse eine andere ist als diejenige die in Ihrem Personalausweis steht - dann teilen Sie uns das bitte im Mitteilungsfeld mit.</p>
+		<p>Hier können Sie einen Pilgerausweis für die Pilgerwege «Camino de Santiago» und «Via Francigena» beantragen. Füllen Sie dazu das folgende Formular aus.
 	</div>
 </div>
