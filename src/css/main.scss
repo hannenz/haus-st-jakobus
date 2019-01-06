@@ -176,3 +176,32 @@
 	}
 }
 
+
+.floated-image {
+	margin-bottom: $vertical-unit;
+	&--left {
+		float: left;
+		margin-right: $gutter;
+	}
+
+	&--right {
+		float: right;
+		margin-left: $gutter;
+	}
+
+	img {
+		display: block;
+		max-width: 66%;
+		height: auto;
+	}
+}
+
+.columns {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+
+	> .column {
+		width: calc(50% - #{$gutter} / 2)
+	}
+}
