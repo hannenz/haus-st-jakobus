@@ -30,10 +30,11 @@
 			<textarea name="pilgrimpass_message" id="pilgrimpass_message">{VAR:pilgrimpass_message}</textarea>
 		</div>
 	</fieldset>
+
+	<input type="hidden" name="step" value="3" />
 	<div class="action-area"> 
-		<input type="hidden" name="step" value="3" />
-		<button class="button" name="action" value="back">Zurück</button>
 		<button class="button" type="submit" name="action" value="step3">Weiter</button>
+		<button class="button" name="action" value="back">Zurück</button>
 	</div>
 </form>
 

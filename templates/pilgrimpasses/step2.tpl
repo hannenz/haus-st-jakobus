@@ -72,10 +72,10 @@
 		</div>
 	</fieldset>
 
+	<input type="hidden" name="step" value="2" />
 	<div class="action-area"> 
-		<input type="hidden" name="step" value="2" />
-		<button class="button" name="action" value="back">Zurück</button>
 		<button type="submit" class="button" name="action" value="step2">Weiter</button>
+		<button class="button" name="action" value="back">Zurück</button>
 	</div>
 </form>
 

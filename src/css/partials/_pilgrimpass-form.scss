@@ -5,10 +5,22 @@
  * @package haus-st-jakobus
  */
 #pilgrimpass-form {
-	.fieldset:first-child {
-		.remove-button {
-			display: none;
+
+	.fieldset {
+		position: relative;
+		padding-top: 2 * $vertical-unit;
+
+		&:first-child {
+			.remove-button {
+				display: none;
+			}
 		}
+	}
+
+	.remove-button {
+		position: absolute;
+		top: 0;
+		right: $gutter;
 	}
 
 	.action-area {
@@ -18,6 +30,13 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+
+		button:first-child {
+			order: 2;
+		}
+		button:last-child {
+			order: 1;
+		}
 	}
 
 	ol {
@@ -52,7 +71,17 @@
 				content: ':';
 			}
 		}
+	}
 
+	.error {
+		label {
+			color: $red1;
+		}
+
+		input, textarea {
+			background-color: $red3;
+			border: $red2;
+		}
 	}
 }
 

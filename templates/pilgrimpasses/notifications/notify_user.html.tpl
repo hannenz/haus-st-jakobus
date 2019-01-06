@@ -65,7 +65,6 @@
 			</tr>
 			<tr>
 				<td>Startdatum</td>
-				<td>{VAR:pilgrimpass_start_date}</td>
 			</tr>
 			<tr>
 				<td>Start (Ort)</td>
@@ -95,6 +94,7 @@
 		</table>
 	</li>
 	{ENDLOOP VAR}
+</ol>
 
 <h3>2. Lieferadresse</h3>
 

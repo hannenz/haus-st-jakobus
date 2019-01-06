@@ -85,9 +85,10 @@
 			<p>{VAR:pilgrimpass_message:nl2br}</p>
 		</div>
 	{ENDIF}
+
+	<input type="hidden" name="step" value="summary">
 	<div class="action-area">
-		<input type="hidden" name="step" value="summary">
-		<button class="button" name="action" value="back">Zurück</button>
 		<button class="button" name="action" value="complete" type="submit">Verbindlich bestellen</button>
+		<button class="button" name="action" value="back">Zurück</button>
 	</div>
 </form>

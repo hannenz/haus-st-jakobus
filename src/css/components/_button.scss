@@ -77,5 +77,10 @@
 		border-color: currentColor;
 		background-color: #fff;
 	}
+
+	&--secondary {
+		background-color: transparent;
+		color: $primary-color;
+	}
 }
 

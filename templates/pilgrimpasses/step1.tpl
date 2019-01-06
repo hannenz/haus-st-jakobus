@@ -9,7 +9,7 @@
 		{LOOP VAR(pilgrimpasses)}
 			<fieldset class="fieldset">
 				<legend>Persönliche Angaben</legend>
-				<button class="button remove-button">Diesen Pilgerpass entfernen</button>
+				<a class="button button--secondary remove-button">&times; Diesen Pilgerpass entfernen</a>
 
 				<div class="grid-x grid-padding-x">
 					<div class="cell medium-2">
@@ -154,11 +154,11 @@
 		{ENDLOOP VAR}
 	</div>
 
+	<input type="hidden" value="{VAR:count}" name="count" id="count" />
+	<input type="hidden" name="step" value="1" />
 	<div class="action-area"> 
-		<input type="hidden" value="{VAR:count}" name="count" id="count" />
-		<input type="hidden" name="step" value="1" />
-		<button class="button" id="add-button">Pilgerpass hinzufügen</button>
 		<button type="submit" class="button" name="action" value="step1">Weiter</button>
+		<button class="button" id="add-button">Pilgerpass hinzufügen</button>
 	</div>
 </form>
 

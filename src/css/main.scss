@@ -79,10 +79,12 @@
 @import "components/events";
 @import "components/teaser";
 
-.error {
-	outline: 1px solid $red1;
+
+.error.message {
 	background-color: $red3;
 	color: $red1;
+	padding: 10px;
+	border-radius: 3px;
 }
 
 
@@ -111,21 +113,18 @@
 }
 
 
-.kitchen-sink {
-	@include type-setting(0, 0);
-
-	h2 {
-		@include type-setting(1, 0);
-	}
-
-	h1 {
-		@include type-setting(2, 0);
-	}
-
-	small {
-		@include type-setting(-1, 0);
-	}
-}
-
-
-
+// .kitchen-sink {
+// 	@include type-setting(0, 0);
+//
+// 	h2 {
+// 		@include type-setting(1, 0);
+// 	}
+//
+// 	h1 {
+// 		@include type-setting(2, 0);
+// 	}
+//
+// 	small {
+// 		@include type-setting(-1, 0);
+// 	}
+// }
