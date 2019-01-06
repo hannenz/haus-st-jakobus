@@ -59,6 +59,9 @@
 @import "partials/layout";
 @import "partials/courses";
 @import "partials/availability-indicator";
+@import "partials/columns";
+@import "partials/floated-image";
+@import "partials/pilgrimpass-form";
 
 @import "components/header";
 @import "components/footer";
@@ -124,84 +127,5 @@
 	}
 }
 
-#pilgrimpass-form {
-	.fieldset:first-child {
-		.remove-button {
-			display: none;
-		}
-	}
-
-	.action-area {
-		border-top: 1px solid rgba(200, 200, 200, 0.3);
-		margin-top: 1 * $vertical-unit;
-		padding-top: 1 * $vertical-unit;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
-
-	ol {
-		list-style-position: inside;
-	}
 
 
-	.headline {
-		margin-bottom: $vertical-unit;
-	}
-
-	.card {
-		@extend .fieldset;
-		color: $grey3;
-		margin-bottom: $vertical-unit;
-	}
-
-	table {
-		tr {
-		}
-
-		td {
-			padding: 1px 6px;
-		}
-
-		th {
-			padding: 1px 8px 1px 0;
-			font-weight: normal;
-			color: $grey4;
-			text-align: left;
-			&::after {
-				content: ':';
-			}
-		}
-
-	}
-}
-
-
-.floated-image {
-	margin-bottom: $vertical-unit;
-	&--left {
-		float: left;
-		margin-right: $gutter;
-	}
-
-	&--right {
-		float: right;
-		margin-left: $gutter;
-	}
-
-	img {
-		display: block;
-		max-width: 66%;
-		height: auto;
-	}
-}
-
-.columns {
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-
-	> .column {
-		width: calc(50% - #{$gutter} / 2)
-	}
-}

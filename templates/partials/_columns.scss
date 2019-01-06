@@ -1,0 +1,16 @@
+/**
+ * templates/partials/_columns.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+.columns {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+
+	> .column {
+		width: calc(50% - #{$gutter} / 2)
+	}
+}
+

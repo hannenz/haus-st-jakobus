@@ -1,0 +1,26 @@
+/**
+ * templates/partials/_floated-image.scss
+ * 
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+.floated-image {
+	margin-bottom: $vertical-unit;
+	&--left {
+		float: left;
+		margin-right: $gutter;
+	}
+
+	&--right {
+		float: right;
+		margin-left: $gutter;
+	}
+
+	img {
+		display: block;
+		max-width: 66%;
+		height: auto;
+	}
+}
+
+
