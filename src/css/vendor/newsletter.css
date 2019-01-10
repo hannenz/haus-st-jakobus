@@ -1,0 +1,112 @@
+/**
+ * src/css/vendor/newsletter.css
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ * @version 2019-01-09
+ */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 0;
+	background-color: #e8eaee;
+}
+
+td, th {
+	vertical-align: top;
+	text-align: left;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin-bottom: 16px;
+}
+
+a {
+	color: #a71c21;
+}
+
+#nl-body-container {
+	width: 600px;
+	max-width: 600px;
+	overflow:hidden;
+	border-collapse:collapse;
+	color: #404040;
+	font: "Times New Roman", Georgia, serif;
+	font-size: 17px;
+	line-height: 21px;
+}
+
+#nl-body-container img {
+	max-width: 600px;
+	display: block;
+}
+
+#nl-header-wrapper {
+	background-color: #a71c21;
+	padding: 16px 24px;
+}
+
+#nl-header {
+	background-color: #a71c21;
+}
+
+#nl-logo {
+	width: 99px;
+}
+
+#nl-main-content {
+	padding: 32px 24px;
+}
+
+
+#nl-footer-wrapper {
+	background-color: #a71c21;
+	padding: 10px;
+}
+
+#nl-footer {
+	background-color: #a71c21;
+	color: #fff;
+	margin-top: 30px;
+	font-size: 13px;
+}
+
+#nl-footer td {
+	vertical-align: top;
+}
+
+#nl-footer a {
+	color: #fff;
+}
+
+#nl-brand {
+	color: #fff;
+	vertical-align: middle;
+	text-align: left;
+}
+
+#brand {
+	font-style: italic;
+}
+
+#sub-brand {
+	font-size: 13px;
+}
+
+#newsletter .headline {
+	margin-bottom: 21px;
+	font-size: 21px;
+}
+#newsletter p {
+	margin-bottom: 17px;
+}
+
