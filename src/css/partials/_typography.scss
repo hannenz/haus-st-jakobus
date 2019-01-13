@@ -118,3 +118,26 @@ ul.bullets {
 		}
 	}
 }
+
+.blockquote {
+	font-style: italic;
+	@include type-setting(0, 0);
+
+	padding-left: 1 * $gutter;
+	border-left: 2px solid $primary-color;
+	max-width: 40em;
+
+	margin: $vertical-unit 0;
+
+	&__footer {
+		margin-top: $vertical-unit;
+		text-align: right;
+	}
+
+	&__author {
+		color: $primary-color;
+		&::before {
+			content: '— ';
+		}
+	}
+}

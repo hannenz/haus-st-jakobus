@@ -6,6 +6,21 @@
  */
 .floated-image {
 	margin-bottom: $vertical-unit;
+
+	width: 100%;
+
+	@include for-size(tablet-portrait-up) {
+		&--small {
+			width: 33%;
+		}
+	}
+
+	@include for-size(tablet-landscape-up) {
+		&--large {
+			width: 66%;
+		}
+	}
+
 	&--left {
 		float: left;
 		margin-right: $gutter;
@@ -18,9 +33,9 @@
 
 	img {
 		display: block;
-		max-width: 66%;
 		height: auto;
+		max-width: 100%;
+		width: 100%;
 	}
 }
-
 
