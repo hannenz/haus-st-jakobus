@@ -48,7 +48,14 @@
 		{ENDIF}
 		<tr>
 			<th align="left">Typ</th>
-			<td>{VAR:event_type}</td>
+			<td>
+				{SWITCH("{VAR:event_type}")}
+					{CASE("generic")}Allgemein{BREAK}
+					{CASE("exhibition")}Ausstellung{BREAK}
+					{CASE("workshop")}Workshop{BREAK}
+					{CASE("talk")}Vortrag{BREAK}
+				{ENDSWITCH}
+			</td>
 		</tr>
 		<tr>
 			<th align="left">Abendveranstaltung</th>
