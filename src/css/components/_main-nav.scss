@@ -17,7 +17,7 @@ $break-size: tablet-landscape-up;
 	height: 60px;
 	display: flex;
 	align-items: center;
-	justsify-content: space-between;
+	//justify-content: space-between;
 
 	@include for-size($break-size) {
 		position: static;
@@ -58,6 +58,7 @@ $break-size: tablet-landscape-up;
 		display: block;
 		transition: 150ms;
 		text-decoration: none;
+		white-space: nowrap;
 
 		&:focus,
 		&:hover {
