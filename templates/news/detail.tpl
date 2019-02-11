@@ -20,6 +20,6 @@
 		</div>
 	{ENDIF}
 
-	<p><a  class="back" href="{VAR:backLink}">Zurück zur Übersicht</a></p>
+	<p><a  class="back" href="{VAR:postOverviewUrl}">Zurück zur Übersicht</a></p>
 
 </article>

@@ -14,10 +14,24 @@ $footer-text-color: lighten($dark-grey, 66%);
 	@include type-setting(0);
 
 	a {
+		
 		color: $footer-text-color;
-		text-decoration: underline !important;
-		&:hover {
-			text-decoration: none !important;
+		// text-decoration: underline !important;
+		// &:hover {
+		// 	text-decoration: none !important;
+		// }
+	}
+
+	ul {
+		list-style-type: none;
+		// list-style-position: inside;
+	}
+
+	li {
+		margin: 0.5 * $vertical-unit 0;
+		// padding-left: 1em;
+		&::before {
+			content: '> ';
 		}
 	}
 

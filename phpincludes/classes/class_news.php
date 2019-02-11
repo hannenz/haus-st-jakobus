@@ -13,6 +13,10 @@ class News extends Posts {
 	 */
 	protected $detailPageId = 37;
 
+	/**
+	 * @var Integer
+	 */
+	protected $overviewPageId = 36;
 
 	/**
 	 * @var Integer;
@@ -89,6 +93,10 @@ class News extends Posts {
 			$this->currentCategoryId,
 			$this->currentPage,
 			$post['id']
+		);
+		$post['postOverviewUrl'] = sprintf("%s%s", 
+			$this->CmtPage->makePageFilePath($this->overviewPageId),
+			$this->CmtPage->makePageFileName($this->overviewPageId)
 		);
 
 		$post['post_date_fmt_date'] = strftime('%a. %d. %b %Y', strtotime($post['post_online_date']));
