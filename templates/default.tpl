@@ -51,7 +51,7 @@
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
 				<aside class="sidebar">
-					<div class="sticky" data-sticky data-margin-top="5" data-top-anchor="main-container">
+					<div class="sticky" data-sticky data-sticky-on="large" data-margin-top="5" data-top-anchor="main-container">
 						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
 					</div>
 				</aside>
