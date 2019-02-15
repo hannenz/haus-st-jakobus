@@ -18,10 +18,10 @@ class Registration extends Model {
 
 		$this->setValidationRules([
 			'registration_firstname' => [
-				'not-empty' => '/^.+$/',
+				'not-empty' => '/^.+$/'
 			],
 			'registration_lastname' => [
-				'not-empty' => '/^.+$/',
+				'not-empty' => '/^.+$/'
 			],
 			'registration_birthday' => '/^\d{4}-\d{2}-\d{2}$/',
 			'registration_street_address' => '/^.+$/',

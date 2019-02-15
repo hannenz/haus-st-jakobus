@@ -30,3 +30,7 @@ form {
 label {
 	@include type-setting(-1);
 }
+
+[required] {
+	outline: 4px dashed yellow;
+}

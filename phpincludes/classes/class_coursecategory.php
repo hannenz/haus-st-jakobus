@@ -17,7 +17,8 @@ class CourseCategory extends Model {
 			'name' => 'Courses',
 			'className' => 'Jakobus\Course',
 			'foreignKeyField' => 'course_category_id',
-			'foreignKey' => 'id'
+			'foreignKey' => 'id',
+			'order' => 'course_pos ASC'
 		]
 	];
 

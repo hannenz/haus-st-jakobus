@@ -4,12 +4,14 @@ namespace Jakobus;
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
+use Contentomat\CmtPage;
 use Contentomat\Debug;
 use Jakobus\Registration;
 use Jakobus\Event;
 
 use \Exception;
 
+define('REGISTRATION_SUCCESS_PAGE_ID', 49);
 
 
 class RegistrationsController extends Controller {
@@ -21,11 +23,17 @@ class RegistrationsController extends Controller {
 	protected $eventId;
 
 
+	/**
+	 * @var Object
+	 */
+	protected $CmtPage;
+
 
 	public function init () {
 		$this->Registration = new Registration();
 		$this->Registration->setLanguage ($this->pageLang);
 		$this->Event = new Event();
+		$this->CmtPage = new CmtPage();
 
 		$this->templatesPath = $this->templatesPath . 'registrations/';
 
@@ -71,8 +79,11 @@ class RegistrationsController extends Controller {
 
 
 	public function actionSuccess () {
-		$this->parser->setMultipleParserVars ($this->postvars);
-		$this->content = $this->parser->parseTemplate ($this->templatesPath . 'success.tpl');
+		$url = sprintf('%s%s', $this->CmtPage->makePageFilePath(REGISTRATION_SUCCESS_PAGE_ID), $this->CmtPage->makePageFileName(REGISTRATION_SUCCESS_PAGE_ID));
+
+		header('Location: '.$url);
+		// $this->parser->setMultipleParserVars ($this->postvars);
+		// $this->content = $this->parser->parseTemplate ($this->templatesPath . 'success.tpl');
 	}
 	
 }

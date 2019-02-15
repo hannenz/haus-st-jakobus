@@ -16,11 +16,11 @@
 		<div class="footer-column">
 			<nav>
 				<ul>
-					<li><a href="#">Der Weg</a></li>
-					<li><a href="#">Das Haus</a></li>
-					<li><a href="#">Die Stiftung</a></li>
-					<li><a href="#">Pilgerausweise</a></li>
-					<li><a href="#">Programm</a></li>
+					<li><a href="{PAGEURL:99}">Der Weg</a></li>
+					<li><a href="{PAGEURL:7}">Das Haus</a></li>
+					<li><a href="{PAGEURL:99}">Förderverein</a></li>
+					<li><a href="{PAGEURL:24}">Pilgerausweise</a></li>
+					<li><a href="{PAGEURL:39}">Programm</a></li>
 				</ul>
 			</nav>
 		</div>

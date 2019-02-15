@@ -1,5 +1,42 @@
 # Todos
 
+[ ] Zurück zur Übersicht: Checken ob es nun überall funktioniert
+[ ] Impressum, Datenschutzerklärung
+[✓] In Footernav: Förderverein, anstelle von "Stiftung"
+[ ] Kursbelegungsindikator: Wie auf aktueller Website: 1 Kästchen in rot oder grün, Balken als "Füllstandsanzeige"
+[ ] Export der Anmeldungen in Excelliste (Kursmanager)
+[✓] Kursanmeldung: Kein Geburtsdatum und Tel. abfragen
+[✓] Kursanmeldung: Bestätigungs-Seite bearbeitbar machen
+[ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
+[ ] Pilgerausweis: Geburtsdatum und Personalausweis  entfernen
+[ ] Pilgerausweis: Bei Hinzufügen, neues Formular leeren
+[ ] Pilgerauswies: Tel. kein Pflichtfeld
+[ ] Pilgerauswies: Lieferadresse ggf. mit 1. Person vorausfüllen
+[ ] Alle Formulare: Pflichtfelder kennzeichnen
+[ ] Kurse: 3 Kalender in Reihe
+[ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
+	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
+		Alternativen:
+			- nach Datum des nächsten Events (aufwändig)
+			- alphabetisch (einfach)
+			- ...?
+
+[ ] Kurse: Filter nach Kategorie
+[ ] Kurse: Abendveranstaltungen sollten auch im normalen Programm auftauchen
+	> Ja, tun sie, aber nicht im Kalender markiert!
+[ ] News: Auf Startseite: Die drei kommenden Veranstaltungen anteasern ("Was kommt")
+[ ] News: Auf Startseite: Die drei neuesten Posts ("Was war")
+[ ] News: Artikel pro Seite einstellbar machen
+[ ] News: Detail: Bildunterschrift klebt arg bei "Medien"
+[ ] News: Sperrdatum funktioniert nicht
+[ ] Allgemein: Nummerierte Liste: Einzug wie <UL>
+[ ] Icons im Layoutmodus fehlen (Mac only?)
+[ ] Weiter / Zurück Buttons als Objekt-Templates anlegen (wirklich?!?)
+[ ] Backup-Skript auf Live-Server
+[ ] Bildergalerie: Wenn man 2 Galerien auf einer Seite einbindet: 500er Fehler
+[ ] 
+
+
 [✓] - Header: Muschel groß, beim Scrollen klein
 [ ] MLog: Resize/ thumbnails on upload
 [ ] MLog: Zurück Button falsch velinkt

@@ -4,7 +4,6 @@ namespace Jakobus;
  * A model class that supports
  * data fetching, validation and saving
  */
-
 use Contentomat\DBCex;
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
@@ -426,12 +425,19 @@ class Model {
 			$this->PsrAutoloader->loadClass ($className);
 			$instance = new $className ();
 
+			$findOptions = [
+				'fetchAssociations' => false
+			];
+			if (!empty($assoc['order'])) {
+				$findOptions['order'] = $assoc['order'];
+			}
+
 			$assocData = $instance
 				->filter([
 					$assoc['foreignKeyField'] => $result[$assoc['foreignKey']]
 				])
 				->findAll ([
-					'fetchAssociations' => false
+					'fetchAssociations' => false,
 				])
 			;
 
