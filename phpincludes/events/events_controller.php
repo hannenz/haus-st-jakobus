@@ -69,9 +69,15 @@ class EventsController extends Controller {
 			return;
 		}
 
+		// Homepage: Upcoming events
+		if ($this->pageId == 2) {
+			$this->action = 'upcoming';
+		}
+
 		if ($this->pageId == 43) {
 			$this->action = 'soirees';
 		}
+
 	}
 
 
@@ -166,6 +172,13 @@ class EventsController extends Controller {
 			$this->parser->setMultipleParserVars($event);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');
 		}
+	}
+
+
+	public function actionUpcoming() {
+		$events = $this->Event->getUpcoming(3);
+		$this->parser->setParserVar('events', $events);
+		$this->content = $this->parser->parseTemplate($this->templatesPath . 'upcoming.tpl');
 	}
 }
 

@@ -6,7 +6,10 @@ use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\Paging;
 use Contentomat\CmtPage;
+use Contentomat\ApplicationHandler;
 use Jakobus\News;
+
+define('APPLICATION_ID', 25);
 
 
 if (class_exists('\Jakobus\NewsController') === false) {
@@ -18,6 +21,11 @@ if (class_exists('\Jakobus\NewsController') === false) {
 		 */
 		protected $News;
 
+		/**
+		 * @var \Contentomat\ApplicationHandler
+		 */
+		protected $ApplicationHandler;
+
 
 		/**
 		 * @var Integer
@@ -25,11 +33,16 @@ if (class_exists('\Jakobus\NewsController') === false) {
 		protected $postId = 0;
 
 
+		/**
+		 * @var Array
+		 */
+		protected $applicationSettings;
 
 
 
 		public function init() {
 			$this->CmtPage = new CmtPage();
+			$this->ApplicationHandler = new ApplicationHandler();
 			$this->News = new News();
 			$this->templatesPath = $this->templatesPath . 'news/';
 			$contentData = Contentomat::getContentomat()->getVar('cmtContentData');
@@ -40,6 +53,10 @@ if (class_exists('\Jakobus\NewsController') === false) {
 				$contentData['head4'],
 				$contentData['head5']
 			];
+
+			// Get table settings
+			$this->applicationSettings = $this->ApplicationHandler->getApplicationSettings(APPLICATION_ID);
+
 		}
 
 
@@ -82,7 +99,7 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			}
 
 			$posts = $this->News->getPosts([
-				'postsPerPage' => 10,
+				'postsPerPage' => (int)$this->applicationSettings['show_ippnumber'],
 				'categoryID' => $categoryId,
 				'currentPage' => $currentPage
 			]);

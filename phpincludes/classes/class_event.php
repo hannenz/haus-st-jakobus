@@ -146,11 +146,22 @@ class Event extends Model {
 		return $events;
 	}
 
-	public function getUpcoming() {
-		$events = $this->filter([
+
+	/**
+	 * Get upcoming events
+	 *
+	 * @param int 	Nr of events to return, <= 0: all (default)
+	 * @return array
+	 */
+	public function getUpcoming($limit = 0) {
+		$this->filter([
 			'event_begin >' => 'NOW()'
-		])
-		->findAll();
+		]);
+		if ($limit > 0) {
+			$this->limit($limit);
+		}
+
+		$events = $this->findAll();
 
 		return $events;
 	}

@@ -37,6 +37,15 @@
 	.back {
 		@include type-setting(0, 0);
 	}
+
+	&__media {
+		.post-image {
+			img {
+				margin-bottom: $vertical-unit;
+			}
+				margin-bottom: 2 * $vertical-unit;
+		}
+	}
 }
 
 

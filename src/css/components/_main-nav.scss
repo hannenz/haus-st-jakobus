@@ -191,6 +191,7 @@ body {
 			margin-left: auto;
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 		}
 
 		.nav-item {
@@ -198,9 +199,14 @@ body {
 			text-decoration: none;
 			position: relative;
 			display: inline-block;
-			padding: 0 $gutter;
+			padding: 0 0.5vw; // $gutter;
 			height: 100%;
 			display: flex;
+
+			// @include for-size(tablet-landscape-up) {
+			// 	padding-left: $gutter;
+			// 	padding-right: $gutter;
+			// }
 
 			&__link {
 
