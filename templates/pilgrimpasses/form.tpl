@@ -38,9 +38,6 @@
 			<div class="cell medium-6">
 				{VAR:pilgrimpass_country}
 			</div>
-			<div class="cell medium-6">
-				{VAR:pilgrimpass_birthday}
-			</div>
 		</div>
 
 		<div class="grid-x grid-padding-x">
@@ -49,12 +46,6 @@
 			</div>
 			<div class="cell medium-6">
 				{VAR:pilgrimpass_email}
-			</div>
-		</div>
-		
-		<div class="grid-x grid-padding-x">
-			<div class="cell">
-				{VAR:pilgrimpass_idnr}
 			</div>
 		</div>
 	</fieldset>

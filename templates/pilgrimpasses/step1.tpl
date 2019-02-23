@@ -45,31 +45,25 @@
 				</div>
 
 				<div class="grid-x grid-padding-x">
-					<div class="cell small-3">
+					<div class="cell small-2">
 						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_zip})}error{ENDIF}">
 							<label for="pilgrimpass_zip">PLZ</label>
 							<input type="text" value="{VAR:pilgrimpass_zip}" name="pilgrimpass_zip[]" id="pilgrimpass_zip" />
 						</div>
 					</div>
-					<div class="cell small-9">
+					<div class="cell small-5">
 						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_city})}error{ENDIF}">
 							<label for="pilgrimpass_city">Stadt</label>
 							<input type="text" value="{VAR:pilgrimpass_city}" name="pilgrimpass_city[]" id="pilgrimpass_city" />
 						</div>
 					</div>
-				</div>
-
-				<div class="grid-x grid-padding-x">
-					<div class="cell medium-6">
+				<!-- </div> -->
+                <!--  -->
+				<!-- <div class="grid&#45;x grid&#45;padding&#45;x"> -->
+					<div class="cell medium-5">
 						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_country})}error{ENDIF}">
 							<label for="pilgrimpass_country">Land</label>
 							<input type="text" value="{VAR:pilgrimpass_country}" name="pilgrimpass_country[]" id="pilgrimpass_country" />
-						</div>
-					</div>
-					<div class="cell medium-6">
-						<div class="form-field form-field--date {IF({ISSET:error_pilgrimpass_birthday})}error{ENDIF}">
-							<label for="pilgrimpass_birthday">Geburtstag</label>
-							<input type="date" value="{VAR:pilgrimpass_birthday}" name="pilgrimpass_birthday[]" id="pilgrimpass_birthday" />
 						</div>
 					</div>
 				</div>
@@ -89,14 +83,6 @@
 					</div>
 				</div>
 
-				<div class="grid-x grid-padding-x">
-					<div class="cell">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_idnr})}error{ENDIF}">
-							<label for="pilgrimpass_idnr">Personalausweis-Nr.</label>
-							<input type="text" value="{VAR:pilgrimpass_idnr}" name="pilgrimpass_idnr[]" id="pilgrimpass_idnr" />
-						</div>
-					</div>
-				</div>
 			<!-- </fieldset> -->
             <!--  -->
             <!--  -->

@@ -139,6 +139,14 @@ function APP () {
 			var rmBtn = newfs.querySelector('.remove-button');
 			countInput.value = container.children.length;
 			rmBtn.addEventListener('click', onRemoveButtonClicked);
+			var inputs = newfs.querySelectorAll('input');
+			for (var i = 0; i < inputs.length; i++) {
+				inputs[i].value = '';
+			}
+			var selects = newfs.querySelectorAll('select');
+			for (var i = 0; i < selects.length; i++) {
+				selects[i].selectedIndex = null;
+			}
 		});
 
 		var removeButtons = document.querySelectorAll('.remove-button');
