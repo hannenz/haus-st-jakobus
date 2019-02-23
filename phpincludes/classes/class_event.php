@@ -300,6 +300,9 @@ class Event extends Model {
 			$event['event_can_registrate'] = false;
 		}
 
+		$event['event_seats_registered'] = $event['event_seats_max'] - $event['event_seats_available'];
+		$event['event_seats_perc'] = $event['event_seats_registered'] / $event['event_seats_max'] * 100;
+
 		return $event;
 	}
 

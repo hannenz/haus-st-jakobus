@@ -1,5 +1,29 @@
+
 .availability-indicator {
 	width: 60px;
 	display: inline-block;
 	vertical-align: middle;
+}
+
+progress {
+	appearance: none;
+	border: 0;
+
+	background-color: $grey6;
+	height: 10px;
+	width: 160px;
+
+	&::-moz-progress-bar {
+		background-color: green;
+	}
+
+	// &[value^=8]::-moz-progress-bar {
+		// background-color: orange;
+	// }
+
+	// &[value^=9?]::-moz-progress-bar, 
+	// &[value=100]::-moz-progress-bar {
+	// 	background-color: red;
+	// }
+
 }

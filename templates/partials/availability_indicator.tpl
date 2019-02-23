@@ -4,3 +4,5 @@
 		<rect x="60" y="2" width="26" height="26" {IF("{VAR:event_seats_available}" == "0")}fill="#cccccc"{ELSE}{IF("{VAR:event_seats_available}" < "5")}fill="#cccccc"{ELSE}fill="#00cc00"{ENDIF}{ENDIF} /> 
 	</svg>
 
+	<progress min="0" max="100" value="{VAR:event_seats_perc}" title="{VAR:event_seats_available} Plätze frei"></progress>
+
