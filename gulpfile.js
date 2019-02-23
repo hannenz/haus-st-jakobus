@@ -42,7 +42,8 @@ const banner = [
 
 
 //array of gulp task names that should be included in "gulp build" task
-var build = ['clean:dist', 'js', 'jsvendor', 'css', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
+var build =      ['clean:dist', 'js', 'jsvendor', 'css', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
+var build_prod = ['clean:dist', 'js', 'jsvendor', 'css-production', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
 
 
 
@@ -157,7 +158,7 @@ gulp.task ('clean:dist', function () {
 })
 
 /*
- *  Task: process SASS 
+ *  Task: process SASS for development
  */
 gulp.task('css', function (done) {
 	return gulp
@@ -298,32 +299,10 @@ gulp.task('default', gulp.series('css', function () {
 
 var exec = require('child_process').exec;
 
-// gulp.task('deploy-staging', function (cb) {
-// 	var dt = new Date();
-// 	var folder = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-//
-// 	exec('rsync -ave ssh /var/www/html/outdoor-plus/ tom:/var/www/html/outdoor-plus/' + folder + '/ --exclude-from=".deploy-excludes"', function (err, stdout, stderr) {
-// 		console.log(stdout);
-// 		console.log (stderr);
-// 		cb (err);
-// 	});
-// });
-//
-// gulp.task('deploy-production', function (cb) {
-// 	$.util.log ('Creating backup...');
-// 	exec ('ssh agentur-halma.de \"tar cfz outdoor-plus.backup.$(date +%F-%H%M%S).tar.gz www/outdoor-plus\"');
-//
-// 	$.util.log ('Deploying...');
-// 	exec ('rsync --delete -ave ssh /var/www/html/outdoor-plus/ agentur-halma.de:www/outdoor-plus/ --exclude-from=".deploy-excludes"', function (err, stdout, stderr) {
-// 		console.log (stdout);
-// 		console.log (stderr);
-// 		cb (err);
-// 	});
-// });
-
 /*
  * Task: Build all
  */
 gulp.task('build', gulp.series(build));
+gulp.task('build-prod', gulp.series(build_prod));
 // gulp.task('deploy', gulp.series(build, 'deploy-production'));
 
