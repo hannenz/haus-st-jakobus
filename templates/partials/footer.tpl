@@ -28,6 +28,11 @@
 			<blockquote>
 				Gastfreundschaft, Begegnung, Einfachheit, Heimat, Natur, Offenheit, Spiritualität, Achtsamkeit, Ort der Mitte
 			</blockquote>
+			<nav class="legal-nav">
+				{LOOP NAVIGATION(40)}
+					<a href="{NAVIGATION:link}">{NAVIGATION:title}</a>
+				{ENDLOOP NAVIGATION}
+			</nav>
 		</div>
 	</div>
 </footer>

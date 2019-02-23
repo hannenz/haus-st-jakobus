@@ -13,8 +13,9 @@ $footer-text-color: lighten($dark-grey, 66%);
 	position: relative;
 	@include type-setting(0);
 
+
+
 	a {
-		
 		color: $footer-text-color;
 		// text-decoration: underline !important;
 		// &:hover {
@@ -28,10 +29,11 @@ $footer-text-color: lighten($dark-grey, 66%);
 	}
 
 	li {
-		margin: 0.5 * $vertical-unit 0;
-		// padding-left: 1em;
+		margin: 0;
 		&::before {
 			content: '> ';
+			color: $grey3;
+			vertical-align: middle;
 		}
 	}
 
@@ -50,6 +52,8 @@ $footer-text-color: lighten($dark-grey, 66%);
 
 	.footer-column {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
 		@include for-size(tablet-portrait-up) {
 			width: calc(100% / 3 - #{$gutter});
 		}
@@ -67,5 +71,22 @@ $footer-text-color: lighten($dark-grey, 66%);
 
 	blockquote {
 		font-style: italic;
+	}
+
+	.legal-nav {
+		margin-top: $vertical-unit;
+		@include for-size(tablet-portrait-up) {
+			margin-top: auto;
+		}
+
+		@include type-setting(0);
+
+		a {
+			display: inline-block;
+		}
+
+		a:first-child {
+			margin-right: 0.5em;
+		}
 	}
 }
