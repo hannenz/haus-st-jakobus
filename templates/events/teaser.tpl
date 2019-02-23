@@ -26,16 +26,21 @@
 
 		<div class="event-availability">
 
-			{IF("{VAR:event_needs_registration}" == "1")}
-				{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
-				{IF("{VAR:event_seats_available}" > "0")}
-					{VAR:event_seats_available} Plätze frei
-				{ELSE}
-					Diese Veranstaltung ist ausgebucht
-				{ENDIF}
-			{ELSE}
+			{IF("{VAR:event_needs_registration}" == "0")}
 				<p>Keine Anmeldung erforderlich</p>
+			{ELSE}
+				{IF("{VAR:event_seats_max}" == "0")}
+					<p>Keine Teilnehmerbegrenzung</p>
+				{ELSE}
+					{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
+					{IF("{VAR:event_seats_taken}" != "{VAR:event_seats_max}")}
+						{VAR:event_seats_available} Plätze frei
+					{ELSE}
+						Diese Veranstaltung ist ausgebucht
+					{ENDIF}
+				{ENDIF}
 			{ENDIF}
+
 		</div>
 
 		<p class="teaser__action-area">

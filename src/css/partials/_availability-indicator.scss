@@ -14,16 +14,18 @@ progress {
 	width: 160px;
 
 	&::-moz-progress-bar {
-		background-color: green;
+		background-color: $grey4;
 	}
 
-	// &[value^=8]::-moz-progress-bar {
-		// background-color: orange;
+	// &.high::-moz-progress-bar {
+	// 	background-color: green;
 	// }
-
-	// &[value^=9?]::-moz-progress-bar, 
-	// &[value=100]::-moz-progress-bar {
+	// &.medium::-moz-progress-bar {
+	// 	background-color: orange;
+	// }
+	// &.low::-moz-progress-bar {
 	// 	background-color: red;
 	// }
-
 }
+
+

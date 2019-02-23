@@ -295,14 +295,24 @@ class Event extends Model {
 				$event['event_can_registrate'] = false;
 			}
 		}
+
+		$event['event_seats_available'] = $event['event_seats_max'] - $event['event_seats_taken'];
 		// If no more seats available, ... no luck ;-)
 		if ($event['event_seats_available'] == 0) {
 			$event['event_can_registrate'] = false;
 		}
 
-		$event['event_seats_registered'] = $event['event_seats_max'] - $event['event_seats_available'];
-		$event['event_seats_perc'] = $event['event_seats_registered'] / $event['event_seats_max'] * 100;
+		$event['event_seats_perc'] = (int)($event['event_seats_taken'] / $event['event_seats_max'] * 100);
 
+		if ($event['event_seats_perc'] > 90) {
+			$event['event_seats_availability_class'] = 'low';
+		}
+		else if ($event['event_seats_perc'] > 66) {
+			$event['event_seats_availability_class'] = 'medium';
+		}
+		else {
+			$event['event_seats_availability_class'] = 'high';
+		}
 		return $event;
 	}
 
