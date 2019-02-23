@@ -9,15 +9,16 @@ use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Debug;
 use Contentomat\FieldHandler;
+use Contentomat\ApplicationHandler;
 use Contentomat\Parser;
 use \Exception;
+
 
 class Model {
 	
 	/**
 	 * @var Object
 	 */
-	protected $db;
 
 	/**
 	 * Contentomat Object instance
@@ -103,8 +104,20 @@ class Model {
 	protected $formTemplatesPath = PATHTOWEBROOT . 'templates/forms/';
 
 
+	/**
+	 * @var id  The CMT Application ID
+	 */
+	protected $applicationId;
+
+	/**
+	 * @var Array  The CMT Application Settings
+	 */
+	protected $applicationSettings;
 
 	public function __construct () {
+
+		ini_set('display_errors', true);
+		error_reporting(E_ALL & ~E_NOTICE);
 		$this->db = new DBCex ();
 		$this->cmt = Contentomat::getContentomat ();
 		$this->PsrAutoloader = new PsrAutoloader ();
@@ -117,14 +130,12 @@ class Model {
 		// $this->belongsTo = [];
 		// $this->hasMany = [];
 
+		$this->ApplicationHandler = new ApplicationHandler();
 
 		// Set system default language
 		$this->setLanguage(DEFAULTLANGUAGE);
 
-		
-
 		$this->init ();
-
 	}
 
 
@@ -601,6 +612,10 @@ class Model {
 		];
 		$params = array_merge ($defaultParams, $params);
 
+		if (!empty($this->validationRules[$fieldName])) {
+			$params['required'] = true;
+		}
+
 		$this->Parser->setMultipleParserVars ($fieldData);
 		$this->Parser->setParserVar ('fieldName', $fieldName);
 		$this->Parser->setParserVar ('fieldValue', $params['value']);
@@ -781,6 +796,32 @@ class Model {
 		}
 		
 		return $success;
+	}
+
+	/**
+	 * Setup Application ID and app settings
+	 * Must be called after  setTableName
+	 *
+	 * @return void
+	 */
+	protected function setupApplication() {
+		$this->applicationId = $this->getApplicationId();
+		$this->applicationSettings = $this->ApplicationHandler->getApplicationSettings($this->applicationId);
+	}
+	
+
+	/**
+	 * Get the Application Id of the model's table
+	 *
+	 * @return integer
+	 */
+	protected function getApplicationId() {
+		$query = sprintf("SELECT id FROM cmt_tables WHERE cmt_tablename='%s'", $this->tableName);
+		if ($this->db->query($query) != 0) {
+			return null;
+		}
+		$result = $this->db->get();
+		return (int)$result['id'];
 	}
 }
 ?>

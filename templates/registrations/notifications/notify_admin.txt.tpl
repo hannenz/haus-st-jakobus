@@ -11,3 +11,5 @@ Mitglied im Förderverein: {IF("{VAR:registration_is_member}" == "1")}Ja{ELSE}Ne
 Kurs: {VAR:course_name}
 Veranstaltung: {VAR:event_title} am {VAR:event_date_fmt}
 
+--
+

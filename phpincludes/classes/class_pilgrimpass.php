@@ -31,7 +31,7 @@ class Pilgrimpass extends Model {
 				'not-emppty' => '/^.+$/',
 				// 'custom' => 'validateIsUlm'
 			],
-			'pilgrimpass_phone' => '/^.+$/',
+			// 'pilgrimpass_phone' => '/^.+$/',
 			'pilgrimpass_email' => '/^.+@.+\..{2,3}$/',
 			'pilgrimpass_idnr' => '/^.+$/',
 			'pilgrimpass_route' => '/^.+$/',

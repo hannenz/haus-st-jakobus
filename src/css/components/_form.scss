@@ -31,6 +31,23 @@ label {
 	@include type-setting(-1);
 }
 
-[required] {
-	outline: 4px dashed yellow;
+// [required] {
+// 	outline: 4px dashed yellow;
+// }
+
+.required label::after {
+	content: ' *';
+	font-weight: bold;
+	color: $primary-color;
 }
+
+.info {
+	color: $grey4;
+	@include type-setting(-1);
+}
+
+.info span {
+	font-weight: bold;
+	color: $primary-color;
+}
+

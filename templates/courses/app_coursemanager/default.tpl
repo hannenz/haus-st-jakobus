@@ -13,6 +13,9 @@
 		<img src="templates/default/administration/img/default_table_icon_xlarge.png" alt="" />
 	</div>
 	<h1>Kurs-Manager</h1>
+	<div>
+		<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Export als CSV-Datei (für Excel)</a>
+	</div>
 </div>
 
 <div class="course-manager-overview">

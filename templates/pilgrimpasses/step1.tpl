@@ -22,13 +22,13 @@
 						</div>
 					</div>
 					<div class="cell medium-5">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_firstname})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_firstname})}error{ENDIF}">
 							<label for="pilgrimpass_firstname">Vorname</label>
 							<input type="text" value="{VAR:pilgrimpass_firstname}" name="pilgrimpass_firstname[]" id="pilgrimpass_firstname" required />
 						</div>
 					</div>
 					<div class="cell medium-5">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_lastname})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_lastname})}error{ENDIF}">
 							<label for="pilgrimpass_lastname">Nachname</label>
 							<input type="text" value="{VAR:pilgrimpass_lastname}" name="pilgrimpass_lastname[]" id="pilgrimpass_lastname" required />
 						</div>
@@ -37,18 +37,18 @@
 
 				<div class="grid-x grid-padding-x">
 					<div class="cell">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_street_address})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_street_address})}error{ENDIF}">
 							<label for="pilgrimpass_street_address">Anschrift</label>
-							<input type="text" value="{VAR:pilgrimpass_street_address}" name="pilgrimpass_street_address[]" id="pilgrimpass_street_address" />
+							<input type="text" value="{VAR:pilgrimpass_street_address}" name="pilgrimpass_street_address[]" id="pilgrimpass_street_address" required />
 						</div>
 					</div>
 				</div>
 
 				<div class="grid-x grid-padding-x">
 					<div class="cell small-2">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_zip})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_zip})}error{ENDIF}">
 							<label for="pilgrimpass_zip">PLZ</label>
-							<input type="text" value="{VAR:pilgrimpass_zip}" name="pilgrimpass_zip[]" id="pilgrimpass_zip" />
+							<input type="text" value="{VAR:pilgrimpass_zip}" name="pilgrimpass_zip[]" id="pilgrimpass_zip" required />
 						</div>
 					</div>
 					<div class="cell small-5">
@@ -61,9 +61,9 @@
                 <!--  -->
 				<!-- <div class="grid&#45;x grid&#45;padding&#45;x"> -->
 					<div class="cell medium-5">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_country})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_country})}error{ENDIF}">
 							<label for="pilgrimpass_country">Land</label>
-							<input type="text" value="{VAR:pilgrimpass_country}" name="pilgrimpass_country[]" id="pilgrimpass_country" />
+							<input type="text" value="{VAR:pilgrimpass_country}" name="pilgrimpass_country[]" id="pilgrimpass_country" required />
 						</div>
 					</div>
 				</div>
@@ -76,9 +76,9 @@
 						</div>
 					</div>
 					<div class="cell medium-6">
-						<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_email})}error{ENDIF}">
+						<div class="form-field form-field--text required {IF({ISSET:error_pilgrimpass_email})}error{ENDIF}">
 							<label for="pilgrimpass_email">E-Mail</label>
-							<input type="text" value="{VAR:pilgrimpass_email}" name="pilgrimpass_email[]" id="pilgrimpass_email" />
+							<input type="text" value="{VAR:pilgrimpass_email}" name="pilgrimpass_email[]" id="pilgrimpass_email" required />
 						</div>
 					</div>
 				</div>
@@ -138,6 +138,10 @@
 				</div>
 			</fieldset>
 		{ENDLOOP VAR}
+	</div>
+
+	<div class="info">
+		Die mit einem <span>*</span> gekennzeichneten Felder müssen ausgefüllt werden.
 	</div>
 
 	<input type="hidden" value="{VAR:count}" name="count" id="count" />

@@ -8,13 +8,16 @@ use \Jakobus\Event;
 
 class Registration extends Model {
 
+	protected $Mail;
+	protected $Event;
 
 	public function init () {
 
 		$this->Mail = new Mail();
 		$this->Event = new Event();
 
-		$this->setTableName ('jakobus_registrations');
+		$this->setTableName('jakobus_registrations');
+		$this->setupApplication();
 
 		$this->setValidationRules([
 			'registration_firstname' => [
@@ -66,7 +69,8 @@ class Registration extends Model {
 		$text = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.txt.tpl");
 
 		/* TODO: Read from settings */
-		$recipient = 'me@hannenz.de';
+		// $recipient = 'me@hannenz.de';
+		$settings = $this->ApplicationHandler->getApplicaationSettings(APPLICATION_ID);
 
 		return $this->Mail->send([
 			'senderMail' => 'noreply@haus-st-jakobus.de',

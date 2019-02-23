@@ -45,7 +45,7 @@
 
 		<p class="teaser__action-area">
 			<!-- <a class="more" href="{VAR:event_detail_url}">Details</a> -->
-			{IF("{VAR:event_can_registrate}" == "1")}
+			{IF(1 || "{VAR:event_can_registrate}" == "1")}
 				<a class="subscribe more" href="{VAR:event_subscribe_url}">Anmelden</a>
 			{ENDIF}
 		</p>

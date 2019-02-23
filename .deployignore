@@ -31,3 +31,7 @@ tags
 
 # End of https://www.gitignore.io/api/vim,linux
 
+todo
+deploy.sh
+gulpfile.js
+.deployignore

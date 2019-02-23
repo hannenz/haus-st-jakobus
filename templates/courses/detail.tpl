@@ -72,6 +72,8 @@
 				{ENDLOOP VAR}
 			</table>
 			{ENDIF}
+
+			<a href="{VAR:course_overview_url}" class="back">Zurück</a>
 		</footer>
 	{ENDIF}
 </article>

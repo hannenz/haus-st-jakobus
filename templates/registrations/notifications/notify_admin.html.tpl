@@ -15,4 +15,3 @@
 <dt>Veranstaltung</dt> <dd>{VAR:event_title} am {VAR:event_date_fmt}</dd>
 </dl>
 
-

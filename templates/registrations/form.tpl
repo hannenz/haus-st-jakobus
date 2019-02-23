@@ -7,9 +7,9 @@
 	<fieldset class="fieldset">
 		<legend>Veranstaltung</legend>
 		<div>
-			Kurs: {VAR:course_title}<br>
-			Termin: {VAR:event_date_fmt} 
-			<input type="text" readonly name="registration_event_id" value="{VAR:id}" />
+			<strong>Kurs: {VAR:course_title}</strong><br>
+			<em>Termin: {VAR:event_date_fmt}</em>
+			<input type="hidden" readonly name="registration_event_id" value="{VAR:id}" />
 		</div>
 		<div>
 	</fieldset>
@@ -67,6 +67,10 @@
 		</div>
 		
 	</fieldset>
+
+	<div class="info">
+		Die mit einem <span>*</span> gekennzeichneten Felder müssen ausgefüllt werden.
+	</div>
 
 	<div> 
 		<button type="submit" class="button">Anmelden</button>

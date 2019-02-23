@@ -3,6 +3,7 @@ namespace Jakobus;
 
 use Contentomat\PsrAutoloader;
 use Contentomat\ApplicationController;
+use Contentomat\FileHandler;
 use Jakobus\Course;
 use Jakobus\Event;
 use Jakobus\Registration;
@@ -16,6 +17,7 @@ $autoLoader->addNamespace('Jakobus', PATHTOWEBROOT."phpincludes/classes");
 
 class AppCoursemanager extends ApplicationController {
 
+	protected $FileHandler;
 	protected $Course;
 	protected $CourseCategory;
 	protected $Event;
@@ -25,6 +27,7 @@ class AppCoursemanager extends ApplicationController {
 
 		parent::init();
 
+		$this->FileHandler = new FileHandler();
 		$this->Course = new Course();
 		$this->CourseCategory = new CourseCategory();
 		$this->Event = new Event();
@@ -69,6 +72,61 @@ EOS;
 
 		$this->parser->setMultipleParserVars(compact('pastEvents', 'upcomingEvents'));
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'default.tpl');
+	}
+
+	/**
+	 * Export upcoming registrations to CSV
+	 *
+	 * @return void
+	 */
+	public function actionExportCsv() {
+
+		$registrations = [];
+		$upcomingEvents = $this->Event->getUpcoming();
+		foreach ($upcomingEvents as $event) {
+			$_registrations = $this->Registration->filter([
+				'registration_event_id' => $event['id']
+			])->findAll();
+			foreach ($_registrations as $_registration) {
+				$registrations[] = array_merge($event, $_registration);
+			}
+		}
+
+
+		$lines = [ "ID,Anmelde-Datum,Anrede,Vorname,Nachname,Geburtstag,Anschrift,PLZ,Stadt,Telefon,E-Mail,Mitglied im Förderverein,Veranstaltungs-ID,Veranstaltung,Kurs\n" ];
+		foreach ($registrations as $registration) {
+			$lines[] = sprintf("%u,\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%u,\"%s\",\"%s\"\n",
+				$registration['id'],
+				strftime('%d.%m.%Y %H:%M', strtotime($registration['registration_date'])),
+				$registration['registration_salutation'],
+				$registration['registration_firstname'],
+				$registration['registration_lastname'],
+				strftime('%d.%m.%Y', strtotime($registration['registration_birthday'])),
+				$registration['registration_street_address'],
+				$registration['registration_zip'],
+				$registration['registration_city'],
+				$registration['registration_phone'],
+				$registration['registration_email'],
+				($registration['registration_is_member'] != 0) ? "ja" : "nein",
+				$registration['registration_event_id'],
+				$registration['event_title'],
+				$registration['course_title']
+			);
+		}
+
+		$tmpFile = tempnam(PATHTOTMP, 'reg');
+		$handle = fopen($tmpFile, "w");
+		foreach ($lines as $line) {
+			fwrite($handle, $line);
+		}
+		fclose($handle);
+
+
+		$this->FileHandler->handleDownload([
+			'downloadFile' => $tmpFile,
+			'downloadFileAlias' => sprintf('Anmeldungen_%s.csv', strftime('%Y-%m-%d-%H%M')),
+			'deleteFile' => true
+		]);
 	}
 }
 
