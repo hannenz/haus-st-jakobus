@@ -116,8 +116,6 @@ class Model {
 
 	public function __construct () {
 
-		ini_set('display_errors', true);
-		error_reporting(E_ALL & ~E_NOTICE);
 		$this->db = new DBCex ();
 		$this->cmt = Contentomat::getContentomat ();
 		$this->PsrAutoloader = new PsrAutoloader ();

@@ -22,8 +22,6 @@ class RegistrationsOverviewController extends ApplicationController {
 	}
 
 	public function actionDefault() {
-		error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-		ini_set('display_errors', true);
 		$eventId = $_REQUEST['eventId'];
 		$courseId = $_REQUEST['courseId'];
 
