@@ -102,6 +102,8 @@ body {
 // TODO: This is just a draft
 .sidebar {
 	figure {
+		overflow: hidden;
+
 		img {
 			float: left;
 			display: block;
@@ -120,3 +122,4 @@ figure {
 		color: $text-color-light;
 	}
 }
+

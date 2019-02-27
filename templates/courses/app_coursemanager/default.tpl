@@ -49,8 +49,8 @@
 						</details>
 					</td>
 					<td>
-						<a class="cmtIcon cmtButtonEditEntry"href="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&&action=edit&id[]={VAR:id}"></a>
-						<!-- <a class="cmtIcon cmtButtonDeleteEntry"href="{SELFURL}&#38;cmtAction=delete&#38;id[]={VAR:id}"></a> -->
+						<a class="cmtIcon cmtButtonEditEntry" href="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&action=edit&id[]={VAR:id}"></a>
+						<a class="cmtIcon cmtButtonDeleteEntry cmtDialog cmtDialogConfirm" data-dialog-content-id="cmtDialogConfirmDeletion" data-dialog-var="{VAR:id}" data-dialog-confirm-url="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&action=delete&id[]={VAR:id}" href="javascript:void(0);"></a>
 					</td>
 				</tr>
 				{ENDLOOP VAR}
@@ -81,8 +81,8 @@
 						</details>
 					</td>
 					<td>
-						<a class="cmtIcon cmtButtonEditEntry"href="{SELFURL}&cmtAction=edit&id[]={VAR:id}"></a>
-						<a class="cmtIcon cmtButtonDeleteEntry"href="{SELFURL}&cmtAction=delete&id[]={VAR:id}"></a>
+						<a class="cmtIcon cmtButtonEditEntry" href="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&action=edit&id[]={VAR:id}"></a>
+						<a class="cmtIcon cmtButtonDeleteEntry cmtDialog cmtDialogConfirm" data-dialog-content-id="cmtDialogConfirmDeletion" data-dialog-var="{VAR:id}" data-dialog-confirm-url="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&action=delete&id[]={VAR:id}" href="javascript:void(0);"></a>
 					</td>
 				</tr>
 				{ENDLOOP VAR}
@@ -91,3 +91,13 @@
 	</div>
 </div>
 
+<!-- Dialogfenster Inhalte -->
+<div id="cmtDialogConfirmDeletion" class="cmtDialogContentContainer">
+	<div class="cmtDialogContent">
+		M&ouml;chten Sie den Eintrag mit der ID-Nr. <span class="cmtDialogVar"></span> wirklich l&ouml;schen?
+	</div>
+	<div class="cmtDialogButtons">
+		<span class="cmtButtonCancelText" data-button-class="cmtButtonBack">abbrechen</span>
+		<span class="cmtButtonConfirmText" data-button-class="cmtButtonDelete">l&ouml;schen</span>
+	</div>
+</div>

@@ -11,7 +11,6 @@ use Jakobus\News;
 
 define('APPLICATION_ID', 25);
 
-
 if (class_exists('\Jakobus\NewsController') === false) {
 
 	class NewsController extends Controller {

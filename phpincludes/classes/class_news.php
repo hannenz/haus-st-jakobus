@@ -11,7 +11,7 @@ class News extends Posts {
 	/**
 	 * @var Integer
 	 */
-	protected $detailPageId = 37;
+	protected $detailPageId = 59;
 
 	/**
 	 * @var Integer
