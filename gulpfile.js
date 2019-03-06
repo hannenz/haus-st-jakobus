@@ -43,7 +43,7 @@ const banner = [
 
 //array of gulp task names that should be included in "gulp build" task
 var build =      ['clean:dist', 'js', 'jsvendor', 'css', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
-var build_prod = ['clean:dist', 'js', 'jsvendor', 'css-production', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
+var build_prod = ['clean:dist', 'js-production', 'jsvendor', 'css-production', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
 
 
 
@@ -210,16 +210,28 @@ gulp.task('css-production', function (done) {
  */
 gulp.task('js', function() {
 	return gulp.src(settings.js.src)
-		// .pipe(deporder())
 		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log (jsvalidate.message); this.emit('end') }))
 		.pipe($.sourcemaps.init())
 		.pipe($.concat(settings.js.destFile))
-		// .pipe(stripdebug())
-		.pipe($.uglify().on('error', function(uglify) { console.log (uglify.message); this.emit('end') }))
-		.pipe($.header(banner, { pkg: pkg }))
+		// .pipe($.uglify().on('error', function(uglify) { console.log (uglify.message); this.emit('end') }))
+		// .pipe($.header(banner, { pkg: pkg }))
 		.pipe($.sourcemaps.write('./'))
 		.pipe(gulp.dest(settings.js.dest))
 		.pipe($.browserSync.stream())
+	;
+});
+
+/*
+ * Task: Concat and uglify Javascript for PRODUCTION
+ */
+gulp.task('js-production', function() {
+	return gulp.src(settings.js.src)
+		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log (jsvalidate.message); this.emit('end') }))
+		.pipe($.concat(settings.js.destFile))
+		.pipe($.stripDebug())
+		.pipe($.uglify().on('error', function(uglify) { console.log (uglify.message); this.emit('end') }))
+		.pipe($.header(banner, { pkg: pkg }))
+		.pipe(gulp.dest(settings.js.dest))
 	;
 });
 
