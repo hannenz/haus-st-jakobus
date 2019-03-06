@@ -76,7 +76,19 @@ var settings = {
 		dest: pkg.project_settings.prefix + 'css/',
 		srcMain: './src/css/main.scss',
 		options: {
+
 			sass: {
+				outputStyle: 'nested',
+				precision: 3,
+				errLogToConsole: true,
+				includePaths: [
+					'node_modules/foundation-sites/scss',
+					'node_modules/motion-ui/src',
+					$.bourbon.includePaths
+				]
+			},
+
+			sassProduction: {
 				outputStyle: 'compressed',
 				precision: 3,
 				errLogToConsole: true,
@@ -86,6 +98,7 @@ var settings = {
 					$.bourbon.includePaths
 				]
 			},
+
 			autoprefixer: {
 				browsers: ['last 2 versions', '>2%', 'IE 11']
 			}
@@ -182,9 +195,7 @@ gulp.task('css', function (done) {
 gulp.task('css-production', function (done) {
 	return gulp
 		.src(settings.css.srcMain)
-		// .pipe($.plumber({ errorHandler: onError}))
-
-		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
+		.pipe($.sass(settings.css.options.sassProduction).on('error', $.sass.logError))
 		.pipe($.autoprefixer(settings.css.options.autoprefixer))
 		.pipe($.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(settings.css.dest))
