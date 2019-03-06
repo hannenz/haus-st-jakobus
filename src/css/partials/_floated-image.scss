@@ -6,30 +6,8 @@
  */
 .floated-image {
 	margin-bottom: $vertical-unit;
-
+	overflow: hidden;
 	width: 100%;
-
-	@include for-size(tablet-portrait-up) {
-		&--small {
-			width: 33%;
-		}
-	}
-
-	@include for-size(tablet-landscape-up) {
-		&--large {
-			width: 66%;
-		}
-	}
-
-	&--left {
-		float: left;
-		margin-right: $gutter;
-	}
-
-	&--right {
-		float: right;
-		margin-left: $gutter;
-	}
 
 	img {
 		display: block;
@@ -37,5 +15,28 @@
 		max-width: 100%;
 		width: 100%;
 	}
+
+	@include for-size(tablet-portrait-up) {
+		&--small .floated-image__image {
+			width: 33%;
+		}
+	}
+
+	@include for-size(tablet-landscape-up) {
+		&--large .floated-image__image {
+			width: 66%;
+		}
+	}
+
+	&--left .floated-image__image {
+		float: left;
+		margin-right: $gutter;
+	}
+
+	&--right .floated-image__image {
+		float: right;
+		margin-left: $gutter;
+	}
+
 }
 
