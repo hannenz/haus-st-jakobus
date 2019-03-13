@@ -9,7 +9,7 @@
 	<div class="teaser__body">
 		<header class="teaser__header">
 
-			<h2 class="headline">{VAR:course_title}</h2>
+			<a href="{VAR:course_detail_url}"><h2 class="headline">{VAR:course_title}</h2></a>
 			{IF({ISSET:course_subheadline})} <h3 class="subheadline teaser__subheadline">{VAR:course_subheadline}</h3>{ENDIF}
 			<div class="teaser__text">
 				{VAR:course_short_description}

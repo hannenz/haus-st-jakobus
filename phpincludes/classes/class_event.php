@@ -218,6 +218,7 @@ class Event extends Model {
 
 		$event['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_begin']));
 		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_end']));
+		$event['event_time_fmt'] = strftime('%H:%M', strtotime($event['event_begin']));
 
 		// Test if begin and end date are at the same day
 		$y1 = date('y', strtotime($event['event_begin']));

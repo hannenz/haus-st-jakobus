@@ -1,3 +1,8 @@
 <table class="unstriped hover" style="width:100%; border-collapse:collapse;">
-	{VAR:costsItemsContent}
+	<thead>
+		<caption>Kosten</caption>
+	</thead>
+	<tbody>
+		{VAR:costsItemsContent}
+	</tbody>
 </table>

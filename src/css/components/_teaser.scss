@@ -17,8 +17,8 @@
 		padding-right: 0;
 
 		@include for-size(tablet-landscape-up) {
-			padding-right: 2 * $gutter !important;
-			width: 240px;
+			padding-right: 1 * $gutter !important;
+			width: 200px;
 		}
 		flex: 0 1 auto;
 	}
@@ -30,7 +30,8 @@
 	}
 
 	&__meta {
-		color: $grey4;
+		color: $grey2;
+		font-weight: bold;;
 	}
 
 	&__action-area {
@@ -38,7 +39,14 @@
 	}
 
 	.headline.headline {
-		margin: 16px 0;
+		margin: 4px 0;
+		line-height: 1.1em;
+	}
+
+
+	a:hover {
+		text-decoration: none;
+		color: inherit;
 	}
 }
 

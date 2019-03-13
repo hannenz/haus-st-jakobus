@@ -18,3 +18,11 @@
 ul.events {
 	list-style-type: none;
 }
+
+.teaser--event {
+	.teaser__description {
+		div {
+			margin: 0.5 * $vertical-unit 0;
+		}
+	}
+}

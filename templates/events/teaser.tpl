@@ -22,7 +22,10 @@
 			</div>
 		</header>
 
-		<p>{VAR:event_location}</p>
+		<div class="teaser__description">
+			<div>{VAR:event_time_fmt} Uhr<br>{VAR:event_location:nl2br}</div>
+			<div>{VAR:event_remark}</div>
+		</div>
 
 		<div class="event-availability">
 
@@ -44,11 +47,26 @@
 		</div>
 
 		<p class="teaser__action-area">
-			<!-- <a class="more" href="{VAR:event_detail_url}">Details</a> -->
-			{IF(1 || "{VAR:event_can_registrate}" == "1")}
-				<a class="subscribe more" href="{VAR:event_subscribe_url}">Anmelden</a>
+			{IF("{VAR:event_needs_registration}" == "1")}
+				{IF(1 || "{VAR:event_can_registrate}" == "1")}
+					<a class="subscribe more" href="{VAR:event_subscribe_url}">Anmelden</a>
+				{ENDIF}
 			{ENDIF}
 		</p>
 	</div>
 </article>
-
+<script type='application/ld+json'> 
+{
+  "@context": "http://www.schema.org",
+  "@type": "Event",
+  "name": "{VAR:course_title} / {VAR:event_title}",
+  "url": "{SELFURL}",
+  "description": "{VAR:event_remark}",
+  "startDate": "{VAR:event_begin}",
+  "endDate": "{VAR:event_end}",
+  "location": {
+	"@type": "Place",
+	"name": "{VAR:event_location}",
+  }
+}
+</script>

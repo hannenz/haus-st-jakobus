@@ -3,14 +3,14 @@
 
 [ ] Kursleiter pro Veranstaltung
 
-
-[✓] Kurs: Untertitel wird nicht verwente -> rausnehmen aus BE-Maske
-[ ] Freie Plätze: Null-Angabe für "keine Begrenzung" funktioniert nicht
+[✓] Veranstaltungs-Teaser: JSON+LD / Microformats
+[✓] Kurs: Untertitel wird nicht verwendet -> rausnehmen aus BE-Maske
+[✓] Freie Plätze: Null-Angabe für "keine Begrenzung" funktioniert nicht
 [ ] Hinweise zu Bilduploads u.a.
 [ ] Kurse, Veranstlatungen: Bilder aus Tabellenmedien werden noch gar nirgends ausgegeben
-[ ] Veranstaltungen: Ort wird nicht ausgegeben.
-[ ] Kursdetailseite: Veranstaltungen chronologisch!
-[ ] Anmelden Button wird angezeigt obwohl keine Anmeldung erforderlich ist
+[✓] Veranstaltungen: Ort wird nicht ausgegeben.
+[✓] Kursdetailseite: Veranstaltungen chronologisch!
+[✓] Anmelden Button wird angezeigt obwohl keine Anmeldung erforderlich ist
 [ ] Kursdetailseite: Abgelaufene Kurse sollen nicht ausgegeben werden
 [ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 [ ] Kosten: Preis kein Textfeld?!?
@@ -26,7 +26,7 @@
 [ ] Pilgerausweise: Laufende Nummer, einfach Zahl, wird manuell zurueckgesetzt
 [ ] Pilgerausweise: Validate startdatum mind. 5 tage in zukunft
 [ ] paypal recherche
-
+[ ] Kalender: Klick auf Tag: Leere Seite!
 
 [✓] Zurück zur Übersicht: Checken ob es nun überall funktioniert
 [✓] Impressum, Datenschutzerklärung

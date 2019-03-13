@@ -152,6 +152,7 @@ class CoursesController extends Controller {
 			'event_course_id' => $course['id'],
 			'event_begin >' => "'" . strftime("%Y-%m-%d 00:00:00") . "'"
 		])
+		->order(['event_begin' => 'ASC'])
 		->findAll();
 
 

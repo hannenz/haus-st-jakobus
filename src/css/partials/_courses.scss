@@ -130,3 +130,26 @@ table.courses-overview {
 		display: inline-block;
 	}
 }
+
+.course_costs {
+	margin: 0.5rem 0;
+
+	caption {
+		background-color: $red3;
+		color: $primary-color;
+		text-align: left;
+		padding: 8px 6px;
+		border-bottom: 1px solid #fff;
+		font-weight: bold;;
+	}
+
+	tr:not(:last-child) {
+		border-bottom: 1px solid #fff; //rgba(0, 0, 0, 0.15);
+	}
+
+	td {
+		padding: 8px 6px;
+		background-color: $red4;
+		color: $primary-color;
+	}
+}
