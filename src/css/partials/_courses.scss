@@ -116,3 +116,17 @@ table.courses-overview {
 	}
 }
 
+.course__images {
+	display: flex;
+	flex-wrap: nowrap;
+
+	figure {
+		// max-width: 50%;
+		flex: 1 0 50%;
+		padding: 0.5 * $gutter;
+	}
+
+	img {
+		display: inline-block;
+	}
+}

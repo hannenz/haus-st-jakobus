@@ -1,31 +1,28 @@
 
 .availability-indicator {
-	width: 31px;
-	display: inline-block;
-	vertical-align: middle;
-}
 
-progress {
-	appearance: none;
-	border: 0;
+	margin-bottom: 4px;
 
-	background-color: $grey6;
-	height: 10px;
-	width: 160px;
-
-	&::-moz-progress-bar {
-		background-color: $grey4;
+	svg {
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		vertical-align: middle;
 	}
 
-	// &.high::-moz-progress-bar {
-	// 	background-color: green;
-	// }
-	// &.medium::-moz-progress-bar {
-	// 	background-color: orange;
-	// }
-	// &.low::-moz-progress-bar {
-	// 	background-color: red;
-	// }
-}
+	progress {
+		appearance: none;
+		border: 0;
 
+		background-color: $grey6;
+		height: 24px;
+		width: 160px;
+		display: inline-block;
+		vertical-align: middle;
+
+		&::-moz-progress-bar {
+			background-color: $grey4;
+		}
+	}
+}
 

@@ -1,5 +1,33 @@
 # Todos
 
+
+[ ] Kursleiter pro Veranstaltung
+
+
+[✓] Kurs: Untertitel wird nicht verwente -> rausnehmen aus BE-Maske
+[ ] Freie Plätze: Null-Angabe für "keine Begrenzung" funktioniert nicht
+[ ] Hinweise zu Bilduploads u.a.
+[ ] Kurse, Veranstlatungen: Bilder aus Tabellenmedien werden noch gar nirgends ausgegeben
+[ ] Veranstaltungen: Ort wird nicht ausgegeben.
+[ ] Kursdetailseite: Veranstaltungen chronologisch!
+[ ] Anmelden Button wird angezeigt obwohl keine Anmeldung erforderlich ist
+[ ] Kursdetailseite: Abgelaufene Kurse sollen nicht ausgegeben werden
+[ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
+[ ] Kosten: Preis kein Textfeld?!?
+[ ] Bei Termin-Bereichen: Mit Wochentag
+[ ] Veranstaltungen + Kurse: Uhrzeit Ausgabe
+[ ] Bild-Upload PNG geht nicht.
+[ ] Kursleitung: mehrzeilig
+[ ] Kursmanager chronologisch
+[ ] Kursmanager : nach Speichern landet man bei veranst.
+[ ] Bilder alle zentral verwalten
+[ ] Kurse bearbeiten: Aktueller Eintrag
+[ ] Kurse: Medien: Dokument/pdf
+[ ] Pilgerausweise: Laufende Nummer, einfach Zahl, wird manuell zurueckgesetzt
+[ ] Pilgerausweise: Validate startdatum mind. 5 tage in zukunft
+[ ] paypal recherche
+
+
 [✓] Zurück zur Übersicht: Checken ob es nun überall funktioniert
 [✓] Impressum, Datenschutzerklärung
 [✓] In Footernav: Förderverein, anstelle von "Stiftung"

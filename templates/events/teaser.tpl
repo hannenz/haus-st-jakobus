@@ -34,7 +34,7 @@
 				{ELSE}
 					{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
 					{IF("{VAR:event_seats_taken}" != "{VAR:event_seats_max}")}
-						{VAR:event_seats_available} Plätze frei
+						<div class="event_seats_available">{VAR:event_seats_available} Plätze frei</div>
 					{ELSE}
 						Diese Veranstaltung ist ausgebucht
 					{ENDIF}

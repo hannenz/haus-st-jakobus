@@ -5,6 +5,9 @@
 			{NEXTTEMPLATE}
 		{ENDLOOP VAR}
 	{ELSE}
+		<!-- <figure class="course__image"> -->
+		<!-- 	<img src="/media/courses/{VAR:course_image}" alt="" title="" /> -->
+		<!-- </figure> -->
 		<header class="course__header">
 			<h2 class="headline course__headline">{VAR:course_title}</h2>
 			<h3 class="subheadline course_subheadline">{VAR:course_subheadline}</h3>
@@ -13,13 +16,6 @@
 			{VAR:course_description}
 		</div>
 
-		<div class="course__images">
-			{LOOP VAR(images)}
-				<figure>
-					<img src="/media/courses/{VAR:media_image_file_internal}" alt="" />
-				</figure>
-			{ENDLOOP VAR}
-		</div>
 
 		<footer class="course__footer">
 			{IF({ISSET:course_elements})}

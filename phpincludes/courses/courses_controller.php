@@ -145,6 +145,9 @@ class CoursesController extends Controller {
 		])
 		->findOne();
 
+		// echo "<pre>";
+		// var_dump($course); die();
+
 		$course['course_events'] = $this->Event->filter([
 			'event_course_id' => $course['id'],
 			'event_begin >' => "'" . strftime("%Y-%m-%d 00:00:00") . "'"
