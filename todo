@@ -11,7 +11,7 @@
 [✓] Veranstaltungen: Ort wird nicht ausgegeben.
 [✓] Kursdetailseite: Veranstaltungen chronologisch!
 [✓] Anmelden Button wird angezeigt obwohl keine Anmeldung erforderlich ist
-[ ] Kursdetailseite: Abgelaufene Kurse sollen nicht ausgegeben werden
+[ ] CHECK: Kursdetailseite: Abgelaufene Kurse sollen nicht ausgegeben werden
 [ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 [ ] Kosten: Preis kein Textfeld?!?
 [ ] Bei Termin-Bereichen: Mit Wochentag
@@ -23,8 +23,10 @@
 [ ] Bilder alle zentral verwalten
 [ ] Kurse bearbeiten: Aktueller Eintrag
 [ ] Kurse: Medien: Dokument/pdf
-[ ] Pilgerausweise: Laufende Nummer, einfach Zahl, wird manuell zurueckgesetzt
-[ ] Pilgerausweise: Validate startdatum mind. 5 tage in zukunft
+[✓] Pilgerausweise: Verhindere mehrfaches Abschicken des Formulars
+[✓] Pilgerausweise: Laufende Nummer, einfach Zahl, wird manuell zurueckgesetzt
+[✓] Pilgerausweise: Validate startdatum mind. 5 tage in zukunft
+
 [ ] paypal recherche
 [ ] Kalender: Klick auf Tag: Leere Seite!
 

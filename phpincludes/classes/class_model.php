@@ -173,6 +173,17 @@ class Model {
 		$this->tableName = $tableName;
 	}
 
+
+	/**
+	 * Getter for tableName
+	 *
+	 * @return string
+	 */
+	public function getTableName() {
+		return $this->tableName;
+	}
+
+
 	/**
 	 * Setter for formTemplatesPath
 	 * 
@@ -510,7 +521,7 @@ class Model {
 
 			$value = $data[$fieldName];
 
-			foreach ((array)$rules as $rule) {
+			foreach ((array)$rules as $ruleName => $rule) {
 				if (method_exists (get_class ($this), $rule)) {
 					$result = call_user_func ([__NAMESPACE__ . '\\' . get_class(), $rule], $data[$field]);
 				}
@@ -519,7 +530,7 @@ class Model {
 				}
 
 				if (!$result) {
-					$this->validationErrors[$field][] = true;
+					$this->validationErrors[$field][] = $ruleName;
 				}
 			}	
 		}
