@@ -71,7 +71,7 @@ class News extends Posts {
 
 	public function getPosts($params) {
 
-		$posts = $this->search($params);
+		$posts = $this->getAllPosts($params);
 		foreach ($posts as $n => $post) {
 			$posts[$n] = $this->afterRead($post);
 		}
