@@ -9,7 +9,6 @@
 [?] CMT: Programm: Als Application:
 [?] Icons im Layoutmodus fehlen (Mac only?)
 [ ] Allgemein: Nummerierte Liste: Einzug wie <UL>
-[ ] News: Sperrdatum funktioniert nicht
 [ ] Kalender: Klick auf Tag: Leere Seite!
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
 [ ] Kurse: 3 Kalender in Reihe
@@ -25,6 +24,7 @@
 			- ...?
 
 
+[✓] News: Sperrdatum funktioniert nicht
 [✓] Bild-Upload PNG erzeugt JPG Thumbnail
 [✓] Kurse: Medien: Titel speichert nicht
 [✓] Pilgerauswies: Lieferadresse ggf. mit 1. Person vorausfüllen
