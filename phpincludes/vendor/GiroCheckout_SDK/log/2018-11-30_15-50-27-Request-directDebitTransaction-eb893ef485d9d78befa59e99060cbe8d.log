@@ -1,0 +1,107 @@
+[start @2018-11-30 15:50:27]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-30 15:50:27]
+Zahlart: directDebitTransaction
+
+
+[params set @2018-11-30 15:50:27]
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+
+
+[cURL request @2018-11-30 15:50:29]
+params:
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+hash=c519a80087240f41c86954d913031ea6
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/payment
+content_type=application/json
+http_code=200
+header_size=313
+request_size=205
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.968916
+namelookup_time=0.001085
+connect_time=0.001326
+pretransfer_time=0.001574
+size_upload=1779
+size_download=166
+speed_download=84
+speed_upload=903
+download_content_length=-1
+upload_content_length=1779
+starttransfer_time=0.001594
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=59354
+request_header=POST /girocheckout/api/v2/transaction/payment HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1779
+Content-Type: multipart/form-data; boundary=------------------------cbcdf52568b5b303
+
+
+
+
+[cURL reply @2018-11-30 15:50:29]
+result:HTTP/1.1 200 OK
+Date: Fri, 30 Nov 2018 18:50:27 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 445357fd7b74ab9a9909f1b78bfd71b1
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{"reference":"27cb0d88-0c30-4109-bd34-9129633e9bea","backendTxId":"7WCNRLoIpRetU7FmgWyUn4","mandateReference":"350000-4697573","resultPayment":"4000","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2018-11-30 15:50:29]
+rc=0
+msg=
+reference=27cb0d88-0c30-4109-bd34-9129633e9bea
+backendTxId=7WCNRLoIpRetU7FmgWyUn4
+mandateReference=350000-4697573
+resultPayment=4000
+
+

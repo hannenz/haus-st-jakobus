@@ -15,16 +15,18 @@
 	<div class="teaser__body">
 		<header class="teaser__header">
 			<div class="teaser__meta">{VAR:event_date_fmt}</div>
+
 			<h3 class="kicker">{VAR:course_title}</h3>
 			<h2 class="headline">{VAR:event_title}</h2>
-			<div class="teaser__text">
-				<!-- {VAR:post_teaser} -->
-			</div>
 		</header>
 
 		<div class="teaser__description">
 			<div>{VAR:event_time_fmt} Uhr<br>{VAR:event_location:nl2br}</div>
 			<div>{VAR:event_remark}</div>
+			<dl>
+				<dt>Leitung</dt>
+				<dd>{VAR:event_instructor:nl2br}</dd>
+			</dl>
 		</div>
 
 		<div class="event-availability">

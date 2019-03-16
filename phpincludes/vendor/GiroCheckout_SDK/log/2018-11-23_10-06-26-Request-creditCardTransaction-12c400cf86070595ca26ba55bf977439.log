@@ -1,0 +1,99 @@
+[start @2018-11-23 10:06:26]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-23 10:06:26]
+Zahlart: creditCardTransaction
+
+
+[params set @2018-11-23 10:06:26]
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=1705
+currency=EUR
+type=SALE
+purpose=Beispieltransaktion
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2018-11-23 10:06:28]
+params:
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=1705
+currency=EUR
+purpose=Beispieltransaktion
+type=SALE
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=a4e6b98a54d52677229e389fbd91a627
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=306
+request_size=203
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.815484
+namelookup_time=0.001088
+connect_time=0.001264
+pretransfer_time=0.001331
+size_upload=1474
+size_download=190
+speed_download=67
+speed_upload=523
+download_content_length=190
+upload_content_length=1474
+starttransfer_time=0.001343
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=56349
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1474
+Content-Type: multipart/form-data; boundary=------------------------46223b84808e0545
+
+
+
+
+[cURL reply @2018-11-23 10:06:28]
+result:HTTP/1.1 200 OK
+Date: Fri, 23 Nov 2018 13:06:26 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: d0203d63f551bb73030767b02e391116
+Content-Type: application/json
+Content-Length: 190
+
+{"reference":"ed0f69ba-3c70-4011-a682-1c4a75f4808f","redirect":"https:\/\/test-payform.girocheckout.de\/web-api\/de\/R.po?n=JRLMMCVwm6Xhmom01YeihE650ultpvMqPeKRfGMaIWETkw","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2018-11-23 10:06:28]
+rc=0
+msg=
+reference=ed0f69ba-3c70-4011-a682-1c4a75f4808f
+redirect=https://test-payform.girocheckout.de/web-api/de/R.po?n=JRLMMCVwm6Xhmom01YeihE650ultpvMqPeKRfGMaIWETkw
+
+

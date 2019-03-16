@@ -1,0 +1,123 @@
+[start @2018-11-27 12:48:52]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-27 12:48:52]
+Zahlart: paypageTransaction
+
+
+[params set @2018-11-27 12:48:52]
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=Emra/171212/000007 Test 123
+orderid=Emra/171212/000007T
+pagetype=1
+expirydate=once
+description=API-Aufruf von Lokal
+locale=de
+test=0
+paydirektShippingFirstName=Max
+paydirektShippingLastName=Mustermann
+paydirektShippingZipCode=10000
+paydirektShippingCity=Musterstadt
+paydirektShippingCountry=DE
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2018-11-27 12:48:53]
+params:
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=Emra/171212/000007 Test 123
+description=API-Aufruf von Lokal
+pagetype=1
+expirydate=once
+locale=de
+orderid=Emra/171212/000007T
+test=0
+paydirektShippingFirstName=Max
+paydirektShippingLastName=Mustermann
+paydirektShippingZipCode=10000
+paydirektShippingCity=Musterstadt
+paydirektShippingCountry=DE
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+hash=01f833cb3dde8982ece0e0eb3305b3b9
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=306
+request_size=198
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.275063
+namelookup_time=0.001016
+connect_time=0.001216
+pretransfer_time=0.001413
+size_upload=2931
+size_download=210
+speed_download=164
+speed_upload=2298
+download_content_length=210
+upload_content_length=2931
+starttransfer_time=0.00144
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=53304
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2931
+Content-Type: multipart/form-data; boundary=------------------------2bda1f63fdee3479
+
+
+
+
+[cURL reply @2018-11-27 12:48:53]
+result:HTTP/1.1 200 OK
+Date: Tue, 27 Nov 2018 15:48:52 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 7fe6705aff2a7e565611c2f8895a8b03
+Content-Type: application/json
+Content-Length: 210
+
+{"reference":"47f26573-cacc-4e1c-9b99-6bd7d7afbf92","url":"http:\/\/mheumann2.hopto.org\/v1\/paypage\/de\/LzRUGWCpzqPBNB9oKEPUXZOjFkNWE9pK_PsyZL_9MbyHEki6Or3oyeFrDJt79atsDT6afWRwlHwiEoYXrcbShA","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2018-11-27 12:48:53]
+rc=0
+msg=
+reference=47f26573-cacc-4e1c-9b99-6bd7d7afbf92
+url=http://mheumann2.hopto.org/v1/paypage/de/LzRUGWCpzqPBNB9oKEPUXZOjFkNWE9pK_PsyZL_9MbyHEki6Or3oyeFrDJt79atsDT6afWRwlHwiEoYXrcbShA
+
+

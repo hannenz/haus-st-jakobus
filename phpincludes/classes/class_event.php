@@ -141,6 +141,7 @@ class Event extends Model {
 		$events = $this->filter([
 			'event_end <' => 'NOW()'
 		])
+		->order(['event_begin' => 'ASC'])
 		->findAll();
 
 		return $events;
@@ -156,7 +157,9 @@ class Event extends Model {
 	public function getUpcoming($limit = 0) {
 		$this->filter([
 			'event_begin >' => 'NOW()'
-		]);
+		])
+		->order(['event_begin' => 'ASC']);
+
 		if ($limit > 0) {
 			$this->limit($limit);
 		}
@@ -216,7 +219,7 @@ class Event extends Model {
 
 	public function afterRead($event) {
 
-		$event['event_begin_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_begin']));
+		$event['event_begin_fmt'] = strftime ('%a, %d.%m.%Y', strtotime ($event['event_begin']));
 		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_end']));
 		$event['event_time_fmt'] = strftime('%H:%M', strtotime($event['event_begin']));
 
@@ -233,8 +236,8 @@ class Event extends Model {
 		}
 		else {
 			$event['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
-				strftime ('%d.%m.', strtotime ($event['event_begin'])),
-				strftime ('%d.%m.', strtotime ($event['event_end']))
+				strftime ('%a, %d.%m.', strtotime ($event['event_begin'])),
+				strftime ('%a, %d.%m.', strtotime ($event['event_end']))
 			);
 		}
 

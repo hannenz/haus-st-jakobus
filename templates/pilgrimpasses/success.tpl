@@ -26,3 +26,5 @@ Ihre Bestellung ist bei uns eingegangen.
 {ENDSWITCH}
 
 <p>Sie werden per E-Mail an &lt;{VAR:pilgrimpass_delivery_address_email}&gt; informiert, sobald der/die Pilgerausweis/e versendet werden</p>
+
+<p><a href="{SELFURL}&action=pay">Jetzt bezahlen</a></p>

@@ -106,13 +106,30 @@ class Course extends Model {
 
 		$result['images'] = $images;
 
+		// Read documents
+		$documents = $this->TableMedia->getMedia([
+			'tableName' => $this->tableName,
+			'entryId' => $result['id'],
+			'mediaType' => 'document'
+		]);
+		foreach ($documents as  &$document) {
+			$info = pathinfo(PATHTOWEBROOT . 'media/courses/'.$document['media_document_file_internal']);
+			$document['media_document_file_extension'] = $info['extension'];
+		}
+		$result['documents'] = $documents;
+
 
 		// Read costs
 		$costsData = (array)json_decode($result['course_costs'], true);
 		if (!empty($costsData)) {
 			$costsItemsContent = '';
 			foreach ($costsData as $costsItem) {
-				$costsItem['value_fmt'] = sprintf('%.2f', (float)$costsItem['value']);
+				if (ctype_digit($costsItem['value'][0])) {
+					$costsItem['value_fmt'] = sprintf('%.2f &euro;', (float)$costsItem['value']);
+				}
+				else {
+					$costsItem['value_fmt'] = $costsItem['value'];
+				}
 				$this->Parser->setMultipleParserVars($costsItem);
 				$costsItemsContent .= $this->Parser->parseTemplate(PATHTOWEBROOT . 'templates/courses/costs_item.tpl');
 			}

@@ -1,0 +1,107 @@
+[start @2018-11-30 21:49:08]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-30 21:49:08]
+Zahlart: directDebitTransaction
+
+
+[params set @2018-11-30 21:49:08]
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+
+
+[cURL request @2018-11-30 21:49:14]
+params:
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+hash=c519a80087240f41c86954d913031ea6
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/payment
+content_type=application/json
+http_code=200
+header_size=313
+request_size=205
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=6.52698
+namelookup_time=0.001581
+connect_time=0.001709
+pretransfer_time=0.001905
+size_upload=1779
+size_download=166
+speed_download=25
+speed_upload=272
+download_content_length=-1
+upload_content_length=1779
+starttransfer_time=0.001916
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=51075
+request_header=POST /girocheckout/api/v2/transaction/payment HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1779
+Content-Type: multipart/form-data; boundary=------------------------30737a5770d9252f
+
+
+
+
+[cURL reply @2018-11-30 21:49:14]
+result:HTTP/1.1 200 OK
+Date: Sat, 01 Dec 2018 00:49:08 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 679aed69bbf913ec396dc336381c4bdb
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{"reference":"fc83d004-b85f-420b-8111-99945236237e","backendTxId":"plYwhXPyijW1CYxSlBZ0yd","mandateReference":"350000-4697576","resultPayment":"4000","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2018-11-30 21:49:14]
+rc=0
+msg=
+reference=fc83d004-b85f-420b-8111-99945236237e
+backendTxId=plYwhXPyijW1CYxSlBZ0yd
+mandateReference=350000-4697576
+resultPayment=4000
+
+

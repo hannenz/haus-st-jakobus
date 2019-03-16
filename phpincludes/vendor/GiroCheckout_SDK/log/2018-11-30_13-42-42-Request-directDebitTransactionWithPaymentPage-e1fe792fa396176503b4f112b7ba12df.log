@@ -1,0 +1,110 @@
+[start @2018-11-30 13:42:42]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-30 13:42:42]
+Zahlart: directDebitTransactionWithPaymentPage
+
+
+[params set @2018-11-30 13:42:42]
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=1250
+currency=EUR
+purpose=Spende an den FC
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2018-11-30 13:42:45]
+params:
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=1250
+currency=EUR
+purpose=Spende an den FC
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=452cf30c0c8706ba3a0f7c321cd2e62d
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=306
+request_size=203
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.384214
+namelookup_time=0.00122
+connect_time=0.001431
+pretransfer_time=0.002165
+size_upload=2040
+size_download=232
+speed_download=97
+speed_upload=855
+download_content_length=232
+upload_content_length=2040
+starttransfer_time=0.002182
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=57019
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2040
+Content-Type: multipart/form-data; boundary=------------------------6a12befa5129051a
+
+
+
+
+[cURL reply @2018-11-30 13:42:45]
+result:HTTP/1.1 200 OK
+Date: Fri, 30 Nov 2018 16:42:42 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: cbe62103a62323e3fc08eea35ba1c74b
+Content-Type: application/json
+Content-Length: 232
+
+{"mandateReference":"12345abcde","reference":"92452d5e-4a9f-4b20-abc7-450929a03a55","redirect":"https:\/\/test-payform.girocheckout.de\/web-api\/de_DE_stadtn\/R.po?n=hfIpgLLVrp__r2JcLKh2VCVCpWbjGYnrAZwypkP486oc2W","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2018-11-30 13:42:45]
+rc=0
+msg=
+reference=92452d5e-4a9f-4b20-abc7-450929a03a55
+mandateReference=12345abcde
+redirect=https://test-payform.girocheckout.de/web-api/de_DE_stadtn/R.po?n=hfIpgLLVrp__r2JcLKh2VCVCpWbjGYnrAZwypkP486oc2W
+
+

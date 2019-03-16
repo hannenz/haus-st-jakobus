@@ -14,7 +14,7 @@
 	</div>
 	<h1>Kurs-Manager</h1>
 	<div>
-		<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Export als CSV-Datei (für Excel)</a>
+		<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a>
 	</div>
 </div>
 

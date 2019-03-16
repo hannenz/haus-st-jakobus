@@ -1,0 +1,113 @@
+[start @2018-11-30 13:51:22]
+
+[PHP ini]
+
+PHP version: 5.6.32
+cURL: 7.52.1
+ssl: OpenSSL/1.0.2j
+
+
+[transaction @2018-11-30 13:51:22]
+Zahlart: directDebitTransaction
+
+
+[params set @2018-11-30 13:51:22]
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE23690500010001879576
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+pkn=5754467832f5ed65f93b2734c189140d
+
+
+[cURL request @2018-11-30 13:51:26]
+params:
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE23690500010001879576
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+pkn=5754467832f5ed65f93b2734c189140d
+hash=cbd7adecab04071138fbd1d51d266c55
+sourceId=localhost;PHP 2.1.22;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/payment
+content_type=text/html; charset=UTF-8
+http_code=500
+header_size=310
+request_size=205
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=3.724855
+namelookup_time=0.000933
+connect_time=0.001139
+pretransfer_time=0.001224
+size_upload=1903
+size_download=0
+speed_download=0
+speed_upload=510
+download_content_length=0
+upload_content_length=1903
+starttransfer_time=0.001236
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=57156
+request_header=POST /girocheckout/api/v2/transaction/payment HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1903
+Content-Type: multipart/form-data; boundary=------------------------41fe66e350692ba1
+
+
+
+
+[cURL reply @2018-11-30 13:51:26]
+result:HTTP/1.1 500 Internal Server Error
+Date: Fri, 30 Nov 2018 16:51:22 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.32
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+Connection: close
+
+
+curl_error log:
+
+[exception @2018-11-30 13:51:26]
+Failure: Response is not a valid json string.
+HTTP/1.1 500 Internal Server Error
+Fri, 30 Nov 2018 16:51:22 GMT
+Apache
+PHP/5.6.32
+Sun, 19 Nov 1978 05:00:00 GMT
+no-cache, must-revalidate
+nosniff
+0
+text/html; charset=UTF-8
+close
+

@@ -117,19 +117,77 @@ table.courses-overview {
 }
 
 .course__images {
+	list-style-type: none;
 	display: flex;
 	flex-wrap: nowrap;
+	margin-top: 2 * $vertical-unit;
+	margin-bottom: 2 * $vertical-unit;
+	margin-left: -0.5 * $gutter;
+	margin-right: -0.5 * $gutter;
+}
 
-	figure {
-		// max-width: 50%;
-		flex: 1 0 50%;
-		padding: 0.5 * $gutter;
+.course-image {
+	flex: 0 1 100%;
+	margin: 0.5 * $gutter;
+
+	.course-image__wrapper {
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: ' ';
+			display: block;
+			width: 100%;
+			padding-bottom: 59.84%; //calc((10 / 16) * 100%);
+
+		}
 	}
 
-	img {
-		display: inline-block;
+	.course-image__caption {
+		margin-top: 0.5 * $vertical-unit;
+	}
+
+	.course-image__image {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 0;
+
+		width: 100%;
+		max-width: 100%;
 	}
 }
+
+.course__documents {
+	list-style: none;
+	margin: 3 * $vertical-unit 0;
+}
+
+.course-document {
+	margin: 0.5 * $vertical-unit 0;
+	.icon {
+		// stroke: $primary-color;
+		// stroke-width: 2;
+		fill: $primary-color;
+		width: 2.5rem;
+		height: 2.5rem;
+		vertical-align: middle;
+		display: inline-block;
+		margin-right: 4px;
+		font-family: sans-serif;
+		font-size: 8px;
+	}
+
+	&__wrapper {
+		display: inline-block;
+		vertical-align: middle;;
+	}
+
+	&__description {
+		margin: 0;
+	}
+}
+
 
 .course_costs {
 	margin: 0.5rem 0;
@@ -139,6 +197,7 @@ table.courses-overview {
 		color: $primary-color;
 		text-align: left;
 		padding: 8px 6px;
+		border-top: 4px solid $primary-color;
 		border-bottom: 1px solid #fff;
 		font-weight: bold;;
 	}
