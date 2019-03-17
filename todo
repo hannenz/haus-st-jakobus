@@ -1,8 +1,6 @@
 # Todos
 
-[ ] Allgemein: Nummerierte Liste: Einzug wie <UL>
 [ ] Kalender: Klick auf Tag: Leere Seite!
-[ ] Bilder alle zentral verwalten
 [ ] Newsletter: PageMailer einrichten
 [ ] Giropay
 [ ] PayPal Recherche
@@ -22,6 +20,8 @@
 			- ...?
 
 
+[ ] Bilder alle zentral verwalten
+[✓] Allgemein: Nummerierte Liste: Einzug wie <UL>
 [✓] News: Sperrdatum funktioniert nicht
 [✓] Bild-Upload PNG erzeugt JPG Thumbnail
 [✓] Kurse: Medien: Titel speichert nicht

@@ -1,11 +1,12 @@
 
 .availability-indicator {
 
+	margin-top: $vertical-unit;
 	margin-bottom: 4px;
 
 	svg {
-		width: 24px;
-		height: 24px;
+		width: 18px;
+		height: 18px;
 		display: inline-block;
 		vertical-align: middle;
 	}
@@ -15,7 +16,7 @@
 		border: 0;
 
 		background-color: $grey6;
-		height: 24px;
+		height: 18px;
 		width: 160px;
 		display: inline-block;
 		vertical-align: middle;
@@ -24,5 +25,12 @@
 			background-color: $grey4;
 		}
 	}
+
 }
 
+	.event_seats_available {
+		font-size: 0.8125em;
+		color: $grey5;
+		font-style: italic;
+		font-weight: bold;;
+	}

@@ -101,23 +101,31 @@ ul, p {
 ul.bullets {
 	li {
 		list-style-type: none;
-		padding-left: 0.75em;
 		position: relative;
+		margin: 0.5 * $vertical-unit 0;
+		padding-left: 1em;
 
 		&::before {
-			content: '►';
-			position: absolute;
-			left: 0;
-			@include type-setting(-2);
-
 			content: '';
+			position: absolute;
+			@include type-setting(-2);
+			left: 2px;
+			top: 6px;
 			width: 6px;
 			height: 6px;
 			background-color: $primary-color;
-			top: 30%;
 		}
 	}
 }
+
+.body-text ol {
+	list-style-position: outside;
+	padding-left: 1em;
+	li {
+		margin: 0.5 * $vertical-unit 0;
+	}
+}
+
 
 .blockquote {
 	font-style: italic;

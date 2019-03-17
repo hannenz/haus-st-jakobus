@@ -3,10 +3,19 @@
 	border-collapse: collapse;
 }
 
+.course-manager-events tr:nth-child(odd) {
+	background-color: gainsboro;
+}
 .course-manager-events td {
 	vertical-align: top;
-	padding: 6px;
+	padding: 8px;
 }
+
+.course-manager-events h4 {
+	margin: 0.25em 0;
+	font-size: 1.33em;
+}
+
 </style>
 <div class="tableHeadlineContainer">
 	<div class="tableIcon">
@@ -21,20 +30,22 @@
 <div class="course-manager-overview">
 	<div class="cmtTabs">
 		<ul>
-			<li><a href="#tabs-1">Vergangene Veranstaltungen</a></li>
 			<li><a href="#tabs-2">Anstehende Veranstaltungen</a></li>
+			<li><a href="#tabs-1">Vergangene Veranstaltungen</a></li>
 		</ul>
-		<div id="tabs-1">
+		<div id="tabs-2">
 			<table class="course-manager-events">
-				{LOOP VAR(pastEvents)}
+				{LOOP VAR(upcomingEvents)}
 				<tr class="course">
-					<td>
-						{VAR:event_begin} &mdash; <br>
-						{VAR:event_end}
+					<!-- <td> -->
+					<!-- 	{VAR:event_begin_fmt} &#38;mdash; <br> -->
+					<!-- 	{VAR:event_end_fmt} -->
+					<!-- </td> -->
 					<td>
 						<img style="width:160px" src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 					</td>
 					<td>
+						<div> {VAR:event_begin_fmt} &mdash; {VAR:event_end_fmt} </div>
 						<h4>{VAR:course_title}</h4>
 						<p>{VAR:course_short_description}</p>
 					</td>
@@ -56,17 +67,19 @@
 				{ENDLOOP VAR}
 			</table>
 		</div>
-		<div id="tabs-2">
+		<div id="tabs-1">
 			<table class="course-manager-events">
-				{LOOP VAR(upcomingEvents)}
+				{LOOP VAR(pastEvents)}
 				<tr class="course">
-					<td>
-						{VAR:event_begin} &mdash; <br>
-						{VAR:event_end}
+					<!-- <td> -->
+					<!-- 	{VAR:event_begin_fmt} &#38;mdash; <br> -->
+					<!-- 	{VAR:event_end_fmt} -->
+					<!-- </td> -->
 					<td>
 						<img style="width:160px" src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 					</td>
 					<td>
+						<div> {VAR:event_begin_fmt} &mdash; {VAR:event_end_fmt} </div>
 						<h4>{VAR:course_title}</h4>
 						<p>{VAR:course_short_description}</p>
 					</td>
