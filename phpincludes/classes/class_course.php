@@ -109,7 +109,7 @@ class Course extends Model {
 		// Read documents
 		$documents = $this->TableMedia->getMedia([
 			'tableName' => $this->tableName,
-			'entryId' => $result['id'],
+			'entryID' => $result['id'],
 			'mediaType' => 'document'
 		]);
 		foreach ($documents as  &$document) {
