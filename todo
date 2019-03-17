@@ -1,20 +1,18 @@
 # Todos
 
-[ ] Kurse: Medien: Upload erst beim 2. mal (.htaccess checken: Caching!)
-[ ] NOCH RELEVANT? Veranstaltungen umbennenne in Jahresübersicht
-[ ] Newsletter: PageMailer einrichten
-[ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
-[ ] Giropay
-[ ] PayPal Recherche
-[?] CMT: Programm: Als Application:
-[?] Icons im Layoutmodus fehlen (Mac only?)
 [ ] Allgemein: Nummerierte Liste: Einzug wie <UL>
 [ ] Kalender: Klick auf Tag: Leere Seite!
+[ ] Bilder alle zentral verwalten
+[ ] Newsletter: PageMailer einrichten
+[ ] Giropay
+[ ] PayPal Recherche
+[ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
+[?] CMT: Programm: Als Application:
+[?] Icons im Layoutmodus fehlen (Mac only?)
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
 [ ] Kurse: 3 Kalender in Reihe
 [ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
 [ ] Kursbelegungsindikator: Wie auf aktueller Website: 1 Kästchen in rot oder grün, Balken als "Füllstandsanzeige"
-[ ] Bilder alle zentral verwalten
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 [ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
