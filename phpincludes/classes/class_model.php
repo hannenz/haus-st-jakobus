@@ -757,6 +757,7 @@ class Model {
 			$_fields = array_keys ($data);
 		}
 
+
 		// Be sure to only use fields that are actually
 		// available in the table
 		$availableFields = $this->FieldHandler->getFieldNames ($this->tableName, true);
@@ -768,8 +769,9 @@ class Model {
 				$fields[$fieldName] = $data[$fieldName];
 			}
 		}
-
-
+		if (isset($data['id'])) {
+			  $fields['id'] = $data['id'];
+		}
 
 		$success = true;
 		if ($options['validate']) {
@@ -781,7 +783,7 @@ class Model {
 			}
 		}
 		if ($success) {
-			$setQuery = $this->db->makeSetQuery ($fields);
+			$setQuery = $this->db->makeSetQuery($fields);
 
 
 			// if (isset ($fields['id'])) {

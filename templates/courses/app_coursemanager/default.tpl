@@ -37,10 +37,10 @@
 			<table class="course-manager-events">
 				{LOOP VAR(upcomingEvents)}
 				<tr class="course">
-					<!-- <td> -->
-					<!-- 	{VAR:event_begin_fmt} &#38;mdash; <br> -->
-					<!-- 	{VAR:event_end_fmt} -->
-					<!-- </td> -->
+					<td>{VAR:id} </td>
+					<td>
+						{VAR:event_begin} &mdash; <br>
+						{VAR:event_end}
 					<td>
 						<img style="width:160px" src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 					</td>
@@ -58,6 +58,13 @@
 							{ENDLOOP VAR}
 							</ul>
 						</details>
+					</td>
+					<td>
+						<form class="event-seats-taken-form" action="default_submit" method="get" accept-charset="utf-8">
+							<label>Belegte Plätze</label>
+							<input type="number" value="{VAR:event_seats_taken}" name="event_seats_taken" />
+							<input type="hidden" value="{VAR:id}" name="id" />
+						</form>
 					</td>
 					<td>
 						<a class="cmtIcon cmtButtonEditEntry" href="{SELFURL}&cmtApplicationID=147&cmt_dbtable=jakobus_events&action=edit&id[]={VAR:id}"></a>
@@ -114,3 +121,23 @@
 		<span class="cmtButtonConfirmText" data-button-class="cmtButtonDelete">l&ouml;schen</span>
 	</div>
 </div>
+
+<script>
+	$('[name=event_seats_taken]').on('change', function(ev) {
+		var $form = $(this).parents('.event-seats-taken-form');
+		var id = $form.find('input[name=id]').val();
+
+		$.ajax({
+			type: 'POST',
+			url: '{SELFURL}&action=updateSeatsTaken',
+			data: {
+				id: id,
+				event_seats_taken: this.value,
+			},
+			success: function() {
+			}
+		});
+
+		console.log(this.value);
+	});
+</script>

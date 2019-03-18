@@ -126,6 +126,19 @@ EOS;
 			'deleteFile' => true
 		]);
 	}
+
+	public function actionUpdateSeatsTaken() {
+		$this->isAjax = true;
+		$this->isJson = true;
+
+		$success = $this->Event->save($this->postvars, [
+			'validate' => false
+		]);
+
+		$this->content = [
+			'success' => $success
+		];
+	}
 }
 
 $ctl = new AppCourseManager();
