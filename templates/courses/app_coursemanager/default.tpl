@@ -37,10 +37,6 @@
 			<table class="course-manager-events">
 				{LOOP VAR(upcomingEvents)}
 				<tr class="course">
-					<td>{VAR:id} </td>
-					<td>
-						{VAR:event_begin} &mdash; <br>
-						{VAR:event_end}
 					<td>
 						<img style="width:160px" src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 					</td>
@@ -61,8 +57,8 @@
 					</td>
 					<td>
 						<form class="event-seats-taken-form" action="default_submit" method="get" accept-charset="utf-8">
-							<label>Belegte Plätze</label>
-							<input type="number" value="{VAR:event_seats_taken}" name="event_seats_taken" />
+							<label for="event-seats-taken">Belegte Plätze</label>
+							<input type="number" value="{VAR:event_seats_taken}" name="event_seats_taken" id="event-seats-taken" />
 							<input type="hidden" value="{VAR:id}" name="id" />
 						</form>
 					</td>
