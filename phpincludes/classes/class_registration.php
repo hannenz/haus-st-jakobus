@@ -70,7 +70,7 @@ class Registration extends Model {
 
 		/* TODO: Read from settings */
 		// $recipient = 'me@hannenz.de';
-		$settings = $this->ApplicationHandler->getApplicaationSettings(APPLICATION_ID);
+		$settings = $this->ApplicationHandler->getApplicationSettings(APPLICATION_ID);
 
 		return $this->Mail->send([
 			'senderMail' => 'noreply@haus-st-jakobus.de',

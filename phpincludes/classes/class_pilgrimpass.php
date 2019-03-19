@@ -6,7 +6,7 @@ use Contentomat\Mail;
 
 class Pilgrimpass extends Model {
 
-	protected $adminNotificationRecipient = 'johannes.braun@hannenz.de';
+	protected $adminNotificationRecipient = 'pilgerpass_neu@haus-st-jakobus.de';
 
 	public function init () {
 		parent::init ();
