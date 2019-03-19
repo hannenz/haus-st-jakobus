@@ -122,7 +122,7 @@ class Event extends Model {
 	 * @access public
 	 */
 	public function findByDay($year, $month, $day) {
-		$query = sprintf("SELECT * FROM jakobus_events WHERE '%4u-%02u-%02u' BETWEEN event_begin AND event_end", $year, $month, $day);
+		$query = sprintf("SELECT * FROM jakobus_events WHERE ('%4u-%02u-%02u' BETWEEN event_begin AND event_end) OR (YEAR(event_begin)=%u AND MONTH(event_begin)=%u AND DAY(event_begin)=%u)", $year, $month, $day, $year, $month, $day);
 		if ($this->db->query($query) !== 0) {
 			throw new Exception("Query failed: " . $query);
 		}
@@ -219,8 +219,8 @@ class Event extends Model {
 
 	public function afterRead($event) {
 
-		$event['event_begin_fmt'] = strftime ('%a, %d.%m.%Y', strtotime ($event['event_begin']));
-		$event['event_end_fmt'] = strftime ('%d.%m.%Y', strtotime ($event['event_end']));
+		$event['event_begin_fmt'] = strftime('%a, %d.%m.%Y', strtotime ($event['event_begin']));
+		$event['event_end_fmt'] = strftime('%d.%m.%Y', strtotime ($event['event_end']));
 		$event['event_time_fmt'] = strftime('%H:%M', strtotime($event['event_begin']));
 
 		// Test if begin and end date are at the same day
@@ -230,14 +230,14 @@ class Event extends Model {
 		$y2 = date('y', strtotime($event['event_end']));
 		$m2 = date('m', strtotime($event['event_end']));
 		$d2 = date('d', strtotime($event['event_end']));
+
 		if ($y1 == $y2 && $m1 == $m2 && $d1 == $d2) {
-		// if ($event['event_end'] == '0000-00-00 00:00:00') {
-			$event['event_date_fmt'] = strftime ('%a, %d.%m.%Y', strtotime ($event['event_begin']));
+			$event['event_date_fmt'] = strftime('%a, %d.%m.%Y', strtotime ($event['event_begin']));
 		}
 		else {
-			$event['event_date_fmt'] = sprintf ("%s&thinsp;&ndash;&thinsp;%s", 
-				strftime ('%a, %d.%m.', strtotime ($event['event_begin'])),
-				strftime ('%a, %d.%m.', strtotime ($event['event_end']))
+			$event['event_date_fmt'] = sprintf("%s&thinsp;&ndash;&thinsp;%s", 
+				strftime('%a, %d.%m.', strtotime($event['event_begin'])),
+				strftime('%a, %d.%m.', strtotime($event['event_end']))
 			);
 		}
 

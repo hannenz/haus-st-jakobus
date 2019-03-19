@@ -1,6 +1,7 @@
 # Todos
 
-[ ] Kalender: Klick auf Tag: Leere Seite!
+[ ] Kalender-Widget: Wenn ein Event über die Monatsgrenze geht, wird der aktuelle Monat anstatt des Folgemonats gekennzeichnet
+[ ] Kalender-Widget: Wenn ein Dauertermin im Vorherigen Monat beginnt, wird er nicht im lfd. Monat angezeigt
 [ ] Newsletter: PageMailer einrichten
 [ ] Giropay
 [ ] PayPal Recherche
@@ -20,7 +21,7 @@
 			- ...?
 
 
-[ ] Bilder alle zentral verwalten
+[X] Bilder alle zentral verwalten
 [✓] Allgemein: Nummerierte Liste: Einzug wie <UL>
 [✓] News: Sperrdatum funktioniert nicht
 [✓] Bild-Upload PNG erzeugt JPG Thumbnail
@@ -141,3 +142,4 @@ Besprechen / Klären
 
 - 
  
+[✓] Kalender: Klick auf Tag: Leere Seite!
