@@ -74,7 +74,10 @@ var settings = {
 	css: {
 		src: './src/css/**/*.scss',
 		dest: pkg.project_settings.prefix + 'css/',
-		srcMain: './src/css/main.scss',
+		srcMain: [
+			'./src/css/main.scss',
+			'./src/css/coursemanager.scss'
+		],
 		options: {
 
 			sass: {

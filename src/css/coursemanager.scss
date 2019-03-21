@@ -1,0 +1,19 @@
+
+.course-manager-events {
+	border-collapse: collapse;
+}
+
+.course-manager-events tr:nth-child(odd) {
+	background-color: gainsboro;
+}
+.course-manager-events td {
+	vertical-align: top;
+	padding: 8px;
+}
+
+.course-manager-events h4 {
+	margin: 0.25em 0;
+	font-size: 1.33em;
+}
+
+

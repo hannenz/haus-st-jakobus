@@ -1,22 +1,5 @@
-<style type="text/css" media="screen">
-.course-manager-events {
-	border-collapse: collapse;
-}
-
-.course-manager-events tr:nth-child(odd) {
-	background-color: gainsboro;
-}
-.course-manager-events td {
-	vertical-align: top;
-	padding: 8px;
-}
-
-.course-manager-events h4 {
-	margin: 0.25em 0;
-	font-size: 1.33em;
-}
-
-</style>
+<link rel="stylesheet" href="/dist/css/coursemanager.css" type="text/css" />
+<style type="text/css" media="screen"></style>
 <div class="tableHeadlineContainer">
 	<div class="tableIcon">
 		<img src="templates/default/administration/img/default_table_icon_xlarge.png" alt="" />
