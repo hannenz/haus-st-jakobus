@@ -248,7 +248,7 @@ class Event extends Model {
 			])
 			->findOne();
 			unset($course['id']);
-			$event = array_merge($event, $course);
+			$event = array_merge((array)$event, (array)$course);
 		}
 		else {
 			$event['event_course_id'] = 0;
