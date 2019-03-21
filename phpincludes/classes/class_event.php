@@ -137,10 +137,10 @@ class Event extends Model {
 
 
 
-	public function getPast() {
-		$events = $this->filter([
+	public function getPast($filter = []) {
+		$events = $this->filter(array_merge([
 			'event_end <' => 'NOW()'
-		])
+		], $filter))
 		->order(['event_begin' => 'ASC'])
 		->findAll();
 
@@ -154,10 +154,10 @@ class Event extends Model {
 	 * @param int 	Nr of events to return, <= 0: all (default)
 	 * @return array
 	 */
-	public function getUpcoming($limit = 0) {
-		$this->filter([
+	public function getUpcoming($limit = 0, $filter = []) {
+		$this->filter(array_merge([
 			'event_begin >' => 'NOW()'
-		])
+		], $filter))
 		->order(['event_begin' => 'ASC']);
 
 		if ($limit > 0) {

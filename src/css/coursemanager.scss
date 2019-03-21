@@ -1,10 +1,32 @@
+#course-manager {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		bottom: 0;
+		min-height: 60vh;
+		background-color: rgba(255, 255, 255, 0.8);
+		transition: 100ms ease-in;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	&.is-busy::after {
+		opacity: 1;
+	}
+}
 
 .course-manager-events {
 	border-collapse: collapse;
+	width: 100%;
+	max-width: 100%;
 }
 
-.course-manager-events tr:nth-child(odd) {
-	background-color: gainsboro;
+.course-manager-events tr:nth-child(even) {
+	background-color: rgba(230, 230, 230, 0.8);
 }
 .course-manager-events td {
 	vertical-align: top;

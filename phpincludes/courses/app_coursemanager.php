@@ -40,8 +40,8 @@ class AppCoursemanager extends ApplicationController {
 		$this->parser->setUserTemplateBasePath(PATHTOWEBROOT.'templates/courses/app_coursemanager/');
 
 		$this->type = $_REQUEST['type'];
-		/* FIXME; Handle properly */
-		if (!empty($this->type)) {
+
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			$this->isAjax = true;
 		}
 	}
@@ -62,24 +62,29 @@ class AppCoursemanager extends ApplicationController {
 	 * | 
 	 */
 	public function actionDefault() {
-		$query = <<<EOS
-			SELECT Course.*, Event.*
-			FROM jakobus_events AS Event
-			LEFT JOIN jakobus_courses AS Course
-				ON Event.event_course_id = Course.id
-EOS;
-		if (!empty($this->type)) {
-			$query .= sprintf(" WHERE Event.event_is_soiree=%u ", ($this->type == 'soiree') ? 1 : 0);
-		}
-
-		$query .= " ORDER BY Event.event_begin ASC";
-
-		if ($this->db->query($query) !== 0) {
-			die (sprintf("Query failed: %s: %s" , $query, $this->db->getLastError()));
-		}
+// 		$query = <<<EOS
+// 			SELECT Course.*, Event.*
+// 			FROM jakobus_events AS Event
+// 			LEFT JOIN jakobus_courses AS Course
+// 				ON Event.event_course_id = Course.id
+// EOS;
+// 		if (!empty($this->type)) {
+// 			$query .= sprintf(" WHERE Event.event_is_soiree=%u ", ($this->type == 'soiree') ? 1 : 0);
+// 		}
+//
+// 		$query .= " ORDER BY Event.event_begin ASC";
+//
+// 		if ($this->db->query($query) !== 0) {
+// 			die (sprintf("Query failed: %s: %s" , $query, $this->db->getLastError()));
+// 		}
 		// $events = $this->db->getAll();
-		$pastEvents = $this->Event->getPast();
-		$upcomingEvents = $this->Event->getUpcoming();
+		$filter = [];
+		if (!empty($this->type)) {
+			$filter['event_is_soiree'] = ($this->type == 'soiree') ? 1 : 0;
+		}
+
+		$pastEvents = $this->Event->getPast($filter);
+		$upcomingEvents = $this->Event->getUpcoming(0, $filter);
 
 		foreach ($pastEvents as &$event) {
 			$event['registrations'] = $this->Registration->filter([
@@ -171,16 +176,20 @@ EOS;
 	}
 
 	public function actionUpdateSeatsTaken() {
-		$this->isAjax = true;
-		$this->isJson = true;
+		$this->isJson = $this->isAjax;
 
 		$success = $this->Event->save($this->postvars, [
 			'validate' => false
 		]);
 
-		$this->content = [
-			'success' => $success
-		];
+		if ($this->isAjax) {
+			$this->content = [
+				'success' => $success
+			];
+		}
+		else {
+			$this->changeAction('default');
+		}
 	}
 
 }
