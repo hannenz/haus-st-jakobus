@@ -1,3 +1,4 @@
+<div>
 <link rel="stylesheet" href="/dist/css/coursemanager.css" type="text/css" />
 <style type="text/css" media="screen"></style>
 <div class="tableHeadlineContainer">
@@ -5,8 +6,20 @@
 		<img src="templates/default/administration/img/default_table_icon_xlarge.png" alt="" />
 	</div>
 	<h1>Kurs-Manager</h1>
-	<div>
-		<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a>
+</div>
+<div class="serviceContainer">
+	<div class="serviceContainerInner">
+		<div class="serviceElementContainer">
+			<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a>
+		</div>
+		<div class="serviceElementContainer">
+			<form id="filterByTypeForm" action="{SELFURL}" method="post">
+				<span class="serviceText">Zeige Veransstaltungen:</span>
+				<select name="type" id="selectFilterByType">
+					{VAR:filterByTypeSelect}
+				</select>
+			</form>
+		</div>
 	</div>
 </div>
 
@@ -24,7 +37,9 @@
 						<img style="width:160px" src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 					</td>
 					<td>
+						{IF({VAR:event_is_soiree})}<div class="badge badge--soiree">Abendveranstaltung</div>{ENDIF}
 						<div> {VAR:event_begin_fmt} &mdash; {VAR:event_end_fmt} </div>
+						<div> {VAR:event_time_fmt} Uhr</div>
 						<h4>{VAR:course_title}</h4>
 						<p>{VAR:course_short_description}</p>
 					</td>
@@ -39,7 +54,7 @@
 						</details>
 					</td>
 					<td>
-						<form class="event-seats-taken-form" action="default_submit" method="get" accept-charset="utf-8">
+						<form class="event-seats-taken-form" action="default_submit" action="{SELFURL}&action=updateSeatsTaken" method="post" accept-charset="utf-8">
 							<label for="event-seats-taken">Belegte Plätze</label>
 							<input type="number" value="{VAR:event_seats_taken}" name="event_seats_taken" id="event-seats-taken" />
 							<input type="hidden" value="{VAR:id}" name="id" />
@@ -100,23 +115,23 @@
 		<span class="cmtButtonConfirmText" data-button-class="cmtButtonDelete">l&ouml;schen</span>
 	</div>
 </div>
-
+</div>
 <script>
-	$('[name=event_seats_taken]').on('change', function(ev) {
+	$(document).on('change', '[name=event_seats_taken]', function(ev) {
 		var $form = $(this).parents('.event-seats-taken-form');
 		var id = $form.find('input[name=id]').val();
+		var url = $form.attr('action');
+		$.post(url, $form.serialize(), function() { });
+	});
 
-		$.ajax({
-			type: 'POST',
-			url: '{SELFURL}&action=updateSeatsTaken',
-			data: {
-				id: id,
-				event_seats_taken: this.value,
-			},
-			success: function() {
-			}
+	var $filterByTypeForm = $('#filterByTypeForm');
+	$filterByTypeForm.find('select').on('change', function() {
+		var url = $filterByTypeForm.attr('action');
+		console.log(url);
+		$.post(url, $filterByTypeForm.serialize(), function(response) {
+			console.log($(response).find('.course-manager-overview'));
+			// $('.course-manager-overview').replaceWith($(response).find('.course-manager-overview'));
+			document.body.innerHTML = response;
 		});
-
-		console.log(this.value);
 	});
 </script>

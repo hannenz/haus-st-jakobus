@@ -4,6 +4,7 @@ namespace Jakobus;
 use Contentomat\PsrAutoloader;
 use Contentomat\ApplicationController;
 use Contentomat\FileHandler;
+use Contentomat\Form;
 use Jakobus\Course;
 use Jakobus\Event;
 use Jakobus\Registration;
@@ -22,17 +23,36 @@ class AppCoursemanager extends ApplicationController {
 	protected $CourseCategory;
 	protected $Event;
 	protected $Registration;
+	protected $Form;
+
+	protected $type;
 
 	public function init() {
 
 		parent::init();
 
 		$this->FileHandler = new FileHandler();
+		$this->Form = new Form();
 		$this->Course = new Course();
 		$this->CourseCategory = new CourseCategory();
 		$this->Event = new Event();
 		$this->Registration = new Registration();
 		$this->parser->setUserTemplateBasePath(PATHTOWEBROOT.'templates/courses/app_coursemanager/');
+
+		$this->type = $_REQUEST['type'];
+		/* FIXME; Handle properly */
+		if (!empty($this->type)) {
+			$this->isAjax = true;
+		}
+	}
+
+	public function initActions($action = '') {
+		if (isset($_REQUEST['action'])) {
+			$this->action = $_REQUEST['action'];
+			return;
+		}
+
+		parent::initActions($action);
 	}
 
 	/**
@@ -47,8 +67,13 @@ class AppCoursemanager extends ApplicationController {
 			FROM jakobus_events AS Event
 			LEFT JOIN jakobus_courses AS Course
 				ON Event.event_course_id = Course.id
-			ORDER BY Event.event_begin ASC
 EOS;
+		if (!empty($this->type)) {
+			$query .= sprintf(" WHERE Event.event_is_soiree=%u ", ($this->type == 'soiree') ? 1 : 0);
+		}
+
+		$query .= " ORDER BY Event.event_begin ASC";
+
 		if ($this->db->query($query) !== 0) {
 			die (sprintf("Query failed: %s: %s" , $query, $this->db->getLastError()));
 		}
@@ -70,6 +95,22 @@ EOS;
 			$event['registrations_count'] = count($event['registrations']);
 		}
 
+		$filterByTypeSelect = $this->Form->select([
+			'values' => [
+				'',
+				'soiree',
+				'not-soiree'
+			],
+			'aliases' => [
+				'Alle',
+				'Nur Abendveranstaltungen',
+				'Nur Nicht-Abendveranstaltungen'
+			],
+			'optionsOnly' => true,
+			'selected' => $this->type
+		]);
+
+		$this->parser->setParserVar('filterByTypeSelect', $filterByTypeSelect);
 		$this->parser->setMultipleParserVars(compact('pastEvents', 'upcomingEvents'));
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'default.tpl');
 	}
@@ -141,6 +182,7 @@ EOS;
 			'success' => $success
 		];
 	}
+
 }
 
 $ctl = new AppCourseManager();
