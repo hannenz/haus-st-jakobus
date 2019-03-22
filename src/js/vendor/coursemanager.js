@@ -9,9 +9,13 @@ CourseManager = {
 	self: null,
 
 	init: function() {
+		jQuery(document).ready(this.setup.bind(this));
+	},
+
+	setup: function() {
 		self = this;
 
-		self.$courseManager = $('#course-manager');
+		self.$courseManager = jQuery('#course-manager');
 
 		self.initUpdateSeatsTakenForms();
 		self.initFilterByTypeForm();
@@ -28,22 +32,38 @@ CourseManager = {
 
 	initUpdateSeatsTakenForms: function() {
 
-		$(document).on('change', '[name=event_seats_taken]', function(ev) {
-			var $form = $(this).parents('.event-seats-taken-form');
-			var url = $form.attr('action');
+		jQuery(document).on('change', '[name=event_seats_taken]', function(ev) {
+			var $form = jQuery(this).parents('.event-seats-taken-form');
+			self.updateSeatsTaken($form);
+			return false;
+		});
 
-			self.setBusy();
+		jQuery(document).on('submit', '.event-seats-taken-form', function(ev) {
+			var $form = jQuery(this);
+			self.updateSeatsTaken($form);
 
-			$.post(url, $form.serialize(), function() {
-				self.setIdle();
-			});
+			ev.preventDefault();
+			return false;
+		});
+	},
+
+	updateSeatsTaken: function($form) {
+		self.setBusy();
+		$.post($form.attr('action'), $form.serialize(), function(response) {
+			var r = JSON.parse(response);
+			jQuery('[name=event_seats_taken]').val(r.event_seats_taken);
+			if (!r.success) {
+				$form.css('outline', '2px solid #c00000');
+				alert("Speichern fehlgeschlagen!");
+			}
+
+			self.setIdle();
 		});
 	},
 
 	initFilterByTypeForm: function() {
-		console.log('initFilterByTypeForm');
 
-		var $filterByTypeForm = $('#filterByTypeForm');
+		var $filterByTypeForm = jQuery('#filterByTypeForm');
 		$filterByTypeForm.find('select').on('change', function() {
 
 			self.setBusy();
@@ -51,8 +71,8 @@ CourseManager = {
 
 			$.post(url, $filterByTypeForm.serialize(), function(response) {
 
-				$('#tabs-1').replaceWith($(response).find('#tabs-1'));
-				$('#tabs-2').replaceWith($(response).find('#tabs-2'));
+				jQuery('#tabs-1').replaceWith(jQuery(response).find('#tabs-1'));
+				jQuery('#tabs-2').replaceWith(jQuery(response).find('#tabs-2'));
 
 				self.setIdle();
 			});
@@ -61,42 +81,29 @@ CourseManager = {
 
 	initExport: function() {
 
-		var $exportButton = $('#exportButton');
+		var $exportButton = jQuery('#exportButton');
 
 		$exportButton.on('click', function() {
+			var dialogId = jQuery(this).attr('data-dialog-content-id');
+			var $dialogEl = jQuery('#' + dialogId);
 
-			 cmtPage.showConfirm({
-				 title: 'Anmeldedaten exportieren',
-				 contentContainerID: $(this).attr('data-dialog-content-id'),
-				 onConfirm: function() {
+			var dialog = $dialogEl.dialog({
+				resizable: false,
+				title: $dialogEl.attr('title'),
+				modal: true,
+				width: 360,
+				dialogClass: 'cmtDialogTypeConfirm',
+			});
+			jQuery('.cmtButtonBack', dialog).on('click', function(ev) {
+				jQuery(dialog).dialog('close');
+				ev.preventDefault();
+				return false;
+			});
+			jQuery('.cmtButtonSave', dialog).on('click', function(ev) {
 
-					// This is a dirty hack !
-					// We need to access the form inside the actual dialog
-					// which is a cloned version of the one in our markup
-					// I could not find a way to access it in a clean way yet...
-					// For now we just assume that the dialog's form is the
-					// second one in the DOM (which might ot might not be
-					// reliable...)
-					var $exportRangeForms = $('.exportRangeForm');
-					if ($exportRangeForms.length != 2) {
-						console.log("Something went wrong...");
-						return;
-					}
-
-					var $exportRangeForm = $($exportRangeForms.get(1));
-
-					 $.post($exportRangeForm.attr('action'), $exportRangeForm.serialize(), function(response){
-						 console.log(response);
-					 });
-
-				 }
 			});
 		});
 	}
 }
 
-$(function() {
-
-	CourseManager.init();
-	
-});
+CourseManager.init();

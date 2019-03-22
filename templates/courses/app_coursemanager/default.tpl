@@ -11,19 +11,18 @@
 	<div class="serviceContainer">
 		<div class="serviceContainerInner">
 			<div class="serviceElementContainer">
-				<!-- <a href="{SELFURL}&#38;cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a> -->
-				<a id="exportButton" class="cmtButton cmtButtonSave cmtDialog cmtDialogConfirm" data-dialog-content-id="cmtDialogSelectExportRange" data-dialog-confirm-url="{SELFURL}&cmtAction=exportCsv" href="javascript:void(0);">
-					 Anmeldungen exportieren (CSV / Excel)
-				</a>
-			</div>
-			<div class="serviceElementContainer">
 				<form id="filterByTypeForm" action="{SELFURL}" method="post">
-					<span class="serviceText">Zeige Veransstaltungen:</span>
+					<span class="serviceText">Zeige Veransstaltungen:</span><br>
 					<select name="type" id="selectFilterByType">
 						{VAR:filterByTypeSelect}
 					</select>
 				</form>
 			</div>
+			<div class="serviceElementContainer">
+				<span class="serviceText">Anmeldungen exportieren (CSV / Excel)</span><br>
+				<button id="exportButton" class="cmtButton cmtButtonSave" data-dialog-content-id="cmtDialogSelectExportRange">Export</button>
+			</div>
+			
 		</div>
 	</div>
 
@@ -121,20 +120,23 @@
 			</div>
 		</div>
 
-		<div id="cmtDialogSelectExportRange" class="cmtDialogContentContainer">
-			<div class="cmtDialogContent">
-				<p>Wählen Sie den zu exportierenden Zeitraum:</p>
-				<form class="exportRangeForm" action="{SELFURL}" method="post">
-					<input type="hidden" name="action" value="exportCsv" />
-					<input type="date" name="export_range_begin" value="2019-01-01" class="export-range-begin" /> &ndash; 
-					<input type="date" name="export_range_end" value="2019-12-31" class="export-range-end" />
-				</form>
-			</div>
-			<div class="cmtDialogButtons">
-				<span class="cmtButtonCancelText" data-button-class="cmtButtonBack">abbrechen</span>
-				<span class="cmtButtonConfirmText" data-button-class="cmtButtonSave">Exportieren</span>
-			</div>
+		<div id="cmtDialogSelectExportRange" class="cmtDialogContentContainer" title="Anmeldedaten exportieren">
+			<form class="exportRangeForm" action="{SELFURL}" method="post">
+				<div class="cmtDialogContainerInner">
+					<div class="cmtDialogContent">
+						<p>Wählen Sie den zu exportierenden Zeitraum:</p>
+						<input type="hidden" name="cmtAction" value="exportCsv" />
+						<input type="date" name="export_range_begin" value="2019-01-01" class="export-range-begin" /> &ndash; 
+						<input type="date" name="export_range_end" value="2019-12-31" class="export-range-end" />
+					</div>
+					<div class="cmtDialogButtons" style="margin-top: 3rem">
+						<button class="cmtButton cmtButtonBack">abbrechen</button>
+						<button class="cmtButton cmtButtonSave" type="submit">Exportieren</button>
+					</div>
+				</div>
+			</form>
 		</div>
 
 	</div>
 </div>
+

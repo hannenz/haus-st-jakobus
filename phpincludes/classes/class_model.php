@@ -340,6 +340,29 @@ class Model {
 		return $this->filter(compact('id'))->findOne();
 	}
 
+	/**
+	 * Retrieve a certain field's value from a record
+	 *
+	 * @access public
+	 * @throws Exception
+	 * @param int 			ID of the record
+	 * @param string 		Field name
+	 * @return mixed
+	 */
+	public function getFieldValue($id, $fieldName) {
+
+
+		$query = sprintf("SELECT %s FROM %s WHERE id=%u", $fieldName, $this->tableName, $id);
+		if ($this->db->query($query) != 0) {
+			throw new Exception("Query failed: " . $query);
+		}
+		$rec = $this->db->get();
+		if (empty($rec[$fieldName])) {
+			throw new Exception("No result");
+		}
+		return $rec[$fieldName];
+	}
+	
 
 
 	/**
@@ -555,6 +578,8 @@ class Model {
 		if (!isset ($this->validationRules[$fieldName])) {
 			return $success;
 		}
+
+
 
 
 

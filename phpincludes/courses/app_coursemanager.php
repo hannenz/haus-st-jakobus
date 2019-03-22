@@ -176,7 +176,7 @@ class AppCoursemanager extends ApplicationController {
 
 		$this->FileHandler->handleDownload([
 			'downloadFile' => $tmpFile,
-			'downloadFileAlias' => sprintf('Anmeldungen_%s.csv', strftime('%Y-%m-%d-%H%M')),
+			'downloadFileAlias' => sprintf('haus_st_jakobus_Anmeldungen_von_%s_bis_%s_stand_%s.csv', $begin, $end, strftime('%Y-%m-%d-%H%M')),
 			'deleteFile' => true
 		]);
 	}
@@ -190,7 +190,8 @@ class AppCoursemanager extends ApplicationController {
 
 		if ($this->isAjax) {
 			$this->content = [
-				'success' => $success
+				'success' => $success,
+				'event_seats_taken' => $this->Event->getFieldValue($this->postvars['id'], 'event_seats_taken')
 			];
 		}
 		else {
