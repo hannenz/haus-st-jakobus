@@ -2,6 +2,7 @@
 namespace Jakobus;
 
 use Jakobus\Course;
+use \Exception;
 
 
 class Event extends Model {
@@ -168,6 +169,37 @@ class Event extends Model {
 
 		return $events;
 	}
+
+	/**
+	 * Get all events in a given range with registrations
+	 *
+	 * @access public
+	 * @throws Exception
+	 * @param string 	Begin date of range
+	 * @param string 	End date of range
+	 * @return Array
+	 */
+	public function getInRangeWithRegistrations($begin, $end) {
+
+		$query = <<<EOS
+			SELECT Event.*,Reg.*
+			FROM jakobus_events AS Event
+			LEFT JOIN jakobus_registrations AS Reg
+			ON Reg.registration_event_id = Event.id
+			WHERE Event.event_begin BETWEEN '{$begin}' AND '{$end}'
+EOS;
+
+		if ($this->db->query($query) != 0) {
+			throw new Exception('Query failed: '. $query);
+		}
+
+		$events = $this->db->getAll();
+		foreach ($events as &$event) {
+			$event = $this->afterRead($event);
+		}
+		return $events;
+	}
+	
 
 	// public function findByDay($year, $month, $day) {
 	// 	$query = sprintf ("SELECT Event.* FROM jakobus_events AS Event WHERE YEAR(event_begin)=%u AND MONTH(event_begin)=%u AND DAY(event_begin)=%u", $year, $month, $day);

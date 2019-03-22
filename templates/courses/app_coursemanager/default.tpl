@@ -1,5 +1,6 @@
 <div id="course-manager">
 	<link rel="stylesheet" href="/dist/css/coursemanager.css" type="text/css" />
+	<script src="/dist/js/vendor/coursemanager.js"></script>
 	<style type="text/css" media="screen"></style>
 	<div class="tableHeadlineContainer">
 		<div class="tableIcon">
@@ -10,7 +11,10 @@
 	<div class="serviceContainer">
 		<div class="serviceContainerInner">
 			<div class="serviceElementContainer">
-				<a href="{SELFURL}&cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a>
+				<!-- <a href="{SELFURL}&#38;cmtAction=exportCsv" class="cmtButton">Anmeldungen exportieren (CSV / Excel)</a> -->
+				<a id="exportButton" class="cmtButton cmtButtonSave cmtDialog cmtDialogConfirm" data-dialog-content-id="cmtDialogSelectExportRange" data-dialog-confirm-url="{SELFURL}&cmtAction=exportCsv" href="javascript:void(0);">
+					 Anmeldungen exportieren (CSV / Excel)
+				</a>
 			</div>
 			<div class="serviceElementContainer">
 				<form id="filterByTypeForm" action="{SELFURL}" method="post">
@@ -116,27 +120,21 @@
 				<span class="cmtButtonConfirmText" data-button-class="cmtButtonDelete">l&ouml;schen</span>
 			</div>
 		</div>
-	</div>
-	<script>
-		var $courseManager = $('#course-manager');
-		$(document).on('change', '[name=event_seats_taken]', function(ev) {
-			var $form = $(this).parents('.event-seats-taken-form');
-			var url = $form.attr('action');
-			$courseManager.addClass('is-busy');
-			$.post(url, $form.serialize(), function() {
-				$courseManager.removeClass('is-busy');
-			});
-		});
 
-		var $filterByTypeForm = $('#filterByTypeForm');
-		$filterByTypeForm.find('select').on('change', function() {
-			var url = $filterByTypeForm.attr('action');
-			$courseManager.addClass('is-busy');
-			$.post(url, $filterByTypeForm.serialize(), function(response) {
-				$('#tabs-1').replaceWith($(response).find('#tabs-1'));
-				$('#tabs-2').replaceWith($(response).find('#tabs-2'));
-				$courseManager.removeClass('is-busy');
-			});
-		});
-	</script>
+		<div id="cmtDialogSelectExportRange" class="cmtDialogContentContainer">
+			<div class="cmtDialogContent">
+				Wählen Sie den zu exportierenden Zeitraum:
+				<form id="exportRangeForm" action="{SELFURL}" method="post">
+					<input type="hidden" name="action" value="exportCsv" />
+					<input type="date" name="export_range_begin" value="2019-01-01" id="export-range-begin" /> &ndash; 
+					<input type="date" name="export_range_end" value="2019-12-31" id="export-range-end" />
+				</form>
+			</div>
+			<div class="cmtDialogButtons">
+				<span class="cmtButtonCancelText" data-button-class="cmtButtonBack">abbrechen</span>
+				<span class="cmtButtonConfirmText" data-button-class="cmtButtonSave">Exportieren</span>
+			</div>
+		</div>
+
+	</div>
 </div>

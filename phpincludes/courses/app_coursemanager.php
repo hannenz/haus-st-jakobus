@@ -127,6 +127,11 @@ class AppCoursemanager extends ApplicationController {
 	 */
 	public function actionExportCsv() {
 
+		$exportRangeBegin = isset($_REQUEST['export_range_begin']) ? $_REQUEST['export_range_begin'] : '1970-01-01';
+		$exportRangeEnd = isset($_REQUEST['export_range_end']) ? $_REQUEST['export_range_end'] : '2199-12-31';
+
+		$events = $this->Event->getInRangeWithRegistrations($exportRangeBegin, $exportRangeEnd);
+
 		$registrations = [];
 		$upcomingEvents = $this->Event->getUpcoming();
 		foreach ($upcomingEvents as $event) {
