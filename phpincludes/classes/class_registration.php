@@ -38,6 +38,33 @@ class Registration extends Model {
 		]);
 	}
 
+	/**
+	 * Get all registragions in agiven date range
+	 *
+	 * @return Array
+	 */
+	public function getInRange($begin, $end) {
+		$query = <<<EOS
+		SELECT Reg.*,Event.*,Course.*
+		FROM jakobus_registrations AS Reg
+		LEFT JOIN jakobus_events AS Event
+		ON Event.id = Reg.registration_event_id
+		LEFT JOIN jakobus_course AS Course
+		ON Course.id = Event.event_course_id
+		WHERE Reg.registration_date BETWEEN {$begin} AND {$end}
+EOS;
+
+		if ($this->db->query($query) != 0) {
+			throw new \Exception('Query failed: ' . $query);
+		}
+
+		$registrations = $this->db->getAll();
+
+		return $registrations;
+
+	}
+	
+
 
 
 	public function notifyUser($data) {

@@ -184,8 +184,6 @@ class Event extends Model {
 		$query = <<<EOS
 			SELECT Event.*,Reg.*
 			FROM jakobus_events AS Event
-			LEFT JOIN jakobus_registrations AS Reg
-			ON Reg.registration_event_id = Event.id
 			WHERE Event.event_begin BETWEEN '{$begin}' AND '{$end}'
 EOS;
 

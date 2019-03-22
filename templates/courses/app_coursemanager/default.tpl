@@ -123,11 +123,11 @@
 
 		<div id="cmtDialogSelectExportRange" class="cmtDialogContentContainer">
 			<div class="cmtDialogContent">
-				Wählen Sie den zu exportierenden Zeitraum:
-				<form id="exportRangeForm" action="{SELFURL}" method="post">
+				<p>Wählen Sie den zu exportierenden Zeitraum:</p>
+				<form class="exportRangeForm" action="{SELFURL}" method="post">
 					<input type="hidden" name="action" value="exportCsv" />
-					<input type="date" name="export_range_begin" value="2019-01-01" id="export-range-begin" /> &ndash; 
-					<input type="date" name="export_range_end" value="2019-12-31" id="export-range-end" />
+					<input type="date" name="export_range_begin" value="2019-01-01" class="export-range-begin" /> &ndash; 
+					<input type="date" name="export_range_end" value="2019-12-31" class="export-range-end" />
 				</form>
 			</div>
 			<div class="cmtDialogButtons">

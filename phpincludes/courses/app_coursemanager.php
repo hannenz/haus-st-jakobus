@@ -127,22 +127,23 @@ class AppCoursemanager extends ApplicationController {
 	 */
 	public function actionExportCsv() {
 
-		$exportRangeBegin = isset($_REQUEST['export_range_begin']) ? $_REQUEST['export_range_begin'] : '1970-01-01';
-		$exportRangeEnd = isset($_REQUEST['export_range_end']) ? $_REQUEST['export_range_end'] : '2199-12-31';
+		$begin = isset($_REQUEST['export_range_begin']) ? $_REQUEST['export_range_begin'] : '1970-01-01';
+		$end = isset($_REQUEST['export_range_end']) ? $_REQUEST['export_range_end'] : '2199-12-31';
 
-		$events = $this->Event->getInRangeWithRegistrations($exportRangeBegin, $exportRangeEnd);
+		// $events = $this->Event->getInRangeWithRegistrations($exportRangeBegin, $exportRangeEnd);
+        //
+		// $registrations = [];
+		// foreach ($events as $event) {
+		// 	$_registrations = $this->Registration->filter([
+		// 		'registration_event_id' => $event['id']
+		// 	])->findAll();
+		// 	foreach ($_registrations as $_registration) {
+		// 		$registrations[] = array_merge($event, $_registration);
+		// 	}
+		// }
+        //
 
-		$registrations = [];
-		$upcomingEvents = $this->Event->getUpcoming();
-		foreach ($upcomingEvents as $event) {
-			$_registrations = $this->Registration->filter([
-				'registration_event_id' => $event['id']
-			])->findAll();
-			foreach ($_registrations as $_registration) {
-				$registrations[] = array_merge($event, $_registration);
-			}
-		}
-
+		$registrations = $this->Registration->getInRange($begin, $end);
 
 		$lines = [ "ID,Anmelde-Datum,Anrede,Vorname,Nachname,Geburtstag,Anschrift,PLZ,Stadt,Telefon,E-Mail,Mitglied im Förderverein,Veranstaltungs-ID,Veranstaltung,Kurs\n" ];
 		foreach ($registrations as $registration) {
