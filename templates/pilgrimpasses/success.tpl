@@ -5,14 +5,22 @@ Ihre Bestellung ist bei uns eingegangen.
 {SWITCH("{VAR:pilgrimpass_payment_method}")}
 	{CASE("giropay")}
 		<form action="{PAGEURL}" method="post">
-			<input type="hidden" value="giropay" name="action" />
+			<input type="hidden" value="pay" name="action" />
 			<input type="hidden" value="{VAR:amount}" name="amount" />
 			<div class="formField">
-				<label for="bic">BIC</label>
-				<input type="text" name="bic" id="bic">
+				<label for="transaction-type">Bezahlart</label>
+				<select id="transaction-type" name="transaction_type">
+					<option value="giropay">giropay</option>
+					<option value="paypal">PayPal</option>
+					<option value="sofortuw">Sofortüberweisung</option>
+				</select>
 			</div>
+			<!-- <div class="formField"> -->
+			<!-- 	<label for="bic">BIC</label> -->
+			<!-- 	<input type="text" name="bic" id="bic"> -->
+			<!-- </div> -->
 			<div class="formField">
-				<p><button class="button" type="submit">Jetzt bezahlen per giropay</button></p>
+				<p><button class="button" type="submit">Jetzt bezahlen</button></p>
 			</div>	
 		</form>
 	{BREAK}
