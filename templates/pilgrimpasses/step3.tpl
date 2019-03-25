@@ -17,17 +17,18 @@
 			<label for="pilgrimpass_express">Express</label>
 			<input type="checkbox" name="pilgrimpass_express" id="pilgrimpass_express" {IF({ISSET:pilgrimpass_express})}checked{ENDIF} />
 		</div>
-		<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_amount})}error{ENDIF}">
-			<label for="pilgrimpass_amount">Betrag</label>
-			<input type="text" value="{VAR:pilgrimpass_amount}" name="pilgrimpass_amount" id="pilgrimpass_amount" />
-		</div>
-		<div class="form-field form-field--text {IF({ISSET:error_pilgrimpass_blz})}error{ENDIF}">
-			<label for="pilgrimpass_blz">BLZ</label>
-			<input type="text" value="{VAR:pilgrimpass_blz}" name="pilgrimpass_blz" id="pilgrimpass_blz" />
-		</div>
+		<!-- <div class="form&#45;field form&#45;field&#45;&#45;text {IF({ISSET:error_pilgrimpass_amount})}error{ENDIF}"> -->
+		<!-- 	<label for="pilgrimpass_amount">Betrag</label> -->
+		<!-- 	<input type="text" value="{VAR:pilgrimpass_amount}" name="pilgrimpass_amount" id="pilgrimpass_amount" /> -->
+		<!-- </div> -->
+		<!-- <div class="form&#45;field form&#45;field&#45;&#45;text {IF({ISSET:error_pilgrimpass_blz})}error{ENDIF}"> -->
+		<!-- 	<label for="pilgrimpass_blz">BLZ</label> -->
+		<!-- 	<input type="text" value="{VAR:pilgrimpass_blz}" name="pilgrimpass_blz" id="pilgrimpass_blz" /> -->
+		<!-- </div> -->
 		<div class="form-field form-field--text-area">
 			<label for="pilgrimpass_message">Mitteilung</label>
-			<textarea name="pilgrimpass_message" id="pilgrimpass_message">{VAR:pilgrimpass_message}</textarea>
+			<textarea name="pilgrimpass_message" id="pilgrimpass_message" rows="10" placeholder="Hier haben Sie noch die Möglichkeit, uns eine Nachricht zukommen zu lassen">{VAR:pilgrimpass_message}</textarea>
+			<div class="info"></div>
 		</div>
 	</fieldset>
 

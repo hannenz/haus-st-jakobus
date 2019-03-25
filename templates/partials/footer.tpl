@@ -1,11 +1,36 @@
+{EVAL}
+
+use Contentomat\PsrAutoloader;
+use Jakobus\CorporateData;
+
+$autoLoader = new PsrAutoloader();
+$autoLoader->addNamespace('Jakobus', PATHTOWEBROOT . "phpincludes/classes");
+
+try {
+	$CorporateData = new CorporateData();
+	$cdOrgName = $CorporateData->getField('address_organization');
+	$cdStreetAddress = $CorporateData->getField('address_street_address');
+	$cdZip = $CorporateData->getField('address_zip');
+	$cdCity = $CorporateData->getField('address_city');
+	$cdCountry = $CorporateData->getField('address_country');
+}
+catch (\Exception $e) {
+	die ($e->getMessage());
+}
+{ENDEVAL}
 <footer class="main-footer">
 	<div class="main-footer__inner inner-bound">
 		<div class="footer-column">
 			<address>
 				<p>
+					{USERVAR:cdOrgName}<br>
+					{USERVAR:cdStreetAddress}<br>
+					{USERVAR:cdCountry}&ndash;{USERVAR:cdZip} {USERVAR:cdCity}
+					<!--
 					Cursillo-Haus St. Jakobus<br>
 					Kapellenberg 58&ndash;60<br>
 					D&ndash;89610 Oberdischingen
+					-->
 				</p>
 				<p>
 					07305&thinsp;&ndash;&thinsp;919&thinsp;575<br>

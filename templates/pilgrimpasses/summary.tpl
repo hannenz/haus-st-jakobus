@@ -70,12 +70,6 @@
 					<th>Betrag</th>
 					<td>{VAR:pilgrimpass_amount} &euro;</td>
 				</tr>
-				{IF("{VAR:pilgrimpass_payment_method}" == "giropay")}
-					<tr>
-						<th>BLZ</th>
-						<td>{VAR:pilgrimpass_blz}</td>
-					</tr>
-				{ENDIF}
 			</table>
 		</p>
 	</div>
