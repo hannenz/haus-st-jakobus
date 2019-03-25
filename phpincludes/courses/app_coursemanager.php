@@ -10,8 +10,8 @@ use Jakobus\Event;
 use Jakobus\Registration;
 use Jakobus\CourseCategory;
 
-ini_set('display_errors', true);
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+// ini_set('display_errors', true);
+// error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 
 $autoLoader = new PsrAutoloader();
 $autoLoader->addNamespace('Jakobus', PATHTOWEBROOT."phpincludes/classes");
@@ -52,7 +52,7 @@ class AppCoursemanager extends ApplicationController {
 			return;
 		}
 
-		parent::initActions($action);
+		parent::initactions($action);
 	}
 
 	/**

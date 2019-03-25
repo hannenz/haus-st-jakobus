@@ -66,10 +66,10 @@ var settings = {
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
 		notify: false,	// Don't notify on every change
 		https: {
-			key: '/Users/johannesbraun/server.key',
-			cert: '/Users/johannesbraun/server.crt'
-			// key: '/etc/ssl/private/ssl-cert-snakeoil.key',
-			// cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+			// key: '/Users/johannesbraun/server.key',
+			// cert: '/Users/johannesbraun/server.crt'
+			key: '/etc/ssl/private/ssl-cert-snakeoil.key',
+			cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
 		}
 	},
 
