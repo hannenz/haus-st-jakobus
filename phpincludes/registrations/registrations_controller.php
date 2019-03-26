@@ -11,7 +11,10 @@ use Jakobus\Event;
 
 use \Exception;
 
-define('REGISTRATION_SUCCESS_PAGE_ID', 49);
+define('REGISTRATION_SUCCESS_PAGE_ID', 85);
+
+ini_set('display_errors', true);
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
 
 
 class RegistrationsController extends Controller {

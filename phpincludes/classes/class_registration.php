@@ -96,7 +96,7 @@ EOS;
 		$text = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.txt.tpl");
 
 		/* TODO: Read from settings */
-		// $recipient = 'me@hannenz.de';
+		$recipient = 'kursanmeldung@haus-st-jakobus.de';
 		$settings = $this->ApplicationHandler->getApplicationSettings(APPLICATION_ID);
 
 		return $this->Mail->send([
