@@ -1,4 +1,4 @@
-<figure class="floated-image floated-image--right floated-image--small">
+<div class="floated-image floated-image--right floated-image--small">
 	<figure class="floated-image__image">
 		{IMAGE:1:media}
 		{IF({LAYOUTMODE} || {ISSET:head1:CONTENT})}
@@ -8,4 +8,4 @@
 	<div class="floated-image__text">
 		{TEXT:1}
 	</div>
-</figure>
+</div>

@@ -16,10 +16,15 @@
 		width: 100%;
 	}
 
+	&--tiny .floated-image__image {
+		width: 160px;
+	}
+
 	@include for-size(tablet-portrait-up) {
 		&--small .floated-image__image {
 			width: 33%;
 		}
+
 	}
 
 	@include for-size(tablet-landscape-up) {

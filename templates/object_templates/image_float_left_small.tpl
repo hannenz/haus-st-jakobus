@@ -8,4 +8,4 @@
 	<div class="floated-image__text">
 		{TEXT:1}
 	</div>
-</figure>
+</div>

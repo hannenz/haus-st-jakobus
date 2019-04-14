@@ -21,17 +21,17 @@ class Registration extends Model {
 
 		$this->setValidationRules([
 			'registration_firstname' => [
-				'not-empty' => '/^.+$/'
+				'not-empty' => '/^\S+$/'
 			],
 			'registration_lastname' => [
-				'not-empty' => '/^.+$/'
+				'not-empty' => '/^\S+$/'
 			],
 			'registration_birthday' => '/^\d{4}-\d{2}-\d{2}$/',
-			'registration_street_address' => '/^.+$/',
-			'registration_country' => '/^.+$/',
+			'registration_street_address' => '/^\S+$/',
+			'registration_country' => '/^\S+$/',
 			'registration_zip' => '/^\d{5}$/',
 			'registration_city' => [
-				'not-empty' => '/^.+$/'
+				'not-empty' => '/^\S+$/'
 			],
 			'registration_phone' => '/^.+$/',
 			'registration_email' => '/^.+@.+\..{2,3}$/',

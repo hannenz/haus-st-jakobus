@@ -1,8 +1,9 @@
-{IF({ISSET:saveFailed:VAR})}
-	<div class="error">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
-{ENDIF}
 
 <form action="" method="post">
+
+	{IF({ISSET:saveFailed:VAR})}
+		<div class="error message">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
+	{ENDIF}
 
 	<fieldset class="fieldset">
 		<legend>Veranstaltung</legend>
@@ -45,15 +46,6 @@
 		</div>
 
 		<div class="grid-x grid-padding-x">
-			<!-- <div class="cell medium&#45;6"> -->
-			<!-- 	{VAR:registration_birthday} -->
-			<!-- </div> -->
-		</div>
-
-		<div class="grid-x grid-padding-x">
-			<!-- <div class="cell medium&#45;6"> -->
-			<!-- 	{VAR:registration_phone} -->
-			<!-- </div> -->
 			<div class="cell medium-6">
 				{VAR:registration_email}
 			</div>

@@ -64,17 +64,16 @@ class CourseCalendarWidgetController extends Controller {
 
 		foreach ($events as $event) {
 
-			$beginTs = strtotime($event['event_begin']);
-			$endTs = strtotime($event['event_end']);
-			for ($ts = strtotime(strftime('%Y-%m-%d 00:00:00', $beginTs)); $ts <= $endTs; $ts += 86400) {
-				$dayOfMonth = (int)strftime('%d', $ts);
-				$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
-			}
+			if ((bool)$event['event_show_in_calendar']) {
 
-			// $dayOfMonth = strftime('%d', strtotime ($event['event_begin']));
-			// $daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
+				$beginTs = strtotime($event['event_begin']);
+				$endTs = strtotime($event['event_end']);
+				for ($ts = strtotime(strftime('%Y-%m-%d 00:00:00', $beginTs)); $ts <= $endTs; $ts += 86400) {
+					$dayOfMonth = (int)strftime('%d', $ts);
+					$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
+				}
+			}
 		}
-	// var_dump($daysWithLink); die();
 		
 		$this->Calendar->setDaysWithLink($daysWithLink);
 		$calendarContent = $this->Calendar->createCalendar([

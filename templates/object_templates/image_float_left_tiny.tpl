@@ -1,4 +1,5 @@
-<div class="floated-image floated-image--right floated-image--large">
+
+<div class="floated-image floated-image--left floated-image--tiny">
 	<figure class="floated-image__image">
 		{IMAGE:1:media}
 		{IF({LAYOUTMODE} || {ISSET:head1:CONTENT})}

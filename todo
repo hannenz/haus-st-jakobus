@@ -1,7 +1,15 @@
 # Todos
 
+[ ] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren
+[✓] Anmeldeformular: Bei fehlgeschl. Validierung ist was komisch
+[✓] Validierung: Non-Whitespace '\s+'
+[✓] Objekt-Template: Kleines Bild mit Text, Text läuft rechts
+[ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
+[ ] Pilgerausweis-Formular: Hinweis Startdatum (5 Tage in der Zukunft)
+
+
 [ ] Kalender-Detailansicht: Zurück z. Kursen, zurück z. Chronolog.
-[ ] Veranstaltungen: Checkbox: Im Kalender anzeigen (default: on)
+[✓] Veranstaltungen: Checkbox: Im Kalender anzeigen (default: on)
 [ ] Wenn Freigabe: Tabellenmedien bei Veranstaltungen, 
 [ ] Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
 [ ] Programm chronologisch: Reihenfolge stimmt nicht
