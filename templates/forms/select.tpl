@@ -2,7 +2,7 @@
 	<label for="{VAR:fieldName}">{VAR:fieldLabel}</label>
 	<select id="{VAR:fieldName}" name="{VAR:fieldName}">
 		{LOOP VAR(options)}
-			<option value="{VAR:optionValue}">{VAR:optionName}</option>
+		<option value="{VAR:optionValue}" {IF("{VAR:optionValue}" == "{VAR:fieldValue}")}selected="selected"{ENDIF}>{VAR:optionName}</option>
 		{ENDLOOP VAR}
 	</select>
 	{IF ({ISSET:cmt_fielddesc})}

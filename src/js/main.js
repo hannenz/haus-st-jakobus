@@ -142,6 +142,13 @@ function APP () {
 			var inputs = newfs.querySelectorAll('input');
 			for (var i = 0; i < inputs.length; i++) {
 				inputs[i].value = '';
+				var parts= inputs[i].id.match(/(.*)-(\d+)$/);
+				if (parts) {
+					var newId = parts[1] + '-' + (parseInt(parts[2]) + 1);
+					var label = newfs.querySelector('[for=' + inputs[i].id + ']');
+					inputs[i].id = newId;
+					label.setAttribute('for', newId);
+				}
 			}
 			var selects = newfs.querySelectorAll('select');
 			for (var i = 0; i < selects.length; i++) {

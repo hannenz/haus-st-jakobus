@@ -674,6 +674,7 @@ class Model {
 				];
 			}
 			$this->Parser->setParserVar ('options', $_options);
+
 		}
 
 		$this->Parser->deleteParserVar ('validationErrors');

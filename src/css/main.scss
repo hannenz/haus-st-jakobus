@@ -83,8 +83,9 @@
 .error.message {
 	background-color: $red3;
 	color: $red1;
-	padding: 10px;
-	border-radius: 3px;
+	padding: 0.5 * $vertical-unit $gutter;
+	margin-bottom: $vertical-unit;
+	outline: 1px solid $red1;
 }
 
 

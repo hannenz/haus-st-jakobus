@@ -8,6 +8,7 @@
 
 	visibility: hidden;
 	height: 0;
+
 	@include for-size(tablet-landscape-up) {
 		visibility: visible;
 		height: auto;
@@ -29,9 +30,12 @@
 		list-style: none;
 	}
 
-	.menu__link {
+	a.menu__link {
 		padding-left: 1em;
 		position: relative;
+		white-space: normal;
+		line-height: 1.25em;
+
 		&::before {
 			content: '';
 			position: absolute;

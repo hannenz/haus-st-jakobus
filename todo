@@ -1,41 +1,40 @@
+# Might Do's
+
+[ ] Bestätigungsmails: HTML, z. Bsp. bei Anmeldung zu Kurs noch einmal den Kurs anteasern (Mehraufwand)
+[ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
+
 # Todos
 
-[ ] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren
+[ ] Giropay komplett implementieren und testen
+[ ] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Pilgerausweis-Formular: Hinweis Startdatum (5 Tage in der Zukunft)
-[ ] Ausgabe "Kurs-Detailseite" unterdrücken bzw. Kurstitel ausgeben
-[ ] Anmeldeformular Kurse geht nicht (Anrede wird nicht übernommen, Absenden nicht möglich trotz korrekter Eingabe)
-[ ] Downloads: Verzeichnis vorbereiten, Info an Lorenz
-[ ] Anmeldungen lassen sich nicht löschen
-
-
-[ ] Kalender-Detailansicht: Zurück z. Kursen, zurück z. Chronolog.
-[ ] Wenn Freigabe: Tabellenmedien bei Veranstaltungen, 
-[ ] Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
 [ ] Programm chronologisch: Reihenfolge stimmt nicht
-[ ] Veranstaltung: Typ rausnehmen
-[ ] Kurse: übersicht und Detail: Wenn keine Veranstaltungen mehr, "Alle Kurse beendet" ausgeben.
 [ ] Kalender-Widget: Wenn ein Event über die Monatsgrenze geht, wird der aktuelle Monat anstatt des Folgemonats gekennzeichnet
 [ ] Kalender-Widget: Wenn ein Dauertermin im Vorherigen Monat beginnt, wird er nicht im lfd. Monat angezeigt
 [ ] Newsletter: PageMailer einrichten
-[ ] Giropay
-[ ] PayPal Recherche
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
-[?] CMT: Programm: Als Application:
-[?] Icons im Layoutmodus fehlen (Mac only?)
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
-[ ] Kurse: 3 Kalender in Reihe
-[ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
-[✓] Kursbelegungsindikator: Wie auf aktueller Website: 1 Kästchen in rot oder grün, Balken als "Füllstandsanzeige"
-[ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-[ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
 		Alternativen:
 			- nach Datum des nächsten Events (aufwändig)
 			- alphabetisch (einfach)
 			- ...?
+[ ] Kurse: 3 Kalender in Reihe
+[ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
+[ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 
-
+[✓] Anmeldeformular Kurse geht nicht (Anrede wird nicht übernommen, Absenden nicht möglich trotz korrekter Eingabe)
+[✓] Ausgabe "Kurs-Detailseite" unterdrücken bzw. Kurstitel ausgeben
+[✓] Downloads: Verzeichnis vorbereiten, Info an Lorenz
+[✓] Anmeldungen lassen sich nicht löschen
+[?] Kalender-Detailansicht: Zurück z. Kursen, zurück z. Chronolog.
+[-] Wenn Freigabe: Tabellenmedien bei Veranstaltungen, 
+[✓] Veranstaltung: Typ rausnehmen
+[✓] Kurse: übersicht und Detail: Wenn keine Veranstaltungen mehr, "Alle Kurse beendet" ausgeben.
+[?] CMT: Programm: Als Application:
+[?] Icons im Layoutmodus fehlen (Mac only?)
+[✓] Kursbelegungsindikator: Wie auf aktueller Website: 1 Kästchen in rot oder grün, Balken als "Füllstandsanzeige"
 [✓] Anmeldeformular: Bei fehlgeschl. Validierung ist was komisch
 [✓] Validierung: Non-Whitespace '\s+'
 [✓] Objekt-Template: Kleines Bild mit Text, Text läuft rechts
@@ -82,8 +81,6 @@ Bilder werden verwendet:
 	a) ein Auswahlfeld angeboten wird und 
 	b) bei Auswahl die Datei kopiert wird und dabei demselben Prozess unterworfen wie bei einem Upload
 >> Aufwand: 4h
-
-
 
 
 [✓] Zurück zur Übersicht: Checken ob es nun überall funktioniert

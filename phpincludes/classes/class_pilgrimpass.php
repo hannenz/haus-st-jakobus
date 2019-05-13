@@ -46,28 +46,26 @@ class Pilgrimpass extends Model {
 				'not-empty' => '/^\S+$/',
 			],
 			'pilgrimpass_birthday' => '/^\d{4}-\d{2}-\d{2}$/',
-			'pilgrimpass_street_address' => '/^\S+$/',
-			'pilgrimpass_country' => '/^\S+$/',
+			'pilgrimpass_street_address' => '/^.+$/',
+			'pilgrimpass_country' => '/^.+$/',
 			'pilgrimpass_zip' => '/^\d{5}$/',
-			'pilgrimpass_city' => [
-				'not-empty' => '/^\S+$/',
-			],
+			'pilgrimpass_city' => '/^.+$/',
 			'pilgrimpass_email' => '/^.+@.+\..{2,3}$/',
-			'pilgrimpass_idnr' => '/^\S+$/',
-			'pilgrimpass_route' => '/^\S+$/',
+			'pilgrimpass_idnr' => '/^.+$/',
+			'pilgrimpass_route' => '/^.+$/',
 			'pilgrimpass_start_date' => 'validateStartDate',
-			'pilgrimpass_start_location' => '/^\S+$/',
-			'pilgrimpass_motivation' => '/^\S+$/',
-			'pilgrimpass_transportation' => '/^\S+$/',
-			'pilgrimpass_payment_method' => '/^\S+$/',
+			'pilgrimpass_start_location' => '/^.+$/',
+			'pilgrimpass_motivation' => '/^.+$/',
+			'pilgrimpass_transportation' => '/^.+$/',
+			'pilgrimpass_payment_method' => '/^.+$/',
 			'pilgrimpass_amount' => '/^[0-9\,\.]+$/',
 			'pilgrimpass_blz' => '/^\d+$/',
-			'pilgrimpass_delivery_address_firstname' => '/^\S+$/',
-			'pilgrimpass_delivery_address_lastname' => '/^\S+$/',
-			'pilgrimpass_delivery_address_street' => '/^\S+$/',
+			'pilgrimpass_delivery_address_firstname' => '/^.+$/',
+			'pilgrimpass_delivery_address_lastname' => '/^.+$/',
+			'pilgrimpass_delivery_address_street' => '/^.+$/',
 			'pilgrimpass_zip' => '/^\d{5}$/',
-			'pilgrimpass_delivery_address_city' => '/^\S+$/',
-			'pilgrimpass_delivery_address_country' => '/^\S+$/',
+			'pilgrimpass_delivery_address_city' => '/^.+$/',
+			'pilgrimpass_delivery_address_country' => '/^.+$/',
 			'pilgrimpass_delivery_address_email' => '/^.+@.+\..{2,3}$/',
 		]);
 	}
@@ -265,8 +263,6 @@ class Pilgrimpass extends Model {
 			throw new Exception("Serving file for download failed: %s", $error);
 		}
 	}
-	
-	
 }
 ?>
 

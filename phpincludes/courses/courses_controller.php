@@ -145,8 +145,7 @@ class CoursesController extends Controller {
 		])
 		->findOne();
 
-		// echo "<pre>";
-		// var_dump($course); die();
+		define('COURSE_TITLE', $course['course_title']);
 
 		$course['course_events'] = $this->Event->filter([
 			'event_course_id' => $course['id'],

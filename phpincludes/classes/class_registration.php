@@ -20,18 +20,14 @@ class Registration extends Model {
 		$this->setupApplication();
 
 		$this->setValidationRules([
-			'registration_firstname' => [
-				'not-empty' => '/^\S+$/'
-			],
-			'registration_lastname' => [
-				'not-empty' => '/^\S+$/'
-			],
+			'registration_firstname' => '/^.+$/',
+			'registration_lastname' => '/^.+$/',
 			'registration_birthday' => '/^\d{4}-\d{2}-\d{2}$/',
-			'registration_street_address' => '/^\S+$/',
-			'registration_country' => '/^\S+$/',
+			'registration_street_address' => '/^.+$/',
+			'registration_country' => '/^.+$/',
 			'registration_zip' => '/^\d{5}$/',
 			'registration_city' => [
-				'not-empty' => '/^\S+$/'
+				'not-empty' => '/^.+$/'
 			],
 			'registration_phone' => '/^.+$/',
 			'registration_email' => '/^.+@.+\..{2,3}$/',

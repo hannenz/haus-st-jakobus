@@ -8,7 +8,9 @@
 
 	<div class="teaser__body">
 		<header class="teaser__header">
-			<div class="teaser__meta">{VAR:post_date_fmt_date}</div>
+			<div class="teaser__meta">
+				{VAR:post_date_fmt_date}
+			</div>
 			{IF({ISSET:post_subtitle})}<h3 class="kicker">{VAR:post_subtitle}</h3>{ENDIF}
 			<h2 class="headline">{VAR:post_title}</h2>
 			<div class="teaser__text">

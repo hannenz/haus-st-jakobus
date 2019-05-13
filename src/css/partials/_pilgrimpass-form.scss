@@ -8,7 +8,8 @@
 
 	.fieldset {
 		position: relative;
-		padding-top: 2 * $vertical-unit;
+		// padding-top: 2 * $vertical-unit;
+		// margin-top: 0;
 
 		&:first-child {
 			.remove-button {
@@ -19,14 +20,15 @@
 
 	.remove-button {
 		position: absolute;
-		top: 0;
+		top: 8px;
 		right: $gutter;
+		color: $grey3;
 	}
 
 	.action-area {
-		border-top: 1px solid rgba(200, 200, 200, 0.3);
-		margin-top: 1 * $vertical-unit;
-		padding-top: 1 * $vertical-unit;
+		// border-top: 1px solid rgba(200, 200, 200, 0.3);
+		// margin-top: 1 * $vertical-unit;
+		// padding-top: 1 * $vertical-unit;
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -41,25 +43,75 @@
 
 	ol {
 		list-style-position: inside;
-	}
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0 -1 * $gutter 3 * $vertical-unit -1 * $gutter;
+		counter-reset: c;
 
+		> li {
+			position: relative;
+
+			&::before {
+				content: counter(c);
+				counter-increment: c;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: $primary-color;
+				color: #fff;
+				padding: 0 1rem;
+				width: 2rem;
+				height: 2rem;
+				line-height: 2rem;
+				font-weight: bold;
+			}
+
+			&::after {
+				content:'';
+				position: absolute;
+				background-color: $primary-color;
+				top: 0;
+				left: 2rem;
+				width: 1rem;
+				height: 2rem;
+				clip-path: polygon(0 0, 100% 0, 0 100%);
+				
+			}
+		}
+	}
 
 	.headline {
 		margin-bottom: $vertical-unit;
 	}
 
 	.card {
-		@extend .fieldset;
+		// @extend .fieldset;
 		color: $grey3;
 		margin-bottom: $vertical-unit;
+		padding-top: 2 * $vertical-unit;
+		padding-left: $gutter;
+		padding-right: $gutter;
+		padding-bottom: $vertical-unit;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		background-color: $grey7;
+		width: calc(50% - 2 * #{$gutter});
+		max-width: calc(50% - 2 * #{$gutter});
+		margin: $gutter;
+		flex: 1 0 auto;
 	}
 
+
 	table {
-		tr {
-		}
+
+		flex: 1 0 auto;
+		min-width: 400px;
 
 		td {
-			padding: 1px 6px;
+			padding: 1px 0.25 * $vertical-unit;
 		}
 
 		th {
@@ -67,9 +119,9 @@
 			font-weight: normal;
 			color: $grey4;
 			text-align: left;
-			&::after {
-				content: ':';
-			}
+			// &::after {
+			// 	content: ':';
+			// }
 		}
 	}
 
@@ -85,3 +137,39 @@
 	}
 }
 
+.form-field--payment {
+	.button-group {
+		display: flex;
+		align-items: center;
+		margin: $vertical-unit 0;
+	}
+
+	input {
+		display: none;
+		margin: 0;
+	}
+
+	input[type=radio]:checked + label {
+		background-color: #fff;
+		border-color: currentColor;
+		color: $primary-color;
+	}
+
+	label {
+		margin: 0 4px 0 0;
+		display:inline-block;
+	}
+
+	input[type=text] {
+		width: 200px;
+		text-align: center;
+	}
+
+	#payment-amount-custom:checked ~ label {
+		display: none;
+	}
+
+	#payment-amount-custom:checked ~ input[type=text] {
+		display: inline-block;
+	}
+}

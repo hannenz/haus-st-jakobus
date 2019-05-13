@@ -44,7 +44,9 @@ class TopbarnavController extends Controller {
 				break;
 		}
 
-		$this->parser->setParserVar('current', $pageData['cmt_title']);
+		if ($pageData['cmt_showinnav']) {
+			$this->parser->setParserVar('current', $pageData['cmt_title']);
+		}
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'topbarnav.tpl');
 	}
 

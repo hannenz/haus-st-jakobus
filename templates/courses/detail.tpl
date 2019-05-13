@@ -76,12 +76,12 @@
 
 
 			{IF("{COUNT:course_events}" != "0")}
-
 				<h3 class="headline">Termine</h3>
-
 				{LOOP VAR(course_events)}
 					{INCLUDE:PATHTOWEBROOT."templates/events/teaser.tpl"}
 				{ENDLOOP VAR}
+			{ELSE}
+				<p><em>Alle Kurse beendet.</em></p>
 			{ENDIF}
 
 			<a href="{VAR:course_overview_url}" class="back">Zurück</a>

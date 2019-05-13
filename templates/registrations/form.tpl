@@ -6,7 +6,7 @@
 	{ENDIF}
 
 	<fieldset class="fieldset">
-		<legend>Veranstaltung</legend>
+		<legend>Anmeldung zur Veranstaltung</legend>
 		<div>
 			<strong>Kurs: {VAR:course_title}</strong><br>
 			<em>Termin: {VAR:event_date_fmt}</em>
@@ -51,20 +51,29 @@
 			</div>
 		</div>
 	
-		
 		<div class="grid-x grid-padding-x">
 			<div class="cell medium-6">
 				{VAR:registration_is_member}
 			</div>
 		</div>
-		
+
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-6">
+				<div class="info">
+					Die mit einem <span>*</span> gekennzeichneten Felder müssen ausgefüllt werden.
+				</div>
+			</div>
+		</div>
+		<div class="grid-x grid-padding-x"> 
+			<div class="cell">
+				<div class="action-area">
+					<a class="" href="{VAR:course_detail_url}">Zurück</a>
+					<button type="submit" class="button">Anmelden</button>
+				</div>
+			</div>
+		</div>
 	</fieldset>
 
-	<div class="info">
-		Die mit einem <span>*</span> gekennzeichneten Felder müssen ausgefüllt werden.
-	</div>
 
-	<div> 
-		<button type="submit" class="button">Anmelden</button>
-	</div>
 </form>

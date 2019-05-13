@@ -55,11 +55,14 @@ class RegistrationsController extends Controller {
 		$fields = $this->Registration->getFormFields(null, ['validate' => !empty ($this->postvars)]);
 		$this->parser->setMultipleParserVars($fields);
 
-		if (!empty ($this->postvars)) {
+		if (!empty($this->postvars)) {
 			$data = $this->postvars;
+			foreach($data as $key => $value) {
+				$data[$key] = trim($value);
+			}
 			$data['registration_date'] = strftime('%Y-%m-%d %H:%I:%S');
 			$data['registration_is_member'] = !empty($this->postvars['registration_is_member']);
-			if (!$this->Registration->save ($data, ['callback' => __NAMESPACE__ . '\RegistrationsController::afterSave'])) {
+			if (!$this->Registration->save ($data)) {
 				$this->parser->setParserVar('saveFailed', true);
 			}
 			else {
@@ -71,13 +74,6 @@ class RegistrationsController extends Controller {
 
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'form.tpl');
 	}
-
-
-
-	// public function afterSave ($success, $data, $options) {
-	// 	Registration::notifyUser($data);
-	// 	return $success;
-	// }
 
 
 

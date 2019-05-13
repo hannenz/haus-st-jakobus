@@ -11,19 +11,23 @@
 		<ol>
 			{LOOP VAR(pilgrimpasses)}
 				<li class="card">
-					<p>
-						<strong>{VAR:pilgrimpass_salutation} {VAR:pilgrimpass_firstname} {VAR:pilgrimpass_lastname}</strong><br>
-						{VAR:pilgrimpass_street_address}<br>
-						{VAR:pilgrimpass_zip} {VAR:pilgrimpass_city}<br>
-						{VAR:pilgrimpass_country}
-					</p>
+					<div>
+						<p>
+							<strong>{VAR:pilgrimpass_salutation} {VAR:pilgrimpass_firstname} {VAR:pilgrimpass_lastname}</strong><br>
+							{VAR:pilgrimpass_street_address}<br>
+							{VAR:pilgrimpass_zip} {VAR:pilgrimpass_city}<br>
+							{VAR:pilgrimpass_country}<br>
+						</p>
+						<p>
+							Tel: {VAR:pilgrimpass_phone}<br>
+							E-Mail: {VAR:pilgrimpass_email}
+						</p>
+					</div>
 					<table>
-						<tr><th>Telefon</th><td>{VAR:pilgrimpass_phone}</td></tr>
-						<tr><th>E-Mail</th> <td>{VAR:pilgrimpass_email}</td></tr>
-						<tr><th>Gebusrtstag</th> <td>{VAR:pilgrimpass_birthday}</td></tr>
-						<tr><th>Personalausweis-Nr</th> <td>{VAR:pilgrimpass_idnr}</td></tr>
+						<!-- <tr><th>Telefon</th><td>{VAR:pilgrimpass_phone}</td></tr> -->
+						<!-- <tr><th>E&#45;Mail</th> <td>{VAR:pilgrimpass_email}</td></tr> -->
 						<tr><th>Pilgerweg</th> <td>{SWITCH("{VAR:pilgrimpass_route}")}{CASE("camino-de-santiago")}Camino de Santiago{BREAK}{CASE("via-francigena")}Via Francigena{BREAK}{ENDSWITCH}</td></tr>
-						<tr><th>Start-Datum</th> <td>{VAR:pilgrimpass_start_date}</td></tr>
+						<tr><th>Start-Datum</th> <td>{DATEFMT:{VAR:pilgrimpass_start_date}:%a, %d. %B %Y}</td></tr>
 						<tr><th>Start (Ort)</th> <td>{VAR:pilgrimpass_start_location}</td></tr>
 						<tr><th>Motivation</th> <td>{VAR:pilgrimpass_motivation}</td></tr>
 						<tr><th>Fortbewegungsmittel</th> <td>{SWITCH("{VAR:pilgrimpass_transportation}")}{CASE("zu-fuss")}Zu Fuß{BREAK}{CASE("mit-dem-fahrrad")}Mit dem Fahrrad{BREAK}{CASE("auf-dem-pferd")}Auf dem Pferd{BREAK}{ENDSWITCH}</td></tr>

@@ -223,8 +223,27 @@ class AppParser extends Parser {
 		return $replaceData;
 	}
 
-	protected function macro_DATEFMT($varName, $params) {
-		var_dump($varName); var_dump($params); die();
+
+	/**
+	 * Returns formatted date
+	 *
+	 * input: a YYYY-MM-DD string
+	 * param1: format string (as used by strftime)
+	 * param2: Optional: A locale to use, e.g. "en_US"
+	 *
+	 * output: formatted string 
+	 */
+	protected function macro_DATEFMT($value, $params) {
+
+		var_dump($value);
+		var_dump($params); die();
+		$oldLocale = setlocale(LC_TIME, 0);
+		if (!empty($params[1])) {
+			setlocale(LC_TIME, $params[1]);
+		}
+		$replaceData = strftime($params[0], strtotime($value));
+		setlocale(LC_TIME, $oldLocale);
+		return $replaceData;
 	}
 }
 
