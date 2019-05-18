@@ -265,9 +265,13 @@ EOS;
 			$event['event_date_fmt'] = strftime('%a, %d.%m.%Y', strtotime ($event['event_begin']));
 		}
 		else {
+			$fmt = '%a, %d.%m';
+			if ($y1 != $y2) {
+				$fmt .= '%Y';
+			}
 			$event['event_date_fmt'] = sprintf("%s&thinsp;&ndash;&thinsp;%s", 
-				strftime('%a, %d.%m.', strtotime($event['event_begin'])),
-				strftime('%a, %d.%m.', strtotime($event['event_end']))
+				strftime($fmt, strtotime($event['event_begin'])),
+				strftime($fmt, strtotime($event['event_end']))
 			);
 		}
 
