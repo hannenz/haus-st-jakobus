@@ -233,17 +233,17 @@ class AppParser extends Parser {
 	 *
 	 * output: formatted string 
 	 */
-	protected function macro_DATEFMT($value, $params) {
-
-		var_dump($value);
-		var_dump($params); die();
-		$oldLocale = setlocale(LC_TIME, 0);
-		if (!empty($params[1])) {
-			setlocale(LC_TIME, $params[1]);
-		}
-		$replaceData = strftime($params[0], strtotime($value));
-		setlocale(LC_TIME, $oldLocale);
-		return $replaceData;
-	}
+	// protected function macro_DATEFMT($value, $params) {
+    //
+	// 	var_dump($value);
+	// 	var_dump($params); die();
+	// 	$oldLocale = setlocale(LC_TIME, 0);
+	// 	if (!empty($params[1])) {
+	// 		setlocale(LC_TIME, $params[1]);
+	// 	}
+	// 	$replaceData = strftime($params[0], strtotime($value));
+	// 	setlocale(LC_TIME, $oldLocale);
+	// 	return $replaceData;
+	// }
 }
 

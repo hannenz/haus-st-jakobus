@@ -69,7 +69,7 @@ class News extends Posts {
 	}
 
 
-	public function getPosts($params) {
+	public function getPosts($params = []) {
 
 		$posts = $this->getAllPosts($params);
 		foreach ($posts as $n => $post) {
@@ -79,7 +79,7 @@ class News extends Posts {
 	}
 
 
-	public function getPost($id) {
+	public function getPostById($id) {
 		$post = parent::getPost($id);
 		return $this->afterRead($post);
 	}
@@ -105,7 +105,7 @@ class News extends Posts {
 
 		$post['post_categories_fmt'] = '';
 		$categories = [];
-		foreach ($post['post_categories'] as $category) {
+		foreach ((array)$post['post_categories'] as $category) {
 			$categories[] = $category['category_title_de'];
 		}
 		$post['post_categories_fmt'] = join(', ', $categories);

@@ -31,27 +31,20 @@
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 		{IF("{PAGEID}" == "2")}
-			{INCLUDE:PATHTOWEBROOT."phpincludes/slider/homepageslider_controller.php"}
-
-		<!-- <div class="hero" style="background&#45;image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"> -->
-		<!-- 	<div class="inner&#45;bound"> -->
-		<!-- 		<blockquote class="hero__title"> -->
-		<!-- 			Kommt und ruht ein wenig aus &#38;hellip; -->
-		<!-- 		</blockquote> -->
-		<!-- 	</div> -->
-		<!-- </div> -->
+			{INCLUDE:PATHTOWEBROOT.'phpincludes/slider/homepageslider_controller.php'}
 		{ELSE}
 			<div class="mood" style="background-image:url('/media/mood/{PAGEVAR:jakobus_mood:recursive}');"></div>
 		{ENDIF}
 
 
 		<section id="main-container" class="main-container inner-bound" data-sticky-container>
-			{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
+			{INCLUDE:PATHTOWEBROOT.'phpincludes/navigation/topbarnav_controller.php'}
 				<div class="main-content">
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
 				<aside class="sidebar">
 					<div class="sticky" data-sticky data-sticky-on="large" data-margin-top="5" data-top-anchor="main-container">
+						{INCLUDE:PATHTOWEBROOT.'phpincludes/pilgrimpasses/cart_controller.php'}
 						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
 					</div>
 				</aside>

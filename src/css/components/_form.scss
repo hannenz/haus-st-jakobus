@@ -131,19 +131,22 @@ form {
 .action-area {
 	margin-top: $vertical-unit;
 	display: flex;
-	justify-content: space-between;;
+	justify-content: flex-start; //space-between;;
+	align-items: center;
 
 	button {
 		margin: 0 4px;
 	}
 
-	button:first-child {
-		margin-left: 0;
+	a {
+		margin-left: 16px;
 	}
 
-	button:last-child {
+	// The first button is the primary one, e.g. is activated when hitting ENTER
+	// We want it to be rightmost however
+	button:first-child {
 		margin-left: auto;
-		margin-right: 0;
+		order: 2;
 	}
 }
 

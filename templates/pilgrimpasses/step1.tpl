@@ -160,7 +160,6 @@
 			<svg class="icon" width="100" height="100" viewBox="0 0 100 100">
 				<path d="M 40,15 V 40 H 15 V 60 H 40 V 85 H 60 V 60 H 85 V 40 H 60 V 15 Z" />
 			</svg>
-
 			<span>Pilgerpass hinzufügen</span>
 		</button>
 	</div>

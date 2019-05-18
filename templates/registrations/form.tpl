@@ -68,8 +68,8 @@
 		<div class="grid-x grid-padding-x"> 
 			<div class="cell">
 				<div class="action-area">
-					<a class="" href="{VAR:course_detail_url}">Zurück</a>
 					<button type="submit" class="button">Anmelden</button>
+					<a class="" href="{VAR:course_detail_url}">Zurück</a>
 				</div>
 			</div>
 		</div>

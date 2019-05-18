@@ -97,6 +97,7 @@ class Event extends Model {
 		if ($day != null) {
 			$query .= sprintf(" AND DAY(event_begin)=%u", (int)$day);
 		}
+		$query .= " ORDER BY event_begin ASC";
 		if ($this->db->query($query) !== 0) {
 			throw new Exception("Query failed: " . $query);
 		}
@@ -262,16 +263,21 @@ EOS;
 		$d2 = date('d', strtotime($event['event_end']));
 
 		if ($y1 == $y2 && $m1 == $m2 && $d1 == $d2) {
-			$event['event_date_fmt'] = strftime('%a, %d.%m.%Y', strtotime ($event['event_begin']));
+			$event['event_date_fmt'] = strftime('%d.%m.%Y', strtotime ($event['event_begin']));
+			if (!empty($event['event_begin_annotation'])) {
+				$event['event_datrhe_fmt'] .= " " . $event['event_begin_annotation'];
+			}
 		}
 		else {
-			$fmt = '%a, %d.%m';
-			if ($y1 != $y2) {
-				$fmt .= '%Y';
+			$fmt = '%d.%m';
+			if (true || $y1 != $y2) {
+				$fmt .= '.%Y';
 			}
-			$event['event_date_fmt'] = sprintf("%s&thinsp;&ndash;&thinsp;%s", 
+			$event['event_date_fmt'] = sprintf("%s %s&thinsp;&ndash;&thinsp;%s %s", 
 				strftime($fmt, strtotime($event['event_begin'])),
-				strftime($fmt, strtotime($event['event_end']))
+				!empty($event['event_begin_annotation']) ? $event['event_begin_annotation'] : '',
+				strftime($fmt, strtotime($event['event_end'])),
+				!empty($event['event_end_annotation']) ? $event['event_end_annotation'] : ''
 			);
 		}
 

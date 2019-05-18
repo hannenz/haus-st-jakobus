@@ -3,6 +3,6 @@
 		<h4 class="widget__title">{HEAD:1}</h4>
 	</div>
 	<div class="widget__body">
-		{TEXT:1}
+		{TEXT:1:all}
 	</div>
 </aside>

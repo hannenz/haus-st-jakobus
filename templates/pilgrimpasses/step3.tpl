@@ -59,6 +59,7 @@
 	<div class="action-area"> 
 		<button class="button" type="submit" name="action" value="step3">Weiter</button>
 		<button class="button" name="action" value="back">Zurück</button>
+		<a href="{PAGEURL}?action=abort">Abbrechen</a>
 	</div>
 </form>
 

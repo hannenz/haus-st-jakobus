@@ -76,6 +76,7 @@
 	<div class="action-area"> 
 		<button type="submit" class="button" name="action" value="step2">Weiter</button>
 		<button class="button" name="action" value="back">Zurück</button>
+		<a href="{SELFURL}?action=abort">Abbrechen</a>
 	</div>
 </form>
 

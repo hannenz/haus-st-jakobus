@@ -21,7 +21,12 @@
 		</header>
 
 		<div class="teaser__description">
-			<div>{VAR:event_time_fmt} Uhr<br>{VAR:event_location:nl2br}</div>
+			<p>
+				<em>Beginn: {DATEFMT:"{VAR:event_begin}":"%a, %d.%B %Y %H:%M Uhr"} {IF({ISSET:event_begin_annotation})}{VAR:event_begin_annotation}{ENDIF}</em><br>
+				<em>Ende: {DATEFMT:"{VAR:event_end}":"%a, %d.%B %Y %H:%M Uhr"} {IF({ISSET:event_end_annotation})}{VAR:event_end_annotation}{ENDIF}</em>
+			</p>
+
+			<div><em>{VAR:event_location:nl2br}</em></div>
 			<div>{VAR:event_remark}</div>
 
 			{IF({ISSET:event_instructor:VAR})}
