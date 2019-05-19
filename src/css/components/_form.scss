@@ -16,6 +16,7 @@ form {
 
 	select {
 		border: none;
+		max-width: 300px;
 	}
 
 	// Checkboxes
@@ -23,6 +24,7 @@ form {
 		vertical-align: middle;;
 		display: flex;
 		align-items: center;
+		margin: $vertical-unit 0;
 
 		label {
 			display: inline-block;

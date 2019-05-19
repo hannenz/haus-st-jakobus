@@ -88,7 +88,6 @@
 		{VAR:pilgrimpass_payment_method}
 		{VAR:pilgrimpass_express}
 		{VAR:pilgrimpass_amount}
-		{VAR:pilgrimpass_blz}
 	</fieldset>
 	<div> 
 		<button type="submit" class="button">Absenden</button>

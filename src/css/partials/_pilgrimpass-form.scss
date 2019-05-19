@@ -30,7 +30,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		margin: 0 -1 * $gutter 3 * $vertical-unit -1 * $gutter;
+		margin: 0 -1 * $gutter;
 		counter-reset: c;
 
 		> li {
@@ -81,10 +81,10 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		background-color: $grey7;
+		background-color: #fff;
 		width: calc(50% - 2 * #{$gutter});
 		max-width: calc(50% - 2 * #{$gutter});
-		margin: $gutter;
+		margin: 0 $gutter $gutter $gutter;
 		flex: 1 0 auto;
 	}
 
@@ -94,6 +94,9 @@
 		flex: 1 0 auto;
 		min-width: 400px;
 
+		td, th {
+			vertical-align: top;
+		};
 		td {
 			padding: 1px 0.25 * $vertical-unit;
 		}
@@ -103,6 +106,7 @@
 			font-weight: normal;
 			color: $grey4;
 			text-align: left;
+			width: 140px;
 			// &::after {
 			// 	content: ':';
 			// }

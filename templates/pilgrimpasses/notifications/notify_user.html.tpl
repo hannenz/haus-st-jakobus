@@ -1,4 +1,4 @@
-<p>Sehr geehrte{IF("{VAR:pilgrimpass_delivery_address_salutation}" == "Herr")}r{ENDIF} {VAR:pilgrimpass_delivery_address_salutation} {VAR:pilgrimpass_delivery_address_lastname},</p>
+<p>Sehr geehrte{IF("{VAR:order_delivery_address_salutation}" == "Herr")}r{ENDIF} {VAR:order_delivery_address_salutation} {VAR:order_delivery_address_lastname},</p>
 
 <p>Hiermit  bestätigen wir Ihnen die Beantragung {IF("{VAR:passes_count}" == "1")}eines Pilgerausweises{ELSE} von {VAR:passes_count} Pilgerausweisen{ENDIF} mit folgenden Daten:</p>
 
@@ -38,20 +38,8 @@
 				<td>{VAR:pilgrimpass_city}</td>
 			</tr>
 			<tr>
-				<td>Telefon</td>
-				<td>{VAR:pilgrimpass_phone}</td>
-			</tr>
-			<tr>
 				<td>E-Mail</td>
 				<td>{VAR:pilgrimpass_email}</td>
-			</tr>
-			<tr>
-				<td>Geburtstag</td>
-				<td>{VAR:pilgrimpass_birthday}</td>
-			</tr>
-			<tr>
-				<td>Personalausweis-Nummer</td>
-				<td>{VAR:pilgrimpass_idnr}</td>
 			</tr>
 			<tr>
 				<td>Pilgerweg</td>
@@ -101,35 +89,35 @@
 <table>
 	<tr>
 		<td>Anrede</td>
-		<td>{VAR:pilgrimpass_delivery_address_salutation}</td>
+		<td>{VAR:order_delivery_address_salutation}</td>
 	</tr>
 	<tr>
 		<td>Vorname</td>
-		<td>{VAR:pilgrimpass_delivery_address_firstname}</td>
+		<td>{VAR:order_delivery_address_firstname}</td>
 	</tr>
 	<tr>
 		<td>Nachname</td>
-		<td>{VAR:pilgrimpass_delivery_address_lastname}</td>
+		<td>{VAR:order_delivery_address_lastname}</td>
 	</tr>
 	<tr>
 		<td>Anschrift</td>
-		<td>{VAR:pilgrimpass_delivery_address_street}</td>
+		<td>{VAR:order_delivery_address_street}</td>
 	</tr>
 	<tr>
 		<td>PLZ</td>
-		<td>{VAR:pilgrimpass_delivery_address_zip}</td>
+		<td>{VAR:order_delivery_address_zip}</td>
 	</tr>
 	<tr>
 		<td>Ort</td>
-		<td>{VAR:pilgrimpass_delivery_address_city}</td>
+		<td>{VAR:order_delivery_address_city}</td>
 	</tr>
 	<tr>
 		<td>Land</td>
-		<td>{VAR:pilgrimpass_delivery_address_country}</td>
+		<td>{VAR:order_delivery_address_country}</td>
 	</tr>
 	<tr>
 		<td>E-Mail</td>
-		<td>{VAR:pilgrimpass_delivery_address_email}</td>
+		<td>{VAR:order_delivery_address_email}</td>
 	</tr>
 </table>
 
@@ -140,7 +128,7 @@
 	<tr>
 		<td>Zahlungsmethode</td>
 		<td>
-			{SWITCH("{VAR:pilgrimpass_payment_method}")}
+			{SWITCH("{VAR:order_payment_method}")}
 				{CASE("giropay")}GiroPay{BREAK}
 				{CASE("ueberweisung")}Überweisung{BREAK}
 				{CASE("bargeld")}Bargeld{BREAK}
@@ -149,23 +137,17 @@
 	</tr>
 	<tr>
 		<td>Betrag</td>
-		<td>{VAR:pilgrimpass_amount} &euro;</td>
+		<td>{VAR:order_amount} &euro;</td>
 	</tr>
 	<tr>
 		<td>Express</td>
-		<td>{IF("{VAR:pilgrimpass_express}" == "0")}Nein{ELSE}Ja{ENDIF}</td>
+		<td>{IF("{VAR:order_express}" == "0")}Nein{ELSE}Ja{ENDIF}</td>
 	</tr>
-	{IF("{VAR:pilgrimpass_payment_method}" == "giropay")}
-	<tr>
-		<td>BLZ</td>
-		<td>{VAR:pilgrimpass_blz}</td>
-	</tr>
-	{ENDIF}
 </table>
 
-{IF({ISSET:pilgrimpass_message})}
+{IF({ISSET:order_message})}
 	<h3>4. Nachricht / Bemerkung</h3>
-	<p>{VAR:pilgrimpass_message:nl2br}</p>
+	<p>{VAR:order_message:nl2br}</p>
 {ENDIF}
 
 <p>

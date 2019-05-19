@@ -2,9 +2,9 @@
 	<p class="error message">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</p>
 {ENDIF}
 
+<h2 class="headline">Pilgerausweise bestellen</h2>
+
 <form id="pilgrimpass-form" action="" method="post" novalidate>
-
-
 	<div id="form-container">
 		{LOOP VAR(pilgrimpasses)}
 			<fieldset class="fieldset">

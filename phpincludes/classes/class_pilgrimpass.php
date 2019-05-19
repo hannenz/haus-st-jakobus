@@ -59,7 +59,6 @@ class Pilgrimpass extends Model {
 			'pilgrimpass_transportation' => '/^.+$/',
 			'pilgrimpass_payment_method' => '/^.+$/',
 			'pilgrimpass_amount' => '/^[0-9\,\.]+$/',
-			'pilgrimpass_blz' => '/^\d+$/',
 			'pilgrimpass_delivery_address_firstname' => '/^.+$/',
 			'pilgrimpass_delivery_address_lastname' => '/^.+$/',
 			'pilgrimpass_delivery_address_street' => '/^.+$/',
@@ -73,7 +72,7 @@ class Pilgrimpass extends Model {
 
 	public function notifyUser($data) {
 		$data['passes_count'] = count($data['pilgrimpasses']);
-		$recipient = ($data['pilgrimpass_delivery_address_email']);
+		$recipient = ($data['order_delivery_address_email']);
 
 		return $this->Notification->notify($recipient, "[Haus St. Jakobus] Eingangsbestätigung", "notify_user", $data);
 	}
@@ -195,7 +194,7 @@ class Pilgrimpass extends Model {
 	public function exportCsv($begin, $end) {
 
 		$passes = $this->getInRange($begin, $end);
-		$lines = ["ID,Lfd.Nr,Datum,Anrede,Vorname,Nachname,Anschrift,Postleitzahl,Stadt,Land,Telefon,E-Mail,Route,Start-Datum,Start-Ort,Motivation,Transportmittel,Bezahlart,Express,Betrag,BLZ,Status,Versand-Datum\n"];
+		$lines = ["ID,Lfd.Nr,Datum,Anrede,Vorname,Nachname,Anschrift,Postleitzahl,Stadt,Land,Telefon,E-Mail,Route,Start-Datum,Start-Ort,Motivation,Transportmittel,Bezahlart,Express,Betrag,Status,Versand-Datum\n"];
 		foreach ($passes as $pass) {
 				$lines[] = join(',', [
 					sprintf('"%s"', $pass['id']),
@@ -218,7 +217,6 @@ class Pilgrimpass extends Model {
 					sprintf('"%s"', $this->getOptionAlias('pilgrimpass_payment_method', $pass['pilgrimpass_payment_method'])),
 					sprintf('"%s"', $pass['pilgrimpass_express']),
 					sprintf('"%s"', $pass['pilgrimpass_amount']),
-					sprintf('"%s"', $pass['pilgrimpass_blz']),
 					sprintf('"%s"', $this->getOptionAlias('pilgrimpass_status', $pass['pilgrimpass_status'])),
 					sprintf('"%s"', strftime('%d.%m.%Y', strtotime($pass['pilgrimpass_shipping_date'])))
 				]

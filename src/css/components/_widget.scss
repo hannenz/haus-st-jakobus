@@ -30,4 +30,14 @@
 	}
 }
 
-
+.badge {
+	background-color: $primary-color;
+	color: #fff;
+	display: inline-block;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;;
+}

@@ -1,10 +1,10 @@
 {IF("{COUNT:pilgrimpasses}" != "0")}
 <aside class="widget cart">
 	<div class="widget__header">
-		<h4 class="widget__title">Ihre Bestellung</h4>
+		<h4 class="widget__title">Ihre Pilgerausweise <span class="badge">{COUNT:pilgrimpasses}</span></h4>
 	</div>
 	<div class="widget__body">
-		{COUNT:pilgrimpasses} Pilgerausweise:
+		{COUNT:pilgrimpasses} Pilgerausweis{IF("{COUNT:pilgrimpasses}" != "1")}e{ENDIF}:
 		<ul>
 			{LOOP VAR(pilgrimpasses)}
 			<li>
@@ -12,7 +12,12 @@
 			</li>
 			{ENDLOOP VAR}
 		</ul>
-		<p><a href="{PAGEURL:24:de}?action=abort">Bestellung abbrechen</a></p>
+		<p>
+			<a class="pilgrimpass-abort" data-confirm-text="Sind Sie sicher, dass Sie die Bestellung abbrechen möchten?" href="{PAGEURL}?action=abort">Bestellung abbrechen</a><br>
+			{IF("{PAGEID}" != "24")}
+				<a class="button" href="{PAGEURL:24:de}?action=continue">Bestellung fortsetzen</a>
+			{ENDIF}
+		</p>
 	</div>
 </aside>
 {ENDIF}

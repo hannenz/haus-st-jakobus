@@ -1,13 +1,15 @@
 {IF({ISSET:saveFailed})}
 	<p class="error message message--error">Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal oder wenden Sie sich per E-Mail an <a href="mailto:info@haus-st-jakobus.de">info@haus-st-jakobus.de</a></p>
 {ENDIF}
+
+<h2 class="headline">Zusammenfassung Ihrer Bestellung</h2>
+
 <form id="pilgrimpass-form" class="pilgrimpasses-form--summary" action="" method="post">
-	<h2 class="headline">Zusammenfassung Ihrer Bestellung</h2>
 
 	<p>Bitte prüfen Sie noch einmal, ob alle Eingaben korrekt sind bevor Sie den Bestellvorgang verbindlich abschliessen.</p>
 
-	<div class="pilgrimpasses">
-		<h3 class="headline headline--small">Pilgerausweis(e)</h3>
+	<fieldset class="fieldset pilgrimpasses">
+		<legend>Pilgerausweise</legend>
 		<ol>
 			{LOOP VAR(pilgrimpasses)}
 				<li class="card">
@@ -35,58 +37,68 @@
 				</li>
 			{ENDLOOP VAR}
 		</ol>
-	</div>
-	<div>
-		<h3 class="headline headline--small">Lieferadresse</h3>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend>Lieferadresse</legend>
 		<p>
-			{VAR:pilgrimpass_delivery_address_salutation} {VAR:pilgrimpass_delivery_address_firstname} {VAR:pilgrimpass_delivery_address_lastname}<br>
-			{VAR:pilgrimpass_delivery_address_street}<br>
-			{VAR:pilgrimpass_delivery_address_zip} {VAR:pilgrimpass_delivery_address_city}<br>
-			{VAR:pilgrimpass_delivery_address_country}<br>
 			<table>
 				<tr>
+					<th>Name</th>
+					<td>
+						{VAR:order_delivery_address_salutation} {VAR:order_delivery_address_firstname} {VAR:order_delivery_address_lastname}
+					</td>
+				</tr>
+				<tr>
+					<th>Anschrift</th>
+					<td>
+						{VAR:order_delivery_address_street}<br>
+						{VAR:order_delivery_address_zip} {VAR:order_delivery_address_city}<br>
+						{VAR:order_delivery_address_country}<br>
+					</td>
+				</tr>
+				<tr>
 					<th>E-Mail</th>
-					<td>{VAR:pilgrimpass_delivery_address_email}</td>
+					<td>{VAR:order_delivery_address_email}</td>
 				</tr>
 			</table>
 		</p>
-	</div>
-	<div>
-		<h3 class="headline headline--small">Bezahlung</h3>
-		<p>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend>Ihre Spende</legend>
 			<table>
 				
 				<tr>
+					<th>Betrag</th>
+					<td>{PRINTF:{VAR:order_amount}:"%.2f":en_US.utf8} &euro;</td>
+				</tr>
+				<tr>
 					<th>Zahlungsart</th>
 					<td>
-						{SWITCH("{VAR:pilgrimpass_payment_method}")}
+						{SWITCH("{VAR:order_payment_method}")}
 							{CASE("giropay")}Giropay{BREAK}
 							{CASE("ueberweisung")}Überweisung{BREAK}
 							{CASE("bargeld")}Bargeld{BREAK}
 						{ENDSWITCH}
 					</td>
 				</tr>
-				<tr>
-					<th>Express</th>
-					<td>{IF({ISSET:pilgrimpass_express})}Ja{ELSE}Nein{ENDIF}</td>
-				</tr>
-				<tr>
-					<th>Betrag</th>
-					<td>{VAR:pilgrimpass_amount} &euro;</td>
-				</tr>
+				<!-- <tr> -->
+				<!-- 	<th>Express</th> -->
+				<!-- 	<td>{IF({ISSET:order_express})}Ja{ELSE}Nein{ENDIF}</td> -->
+				<!-- </tr> -->
 			</table>
-		</p>
-	</div>
-	{IF({ISSET:pilgrimpass_message})}
-		<div>
-			<h3 class="headline headline--small">Nachricht / Bemerkung</h3>
-			<p>{VAR:pilgrimpass_message:nl2br}</p>
-		</div>
+	</fieldset>
+
+	{IF({ISSET:order_message})}
+		<fieldset class="fieldset">
+			<legend>Nachricht / Bemerkung</legend>
+			<p>{VAR:order_message:nl2br}</p>
+		</fieldset>
 	{ENDIF}
 
 	<input type="hidden" name="step" value="summary">
 	<div class="action-area">
 		<button class="button" name="action" value="complete" type="submit">Verbindlich bestellen</button>
 		<button class="button" name="action" value="back">Zurück</button>
+		<a href="{PAGEURL}?action=abort" onclick="return confirm('Sind Sie sicher, dass Sie den Bestellvorgang abbrechen möchten?');">Abbrechen</a>
 	</div>
 </form>

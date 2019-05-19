@@ -16,10 +16,7 @@ Es wurden {VAR:passes_count} Pilgerausweise beantragt mit folgenden Daten:
 	PLZ:                    {VAR:pilgrimpass_zip}
 	Ort:                    {VAR:pilgrimpass_city}
 	Land:                   {VAR:pilgrimpass_country}
-	Telefon:                {VAR:pilgrimpass__phone}
 	E-Mail:                 {VAR:pilgrimpass__email}
-	Geburtstag:             {VAR:pilgrimpass_birthday}
-	Personalausweis-Nummer: {VAR:pilgrimpass_idnr}
 	Pilgerweg:              {SWITCH("{VAR:pilgrimpass_route}")} {CASE("camino-de-santiago")}Camino de Santiago{BREAK} {CASE("via-francigena")}Via Francigena{BREAK} {ENDSWITCH}
 	Startdatum:             {VAR:pilgrimpass_start_date}
 	Start (Ort):            {VAR:pilgrimpass_start_location}
@@ -35,31 +32,30 @@ Es wurden {VAR:passes_count} Pilgerausweise beantragt mit folgenden Daten:
 
 2. Lieferadresse
 
-Anrede:                 {VAR:pilgrimpass_delivery_address_salutation}
-Vorname:                {VAR:pilgrimpass_delivery_address_firstname}
-Nachname:               {VAR:pilgrimpass_delivery_address_lastname}
-Adresse:                {VAR:pilgrimpass_delivery_address_street_address}
-PLZ:                    {VAR:pilgrimpass_delivery_address_zip}
-Ort:                    {VAR:pilgrimpass_delivery_address_city}
-Land:                   {VAR:pilgrimpass_delivery_address_country}
-E-Mail:                 {VAR:pilgrimpass_delivery_address_email}
+Anrede:                 {VAR:order_delivery_address_salutation}
+Vorname:                {VAR:order_delivery_address_firstname}
+Nachname:               {VAR:order_delivery_address_lastname}
+Adresse:                {VAR:order_delivery_address_street_address}
+PLZ:                    {VAR:order_delivery_address_zip}
+Ort:                    {VAR:order_delivery_address_city}
+Land:                   {VAR:order_delivery_address_country}
+E-Mail:                 {VAR:order_delivery_address_email}
 
 -----
 
 3. Bezahlung
 
-Zahlungsmethode:        {SWITCH("{VAR:pilgrimpass_payment_method}")} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
-Betrag:                 {VAR:pilgrimpass_amount} EUR
-Express:                {IF("{VAR:pilgrimpass_express}" == "0")}Nein{ELSE}Ja{ENDIF}
-{IF("{VAR:pilgrimpass_payment_method}" == "giropay")}
-BLZ:                    {VAR:pilgrimpass_blz}
+Zahlungsmethode:        {SWITCH("{VAR:order_payment_method}")} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
+Betrag:                 {VAR:order_amount} EUR
+Express:                {IF("{VAR:order_express}" == "0")}Nein{ELSE}Ja{ENDIF}
+{IF("{VAR:order_payment_method}" == "giropay")}
 {ENDIF}
 
-{IF({ISSET:pilgrimpass_message})}
+{IF({ISSET:order_message})}
 -----
 
 4. Nachricht
 
-{VAR:pilgrimpass_message}
+{VAR:order_message}
 {ENDIF}
 

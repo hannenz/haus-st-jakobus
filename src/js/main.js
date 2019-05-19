@@ -132,29 +132,31 @@ function APP () {
 		var container = document.getElementById('form-container');
 		var countInput = document.getElementById('count');
 
-		addBtn.addEventListener('click', function(event) {
-			event.preventDefault();
-			var newfs = fs.cloneNode(true);
-			container.appendChild(newfs);
-			var rmBtn = newfs.querySelector('.remove-button');
-			countInput.value = container.children.length;
-			rmBtn.addEventListener('click', onRemoveButtonClicked);
-			var inputs = newfs.querySelectorAll('input');
-			for (var i = 0; i < inputs.length; i++) {
-				inputs[i].value = '';
-				var parts= inputs[i].id.match(/(.*)-(\d+)$/);
-				if (parts) {
-					var newId = parts[1] + '-' + (parseInt(parts[2]) + 1);
-					var label = newfs.querySelector('[for=' + inputs[i].id + ']');
-					inputs[i].id = newId;
-					label.setAttribute('for', newId);
+		if (addBtn) {
+			addBtn.addEventListener('click', function(event) {
+				event.preventDefault();
+				var newfs = fs.cloneNode(true);
+				container.appendChild(newfs);
+				var rmBtn = newfs.querySelector('.remove-button');
+				countInput.value = container.children.length;
+				rmBtn.addEventListener('click', onRemoveButtonClicked);
+				var inputs = newfs.querySelectorAll('input');
+				for (var i = 0; i < inputs.length; i++) {
+					inputs[i].value = '';
+					var parts= inputs[i].id.match(/(.*)-(\d+)$/);
+					if (parts) {
+						var newId = parts[1] + '-' + (parseInt(parts[2]) + 1);
+						var label = newfs.querySelector('[for=' + inputs[i].id + ']');
+						inputs[i].id = newId;
+						label.setAttribute('for', newId);
+					}
 				}
-			}
-			var selects = newfs.querySelectorAll('select');
-			for (var i = 0; i < selects.length; i++) {
-				selects[i].selectedIndex = null;
-			}
-		});
+				var selects = newfs.querySelectorAll('select');
+				for (var i = 0; i < selects.length; i++) {
+					selects[i].selectedIndex = null;
+				}
+			});
+		}
 
 		var removeButtons = document.querySelectorAll('.remove-button');
 		for (var i = 0; i < removeButtons.length; i++) {
@@ -169,6 +171,43 @@ function APP () {
 				countInput.value = container.children.length;
 			}
 			return false;
+		}
+
+
+		var paymentAmountCustom = document.getElementById('payment-amount-custom');
+		if (paymentAmountCustom) {
+			paymentAmountCustom.addEventListener("change", function() {
+				if (this.value == 'custom') {
+					document.getElementById('payment-amount-custom-text').focus();
+				}
+			});
+		}
+
+		/*
+		var paymentSection = document.getElementById('payment');
+		if (paymentSection) {
+			paymentSection.style.visibility = 'hidden';
+			document.forms.step3.addEventListener('change', function(ev) {
+				var amount = parseInt(document.querySelector('[name=order_amount]:checked').value);
+				console.log(amount);
+				var customAmount = parseInt(document.querySelector('[name=order_amount_custom]').value);
+				console.log(customAmount);
+				if (amount > 0 || customAmount > 0) {
+					paymentSection.style.visibility = 'visible';
+				}
+			});
+		}
+		*/
+
+		var abortBtn = document.querySelectorAll('.pilgrimpass-abort');
+		for (i = 0; i < abortBtn.length; i++) {
+			abortBtn[i].addEventListener('click', function(ev) {
+				var r = window.confirm(this.dataset.confirmText);
+				if (!r) {
+					ev.preventDefault();
+					return false;
+				}
+			});
 		}
 	}
 };

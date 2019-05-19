@@ -8,8 +8,16 @@
 
 
 
-[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Momemnt noch über meinen one.com Account
-[ ] Refactoring: Order / Cart / Pilgrimpass
+[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment noch über meinen one.com Account
+[✓] Refactoring: Order / Cart / Pilgrimpass
+[ ] Pilgerausweis-Bestellung: Abbrechen: Bestätigungs-Prompt einbauen (Sidebar-Widget und Formulare)
+[✓] Pilgerausweis-Bestellung: Checkbox so wie bei Kursanmeldungs-Formular
+[✓] Custom Amount: Autofokus
+[ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
+[ ] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link
+[ ] Summary: [bearbeiten] Links zu entspr. Step
+
+[ ] Responsive !!!
 
 
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
@@ -23,17 +31,17 @@
 
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 
+[ ] Kurse: 3 Kalender in Reihe
+[ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
+[✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
+
+
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
 	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
 		Alternativen:
 			- nach Datum des nächsten Events (aufwändig)
 			- alphabetisch (einfach)
 			- ...?
-[ ] Kurse: 3 Kalender in Reihe
-[ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-[✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
-
-
 
 ## Erledigt
 

@@ -43,6 +43,7 @@
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
 				<aside class="sidebar">
+					<h2 class="headline">&nbsp;</h2>
 					<div class="sticky" data-sticky data-sticky-on="large" data-margin-top="5" data-top-anchor="main-container">
 						{INCLUDE:PATHTOWEBROOT.'phpincludes/pilgrimpasses/cart_controller.php'}
 						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
