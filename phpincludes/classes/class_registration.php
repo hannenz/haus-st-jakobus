@@ -1,19 +1,20 @@
 <?php
 namespace Jakobus;
 
-use \Contentomat\Mail;
-use \Contentomat\Parser;
+use \Jakobus\Notification;
 use \Jakobus\Event;
 
 
 class Registration extends Model {
 
-	protected $Mail;
+	protected $Notification;
 	protected $Event;
 
 	public function init () {
 
-		$this->Mail = new Mail();
+		$this->Notification = new Notification();
+		$this->Notification->setTemplatesPath(PATHTOWEBROOT . "templates/registrations/notifications/");
+		$this->Notification->setAdminNotificationRecipient("kursanmeldung@haus-st-jakobus.de");
 		$this->Event = new Event();
 
 		$this->setTableName('jakobus_registrations');
@@ -57,52 +58,30 @@ EOS;
 		$registrations = $this->db->getAll();
 
 		return $registrations;
-
 	}
-	
 
 
 
 	public function notifyUser($data) {
-		$parser = new Parser();
-		$event = $this->Event->findById($data['registration_event_id']);
+		$recipient = $data['registration_email'];
 
-		$parser->setMultipleParserVars($data);
-		$html = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_user.html.tpl");
-		$text = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_user.txt.tpl");
-
-		return $this->Mail->send([
-			'senderMail' => 'noreply@haus-st-jakobus.de',
-			'senderName' => 'Haus St. Jakobus',
-			'recipient' => $data['registration_email'],
-			'subject' => "[Haus St. Jakobus] Anmeldebestätigung",
-			'text' => $text,
-			'html' => $html
-		]);
+		return $this->Notification->notify(
+			$recipient,
+			'[Haus St. Jakobus] Anmeldebestätigung',
+			'notify_user',
+			$data
+		);
 	}
 
 
 
 	public function notifyAdmin($data) {
-		$parser = new Parser();
-		$event = $this->Event->findById($data['registration_event_id']);
 
-		$parser->setMultipleParserVars($data);
-		$html = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.html.tpl");
-		$text = $parser->parseTemplate(PATHTOWEBROOT."templates/registrations/notifications/notify_admin.txt.tpl");
-
-		/* TODO: Read from settings */
-		$recipient = 'kursanmeldung@haus-st-jakobus.de';
-		$settings = $this->ApplicationHandler->getApplicationSettings(APPLICATION_ID);
-
-		return $this->Mail->send([
-			'senderMail' => 'noreply@haus-st-jakobus.de',
-			'senderName' => 'Haus St. Jakobus',
-			'recipient' => $recipient,
-			'subject' => sprintf('[Haus St. Jakobus] Anmeldung zu %s' , $event['event_title']),
-			'text' => $text,
-			'html' => $html
-		]);
+		return $this->Notification->notifyAdmin(
+			sprintf('[Haus St. Jakobus] Anmeldung zu %s', $data['event_title']),
+			'notify_admin',
+			$data
+		);
 	}
 }
 ?>

@@ -137,6 +137,29 @@ class Event extends Model {
 		return $events;
 	}
 
+	/**
+	 * Find events at a given day, but only if event has 'show-in-calendar' flag
+	 * Will also find events that are in progress at a given day (which findByPeriod does not)
+	 *
+	 * @param int year
+	 * @param int month
+	 * @param int day
+	 * @return array
+	 * @access public
+	 */
+	public function findByDayInCalendar($year, $month, $day) {
+		$query = sprintf("SELECT * FROM jakobus_events WHERE event_show_in_calendar = 1 AND ('%4u-%02u-%02u' BETWEEN event_begin AND event_end) OR (YEAR(event_begin)=%u AND MONTH(event_begin)=%u AND DAY(event_begin)=%u)", $year, $month, $day, $year, $month, $day);
+		if ($this->db->query($query) !== 0) {
+			throw new Exception("Query failed: " . $query);
+		}
+
+		$events = $this->db->getAll();
+		foreach ($events as &$event) {
+			$event = $this->afterRead($event);
+		}
+
+		return $events;
+	}
 
 
 	public function getPast($filter = []) {

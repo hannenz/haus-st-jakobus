@@ -66,8 +66,9 @@ class RegistrationsController extends Controller {
 				$this->parser->setParserVar('saveFailed', true);
 			}
 			else {
-				$this->Registration->notifyUser(array_merge($data, $event));
-				$this->Registration->notifyAdmin(array_merge($data, $event));
+				$data = array_merge($data, $event);
+				$this->Registration->notifyUser($data);
+				$this->Registration->notifyAdmin($data);
 				return $this->changeAction('success');
 			}
 		}

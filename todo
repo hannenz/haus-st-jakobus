@@ -2,18 +2,27 @@
 
 [ ] Bestätigungsmails: HTML, z. Bsp. bei Anmeldung zu Kurs noch einmal den Kurs anteasern (Mehraufwand)
 [ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
+[ ] Weitere Bezahlarten: SOFORT, PayPal ..?
 
 # Todos
 
-[ ] Giropay komplett implementieren und testen
-[ ] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
+
+
+[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Momemnt noch über meinen one.com Account
+[ ] Refactoring: Order / Cart / Pilgrimpass
+
+
+[ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
+[ ] Klären: Veranstaltungen: Lieber doch: Teaser > Detail ?
+
+[✓] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
+	Klären: Ausgabe wie?
+
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
-[ ] Pilgerausweis-Formular: Hinweis Startdatum (5 Tage in der Zukunft)
-[ ] Programm chronologisch: Reihenfolge stimmt nicht
-[ ] Kalender-Widget: Wenn ein Event über die Monatsgrenze geht, wird der aktuelle Monat anstatt des Folgemonats gekennzeichnet
-[ ] Kalender-Widget: Wenn ein Dauertermin im Vorherigen Monat beginnt, wird er nicht im lfd. Monat angezeigt
 [ ] Newsletter: PageMailer einrichten
+
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
+
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
 	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
 		Alternativen:
@@ -22,8 +31,15 @@
 			- ...?
 [ ] Kurse: 3 Kalender in Reihe
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-[ ] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
+[✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 
+
+
+## Erledigt
+
+[✓] Giropay komplett implementieren und testen
+[✓] E-Mail Texte
+[✓] Klasse Notification, HTML-Mails
 [✓] Anmeldeformular Kurse geht nicht (Anrede wird nicht übernommen, Absenden nicht möglich trotz korrekter Eingabe)
 [✓] Ausgabe "Kurs-Detailseite" unterdrücken bzw. Kurstitel ausgeben
 [✓] Downloads: Verzeichnis vorbereiten, Info an Lorenz
@@ -159,3 +175,7 @@ Besprechen / Klären
 - 
  
 [✓] Kalender: Klick auf Tag: Leere Seite!
+[✓] Pilgerausweis-Formular: Hinweis Startdatum (5 Tage in der Zukunft)
+[✓] Programm chronologisch: Reihenfolge stimmt nicht
+[✓] Kalender-Widget: Wenn ein Dauertermin im Vorherigen Monat beginnt, wird er nicht im lfd. Monat angezeigt
+[✓] Kalender-Widget: Wenn ein Event über die Monatsgrenze geht, wird der aktuelle Monat anstatt des Folgemonats gekennzeichnet

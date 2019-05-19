@@ -104,8 +104,8 @@
 					</div>
 					<div class="cell medium-4">
 						<div class="form-field form-field--date {IF({ISSET:error_pilgrimpass_start_date})}error{ENDIF}">
-							<label>Startdatum</label>
-							<input type="date" value="{VAR:pilgrimpass_start_date}" name="pilgrimpass_start_date[]" id="pilgrimpass_start_date" />
+							<label>Startdatum (mind. 5 Tage in der Zukunft)</label>
+							<input type="date" min="{VAR:startDateMin}" value="{VAR:pilgrimpass_start_date}" name="pilgrimpass_start_date[]" id="pilgrimpass_start_date" />
 						</div>
 					</div>
 					<div class="cell medium-4">

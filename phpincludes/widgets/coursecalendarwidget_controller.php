@@ -1,30 +1,55 @@
 <?php
 namespace Jakobus;
+
 use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
-use Contentomat\Debug;
 use Contentomat\CmtPage;
 use Jakobus\Event;
-use Jakobus\CourseCategory;
 use Jakobus\Calendar;
 
 use \Exception;
 
 
-// error_reporting(E_ALL);
-// ini_set('display_errors', true);
-
+/**
+ * Render a calendar widget for the sidebar
+ * The calendar lists all events in the given
+ * month
+ *
+ * @class CourseCalendarWidgetController
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
 class CourseCalendarWidgetController extends Controller {
 
+	/**
+	 * @var Jakobus\Calendar
+	 */
+	protected $Calendar;
 
-
+	/**
+	 * @var Jakobus\Event
+	 */
 	protected $Event;
 
+	/**
+	 * @var Contentomat\CmtPage
+	 */
+	protected $CmtPage;
+
+	/**
+	 * @var int
+	 */
 	protected $year;
 
+	/**
+	 * @var int
+	 */
 	protected $month;
 
+	/**
+	 * @var int
+	 */
 	protected $widgetPageId = 41;
 
 
@@ -35,11 +60,6 @@ class CourseCalendarWidgetController extends Controller {
 		$this->CmtPage = new CmtPage();
 
 		$this->Event = new Event();
-		// $this->CourseCategory = new CourseCategory ();
-		// $this->CourseCategory->setLanguage ($this->pageLang);
-		// $this->CourseCategory->order (['course_category_position' => 'asc']);
-		// $this->templatesPath = $this->templatesPath . 'course_categories/';
-
 
 		if (!empty($this->getvars['year']) && !empty($this->getvars['month'])) {
 			$this->year = $this->getvars['year'];
@@ -55,26 +75,27 @@ class CourseCalendarWidgetController extends Controller {
 		}
 	}
 
+
+	/**
+	 * Default action: Render the calendar widget
+	 * for the given month
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function actionDefault() {
 		$year = date('Y', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
 		$month = date('m', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
-		$events = $this->Event->findByPeriod($year, $month);
+		// $events = $this->Event->findByPeriod($year, $month);
 		$daysWithLink = [];
 
-
-		foreach ($events as $event) {
-
-			if ((bool)$event['event_show_in_calendar']) {
-
-				$beginTs = strtotime($event['event_begin']);
-				$endTs = strtotime($event['event_end']);
-				for ($ts = strtotime(strftime('%Y-%m-%d 00:00:00', $beginTs)); $ts <= $endTs; $ts += 86400) {
-					$dayOfMonth = (int)strftime('%d', $ts);
-					$daysWithLink[$dayOfMonth] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $dayOfMonth);
-				}
+		for ($d = 1 ; $d <= 31; $d++) {
+			$events = $this->Event->findByDayInCalendar($year, $month, $d);
+			if (!empty($events)) {
+				$daysWithLink[$d] = sprintf('/de/10/Programm.html?action=byDay&day=%04u-%02u-%02u', SELFURL, $year, $month, $d);
 			}
 		}
-		
+
 		$this->Calendar->setDaysWithLink($daysWithLink);
 		$calendarContent = $this->Calendar->createCalendar([
 			'link' => sprintf('%s%s?year={YEAR}&month={MONTH}&day={DAY}',
@@ -96,9 +117,15 @@ class CourseCalendarWidgetController extends Controller {
 			'baseUrl' => sprintf('%s%s', $this->CmtPage->makePageFilePath($this->widgetPageId), $this->CmtPage->makePageFileName($this->widgetPageId))
 		]);
 		$this->content = $this->parser->parseTemplate(PATHTOWEBROOT . "templates/widgets/calendar_widget.tpl");
-		// $this->content = '<nav class="widget">' . $calendarContent . '</nav>';
 	}
 
+
+	/**
+	 * Get the calendar widget from AJAX request
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function actionGetCalendarWidget() {
 		$this->isAjax = true;
 		$this->changeAction('default');

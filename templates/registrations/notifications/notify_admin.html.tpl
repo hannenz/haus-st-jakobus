@@ -1,17 +1,35 @@
-<p>Eine Anmeldung ist eingegangen</p>
+<p>Eine Kurs-Anmeldung ist eingegangen mit den folgenden Daten:</p>
 
-<dl>
-	<dt>Name</dt>			<dd>{VAR:registration_salutation} {VAR:registration_firstname} {VAR:registration_lastname}</dd>
-	<dt>Anschrift</dt> 		<dd>{VAR:registration_street_address}<br>
-								{VAR:registration_zip} {VAR:registration_city}</dd>
-	<dt>Telefon</dt> 		<dd>{VAR:registration_phone}</dd>
-	<dt>E-Mail</dt> 		<dd>{VAR:registration_email}</dd>
-	<dt>Geburtstag</dt> 	<dd>{VAR:registration_birthday}</dd>
-	<dt>Mitglied im Förderverein</dt> <dd>{IF("{VAR:registration_is_member}" == "1")}Ja{ELSE}Nein{ENDIF}</dd>
-</dl>
+<table>
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">Name</td>
+		<td style="vertical-align: top; padding: 4px">{VAR:registration_salutation} {VAR:registration_firstname} {VAR:registration_lastname}</td>
+	</tr>
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">Anschrift</td>
+		<td style="vertical-align: top; padding: 4px">
+			{VAR:registration_street_address}<br>
+			{VAR:registration_zip} {VAR:registration_city}
+		</td>
+	</tr>
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">E-Mail</td>
+		<td style="vertical-align: top; padding: 4px">{VAR:registration_email}</td>
+	</tr>
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">Mitglied im Förderverein</td>
+		<td style="vertical-align: top; padding: 4px">{IF("{VAR:registration_is_member}" == "1")}Ja{ELSE}Nein{ENDIF}</td>
+	</tr>
+</table>
 
-<dl>
-<dt>Kurs</dt> <dd><dd>{VAR:course_title}</dd>
-<dt>Veranstaltung</dt> <dd>{VAR:event_title} am {VAR:event_date_fmt}</dd>
-</dl>
+<table style="margin-top: 64px">
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">Kurs</td>
+		<td style="vertical-align: top; padding: 4px">{VAR:course_title}</td>
+	</tr>
+	<tr style="border-top: 1px solid #e0e0e0;">
+		<td style="vertical-align: top; padding: 4px">Veranstaltung</td>
+		<td style="vertical-align: top; padding: 4px">{VAR:event_title} am {VAR:event_date_fmt}</td>
+	</tr>
+</table>
 
