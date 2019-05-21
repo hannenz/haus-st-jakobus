@@ -4,21 +4,21 @@
 [ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
 [ ] Weitere Bezahlarten: SOFORT, PayPal ..?
 
+
 # Todos
 
-
-
-[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment noch über meinen one.com Account
+[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 [ ] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link
 
 [ ] Responsive !!!
 
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
+[ ] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
 [ ] Klären: Express-Versand kann weg?
-
-[✓] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
-	Klären: Ausgabe wie?
+[ ] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
+[ ] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
+[ ] Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Newsletter: PageMailer einrichten
@@ -39,6 +39,7 @@
 
 ## Erledigt
 
+[✓] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
 [✓] Giropay komplett implementieren und testen
 [✓] E-Mail Texte
 [✓] Klasse Notification, HTML-Mails
