@@ -4,7 +4,13 @@ namespace Jakobus;
 use Jakobus\Model;
 use \Exception;
 
-
+/**
+ * Order
+ *
+ * @class Order
+ * @package jakobus
+ * @author Johannes Braun <johannes.braun@agentur-halma.de>
+ */
 class Order extends Model {
 
 

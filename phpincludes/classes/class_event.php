@@ -4,7 +4,13 @@ namespace Jakobus;
 use Jakobus\Course;
 use \Exception;
 
-
+/**
+ * Event
+ *
+ * @class Event
+ * @package jakobus
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ */
 class Event extends Model {
 
 	/**

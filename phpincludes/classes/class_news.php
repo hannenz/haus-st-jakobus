@@ -5,6 +5,12 @@ use Contentomat\MLog\Posts;
 use Contentomat\CmtPage;
 use Contentomat\Contentomat;
 
+/**
+ * News
+ *
+ * @package jakobus
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ */
 class News extends Posts {
 
 
