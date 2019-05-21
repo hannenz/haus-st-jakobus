@@ -13,7 +13,7 @@
 					<table id="nl-header">
 						<tr>
 							<td id="nl-logo">
-								<img width="75" height="63" src="/dist/img/logo.png" alt="Haus St. Jakobus" />
+								<img src="/dist/img/logo.png" alt="Haus St. Jakobus" width="75" height="63" />
 							</td>
 							<td id="nl-brand">
 								<span id="brand">Cursillo-Haus St. Jakobus</span><br>
@@ -21,6 +21,14 @@
 							</td>
 						</tr>
 					</table>
+				</td>
+			</tr>
+			<tr>
+				<td id="nl-webversion-link">
+					{EVAL}
+					$host = $_SERVER['SERVER_NAME'];
+					{ENDEVAL}
+					<a href="https://{USERVAR:host}{PAGEURL:{PAGEID}}">Web-Version</a>
 				</td>
 			</tr>
 			<tr>
@@ -44,7 +52,7 @@
 								<p>
 									<a href="https://www.haus-st-jakobus.de">www.haus-st-jakobus.de</a><br>
 									<a href="https://www.haus-st-jakobus.de/impressum">Impressum</a><br>
-									<a href="https://www.haus-st-jakobus.de.unsubscribe">Abmelden</a>
+									<a href="https://www.haus-st-jakobus.de/unsubscribe">Abmelden</a>
 								</p>
 							</td>
 						</tr>

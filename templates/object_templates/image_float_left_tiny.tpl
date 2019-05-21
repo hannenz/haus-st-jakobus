@@ -1,4 +1,3 @@
-
 <div class="floated-image floated-image--left floated-image--tiny">
 	<figure class="floated-image__image">
 		{IMAGE:1:media}

@@ -16,7 +16,7 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 	border: 0;
-	background-color: #e8eaee;
+	background-color: #fefefe;
 }
 
 td, th {
@@ -63,6 +63,10 @@ a {
 	width: 99px;
 }
 
+#nl-webversion-link {
+	padding: 12px 24px;
+}
+
 #nl-main-content {
 	padding: 32px 24px;
 }
@@ -70,7 +74,7 @@ a {
 
 #nl-footer-wrapper {
 	background-color: #a71c21;
-	padding: 10px;
+	padding: 24px;
 }
 
 #nl-footer {
@@ -102,11 +106,56 @@ a {
 	font-size: 13px;
 }
 
-#newsletter .headline {
+.headline {
 	margin-bottom: 21px;
 	font-size: 21px;
 }
-#newsletter p {
+
+p {
 	margin-bottom: 17px;
+}
+
+figure {
+	margin: 1.5rem 0;
+}
+
+.floated-image {
+	overflow: hidden;
+	margin: 1.5rem 0;
+}
+
+.floated-image__image {
+	float: left;
+	width: 300px;
+	padding-right: 20px;
+	margin: 0;
+	font-style: italic;
+	line-height: 1.5em;
+}
+
+.floated-image__image img {
+	width: 100%;
+	display: block;
+}
+
+.floated-image__text {
+	width: 300px;
+	float: right;
+}
+
+.floated-image--small .floated-image__image {
+	width: 200px;
+}
+
+.floated-image--small .floated-image__text {
+	width: 400px;
+}
+
+.floated-image--tiny .floated-image__image {
+	width: 100px;
+}
+
+.floated-image--tiny .floated-image__text {
+	width: 500px;
 }
 
