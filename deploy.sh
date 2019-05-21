@@ -42,12 +42,19 @@ HOSTNAME=haus-st-jakobus
 
 ##
 # @var string
+# Username for FTP access. Use `export LFTP_PASSWORD=secret` to set the
+# password. You can either do this here (unsecure, not recommended) or on
+# command line (recommended)
+FTP_USERNAME=
+
+##
+# @var string
 # Remote base directory path, relative to login path, no leading or trailing slashes!
 REMOTE_DIR=/var/www/vhosts/lvps83-169-35-13.dedicated.hosteurope.de/httpdocs
 
 ##
 # @var string 
-# Local vase directory path
+# Local base directory path
 LOCAL_DIR=$PWD
 
 ##
@@ -68,12 +75,12 @@ FETCH_DIRS="media"
 ##
 # @var string
 # Options to pass to `rsync` when fetching files
-RSYNC_FETCH_OPTIONS='-qcav'
+RSYNC_FETCH_OPTIONS="--archive --quiet --checksum --delete --backup --backup-dir=${LOCAL_DIR}/fetch-backups/backup-$(date +%F-%H%M%S)"
 
 ##
 # @var string
 # Options to pass to `rsync` when deploying files
-RSYNC_DEPLOY_OPTIONS='-qcav'
+RSYNC_DEPLOY_OPTIONS="--archive --quiet --checksum --delete --backup --backup-dir=${REMOTE_DIR}/deploy-backups/backup-$(date +%F-%H%M%S)"
 
 ##
 # @var string
@@ -197,7 +204,7 @@ function fetch {
 				;;
 
 			ftp)
-				echo "get -e ${REMOTE_DIR}/${DB_SETTINGS_FILE} -o ${tmpfile}" | lftp ${HOSTNAME}  > /dev/null
+				echo "get -e ${REMOTE_DIR}/${DB_SETTINGS_FILE} -o ${tmpfile}" | lftp ${HOSTNAME} --user "${FTP_USERNAME}" --env-password > /dev/null
 				;;
 		esac
 
@@ -236,13 +243,14 @@ function fetch {
 				ssh ${HOSTNAME} "export MYSQL_PWD=${REMOTE_DB_PASS}; mysqldump -h ${REMOTE_DB_HOST} -u ${REMOTE_DB_USER} ${REMOTE_DB_NAME}" > ${TMPFILE}
 				;;
 			ftp)
-				curl -Lsk \
+				# If curl fails witha error code #35 try without `-k` option
+				curl --post301 -Lsk \
 					--data-urlencode "db_host=${REMOTE_DB_HOST}" \
 					--data-urlencode "db_name=${REMOTE_DB_NAME}" \
 					--data-urlencode "db_user=${REMOTE_DB_USER}" \
 					--data-urlencode "db_pass=${REMOTE_DB_PASS}" \
 					--output ${TMPFILE} \
-					${HOSTNAME}/admin/sqldump.php 
+					${HOSTNAME}/admin/sqldump.php
 				;;
 		esac
 		if [[ $? -eq 0 ]] ; then
@@ -272,8 +280,9 @@ function fetch {
 
 		for dir in ${FETCH_DIRS} ; do
 
+			# 2019-05-21: Backup is handled by rsync option --backup now
 			# Backup media files
-			if [[ -d ${dir} ]] ; then
+			if [[ -d ${dir} && ${MODE} != "ssh" ]] ; then
 				BACKUP_FILE=/tmp/${HOSTNAME}.${dir}.$(date +%F-%H%M).tar.gz
 				printf "${LIGHTGREEN}Backing up local dir \`${dir}\` to ${BACKUP_FILE} … ${NC}"
 				tar cfz ${BACKUP_FILE} ./${dir}/
@@ -292,7 +301,7 @@ function fetch {
 					rsync ${RSYNC_FETCH_OPTIONS} -e ssh ${HOSTNAME}:${REMOTE_DIR}/${dir}/ ./${dir}/
 					;;
 				ftp)
-					echo "mirror ${FTP_FETCH_OPTIONS} ${REMOTE_DIR}/${dir}/ ./${dir}/" | lftp ${HOSTNAME} > /dev/null
+					echo "mirror ${FTP_FETCH_OPTIONS} ${REMOTE_DIR}/${dir}/ ./${dir}/" | lftp --user ${FTP_USERNAME} --env-password ${HOSTNAME} > /dev/null
 					;;
 			esac
 
@@ -301,6 +310,8 @@ function fetch {
 			else
 				printf "${RED}✘ failed!${NC}\n"
 			fi
+
+			chmod -R a+rX ${dir}
 		done
 	fi
 }
@@ -315,7 +326,7 @@ function deploy {
 				rsync ${RSYNC_DEPLOY_OPTIONS} -e ssh ${dir}/ --exclude-from=".deployignore" ${HOSTNAME}:${REMOTE_DIR}/${dir}/ 
 				;;
 			ftp)
-				echo "mirror --reverse ${FTP_DEPLOY_OPTIONS} ./${dir}/ ${REMOTE_DIR}/${dir}/" | lftp ${HOSTNAME} > /dev/null
+				echo "mirror --reverse ${FTP_DEPLOY_OPTIONS} ./${dir}/ ${REMOTE_DIR}/${dir}/" | lftp --user ${FTP_USERNAME} --env-password ${HOSTNAME} > /dev/null
 				;;
 		esac
 
@@ -335,7 +346,7 @@ while getopts ":nhy" opt ; do
 		n)
 			DRY=1
 			RSYNC_FETCH_OPTIONS="${RSYNC_FETCH_OPTIONS}n"
-			RSYNC_DEPLOY_OPTIONS="${RSYNC_DEPLOY_OPTIONS}n"
+			RSYNC_DEPLOY_OPTIONS="${RSYNC_DEPLOY_OPTIONS} --dry-run"
 			FTP_FETCH_OPTIONS="${FTP_FETCH_OPTIONS} --dry-run"
 			FTP_DEPLOY_REVERSE_OPTIONS="${FTP_DEPLOY_OPTIONS} --dry-run"
 			;;
