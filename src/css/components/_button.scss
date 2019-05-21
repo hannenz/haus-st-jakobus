@@ -22,22 +22,35 @@
 	color: $primary-color;
 	vertical-align: middle;
 	white-space: nowrap;
+	position: relative;;
+	padding-left: 18px;
 
 	&::before {
-		content: '▶ ';
-		vertical-align: middle;
-		font-size: 0.8125em;
-		margin-right: 0.5em;
-		display: inline-block;
+		// content: '▶ ';
+		// vertical-align: middle;
+		// font-size: 0.8125em;
+		// margin-right: 0.5em;
+		// display: inline-block;
+
+		content: '';
+		border: 7px solid rgba($primary-color, 0);
+		border-top-width: 5px;
+		border-bottom-width: 5px;
+		border-left-color: rgba($primary-color, 1);
+		position: absolute;
+		left: 0;
+		top: 5px;
+		width: 0;
+		height: 0;
+
 	}
 
-	// &:hover::before {
-	// 	display: inline-block;
-	// }
 }
 
 .back::before {
-	content: '◀ ';
+	border-left-color: rgba($primary-color, 0);
+	border-right-color: rgba($primary-color, 1);
+	left: -6px;
 }
 
 
