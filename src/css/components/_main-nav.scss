@@ -11,6 +11,7 @@ $break-size: tablet-landscape-up;
 .main-header {
 
 	position: fixed;
+	z-index: 10;;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -215,7 +216,7 @@ body {
 				@include type-setting (0);
 				line-height: 1.5;
 				display: inline-block;
-				transition: 50ms;
+				transition: 100ms;
 				color: #fff;
 				color: $primary-color;
 				margin: auto;
@@ -228,50 +229,12 @@ body {
 				}
 			}
 
-			&::after {
-				// content: '';
-				// position: absolute;
-				// bottom: 0;
-				// left: 0;
-				// width: 100%;
-				// height: 3px;
-				// background-color: #fff;
-				// transform: scaleX(0);
-				// transition: 200ms ease-in;
-				// content: '';
-				// background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
-				// background-image: none;
-				// background-color: rgba(255, 255, 255, 1);
-				// position: absolute;
-				// top: 0;
-				// left: 0;
-				// right: 0;
-				// bottom: -0px;
-				// transform-origin: center center;
-				// transform: scaleX(0);
-				// transition: opacity $transition-duration ease-in;
-				// z-index: 0;
-				// opacity: 0;
-				// /* border-bottom: 2px solid #fff; */
-			}
-
-			&.current::after,
-			&.is-active::after,
-			// &:hover::after {
-			// 	transform: scaleX(1);
-			// 	opacity: 1;
-			// }
-			//
-
-			&.current::after,
-			&:focus::after,
-			&:active::after,
-			&:hover::after {
-				/* transform: translateY(5px) scaleX(1); */
-			}
-
-			&:active .nav-item__label {
-				// transform: translateY(1px);
+			&:hover,
+			&.is-active,
+			&.current {
+				a {
+					background-color: $red4;
+				}
 			}
 		}
 	}

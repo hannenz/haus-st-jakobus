@@ -5,19 +5,13 @@ use Contentomat\MLog\Posts;
 use Contentomat\CmtPage;
 use Contentomat\Contentomat;
 
-/**
- * News
- *
- * @package jakobus
- * @author Johannes Braun <johannes.braun@hannenz.de>
- */
 class News extends Posts {
 
 
 	/**
 	 * @var Integer
 	 */
-	protected $detailPageId = 59;
+	protected $detailPageId = 59; //37;
 
 	/**
 	 * @var Integer
@@ -75,9 +69,9 @@ class News extends Posts {
 	}
 
 
-	public function getPosts($params = []) {
+	public function getPosts($params) {
 
-		$posts = $this->getAllPosts($params);
+		$posts = $this->search($params);
 		foreach ($posts as $n => $post) {
 			$posts[$n] = $this->afterRead($post);
 		}
@@ -85,10 +79,10 @@ class News extends Posts {
 	}
 
 
-	public function getPostById($id) {
-		$post = parent::getPost($id);
-		return $this->afterRead($post);
-	}
+	// public function getPost($id) {
+	// 	$post = parent::getPost($id);
+	// 	return $this->afterRead($post);
+	// }
 
 
 	protected function afterRead($post) {
@@ -111,7 +105,7 @@ class News extends Posts {
 
 		$post['post_categories_fmt'] = '';
 		$categories = [];
-		foreach ((array)$post['post_categories'] as $category) {
+		foreach ($post['post_categories'] as $category) {
 			$categories[] = $category['category_title_de'];
 		}
 		$post['post_categories_fmt'] = join(', ', $categories);

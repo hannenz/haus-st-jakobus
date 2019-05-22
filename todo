@@ -7,6 +7,25 @@
 
 # Todos
 
+[ ] (Hybrid) Lazy loading ?
+
+[ ] Navigation: Current-Indicator: Stying
+[✓] Nav mobile: Sticky
+[ ] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
+
+[ ] Sidebar Menu / Bullet list: Fix styling
+
+[ ] News: Keine Sidebar?
+[ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header?
+[✓] News: Zurück-Link funktioniert nicht
+
+
+[ ] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
+[ ] 
+
+[ ] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
+[ ] Karte / Map: Anfahrt usw. OSM Wanderkare?
+
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 [ ] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link

@@ -70,11 +70,19 @@ body {
 	flex: 0 1 auto;
 	order: 1;
 	width: 100%;
-	margin-bottom: 3 * $vertical-unit;
+	margin-bottom: 1 * $vertical-unit;
 	// display: sticky;
 	// top: 0;
+	
+	> h2:first-child {
+		display: none;
+	}
 
 	@include for-size(tablet-landscape-up) {
+		> h2:first-child {
+			display: block;
+		}
+
 		width: $sidebar-width;
 		flex: 0 0 auto;
 		order: 3;
@@ -82,11 +90,13 @@ body {
 		padding-left: 3 * $gutter;
 		margin-bottom: 3 * $vertical-unit;
 
-		// position: sticky;
-		// align-self: flex-start;
-		// height: auto;
-
 		top: 4 * $vertical-unit;
+	}
+
+	.menu {
+		a {
+			padding: 4px 0.5rem;
+		}
 	}
 }
 
