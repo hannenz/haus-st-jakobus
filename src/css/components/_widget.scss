@@ -22,6 +22,10 @@
 
 	&__body {
 		padding: 0.5 * $vertical-unit $gutter 0.5 * $vertical-unit $gutter;
+
+		&.is-hidden {
+			display: none;
+		}
 	}
 
 	ul {

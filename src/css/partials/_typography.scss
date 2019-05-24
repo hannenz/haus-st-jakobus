@@ -69,11 +69,30 @@ body {
 
 	&--large {
 		@include type-setting(2, 1);
+		line-height: 1.5em;
 		&:first-of-type {
 			line-height: 1;
 		}
 	}
+
 }
+
+.headline--section-title {
+	// Test
+	padding: 10px 16px;
+	background: linear-gradient(to right, 
+		rgba($primary-color, 1) 0,
+		rgba($primary-color, 1) 4px,
+		rgba($red3, 1) 4px,
+		rgba($red3, 0) 100% 
+	);
+
+	span { 
+		font-weight: normal;
+		color: $red4;
+	}
+}
+
 
 .kicker {
 	color: $primary-color;
@@ -98,7 +117,6 @@ ul, p {
 	margin-bottom: $vertical-unit;
 }
 
-// .widget ul,
 .body-text ul,
 ul.bullets {
 	li {

@@ -45,6 +45,7 @@ function APP () {
 
 		this.initHomepageSlider();
 		this.initCalendarWidget();
+		this.initWidgets();
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
@@ -209,7 +210,20 @@ function APP () {
 				}
 			});
 		}
-	}
+	};
+
+	this.initWidgets = function() {
+		var widgets = document.querySelectorAll('.widget');
+
+		for (var i = 0; i < widgets.length; i++) {
+			var widget = widgets[i];
+			var header = widget.querySelector('.widget__header');
+			header.addEventListener('click', function(ev) {
+				this.parentNode.querySelector('.widget__body').classList.toggle('is-hidden');
+
+			});
+		}
+	};
 };
 
 

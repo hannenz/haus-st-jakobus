@@ -70,7 +70,9 @@ $break-size: tablet-landscape-up;
 			text-decoration: none;
 		}
 	}
-
+}
+.dropdown.menu.large-horizontal > li.is-dropdown-submenu-parent > a {
+	padding-right: 1.35rem;
 }
 
 .brand {

@@ -9,11 +9,12 @@
 
 [ ] (Hybrid) Lazy loading ?
 
-[ ] Navigation: Current-Indicator: Stying
+[✓] Navigation: Current-Indicator: Stying
 [✓] Nav mobile: Sticky
 [ ] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
 
-[ ] Sidebar Menu / Bullet list: Fix styling
+[✓] Sidebar Menu / Bullet list: Fix styling
+[ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 
 [ ] News: Keine Sidebar?
 [ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header?
@@ -21,9 +22,8 @@
 
 
 [ ] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
-[ ] 
 
-[ ] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
+[✓] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
 [ ] Karte / Map: Anfahrt usw. OSM Wanderkare?
 
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)

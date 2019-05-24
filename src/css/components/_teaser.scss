@@ -19,7 +19,12 @@
 		@include media-object-section;
 		@include media-object-stack;
 
-		padding-right: 0;
+		padding-right: 0 !important;
+		width: 100%;
+
+		img {
+			max-width: 200px;
+		}
 
 		@include for-size(tablet-landscape-up) {
 			padding-right: 1 * $gutter !important;
