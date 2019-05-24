@@ -53,14 +53,14 @@ $break-size: tablet-landscape-up;
 	display: none;
 }
 
-.menu {
+.main-nav__menu.menu {
 
-	> li > a {
+	> .nav-item > a {
 		display: block;
 		transition: 150ms;
 		text-decoration: none;
 		white-space: nowrap;
-		padding: 0px 1.1rem !important;
+		padding: 6px 1.1rem;
 
 		&:focus,
 		&:hover {
@@ -231,12 +231,9 @@ body {
 				}
 			}
 
-			&:hover,
-			&.is-active,
-			&.current {
-				a {
-					background-color: $red4;
-				}
+			&:hover > a,
+			&.current > a {
+				background-color: $red4;
 			}
 		}
 	}
@@ -255,3 +252,24 @@ body {
 		}
 	}
 }
+
+.menu.vertical {
+	> .menu__item > a {
+		padding-left: 0; //$gutter;
+		padding-right: $gutter;
+		padding-top: 0.25 * $vertical-unit;
+		padding-bottom: 0.25 * $vertical-unit;
+		line-height: 1.45rem;
+		transition: 100ms ease-out;
+
+		&:focus,
+		&:hover {
+			border: none;
+			outline: none;
+			background-color: $red4;
+			text-decoration: none;
+			padding-left: $gutter;
+		}
+	}
+}
+
