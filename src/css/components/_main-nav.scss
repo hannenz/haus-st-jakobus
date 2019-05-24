@@ -55,11 +55,12 @@ $break-size: tablet-landscape-up;
 
 .menu {
 
-	a {
+	> li > a {
 		display: block;
 		transition: 150ms;
 		text-decoration: none;
 		white-space: nowrap;
+		padding: 0px 1.1rem !important;
 
 		&:focus,
 		&:hover {
@@ -69,6 +70,7 @@ $break-size: tablet-landscape-up;
 			text-decoration: none;
 		}
 	}
+
 }
 
 .brand {
@@ -211,7 +213,7 @@ body {
 
 			&__link {
 
-				transform: translateY(3px);
+				// transform: translateY(3px);
 				background: transparent;
 				@include type-setting (0);
 				line-height: 1.5;
