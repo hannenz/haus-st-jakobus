@@ -4,6 +4,8 @@ namespace Jakobus;
 use Contentomat\Mail;
 use Contentomat\Parser;
 use Contentomat\Logger;
+use Contentomat\ApplicationHandler;
+
 
 
 /**
@@ -17,7 +19,11 @@ class Notification {
 
 	protected $Mail;
 	protected $Parser;
+	protected $ApplicationHandler;
 	protected $templatesPath;
+
+	protected $PageMailerAppId = 152;
+	
 
 	protected $adminNotificationRecipient = 'pilgerpass_neu@haus-st-jakobus.de';
 
@@ -27,14 +33,17 @@ class Notification {
 	 * @return void
 	 */
 	public function __construct() {
+		$this->ApplicationHandler = new ApplicationHandler();
+		$pageMailerSettings = $this->ApplicationHandler->getApplicationSettings($this->PageMailerAppId);
+
 		$this->Mail = new Mail([
-			'senderName' => 'Haus St. Jakobus',
-			'senderMail' => 'xxx',
+			'senderName' => $pageMailerSettings['senderName'],
+			'senderMail' => $pageMailerSettings['senderMail'],
 			'transport' => 'smtp',
-			'smtpHost' => 'xxx',
-			'smtpUsername' => 'xxx',
-			'smtpPassword' => 'xxx',
-			'smtpPort' => 587
+			'smtpHost' => $pageMailerSettings['smtpHost'],
+			'smtpUsername' => $pageMailerSettings['smtpUsername'],
+			'smtpPassword' => $pageMailerSettings['smtpPassword'],
+			'smtpPort' => $pageMailerSettings['smtpPort'],
 		]);
 		$this->Parser = new Parser();
 	}
