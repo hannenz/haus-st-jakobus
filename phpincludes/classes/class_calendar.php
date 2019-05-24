@@ -184,7 +184,7 @@ class Calendar {
 							array(
 								$this->year,
 								sprintf('%02d', $this->month),
-								sprintf('%d', $dayOfMonth)
+								sprintf('%02d', $dayOfMonth)
 							),
 							$link
 						);
