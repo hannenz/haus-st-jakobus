@@ -4,9 +4,9 @@
 # Makes a daily backup every day and keeps one each week
 # Be sure to adjust the database name if renaming!
 #
-# @author Johannes Braun <j.braun@agentur-halma.de>
-# @package p8gr
-# @version 2018-11-30
+# @author Johannes Braun <johannes.braun@agentur-halma.de>
+# @package haus-st-jakobus
+# @version 2019-02-21
 
 
 # Abort if anything goes wrong
@@ -32,8 +32,8 @@ weekday=$(date +%u)
 fulldate=$(date +%Y-%m-%d)
 fulldatetime=$(date +%Y-%m-%d-%H%M%S)
 
-daily_backup_filename="backup.p8gr-hessen.de.daily.${weekday}.tar.gz"
-weekly_backup_filename="backup.p8gr-hessen.de.weekly.${fulldate}.tar.gz"
+daily_backup_filename="backup.haus-st-jakobus.de.daily.${weekday}.tar.gz"
+weekly_backup_filename="backup.haus-st-jakobus.de.weekly.${fulldate}.tar.gz"
 
 
 
