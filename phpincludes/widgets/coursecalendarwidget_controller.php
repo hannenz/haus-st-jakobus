@@ -104,7 +104,8 @@ class CourseCalendarWidgetController extends Controller {
 			),
 			'year' => $year,
 			'month' => $month,
-			'linkPastDays' => true
+			'linkPastDays' => true,
+			'formatDayNr' => '%u'
 		]);
 		$this->parser->setMultipleParserVars([
 			'calendarContent' => $calendarContent,

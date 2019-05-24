@@ -8,20 +8,43 @@
 	width: 100%;
 	border-collapse: collapse;
 
+
 	th, td {
 		vertical-align: middle;
 		text-align: center;
-		padding: 1px;
+		margin: 1px;
 		width: calc(100% / 7);
+		padding: 1px;
+	}
+
+	td > a,
+	td > span {
+		padding: 10px 6px 4px 6px;
+		line-height: 1;
+		display: block;
+		text-align: center;
 	}
 
 	a {
 		color: #ffffff;
 		background-color: $primary-color;
-		display: block;
+		transition: 100ms;
+
+		&:hover {
+			text-decoration: none;
+			background-color: $red4;
+			color: $red1;
+		}
 	}
 }
 
+// td.day-has-link > a,
+// td:not(.day-has-link) {
+//  	padding: 9px 6px 4px 6px;
+// }
+//
+//
+//
 .calendar-widget {
 	&__header {
 		display: flex;
@@ -31,11 +54,13 @@
 	}
 
 	&__link {
-		// flex: 0 1 auto;
 		width: 28px;
 		height: 28px;
-		// background-color: rgba($primary-color, 0.2);
+		line-height: 28px;
 		text-align: center;
+		&:hover {
+			text-decoration: none;
+		};
 	}
 
 	&__month {

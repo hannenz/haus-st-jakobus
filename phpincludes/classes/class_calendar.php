@@ -184,7 +184,7 @@ class Calendar {
 							array(
 								$this->year,
 								sprintf('%02d', $this->month),
-								sprintf('%02d', $dayOfMonth)
+								sprintf('%d', $dayOfMonth)
 							),
 							$link
 						);
@@ -199,7 +199,9 @@ class Calendar {
 						
 					} else {
 						$contentCalendarRow .=	'<td class="'.$cssSelectors.'">' .
+												'<span>' .
 												$dayFormated .
+												'</span>' .
 												'</td>';
 					}
 					$dayOfMonth++;
