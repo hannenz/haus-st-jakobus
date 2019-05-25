@@ -80,7 +80,7 @@ RSYNC_FETCH_OPTIONS="--archive --quiet --checksum --delete --backup --backup-dir
 ##
 # @var string
 # Options to pass to `rsync` when deploying files
-RSYNC_DEPLOY_OPTIONS="--archive --quiet --checksum --delete --backup --backup-dir=${REMOTE_DIR}/deploy-backups/backup-$(date +%F-%H%M%S)"
+RSYNC_DEPLOY_OPTIONS="--archive --quiet --checksum --delete --backup --backup-dir=${REMOTE_DIR}/../backups/deploy-backups/backup-$(date +%F-%H%M%S)"
 
 ##
 # @var string
