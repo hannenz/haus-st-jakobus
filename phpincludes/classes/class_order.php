@@ -4,6 +4,10 @@ namespace Jakobus;
 use Jakobus\Model;
 use \Exception;
 
+define('PAYMENT_STATUS_OPEN', 0);
+define('PAYMENT_STATUS_PAYED', 100);
+
+
 /**
  * Order
  *
@@ -41,6 +45,24 @@ class Order extends Model {
 		return $this->db->getLastInsertedId();
 	}
 	
+
+	/**
+	 * undocumented function
+	 *
+	 * @param int 		ID
+	 * @param int 		PAYMENT_STATUS
+	 * @throws Exception
+	 * @return void
+	 */
+	public function setPaymentStatus($id, $status) {
+		$query = sprintf("UPDATE %s SET %s WHERE id=%u", $this->tableName, $this->db->makeSetQuery(['payment_status' => $status]), $id);
+		if ($this->db->query($query) !== 0) {
+			throw new Exception("Query failed: " . $query);
+		}
+	}
+	
+
+
 	
 }
 ?>
