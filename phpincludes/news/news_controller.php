@@ -159,14 +159,24 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 
 			if ($post['hasMedia']) {
+
 				if ($post['hasMedia']['hasimage']) {
 					$this->parser->setMultipleParserVars([
 						'hasImage' => $post['hasMedia']['hasimage'],
 						'images' => $post['postMedia']['image']
 					]);
 				}
+
+				if ($post['hasMedia']['haslink']) {
+					$this->parser->setMultipleParserVars([
+						'hasLink' => $post['hasMedia']['hasLink'],
+						'links' => $post['postMedia']['link']
+					]);
+				}
+
 				// ..
 			}
+
 
 			$this->parser->setMultipleParserVars($post);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'detail.tpl');

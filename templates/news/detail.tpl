@@ -5,6 +5,15 @@
 	<h2 class="post__title">{VAR:post_title}</h2>
 	<div class="post__text">{VAR:post_text}</div>
 
+
+	{IF("{VAR:hasLink}" != "0")}
+		<ul class="post__links bullets">
+			{LOOP VAR(links)}
+				<li><a href="{VAR:media_url}">{VAR:media_title}</a></li>
+			{ENDLOOP VAR}
+		</ul>
+	{ENDIF}
+
 	{IF("{VAR:hasImage}" != "0")}
 		<div class="post__media">
 			{LOOP VAR(images)}
@@ -19,6 +28,7 @@
 			{ENDLOOP VAR}
 		</div>
 	{ENDIF}
+
 
 	<p><a  class="back" href="{VAR:postOverviewUrl}">Zurück zur Übersicht</a></p>
 
