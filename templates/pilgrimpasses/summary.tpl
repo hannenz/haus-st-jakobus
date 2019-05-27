@@ -1,6 +1,9 @@
 {IF({ISSET:saveFailed})}
 	<p class="error message message--error">Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal oder wenden Sie sich per E-Mail an <a href="mailto:info@haus-st-jakobus.de">info@haus-st-jakobus.de</a></p>
 {ENDIF}
+{IF({ISSET:data-privacy-statement-not-accepted})}
+	<p class="error message message--error">Sie müssen unserer Datenschutzerklärung zustimmen, damit wir Ihre Bestellung verarbeiten können.</p>
+{ENDIF}
 
 <h2 class="headline">Zusammenfassung Ihrer Bestellung</h2>
 
@@ -31,8 +34,8 @@
 						<tr><th>Pilgerweg</th> <td>{SWITCH("{VAR:pilgrimpass_route}")}{CASE("camino-de-santiago")}Camino de Santiago{BREAK}{CASE("via-francigena")}Via Francigena{BREAK}{ENDSWITCH}</td></tr>
 						<tr><th>Start-Datum</th> <td>{DATEFMT:{VAR:pilgrimpass_start_date}:%a, %d. %B %Y}</td></tr>
 						<tr><th>Start (Ort)</th> <td>{VAR:pilgrimpass_start_location}</td></tr>
-						<tr><th>Motivation</th> <td>{VAR:pilgrimpass_motivation}</td></tr>
-						<tr><th>Fortbewegungsmittel</th> <td>{SWITCH("{VAR:pilgrimpass_transportation}")}{CASE("zu-fuss")}Zu Fuß{BREAK}{CASE("mit-dem-fahrrad")}Mit dem Fahrrad{BREAK}{CASE("auf-dem-pferd")}Auf dem Pferd{BREAK}{ENDSWITCH}</td></tr>
+						<tr><th>Motivation</th> <td>{VAR:pilgrimpass_motivation:ucwords}</td></tr>
+						<tr><th>Fortbewegungsmittel</th> <td>{SWITCH("{VAR:pilgrimpass_transportation}")}{CASE("zu-fuss")}Zu Fuß{BREAK}{CASE("mit-dem-fahrrad")}Mit dem Fahrrad{BREAK}{CASE()}Anderes{BREAK}{ENDSWITCH}</td></tr>
 					</table>
 				</li>
 			{ENDLOOP VAR}
@@ -94,6 +97,15 @@
 			<p>{VAR:order_message:nl2br}</p>
 		</fieldset>
 	{ENDIF}
+
+	<fieldset class="fieldset">
+		<legend>Datenschutz</legend>
+		<div class="form-field form-field--flag">
+			<input type="checkbox" name="data-privacy-statement-accepted" id="data-privacy-statement-accepted" />
+			<label for="data-privacy-statement-accepted">Ich habe die <a href="{PAGEURL:58}" target="_blank">Datenschutzerkluarung</a> gelesen und erkläre mich hiermit einverstanden</label>
+		</div>
+
+	</fieldset>
 
 	<input type="hidden" name="step" value="summary">
 	<div class="action-area">

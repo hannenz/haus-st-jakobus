@@ -54,7 +54,6 @@ class Pilgrimpass extends Model {
 			'pilgrimpass_idnr' => '/^.+$/',
 			'pilgrimpass_route' => '/^.+$/',
 			'pilgrimpass_start_date' => 'validateStartDate',
-			'pilgrimpass_start_location' => '/^.+$/',
 			'pilgrimpass_motivation' => '/^.+$/',
 			'pilgrimpass_transportation' => '/^.+$/',
 			'pilgrimpass_payment_method' => '/^.+$/',

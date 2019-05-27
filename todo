@@ -23,6 +23,9 @@
 
 
 [ ] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
+[ ] Pilgerausweis bestellen: Länderliste als SELECT
+[ ] Pilgerausweis bestellen: Redirect bei Abbruch Bezahlvorgang geht auf leere Seite
+[ ] Custom  Betrag Input: Das geht besser ;-)
 
 [✓] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
 [ ] Karte / Map: Anfahrt usw. OSM Wanderkare?
@@ -46,9 +49,6 @@
 		Für jeden Absatz ein eigenes Element benutzen
 		Formatierungen (Fett, Links, Listen usw.) dann im CMT anwenden
 		Text-Links: wurden von Hand kursiv gesetzt. Wenn das gewünscht ist, würde ich das eher im CSS definieren
-
-
-
 
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Newsletter: PageMailer einrichten
