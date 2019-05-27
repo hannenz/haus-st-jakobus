@@ -33,11 +33,12 @@
 
 [ ] Responsive !!!
 
+[✓] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
+[✓] Klären: Express-Versand kann weg?
+[...] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
+[✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
+
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
-[ ] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
-[ ] Klären: Express-Versand kann weg?
-[ ] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
-[ ] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
 [ ] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 [ ] Klären: Contentpflege: wird Unterstützung benötigt?
 [ ] Klären: Contentpflege: bsp. Pilgern > Angebote für Pilger: Bullet-Liste ist aus Office-Dokument rauskopiert oder? Das geht so nicht ;-)
@@ -45,7 +46,6 @@
 		Für jeden Absatz ein eigenes Element benutzen
 		Formatierungen (Fett, Links, Listen usw.) dann im CMT anwenden
 		Text-Links: wurden von Hand kursiv gesetzt. Wenn das gewünscht ist, würde ich das eher im CSS definieren
-
 
 
 
