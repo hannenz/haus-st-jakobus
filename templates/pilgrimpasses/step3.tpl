@@ -33,6 +33,7 @@
 		<div id="payment" class="form-field form-field--select">
 			<label for="order_payment_method">Zahlungsart</label>
 			<select name="order_payment_method" id="order_payment_method">
+				<option value="paypal" {IF("{VAR:order_payment_method}" == "paypal")}selected{ENDIF}>PayPal</option>
 				<option value="giropay" {IF("{VAR:order_payment_method}" == "giropay")}selected{ENDIF}>Giropay</option>
 				<option value="ueberweisung" {IF("{VAR:order_payment_method}" == "ueberweisung")}selected{ENDIF}>Überweisung</option>
 				<option value="bargeld" {IF("{VAR:order_payment_method}" == "bargeld")}selected{ENDIF}>Bargeld</option>
