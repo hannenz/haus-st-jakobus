@@ -14,8 +14,6 @@ use \Exception;
 
 require_once(PATHTOWEBROOT.'phpincludes/vendor/GiroCheckout_SDK/GiroCheckout_SDK.php');
 require_once(PATHTOWEBROOT.'phpincludes/vendor/GiroCheckout_SDK/GiroCheckout_SDK_Notify.php');
-require_once(PATHTOWEBROOT.'giropay_settings.php');
-
 
 class PilgrimpassesController extends Controller {
 
@@ -61,6 +59,8 @@ class PilgrimpassesController extends Controller {
 		$this->CmtPage = new CmtPage();
 
 		$this->templatesPath = $this->templatesPath . 'pilgrimpasses/';
+		include(PATHTOWEBROOT.'giropay_settings.php');
+		$this->giropaySettings = $giropaySettings;
 	}
 
 
@@ -455,34 +455,40 @@ class PilgrimpassesController extends Controller {
 
 		$orderId = $_REQUEST['order_id'];
 		$transactionType = $_REQUEST['transaction_type'];
-		if ($transactionType != 'giropay' && $transactionType != 'paypal' && $transactionType != 'sofortuw') {
-			throw new \Exception("Invalid transaction type: {$transaction_type}");
+		// if ($transactionType != 'giropay' && $transactionType != 'paypal' && $transactionType != 'sofortuw') {
+		// 	throw new \Exception("Invalid transaction type: " . $transactionType);
+		// }
+
+		if (empty($this->giropaySettings[$transactionType])) {
+			throw new \Exception("Missing or invalid transaction type: " . $transactionType);
 		}
 
 		try {
 			$amount = (int)((float)$_REQUEST['amount'] * 100);
-			$request = new \GiroCheckout_SDK_Request('paypalTransaction');
-			$request->setSecret($giropaySettings['secret']);
-			$request->addParam('merchantId', $giropaySettings['merchantId']);
-			$request->addParam('projectId', $giropaySettings['projectId']);
-			$request->addParam('merchantTxId', 'Pilgerausweis Bestellung Nr ' . $orderId);
+			$request = new \GiroCheckout_SDK_Request($transactionType . 'Transaction');
+			$request->setSecret($this->giropaySettings[$transactionType]['secret']);
+			$request->addParam('merchantId', $this->giropaySettings[$transactionType]['merchantId']);
+			$request->addParam('projectId', $this->giropaySettings[$transactionType]['projectId']);
+			$request->addParam('merchantTxId', 'Pilgerpass Haus St. Jakobus');
 			$request->addParam('amount', $amount);
 			$request->addParam('currency', 'EUR');
-			$request->addParam('purpose', 'Bestellung ID ' . $orderId);
+			$request->addParam('purpose', 'Pilgerpass Bestellung ID ' . $orderId);
 			$request->addParam('urlRedirect', 
-				sprintf('https://%s/%s%s?action=paymentRedirect&orderId=%u',
+				sprintf('https://%s/%s%s?action=paymentRedirect&orderId=%u&transaction_type=%s',
 					$_SERVER['SERVER_NAME'],
 					$this->CmtPage->makePageFilePath($this->successPageId),
 					$this->CmtPage->makePageFileName($this->successPageId),
-					$orderId
+					$orderId,
+					$transactionType
 				)
 			);
 			$request->addParam('urlNotify', 
-				sprintf('https://%s/%s%s?action=paymentNotify&orderId=%u',
+				sprintf('https://%s/%s%s?action=paymentNotify&orderId=%u&transaction_type=%s',
 					$_SERVER['SERVER_NAME'],
 					$this->CmtPage->makePageFilePath($this->successPageId),
 					$this->CmtPage->makePageFileName($this->successPageId),
-					$orderId
+					$orderId,
+					$transactionType
 			));
 			$request->submit();
 
@@ -515,13 +521,20 @@ class PilgrimpassesController extends Controller {
 	 * @return void
 	 */
 	public function actionPaymentRedirect() {
+
+		$transactionType = $this->getvars['transaction_type'];
+		if (empty($this->giropaySettings[$transactionType])) {
+			throw new Exception("Missing or invalid transaction type: " . $transactionType);
+		}
+
 		try {
-			$notify = new \GiroCheckout_SDK_Notify('giropayTransaction');
-			$notify->setSecret($giropaySettings['secret']);
+
+			$notify = new \GiroCheckout_SDK_Notify($transactionType . 'Transaction');
+			$notify->setSecret($this->giropaySettings[$transactionType]['secret']);
 			$notify->parseNotification($_GET);
 
 			if ($notify->paymentSuccessful()) {
-				$orderId = $_REQUEST['orderID'];
+				$orderId = $_REQUEST['orderId'];
 				$this->Order->setPaymentStatus($oderId, PAYMENT_STATUS_PAYED);
 				$this->parser->setMultipleParserVars([
 					'gcReference' => $notify->getResponseParam('gcReference'),
@@ -548,9 +561,16 @@ class PilgrimpassesController extends Controller {
 	 * @return void
 	 */
 	public function actionPaymentNotify() {
+		$transactionType = $this->getvars['transaction_type'];
+		if (empty($this->giropaySettings[$transactionType])) {
+			throw new Exception("Missing or invalid transaction type: " . $transactionType);
+		}
+
+		$orderId = $this->getvars['order_id'];
+
 		try {
-			$notify = new \GiroCheckout_SDK_Notify('giropayTransaction');
-			$notify->setSecret($giropaySettings['secret']);
+			$notify = new \GiroCheckout_SDK_Notify($transactionType . 'Transaction');
+			$notify->setSecret($this->giropaySettings[$transactionType]['secret']);
 			$notify->parseNotification($_GET);
 
 			if ($notify->paymentSuccessful()) {
@@ -566,11 +586,11 @@ class PilgrimpassesController extends Controller {
 				}
 
 				$notify->sendOkStatus();
-				$notify->setNotifyResponseParam( 'Result', 'OK' );
-				$notify->setNotifyResponseParam( 'ErrorMessage', '' );
-				$notify->setNotifyResponseParam( 'MailSent', '0' );
-				$notify->setNotifyResponseParam( 'OrderId', '1111' );
-				$notify->setNotifyResponseParam( 'CustomerId', '2222' );
+				$notify->setNotifyResponseParam('Result', 'OK');
+				$notify->setNotifyResponseParam('ErrorMessage', '');
+				$notify->setNotifyResponseParam('MailSent', '0');
+				$notify->setNotifyResponseParam('OrderId', $orderId);
+				$notify->setNotifyResponseParam('CustomerId', '');
 				echo $notify->getNotifyResponseStringJson() . "<br>";
 				exit;
 			}
@@ -581,24 +601,24 @@ class PilgrimpassesController extends Controller {
 				$notify->getResponseParam('gcResultPayment');
 
 				$notify->sendOkStatus();
-				$notify->getResponseMessage( $notify->getResponseParam( 'gcResultPayment' ), 'DE' );
+				$notify->getResponseMessage($notify->getResponseParam('gcResultPayment'), 'DE');
 				$notify->sendOkStatus();
-				$notify->setNotifyResponseParam( 'Result', 'OK' );
-				$notify->setNotifyResponseParam( 'ErrorMessage', '' );
-				$notify->setNotifyResponseParam( 'MailSent', '0' );
-				$notify->setNotifyResponseParam( 'OrderId', '1111' );
-				$notify->setNotifyResponseParam( 'CustomerId', '2222' );
+				$notify->setNotifyResponseParam('Result', 'OK');
+				$notify->setNotifyResponseParam('ErrorMessage', '');
+				$notify->setNotifyResponseParam('MailSent', '0');
+				$notify->setNotifyResponseParam('OrderId', $orderId);
+				$notify->setNotifyResponseParam('CustomerId', '');
 				echo $notify->getNotifyResponseStringJson();
 				exit;
 			}
 		}
 		catch (\Exception $e) {
 			$notify->sendBadRequestStatus();
-			$notify->setNotifyResponseParam( 'Result', 'ERROR' );
-			$notify->setNotifyResponseParam( 'ErrorMessage', $e->getMessage() );
-			$notify->setNotifyResponseParam( 'MailSent', '0' );
-			$notify->setNotifyResponseParam( 'OrderId', '1111' );
-			$notify->setNotifyResponseParam( 'CustomerId', '2222' );
+			$notify->setNotifyResponseParam('Result', 'ERROR');
+			$notify->setNotifyResponseParam('ErrorMessage', $e->getMessage());
+			$notify->setNotifyResponseParam('MailSent', '0');
+			$notify->setNotifyResponseParam('OrderId', $orderId);
+			$notify->setNotifyResponseParam('CustomerId', '');
 			echo $notify->getNotifyResponseStringJson();
 			exit;
 		}

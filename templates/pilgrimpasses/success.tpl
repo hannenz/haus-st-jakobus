@@ -4,6 +4,25 @@
 
 {IF("{VAR:order_amount}" != "0")}
 	{SWITCH("{VAR:order_payment_method}")}
+		{CASE("paypal")}
+			<form action="{PAGEURL}" method="post">
+				<input type="hidden" value="pay" name="action" />
+				<input type="hidden" value="{VAR:orderId}" name="order_id" />
+				<input type="hidden" value="{VAR:order_amount}" name="amount" />
+				<input type="hidden" value="paypal" name="transaction_type">
+				<!-- <div class="formField"> -->
+				<!-- 	<label for="transaction&#45;type">Bezahlart</label> -->
+				<!-- 	<select id="transaction&#45;type" name="transaction_type"> -->
+				<!-- 		<option value="giropay">giropay</option> -->
+				<!-- 		<option value="paypal">PayPal</option> -->
+				<!-- 		<option value="sofortuw">Sofortüberweisung</option> -->
+				<!-- 	</select> -->
+				<!-- </div> -->
+				<div class="formField">
+					<p><button class="button" type="submit">Jetzt mit Paypal bezahlen</button></p>
+				</div>	
+			</form>
+		{BREAK}
 		{CASE("giropay")}
 			<form action="{PAGEURL}" method="post">
 				<input type="hidden" value="pay" name="action" />
@@ -19,7 +38,7 @@
 				<!-- 	</select> -->
 				<!-- </div> -->
 				<div class="formField">
-					<p><button class="button" type="submit">Jetzt bezahlen</button></p>
+					<p><button class="button" type="submit">Jetzt mit Giropay bezahlen</button></p>
 				</div>	
 			</form>
 		{BREAK}

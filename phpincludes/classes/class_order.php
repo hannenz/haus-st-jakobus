@@ -55,7 +55,7 @@ class Order extends Model {
 	 * @return void
 	 */
 	public function setPaymentStatus($id, $status) {
-		$query = sprintf("UPDATE %s SET %s WHERE id=%u", $this->tableName, $this->db->makeSetQuery(['payment_status' => $status]), $id);
+		$query = sprintf("UPDATE %s SET %s WHERE id=%u", $this->tableName, $this->db->makeSetQuery(['order_payment_status' => $status]), $id);
 		if ($this->db->query($query) !== 0) {
 			throw new Exception("Query failed: " . $query);
 		}
