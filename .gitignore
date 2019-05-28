@@ -5,3 +5,4 @@ node_modules/
 media/
 /admin-*
 /fetch-backups
+giropay_settings.php
