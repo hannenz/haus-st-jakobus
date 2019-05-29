@@ -48,7 +48,7 @@ body {
 
 	position: relative;
 	background-color: #fff;
-	padding: 3 * $vertical-unit $gutter;
+	padding: 1 * $vertical-unit $gutter;
 	@include for-size(tablet-portrait-up) {
 		padding: 4 * $vertical-unit 2 * $gutter;
 	}
