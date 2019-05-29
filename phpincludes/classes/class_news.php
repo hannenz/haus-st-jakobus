@@ -79,10 +79,10 @@ class News extends Posts {
 	}
 
 
-	// public function getPost($id) {
-	// 	$post = parent::getPost($id);
-	// 	return $this->afterRead($post);
-	// }
+	public function getPost($params = []) {
+		$post = parent::getPost($params);
+		return $this->afterRead($post);
+	}
 
 
 	protected function afterRead($post) {

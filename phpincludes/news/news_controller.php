@@ -98,6 +98,8 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			}
 
 			$posts = $this->News->getPosts([
+				'orderDir' => 'DESC',
+				'orderBy' => 'post_online_date',
 				'postsPerPage' => (int)$this->applicationSettings['show_ippnumber'],
 				'categoryID' => $categoryId,
 				'currentPage' => $currentPage
@@ -156,7 +158,6 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 			define('POSTTITLE', $post['post_title']);
 			define('MOODIMAGE', '/media/mlog/static/'.$post['post_image']);
-
 
 			if ($post['hasMedia']) {
 
