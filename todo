@@ -17,7 +17,7 @@
 
 [✓] Navigation: Current-Indicator: Stying
 [✓] Nav mobile: Sticky
-[ ] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
+[✓] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
 
 [✓] Sidebar Menu / Bullet list: Fix styling
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
@@ -27,12 +27,12 @@
 
 
 [ ] News: Keine Sidebar?
-[ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header?
+[ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
 [✓] News: Zurück-Link funktioniert nicht
-[ ] News: nicht chronolgisch
+[✓] News: nicht chronolgisch
 [ ] News: PNG Upload geht nicht
-[ ] News: MedienLinks u.a. im Template ausgeben
-[ ] Max Upload Size PHP erhöhen
+[✓] News: MedienLinks u.a. im Template ausgeben
+[✓] Max Upload Size PHP erhöhen
 
 
 [ ] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
