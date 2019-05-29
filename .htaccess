@@ -1,6 +1,9 @@
 RewriteEngine on
 RewriteBase /
 
+php_value upload_max_filesize 40M
+php_value post_max_size 41M
+
 # Disable all PHP messages on production servers
 # (https://stackoverflow.com/a/8652987)
 # php_value error_reporting 1
