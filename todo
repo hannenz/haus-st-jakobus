@@ -22,6 +22,10 @@
 [✓] Sidebar Menu / Bullet list: Fix styling
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 
+[ ] Pilgerausweis: Bezahlt-Flag > auto-fill bei Giropay Success
+[ ] Pilgerausweis: PayPal
+
+
 [ ] News: Keine Sidebar?
 [ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header?
 [✓] News: Zurück-Link funktioniert nicht
@@ -51,6 +55,10 @@
 [✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
 
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
+[ ] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
+[ ] Klären: Express-Versand kann weg?
+[ ] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
+[ ] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
 [ ] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 [ ] Klären: Contentpflege: wird Unterstützung benötigt?
 [ ] Klären: Contentpflege: bsp. Pilgern > Angebote für Pilger: Bullet-Liste ist aus Office-Dokument rauskopiert oder? Das geht so nicht ;-)
