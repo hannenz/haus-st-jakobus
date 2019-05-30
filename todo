@@ -26,8 +26,8 @@
 [ ] Pilgerausweis: PayPal
 
 
-[ ] News: Keine Sidebar?
-[ ] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
+[ ] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
+[✓] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
 [✓] News: Zurück-Link funktioniert nicht
 [✓] News: nicht chronolgisch
 [ ] News: PNG Upload geht nicht
@@ -51,7 +51,7 @@
 
 [✓] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
 [✓] Klären: Express-Versand kann weg?
-[...] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
+[…] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
 [✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
 
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
