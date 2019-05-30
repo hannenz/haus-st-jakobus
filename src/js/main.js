@@ -182,23 +182,8 @@ function APP () {
 					document.getElementById('payment-amount-custom-text').focus();
 				}
 			});
+			
 		}
-
-		/*
-		var paymentSection = document.getElementById('payment');
-		if (paymentSection) {
-			paymentSection.style.visibility = 'hidden';
-			document.forms.step3.addEventListener('change', function(ev) {
-				var amount = parseInt(document.querySelector('[name=order_amount]:checked').value);
-				console.log(amount);
-				var customAmount = parseInt(document.querySelector('[name=order_amount_custom]').value);
-				console.log(customAmount);
-				if (amount > 0 || customAmount > 0) {
-					paymentSection.style.visibility = 'visible';
-				}
-			});
-		}
-		*/
 
 		var abortBtn = document.querySelectorAll('.pilgrimpass-abort');
 		for (i = 0; i < abortBtn.length; i++) {
