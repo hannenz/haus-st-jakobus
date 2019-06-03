@@ -15,6 +15,9 @@
 
 [ ] (Hybrid) Lazy loading ?
 
+[ ] Layoutmodus: Objekttyp wechseln: Bild verschwindet
+[ ] Objekt anlegen "Text hervorgehoben", wie Zitat
+
 [✓] Navigation: Current-Indicator: Stying
 [✓] Nav mobile: Sticky
 [✓] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
@@ -24,7 +27,14 @@
 
 [ ] Pilgerausweis: Bezahlt-Flag > auto-fill bei Giropay Success
 [ ] Pilgerausweis: PayPal
+[ ] Datenschutz bestätigt
 
+[ ] Spendenmöglichkeit Formular für Förderverein-Seite
+
+[ ] Widget Bestellung abbrechen geht nicht
+
+[ ] Kursanmeldung: Datenschutz bestätigt
+[ ] Programm chronologisch: Jahreszahl nur bei nicht laufendem Jahr
 
 [ ] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
 [✓] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
@@ -72,7 +82,7 @@
 
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 
-[ ] Kurse: 3 Kalender in Reihe
+[ ] Kurse: 2 Kalender in Reihe 
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 [✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 
