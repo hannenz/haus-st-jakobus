@@ -104,7 +104,6 @@
 			<input type="checkbox" name="data-privacy-statement-accepted" id="data-privacy-statement-accepted" />
 			<label for="data-privacy-statement-accepted">Ich habe die <a href="{PAGEURL:58}" target="_blank">Datenschutzerklärung</a> gelesen und erkläre mich hiermit einverstanden</label>
 		</div>
-
 	</fieldset>
 
 	<input type="hidden" name="step" value="summary">

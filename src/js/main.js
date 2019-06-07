@@ -105,16 +105,8 @@ function APP () {
 
 					if (xhr.readyState == 4) {
 						if (xhr.status >= 200 && xhr.status < 400) {
-							var data = xhr.responseText;
-							var divNode = document.createElement('div');
-							divNode.innerHTML = xhr.responseText;
-							var widgetNode = divNode.querySelector('.calendar-widget');
-							console.log(widgetNode);
-
-							var container = document.querySelector('.calendar-widget').parentNode;
-							container.innerHTML = '';
-							container.appendChild(widgetNode);
-
+							var container = document.querySelector('.calendar-widget-container');
+							container.innerHTML = xhr.responseText;
 							self.initCalendarWidget();
 						}
 					}

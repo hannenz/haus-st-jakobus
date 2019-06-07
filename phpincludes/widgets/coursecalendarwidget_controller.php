@@ -58,8 +58,9 @@ class CourseCalendarWidgetController extends Controller {
 
 		$this->Calendar = new Calendar();
 		$this->CmtPage = new CmtPage();
-
 		$this->Event = new Event();
+
+		$this->templatesPath = PATHTOWEBROOT . "templates/widgets/";
 
 		if (!empty($this->getvars['year']) && !empty($this->getvars['month'])) {
 			$this->year = $this->getvars['year'];
@@ -68,6 +69,12 @@ class CourseCalendarWidgetController extends Controller {
 		else {
 			$this->year = date('Y');
 			$this->month = date('m');
+		}
+
+		$this->year2 = $this->year;
+		if (($this->month2 = $this->month + 1) > 12) {
+			$this->month2 = 1;
+			$this->year2++;
 		}
 
 		if ($this->pageId == $this->widgetPageId) {
@@ -84,9 +91,20 @@ class CourseCalendarWidgetController extends Controller {
 	 * @return void
 	 */
 	public function actionDefault() {
-		$year = date('Y', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
-		$month = date('m', strtotime(sprintf('%4u-%02u', $this->year, $this->month)));
-		// $events = $this->Event->findByPeriod($year, $month);
+
+		$this->parser->setMultipleParserVars([
+			'calendar1' => $this->createCalendar($this->month, $this->year),
+			'calendar2' => $this->createCalendar($this->month2, $this->year2)
+		]);
+
+		$this->content = $this->parser->parseTemplate($this->templatesPath . 'calendar_widget_container.tpl');
+	}
+
+	
+
+	protected function createCalendar($_month, $_year) {
+		$year = date('Y', strtotime(sprintf('%4u-%02u', $_year, $_month)));
+		$month = date('m', strtotime(sprintf('%4u-%02u', $_year, $_month)));
 		$daysWithLink = [];
 
 		for ($d = 1 ; $d <= 31; $d++) {
@@ -117,7 +135,7 @@ class CourseCalendarWidgetController extends Controller {
 			'prevYear' => strftime('%Y', strtotime(sprintf('%4u-%02u - 1 month', $year, $month))),
 			'baseUrl' => sprintf('%s%s', $this->CmtPage->makePageFilePath($this->widgetPageId), $this->CmtPage->makePageFileName($this->widgetPageId))
 		]);
-		$this->content = $this->parser->parseTemplate(PATHTOWEBROOT . "templates/widgets/calendar_widget.tpl");
+		return $this->parser->parseTemplate($this->templatesPath . "calendar_widget.tpl");
 	}
 
 
@@ -129,7 +147,7 @@ class CourseCalendarWidgetController extends Controller {
 	 */
 	public function actionGetCalendarWidget() {
 		$this->isAjax = true;
-		$this->changeAction('default');
+		$this->content = $this->createCalendar($this->month, $this->year) .  $this->createCalendar($this->month2, $this->year2);
 	}
 }
 
