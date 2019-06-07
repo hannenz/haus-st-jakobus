@@ -3,6 +3,9 @@
 	{IF({ISSET:saveFailed:VAR})}
 		<div class="error message">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
 	{ENDIF}
+	{IF({ISSET:data-privacy-statement-not-accepted})}
+		<p class="error message message--error">Sie müssen unserer Datenschutzerklärung zustimmen, damit wir Ihre Anmeldung verarbeiten können.</p>
+	{ENDIF}
 
 	<fieldset class="fieldset">
 		<legend>Anmeldung zur Veranstaltung</legend>
@@ -62,6 +65,14 @@
 					Die mit einem <span>*</span> gekennzeichneten Felder müssen ausgefüllt werden.
 				</div>
 			</div>
+		</div>
+	</fieldset>
+
+	<fieldset class="fieldset">
+		<legend>Datenschutz</legend>
+		<div class="form-field form-field--flag">
+			<input type="checkbox" name="data-privacy-statement-accepted" id="data-privacy-statement-accepted" />
+			<label for="data-privacy-statement-accepted">Ich habe die <a href="{PAGEURL:58}" target="_blank">Datenschutzerklärung</a> gelesen und erkläre mich hiermit einverstanden</label>
 		</div>
 	</fieldset>
 

@@ -56,20 +56,26 @@ class RegistrationsController extends Controller {
 		$this->parser->setMultipleParserVars($fields);
 
 		if (!empty($this->postvars)) {
-			$data = $this->postvars;
-			foreach($data as $key => $value) {
-				$data[$key] = trim($value);
-			}
-			$data['registration_date'] = strftime('%Y-%m-%d %H:%I:%S');
-			$data['registration_is_member'] = !empty($this->postvars['registration_is_member']);
-			if (!$this->Registration->save ($data)) {
-				$this->parser->setParserVar('saveFailed', true);
+
+			if (empty($this->postvars['data-privacy-statement-accepted'])) {
+				$this->parser->setParserVar('data-privacy-statement-not-accepted', true);
 			}
 			else {
-				$data = array_merge($data, $event);
-				$this->Registration->notifyUser($data);
-				$this->Registration->notifyAdmin($data);
-				return $this->changeAction('success');
+				$data = $this->postvars;
+				foreach($data as $key => $value) {
+					$data[$key] = trim($value);
+				}
+				$data['registration_date'] = strftime('%Y-%m-%d %H:%I:%S');
+				$data['registration_is_member'] = !empty($this->postvars['registration_is_member']);
+				if (!$this->Registration->save ($data)) {
+					$this->parser->setParserVar('saveFailed', true);
+				}
+				else {
+					$data = array_merge($data, $event);
+					$this->Registration->notifyUser($data);
+					$this->Registration->notifyAdmin($data);
+					return $this->changeAction('success');
+				}
 			}
 		}
 
