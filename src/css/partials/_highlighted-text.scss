@@ -1,0 +1,9 @@
+/**
+ * src/css/partials/_highlighted-text.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+.highlighted-text {
+	@extend .blockquote;
+}
