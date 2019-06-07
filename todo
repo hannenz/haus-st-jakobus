@@ -2,56 +2,32 @@
 
 [ ] Bestätigungsmails: HTML, z. Bsp. bei Anmeldung zu Kurs noch einmal den Kurs anteasern (Mehraufwand)
 [ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
-[ ] Weitere Bezahlarten: SOFORT, PayPal ..?
+[✓] Weitere Bezahlarten: SOFORT, PayPal ..?
 
 
 # Extra berechenbare Dinge
 
 [ ] Paypal Integration
 [ ] Pilgerausweise: Mehrere bestellbar
+[ ] Datenschutzbestimmungen anpassen / überarbeiten
+[ ] Spendenmöglichkeit Formular für Förderverein
 
 
 # Todos
 
 [ ] (Hybrid) Lazy loading ?
-
-[ ] Layoutmodus: Objekttyp wechseln: Bild verschwindet
-[ ] Objekt anlegen "Text hervorgehoben", wie Zitat
-
-[✓] Navigation: Current-Indicator: Stying
-[✓] Nav mobile: Sticky
-[✓] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
-
-[✓] Sidebar Menu / Bullet list: Fix styling
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-
 [ ] Pilgerausweis: Bezahlt-Flag > auto-fill bei Giropay Success
-[ ] Pilgerausweis: PayPal
-[ ] Datenschutz bestätigt
-
 [ ] Spendenmöglichkeit Formular für Förderverein-Seite
-
-[ ] Widget Bestellung abbrechen geht nicht
-
-[ ] Kursanmeldung: Datenschutz bestätigt
-[ ] Programm chronologisch: Jahreszahl nur bei nicht laufendem Jahr
-
-[ ] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
-[✓] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
-[✓] News: Zurück-Link funktioniert nicht
-[✓] News: nicht chronolgisch
 [ ] News: PNG Upload geht nicht
-[✓] News: MedienLinks u.a. im Template ausgeben
-[✓] Max Upload Size PHP erhöhen
 
+[-] Layoutmodus: Objekttyp wechseln: Bild verschwindet
+[-] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
 
-[ ] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
-[ ] Pilgerausweis bestellen: Länderliste als SELECT
 [ ] Pilgerausweis bestellen: Redirect bei Abbruch Bezahlvorgang geht auf leere Seite
 [ ] Custom  Betrag Input: Das geht besser ;-)
 
-[✓] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
-[ ] Karte / Map: Anfahrt usw. OSM Wanderkare?
+[✓] Karte / Map: Anfahrt usw. OSM Wanderkare?
 
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
@@ -59,32 +35,19 @@
 
 [ ] Responsive !!!
 
-[✓] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
-[✓] Klären: Express-Versand kann weg?
-[…] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
-[✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
-
+[ ] E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
-[ ] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
-[ ] Klären: Express-Versand kann weg?
-[ ] Klären: E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
-[ ] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
+
 [ ] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 [ ] Klären: Contentpflege: wird Unterstützung benötigt?
-[ ] Klären: Contentpflege: bsp. Pilgern > Angebote für Pilger: Bullet-Liste ist aus Office-Dokument rauskopiert oder? Das geht so nicht ;-)
-		Copy/ Paste: Nur Rein-Text.
-		Für jeden Absatz ein eigenes Element benutzen
-		Formatierungen (Fett, Links, Listen usw.) dann im CMT anwenden
-		Text-Links: wurden von Hand kursiv gesetzt. Wenn das gewünscht ist, würde ich das eher im CSS definieren
 
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
-[ ] Newsletter: PageMailer einrichten
 
+[ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 
 [ ] Kurse: 2 Kalender in Reihe 
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-[✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
 
 
 [ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
@@ -95,6 +58,38 @@
 			- ...?
 
 ## Erledigt
+
+[✓] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
+[✓] Pilgerausweis bestellen: Länderliste als SELECT  bzw. Autofill
+[✓] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer
+[✓] Klären: Contentpflege: bsp. Pilgern > Angebote für Pilger: Bullet-Liste ist aus Office-Dokument rauskopiert oder? Das geht so nicht ;-)
+		Copy/ Paste: Nur Rein-Text.
+		Für jeden Absatz ein eigenes Element benutzen
+		Formatierungen (Fett, Links, Listen usw.) dann im CMT anwenden
+		Text-Links: wurden von Hand kursiv gesetzt. Wenn das gewünscht ist, würde ich das eher im CSS definieren
+[✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
+[✓] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
+[✓] Klären: Express-Versand kann weg?
+[✓] Klären: Info: Überarbeitung Pilgerausweis-Bestellung
+[✓] Klären: Express-Versand kann weg?
+[✓] Klären: Veranstaltungs-Teaser mit "Aufklapper" ok?
+[✓] Veranstaltungen im Programmkalender: Keine Anmeldung mehr ermöglichen
+[✓] Pilgerausweis: PayPal
+[✓] Datenschutz bestätigt
+[✓] Widget Bestellung abbrechen geht nicht
+[✓] Programm chronologisch: Jahreszahl nur bei nicht laufendem Jahr
+[✓] Objekt anlegen "Text hervorgehoben", wie Zitat
+[✓] Navigation: Current-Indicator: Stying
+[✓] Nav mobile: Sticky
+[✓] "Breadcrumbs" Mobile: funktioniert so nicht. Was tun?
+[✓] Sidebar Menu / Bullet list: Fix styling
+[✓] Kursanmeldung: Datenschutz bestätigt
+[✓] News: Foto in Detailansicht? Sollte das nicht auch als Mood-Bild in den Header? >> Live: Seitentemplate `detail.tpl` für News-Detailseite setzen
+[✓] News: Zurück-Link funktioniert nicht
+[✓] News: nicht chronolgisch
+[✓] News: MedienLinks u.a. im Template ausgeben
+[✓] Max Upload Size PHP erhöhen
+
 
 [✓] Termindetail: Ausführliche Beginn/Ende-Info mit Freitextfeld im Textkörper platzieren / Wenn Freigabe: Textfelder für Annotationen bei Beginn/Ende Veranstaltungen ("...mit dem Abendessen/Frühstück...")
 [✓] Giropay komplett implementieren und testen

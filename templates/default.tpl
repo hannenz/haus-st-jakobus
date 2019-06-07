@@ -50,6 +50,10 @@
 				</aside>
 		</section>
 
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+		<link rel="stylesheet" href="mapbox://styles/hannenz/cjwmio6vu0k0x1cp9voxfsuws">
+		 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
+		 <div id="map" style="height: 400px; z-index: 1"></div>
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 
 	</div>

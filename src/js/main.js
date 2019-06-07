@@ -46,6 +46,7 @@ function APP () {
 		this.initHomepageSlider();
 		this.initCalendarWidget();
 		this.initWidgets();
+		this.initMap();
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
@@ -200,6 +201,59 @@ function APP () {
 
 			});
 		}
+	};
+
+	this.initMap = function() {
+		var mapOptions = {
+			zoomControl: true,
+			scrollWheelZoom: false,
+			touchZoom: false,
+			dragging: false
+		};
+
+		var mapElement = document.getElementById('map');
+
+		var map = L.map(mapElement, mapOptions).setView([48.29870,9.82624], 12);
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog', {
+			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			maxZoom: 18,
+			minZoom: 7,
+			id: 'mapbox.outdoors',
+			accessToken: 'pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog'
+		}).addTo(map);
+
+		var shellIcon = L.icon({
+			iconUrl: '/dist/img/logo.png',
+			iconSize: [32, 32]
+		});
+		var marker = L.marker([48.29870,9.82624]/*, {icon: shellIcon}i*/).addTo(map);
+
+		// Load the GeoJSON track to display ("the Jakobsweg")
+		// Since the track is quite large we load it via AJAX
+		var req = new XMLHttpRequest();
+		req.open('GET', '/dist/js/track.geo.json');
+		req.responseType = 'json';
+		req.onload = function() {
+			var trackStyle = {
+				"color": "#af1e23",
+				"weight": 5,
+				"opacity": 0.6
+			}
+			L.geoJSON(req.response, {style: trackStyle}).addTo(map);
+		};
+		req.send();
+
+		// Enable interaction only when focused (e.g. clicked inside)
+		mapElement.addEventListener('focus', function() {
+			map.scrollWheelZoom.enable();
+			map.touchZoom.enable();
+			map.dragging.enable();
+		});
+		mapElement.addEventListener('blur', function() {
+			map.scrollWheelZoom.disable();
+			map.touchZoom.disable();
+			map.dragging.disable();
+		});
 	};
 };
 
