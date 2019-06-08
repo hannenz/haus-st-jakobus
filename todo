@@ -15,13 +15,13 @@
 
 # Todos
 
+[ ] CorporateData: Finalize
+[ ] JSON+LD
 [ ] Production build, clean-up, performance, w3-check, qs etc.
 
 [ ] (Hybrid) Lazy loading ?
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [ ] Spendenmöglichkeit Formular für Förderverein-Seite
-
-
 
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
@@ -31,7 +31,7 @@
 
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
 
-[ ] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
+[✓] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...

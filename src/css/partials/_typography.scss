@@ -110,7 +110,7 @@ body {
 
 .body-text {
 	@include type-setting(0, $vertical-unit);
-	// max-width:46rem;
+	max-width:44rem;
 }
 
 ul, p {

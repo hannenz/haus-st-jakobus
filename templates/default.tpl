@@ -10,6 +10,7 @@
 
 	<link rel="shortcut icon" href="/dist/img/favicon.png" />
 
+	<link rel="stylesheet" href="/dist/css/vendor/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
 
 	<!-- TODO: ADD MICRODATA (JSONLD) -->
@@ -19,14 +20,14 @@
 	<script type="text/javascript" src="/dist/js/vendor/modernizr-2.6.2.min.js"></script>
 	<script type="text/javascript" src="/dist/js/vendor/jquery.min.js"></script>
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
+	<script src="/dist/js/vendor/jquery.brightbox.min.js"></script>
+	<script src="/dist/js/vendor/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
 	{ENDIF}
 </head>
 <body id="top" class="debug-base-line-grid--is-visible">
 	<div class="outer-container">
 		
 		<div class="debug-base-line-grid"> </div>
-		<!-- Inject SVG sprites -->
-		<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
 
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
@@ -49,14 +50,6 @@
 					</div>
 				</aside>
 		</section>
-
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-		<link rel="stylesheet" href="mapbox://styles/hannenz/cjwmio6vu0k0x1cp9voxfsuws">
-		 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
-
-		 <figure class="map">
-			 <div id="map"></div>
-		 </figure>
 
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 

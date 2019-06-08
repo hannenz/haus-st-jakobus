@@ -121,7 +121,8 @@ var settings = {
 				'./src/js/vendor/**/*.js',
 				'./node_modules/foundation-sites/dist/js/**/*.js',
 				'./node_modules/jquery/dist/jquery.min.js',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js'
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
+				'./node_modules/leaflet/dist/leaflet.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
@@ -129,7 +130,8 @@ var settings = {
 	cssvendor: {
 		src:	[
 				'./src/css/vendor/**/*.css',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css'
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
+				'./node_modules/leaflet/dist/leaflet.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},

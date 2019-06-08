@@ -11,7 +11,8 @@ function APP () {
 
 	self.debug = true;
 
-
+	self.brightboxOptions = {
+	}
 
 	this.init = function() {
 
@@ -47,6 +48,9 @@ function APP () {
 		this.initCalendarWidget();
 		this.initWidgets();
 		this.initMap();
+
+		// Init brightbox on galleries (fotoalbum)
+		$('.fotoalbum a').brightbox(self.brightboxOptions);
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
@@ -222,11 +226,16 @@ function APP () {
 			accessToken: 'pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog'
 		}).addTo(map);
 
+		var markerIcon = L.icon({
+			iconUrl: '/dist/img/marker-icon.png',
+			iconSize: [25, 41]
+		});
+
 		var shellIcon = L.icon({
 			iconUrl: '/dist/img/logo.png',
 			iconSize: [32, 32]
 		});
-		var marker = L.marker([48.29870,9.82624]/*, {icon: shellIcon}i*/).addTo(map);
+		var marker = L.marker([48.29870,9.82624], {icon: markerIcon}).addTo(map);
 
 		// Load the GeoJSON track to display ("the Jakobsweg")
 		// Since the track is quite large we load it via AJAX

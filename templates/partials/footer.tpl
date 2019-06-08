@@ -1,5 +1,4 @@
 {EVAL}
-
 use Contentomat\PsrAutoloader;
 use Jakobus\CorporateData;
 
@@ -18,6 +17,10 @@ catch (\Exception $e) {
 	die ($e->getMessage());
 }
 {ENDEVAL}
+ <figure class="map">
+	 <div id="map"></div>
+ </figure>
+
 <footer class="main-footer">
 	<div class="main-footer__inner inner-bound">
 		<div class="footer-column">
@@ -26,11 +29,6 @@ catch (\Exception $e) {
 					{USERVAR:cdOrgName}<br>
 					{USERVAR:cdStreetAddress}<br>
 					{USERVAR:cdCountry}&ndash;{USERVAR:cdZip} {USERVAR:cdCity}
-					<!--
-					Cursillo-Haus St. Jakobus<br>
-					Kapellenberg 58&ndash;60<br>
-					D&ndash;89610 Oberdischingen
-					-->
 				</p>
 				<p>
 					07305&thinsp;&ndash;&thinsp;919&thinsp;575<br>
