@@ -40,11 +40,8 @@ Hiermit  bestätigen wir Ihnen die Beantragung eines Pilgerausweises mit den fol
 
 3. Bezahlart
 
-	{VAR:order_payment_method}
-	Express: {IF({ISSET:order_express})}Ja{ELSE}Nein{ENDIF}
+	Zahlungsmethode: {SWITCH("{VAR:order_payment_method}")} {CASE("paypal")}PayPal{BREAK} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
 	Betrag:  {VAR:order_amount} EUR
-	{IF("{VAR:order_payment_method}" == "giropay")}
-	{ENDIF}
 
 -----
 

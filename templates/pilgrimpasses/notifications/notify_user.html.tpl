@@ -129,6 +129,7 @@
 		<td>Zahlungsmethode</td>
 		<td>
 			{SWITCH("{VAR:order_payment_method}")}
+				{CASE("paypal")}PayPal{BREAK}
 				{CASE("giropay")}GiroPay{BREAK}
 				{CASE("ueberweisung")}Überweisung{BREAK}
 				{CASE("bargeld")}Bargeld{BREAK}
@@ -138,10 +139,6 @@
 	<tr>
 		<td>Betrag</td>
 		<td>{VAR:order_amount} &euro;</td>
-	</tr>
-	<tr>
-		<td>Express</td>
-		<td>{IF("{VAR:order_express}" == "0")}Nein{ELSE}Ja{ENDIF}</td>
 	</tr>
 </table>
 
