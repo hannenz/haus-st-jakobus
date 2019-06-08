@@ -47,22 +47,29 @@ class Order extends Model {
 	
 
 	/**
-	 * undocumented function
+	 * Set payment_status of order
 	 *
-	 * @param int 		ID
+	 * @param int 		The order's id	
 	 * @param int 		PAYMENT_STATUS
 	 * @throws Exception
 	 * @return void
 	 */
 	public function setPaymentStatus($id, $status) {
-		$query = sprintf("UPDATE %s SET %s WHERE id=%u", $this->tableName, $this->db->makeSetQuery(['order_payment_status' => $status]), $id);
+
+		$data = [
+			'order_payment_status' => $status
+		];
+
+		if ($status == PAYMENT_STATUS_PAYED) {
+			$data['order_payment_date'] = strftime('%F %T');
+		}
+
+		$setQuery = $this->db->makeSetQuery($data);
+		$query = sprintf("UPDATE %s SET %s WHERE id=%u", $this->tableName, $setQuery, $id);
 		if ($this->db->query($query) !== 0) {
 			throw new Exception("Query failed: " . $query);
 		}
 	}
-	
-
-
 	
 }
 ?>

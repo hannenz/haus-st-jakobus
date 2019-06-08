@@ -535,7 +535,7 @@ class PilgrimpassesController extends Controller {
 
 			if ($notify->paymentSuccessful()) {
 				$orderId = $_REQUEST['orderId'];
-				$this->Order->setPaymentStatus($oderId, PAYMENT_STATUS_PAYED);
+				$this->Order->setPaymentStatus($orderId, PAYMENT_STATUS_PAYED);
 				$this->parser->setMultipleParserVars([
 					'gcReference' => $notify->getResponseParam('gcReference'),
 					'gcMerchantTxId' => $notify->getResponseParam('gcMerchantTxId'),
@@ -545,14 +545,18 @@ class PilgrimpassesController extends Controller {
 					'gcResultPayment' => $notify->getResponseParam('gcResultPayment')
 				]);
 
-				return $this->CmtPage->redirectToPage(24, $this->pageLang);
+				return $this->CmtPage->redirectToPage(87, $this->pageLang);
+			}
+			else {
+				// Payment failed
+				$this->parser->setParserVar('payment_error_message', 'Die Zahlung konnte nicht durchgeführt werden oder der Bezahlvorgang wurde abgebrochen. Bitte versuchen Sie es erneut oder setzen Sie sich mit uns in Verbindung');
+				return $this->changeAction('success');
 			}
 		}
 		catch (\Exception $e) {
 			echo $e->getMessage();
 		}
 	}
-
 
 
 	/**
@@ -623,18 +627,6 @@ class PilgrimpassesController extends Controller {
 			exit;
 		}
 	}
-
-	/**
-	 * @return void
-	 */
-	public function actionTest() {
-		$data = array(
-			'pilgrimpass_delivery_address_email' => 'me@hannenz.de',
-			'pilgrimpasses' => array($this->Pilgrimpass->findById(31))
-		);
-		$this->Pilgrimpass->notifyUser($data);
-	}
-
 }
 
 

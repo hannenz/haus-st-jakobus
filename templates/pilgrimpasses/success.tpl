@@ -2,6 +2,10 @@
 
 <p>Ihre Bestellung ist bei uns eingegangen.</p>
 
+{IF({ISSET:payment_error_message})}
+<div class="message error message--error">{VAR:payment_error_message}</div>
+{ENDIF}
+
 {IF("{VAR:order_amount}" != "0")}
 	{SWITCH("{VAR:order_payment_method}")}
 		{CASE("paypal")}
