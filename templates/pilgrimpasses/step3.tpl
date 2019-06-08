@@ -25,8 +25,8 @@
 				<input id="payment-amount-custom" type="radio" name="order_amount" value="custom" {IF({ISSET:order_amount_custom})}checked{ENDIF}>
 				<label onclick="javascript:document.getElementById('payment-amount-custom-text').focus()" for="payment-amount-custom" class="button">Anderer Betrag</label>
 
-				<input type="text" id="payment-amount-custom-text" name="order_amount_custom" value="{VAR:order_amount_custom}" placeholder="Geben Sie einen beliebigen Euro-Betrag ein">
-				<!-- <label for="payment&#45;amount&#45;custom&#45;text">&#38;euro;</label> -->
+				<input type="text" id="payment-amount-custom-text" name="order_amount_custom" value="{VAR:order_amount_custom}" placeholder="Beliebigen Euro-Betrag eingeben">
+				<label for="payment-amount-custom-text">&euro;</label>
 			</div>
 		</div>
 

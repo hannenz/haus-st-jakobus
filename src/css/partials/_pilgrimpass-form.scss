@@ -153,11 +153,45 @@
 		text-align: center;
 	}
 
+	.button-group {
+		position: relative;
+		display: inline-block;
+	}
+
+	#payment-amount-custom ~ label {
+		width: 200px;
+	}
+
+	#payment-amount-custom ~ input[type=text]::placeholder {
+		font-size: 10px;
+		color: $grey2;
+	}
+
+	label[for=payment-amount-custom-text],
 	#payment-amount-custom:checked ~ label {
 		display: none;
 	}
 
 	#payment-amount-custom:checked ~ input[type=text] {
 		display: inline-block;
+		font-size: 17px;
+		color: $primary-color;
+		border: 1px solid $primary-color;
+		width: 200px;
+		position: relative;
+	}
+
+	#payment-amount-custom:checked ~ label[for=payment-amount-custom-text] {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -16px;
+		width: 32px;
+		height: 32px;
+		font-size: 17px;
+		line-height: 32px;
+		color: $primary-color;
+		text-align: right;
 	}
 }
