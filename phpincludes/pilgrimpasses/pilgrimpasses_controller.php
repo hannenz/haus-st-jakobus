@@ -359,7 +359,7 @@ class PilgrimpassesController extends Controller {
 
 		if (empty($this->postvars['data-privacy-statement-accepted'])) {
 			$this->parser->setParserVar('data-privacy-statement-not-accepted', true);
-			$this->changeAction('summary');
+			return $this->changeAction('summary');
 		}
 
 		foreach ($pilgrimpasses as $pilgrimpass) {

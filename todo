@@ -15,50 +15,54 @@
 
 # Todos
 
+[ ] Production build, clean-up, performance, w3-check, qs etc.
+
 [ ] (Hybrid) Lazy loading ?
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-[ ] Pilgerausweis: Bezahlt-Flag > auto-fill bei Giropay Success
 [ ] Spendenmöglichkeit Formular für Förderverein-Seite
-[ ] News: PNG Upload geht nicht
 
-[-] Layoutmodus: Objekttyp wechseln: Bild verschwindet
-[-] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
 
-[ ] Pilgerausweis bestellen: Redirect bei Abbruch Bezahlvorgang geht auf leere Seite
-[ ] Custom  Betrag Input: Das geht besser ;-)
-
-[✓] Karte / Map: Anfahrt usw. OSM Wanderkare?
 
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
+[ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
-[ ] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link
 
 [ ] Responsive !!!
 
-[ ] E-Mail Versand bei Wechsel Versandstatus Pilgerausweise
 [ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
 
 [ ] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
-[ ] Klären: Contentpflege: wird Unterstützung benötigt?
-
-[ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 
-[✓] Kurse: 2 Kalender in Reihe 
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 
 
-[ ] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
+
+## Zurückgestellt
+
+[?] Bestellungen: Refactoring Trenne Order / Pilgrimpass
+[?] Bestellungen: besser mit Hash / UNIQID arbeiten als Identifier?
+[-] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link
+[-] Layoutmodus: Objekttyp wechseln: Bild verschwindet
+[-] News: Keine Sidebar? Da waren doch mal Artikel-Teaser …
+[-] Kurse: Reihenfolge (gibt es bereits ein POS Feld?)
 	> Revisit / Klären: Reihenfolge abhängig von Kategorie geht nicht, wenn ein Kurs mehreren Kategorien zugeordnet werden kann (wie gebrieft). 
 		Alternativen:
 			- nach Datum des nächsten Events (aufwändig)
 			- alphabetisch (einfach)
 			- ...?
 
+
 ## Erledigt
 
+[✓] News: PNG Upload geht nicht
+[✓] Kurse: 2 Kalender in Reihe 
+[✓] Custom  Betrag Input: Das geht besser ;-)
+[✓] Pilgerausweis bestellen: Redirect bei Abbruch Bezahlvorgang geht auf leere Seite
+[✓] Pilgerausweis: Bezahlt-Flag > auto-fill bei Giropay Success
+[✓] Karte / Map: Anfahrt usw. OSM Wanderkare?
 [✓] Pilgerausweis bestellen: Überschrift im Layoutmodus löschen
 [✓] Pilgerausweis bestellen: Länderliste als SELECT  bzw. Autofill
 [✓] Programm: Sektionierung nach Monaten irgendwie hübscher / klarer

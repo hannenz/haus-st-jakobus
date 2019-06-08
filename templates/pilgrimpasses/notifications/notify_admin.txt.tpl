@@ -45,9 +45,8 @@ E-Mail:                 {VAR:order_delivery_address_email}
 
 3. Bezahlung
 
-Zahlungsmethode:        {SWITCH("{VAR:order_payment_method}")} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
+Zahlungsmethode:        {SWITCH("{VAR:order_payment_method}")} {CASE("paypal")}PayPal{BREAK}{CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
 Betrag:                 {VAR:order_amount} EUR
-Express:                {IF("{VAR:order_express}" == "0")}Nein{ELSE}Ja{ENDIF}
 {IF("{VAR:order_payment_method}" == "giropay")}
 {ENDIF}
 

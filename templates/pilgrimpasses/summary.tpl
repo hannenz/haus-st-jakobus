@@ -78,6 +78,7 @@
 					<th>Zahlungsart</th>
 					<td>
 						{SWITCH("{VAR:order_payment_method}")}
+							{CASE("paypal")}PayPal{BREAK}
 							{CASE("giropay")}Giropay{BREAK}
 							{CASE("ueberweisung")}Überweisung{BREAK}
 							{CASE("bargeld")}Bargeld{BREAK}
