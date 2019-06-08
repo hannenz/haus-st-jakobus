@@ -1,0 +1,17 @@
+/**
+ * src/css/partials/_map.scss
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
+ */
+.map {
+	height: 400px;
+	z-index: 1;
+	border-top: 1px solid $grey6;
+	margin: 0;
+
+	#map {
+		height: 100%;
+		z-index: 1;
+	}
+}
