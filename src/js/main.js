@@ -240,7 +240,7 @@ function APP () {
 		// Load the GeoJSON track to display ("the Jakobsweg")
 		// Since the track is quite large we load it via AJAX
 		var req = new XMLHttpRequest();
-		req.open('GET', '/dist/js/track.geo.json');
+		req.open('GET', '/dist/js/vendor/track.geo.json');
 		req.responseType = 'json';
 		req.onload = function() {
 			var trackStyle = {

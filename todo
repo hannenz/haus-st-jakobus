@@ -16,7 +16,7 @@
 # Todos
 
 [ ] CorporateData: Finalize
-[ ] JSON+LD
+[✓] JSON+LD
 [ ] Production build, clean-up, performance, w3-check, qs etc.
 
 [ ] (Hybrid) Lazy loading ?
