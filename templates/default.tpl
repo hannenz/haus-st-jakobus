@@ -4,16 +4,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{PAGETITLE} - Cursillo-Haus St. Jakobus</title>
-	<meta name="description" content="{PAGEVAR:cmt_meta_description:recursive}">
-	<meta name="keywords" content="{PAGEVAR:cmt_meta_keywords:recursive}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{INCLUDE:PATHTOWEBROOT . "templates/partials/meta.tpl"}
 
 	<link rel="shortcut icon" href="/dist/img/favicon.png" />
 
 	<link rel="stylesheet" href="/dist/css/vendor/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
-
-	<!-- TODO: ADD MICRODATA (JSONLD) -->
 
 	{LAYOUTMODE_STARTSCRIPT}
 	{IF (!{LAYOUTMODE})}
