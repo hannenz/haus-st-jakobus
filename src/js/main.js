@@ -12,7 +12,10 @@ function APP () {
 	self.debug = true;
 
 	self.brightboxOptions = {
-	}
+		'onInit': function() {
+			console.log("On Init!");
+		}
+	};
 
 	this.init = function() {
 
@@ -50,7 +53,11 @@ function APP () {
 		this.initMap();
 
 		// Init brightbox on galleries (fotoalbum)
-		$('.fotoalbum a').brightbox(self.brightboxOptions);
+		$('.fotoalbum a').brightbox({
+			'onInit': function() {
+				console.log("On Init!");
+			}
+		});
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
@@ -208,6 +215,10 @@ function APP () {
 	};
 
 	this.initMap = function() {
+
+		var mapCenterPos = [48.32681, 9.82074];
+		var pinPos = [48.29870,9.82624];
+
 		var mapOptions = {
 			zoomControl: true,
 			scrollWheelZoom: false,
@@ -217,7 +228,7 @@ function APP () {
 
 		var mapElement = document.getElementById('map');
 
-		var map = L.map(mapElement, mapOptions).setView([48.29870,9.82624], 12);
+		var map = L.map(mapElement, mapOptions).setView(mapCenterPos, 11);
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog', {
 			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 			maxZoom: 18,
@@ -226,16 +237,16 @@ function APP () {
 			accessToken: 'pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog'
 		}).addTo(map);
 
-		var markerIcon = L.icon({
-			iconUrl: '/dist/img/marker-icon.png',
-			iconSize: [25, 41]
-		});
-
 		var shellIcon = L.icon({
-			iconUrl: '/dist/img/logo.png',
-			iconSize: [32, 32]
+			iconUrl: '/dist/img/shell-icon.png',
+			iconSize: [25 * 1.4, 41 * 1.4],
+			iconAnchor: [25 * 0.7, 41 * 1.4],
+			popupAnchor: [0, -60]
 		});
-		var marker = L.marker([48.29870,9.82624], {icon: markerIcon}).addTo(map);
+		var marker = L.marker(pinPos, {icon: shellIcon}).addTo(map);
+
+		var popup = L.popup().setContent("<b>Cursillo-Haus St. Jakobus</b><br><i>N 48.29870 E 9.82624</i>");
+		marker.bindPopup(popup).openPopup();
 
 		// Load the GeoJSON track to display ("the Jakobsweg")
 		// Since the track is quite large we load it via AJAX
@@ -262,6 +273,9 @@ function APP () {
 			map.scrollWheelZoom.disable();
 			map.touchZoom.disable();
 			map.dragging.disable();
+		});
+		mapElement.addEventListener('click', function() {
+			console.log(map.getCenter());
 		});
 	};
 };

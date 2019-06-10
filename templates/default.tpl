@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="/dist/js/vendor/modernizr-2.6.2.min.js"></script>
 	<script type="text/javascript" src="/dist/js/vendor/jquery.min.js"></script>
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
-	<script src="/dist/js/vendor/jquery.brightbox.min.js"></script>
+	<script src="/dist/js/vendor/jquery.brightbox.js"></script>
 	<script src="/dist/js/vendor/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
 	{ENDIF}
 </head>

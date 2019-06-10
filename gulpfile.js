@@ -119,6 +119,7 @@ var settings = {
 	jsvendor: {
 		src:	[
 				'./src/js/vendor/**/*.js',
+				'./src/js/vendor/track.geo.json',
 				'./node_modules/foundation-sites/dist/js/**/*.js',
 				'./node_modules/jquery/dist/jquery.min.js',
 				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
