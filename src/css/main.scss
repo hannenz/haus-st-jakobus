@@ -89,6 +89,10 @@
 	padding: 0.5 * $vertical-unit $gutter;
 	margin-bottom: $vertical-unit;
 	outline: 1px solid $red1;
+
+	*:last-child {
+		margin-bottom: 0;
+	}
 }
 
 

@@ -469,7 +469,7 @@ class PilgrimpassesController extends Controller {
 			$request->setSecret($this->giropaySettings[$transactionType]['secret']);
 			$request->addParam('merchantId', $this->giropaySettings[$transactionType]['merchantId']);
 			$request->addParam('projectId', $this->giropaySettings[$transactionType]['projectId']);
-			$request->addParam('merchantTxId', 'Pilgerpass Haus St. Jakobus');
+			$request->addParam('merchantTxId', 'Cursillo-Haus St Jakobus');
 			$request->addParam('amount', $amount);
 			$request->addParam('currency', 'EUR');
 			$request->addParam('purpose', 'Pilgerpass Bestellung ID ' . $orderId);
