@@ -85,7 +85,7 @@ $footer-text-color: lighten($dark-grey, 66%);
 			display: inline-block;
 		}
 
-		a:first-child {
+		a:not(last-child) {
 			margin-right: 0.5em;
 		}
 	}

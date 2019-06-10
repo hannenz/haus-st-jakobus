@@ -6,4 +6,5 @@
  */
 .highlighted-text {
 	@extend .blockquote;
+	margin-bottom: 3 * $vertical-unit;
 }
