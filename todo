@@ -15,37 +15,29 @@
 
 # Todos
 
+[ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [ ] CorporateData: Finalize
 [ ] Production build, clean-up, performance, w3-check, qs etc.
-[ ] Map im Footer: Controls z-index
-
-[ ] XML Sitemap
-[ ] robots.txt
-[✓] H1 als Headline
-[ ] Meta Keywords und Description
-[ ] CANONICALURL
-
-[ ] (Hybrid) Lazy loading ?
-[ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-
+[ ] Meta Keywords und Description >> Info an Martin
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
-
 [ ] Responsive !!!
-
 [ ] Zahlungen: Fehler ins Logfile loggen
-
-
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
-
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 
 
 
 ## Zurückgestellt
 
+[✓] Map im Footer: Controls z-index
+[✓] (Hybrid) Lazy loading ?
+[✓] XML Sitemap
+[✓] robots.txt
+[✓] H1 als Headline
+[✓] CANONICALURL
 [?] Bestellungen: Refactoring Trenne Order / Pilgrimpass
 [?] Bestellungen: besser mit Hash / UNIQID arbeiten als Identifier?
 [-] Nach erfolgreicher Bestellung: Versende Bestätigiungsmail mit Bezahl-Link
