@@ -76,7 +76,7 @@ class Donation extends Model {
 
 		// Personal data should be either all blank or all set:
 		if ($this->wantsReceipt($data)) {
-			if (empty($data['data-privacy-statement-accepted'])) {
+			if (empty($data['data_privacy_statement_accepted'])) {
 				$this->validationErrors['error_data_privacy_statement_accepted'] = true;
 			}
 			if ($amount < 50) {

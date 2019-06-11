@@ -8,18 +8,21 @@ use Contentomat\Session;
 use Contentomat\Debug;
 use Contentomat\CmtPage;
 use Jakobus\Donation;
-
 use \Exception;
 
-ini_set('display_errors', true);
-error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
 
 class DonationsController extends Controller {
+
 
 	/**
 	 * @var int 	ID of the page that will show a success message
 	 */
 	protected $successPageId = 94;
+
+	/**
+	 * @var int 	ID of the page that will show an error message
+	 */
+	protected $errorPageId = 95;
 
 	/**
 	 * @var \Contentomat\CmtPage
@@ -50,17 +53,10 @@ class DonationsController extends Controller {
 	}
 
 
-
 	/**
 	 * Show a donation button
 	 */
 	public function actionDefault () {
-
-		$url = sprintf('%s%s',
-			$this->CmtPage->makePageFilePath($this->pageId, $this->pageLang),
-			$this->CmtPage->makePageFileName($this->pageId, $this->pageLang)
-		);
-		$this->parser->setParserVar('url', $url);
 
 		if (!empty($this->postvars)) {
 			try {
@@ -72,15 +68,16 @@ class DonationsController extends Controller {
 				$amount = (float)$this->postvars['amount'];
 				$paymentMethod = $this->postvars['payment_method'];
 
-				// Try to pay
+				// Save POST data for later (needed after redirect)
 				$this->Session->setMultipleSessionVars($this->postvars);
+
+				// Try to pay
 				if (!$this->Donation->pay($amount, $paymentMethod)) {
 					$this->parser->setParserVar('errorMessage', $this->Donation->getErrorMessage());
 					throw new Exception("payment-failed");
 				}
 
 				return;
-
 			}
 			catch (Exception $e) {
 				$this->parser->setParserVar('error', $e->getMessage());
@@ -99,6 +96,8 @@ class DonationsController extends Controller {
 	 */
 	public function actionPaymentRedirect() {
 		if ($this->Donation->paymentRedirect($this->transactionType)) {
+
+			// Get POST data from Session
 			$data = [
 				'amount' => $this->Session->getSessionVar('amount'),
 				'payment_method' => $this->Session->getSessionVar('payment_method'),
@@ -108,17 +107,23 @@ class DonationsController extends Controller {
 				'donation_street_address' => $this->Session->getSessionVar('donation_street_address'),
 				'donation_zip' => $this->Session->getSessionVar('donation_zip'),
 				'donation_city' => $this->Session->getSessionVar('donation_city'),
-				'donation_country' => $this->Session->getSessionVar('donation_countryy')
+				'donation_country' => $this->Session->getSessionVar('donation_country')
 			];
 
+			// Notify website admin
 			$this->Donation->notifyAdmin($data);
-			$this->CmtPage->redirectToPage($this->successPageId, $this->pageLang);
+
+			$pageId = $this->successPageId;
 		}
 		else {
-			$this->parser->setParserVar('errorMessage', 'Fehler: ' . $this->Donation->getErrorMessage());
-			$this->content = $this->parser->parseTemplate($this->templatesPath . 'form.tpl');
+			$pageId = $this->errorPageId;
 		}
+
+		// Clean-up and redirect
+		$this->Session->deleteAllSessionVars();
+		$this->CmtPage->redirectToPage($pageId, $this->pageLang);
 	}
+
 	
 	/**
 	 * Notify from Giropay payment
@@ -134,4 +139,3 @@ $autoLoad->addNamespace ('Jakobus', PATHTOWEBROOT . 'phpincludes/classes');
 $ctl = new DonationsController ();
 $content = $ctl->work ();
 ?>
-

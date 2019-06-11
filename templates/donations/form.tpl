@@ -26,7 +26,7 @@
 </div>
 {ENDIF}
 
-<form class="form" action="{VAR:donationUrl}" method="post" accept-charset="utf-8">
+<form action="{PAGEURL}" method="post" accept-charset="utf-8">
 	
 	<fieldset class="fieldset">
 		<legend>Jetzt online spenden</legend>
@@ -60,12 +60,14 @@
 			<div>
 				<div class="grid-x grid-padding-x">
 					<div class="info cell">
+						<p>
 						Ab einer Höhe von 50,00 &euro; stellen wir Ihnen gerne
 						eine Spendenquittung aus. Bitte tragen Sie in diesem
 						Fall hier Ihre persönlichen Daten ein, damit wir Ihnen
 						die Spendenquittung postalisch zustellen können. Die
 						Daten werden nur zu diesem Zweck erhoben und nicht
 						weiter gespeichert.
+						</p>
 					</div>
 				</div>
 				<div class="grid-x grid-padding-x">
@@ -73,7 +75,7 @@
 						<div class="form-field form-field--select">
 							<label for="donation_salutation">Anrede</label>
 							<select id="donation_salutation" name="donation_salutation">
-								<option value="">-- bitte wählen --</option>
+								<option value="">bitte wählen</option>
 								<option value="Frau" {IF("{VAR:donation_salutation}" == "Frau")}selected{ENDIF}>Frau</option>
 								<option value="Herr" {IF("{VAR:donation_salutation}" == "Herr")}selected{ENDIF}>Herr</option>
 							</select>
@@ -381,7 +383,7 @@
 			</div>
 
 			<div class="form-field form-field--flag {IF({ISSET:error_data_privacy_statement_accepted})}error{ENDIF}">
-				<input type="checkbox" name="data-privacy-statement-accepted" id="data-privacy-statement-accepted" />
+				<input type="checkbox" name="data_privacy_statement_accepted" value="1" {IF("{VAR:data_privacy_statement_accepted}" == "1")}checked{ENDIF} id="data-privacy-statement-accepted" />
 				<label for="data-privacy-statement-accepted">Ich habe die <a href="{PAGEURL:58}" target="_blank">Datenschutzerklärung</a> gelesen und erkläre mich hiermit einverstanden</label>
 			</div>
 		</details>
