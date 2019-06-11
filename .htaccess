@@ -8,6 +8,8 @@ RewriteBase /
 # (https://stackoverflow.com/a/8652987)
 # php_value error_reporting 1
 
+RewriteRule ^sitemap.xml$ /de/96/Sitemap.html
+
 # Force www
 RewriteCond %{HTTP_HOST} ^haus-st-jakob.de [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
@@ -17,7 +19,6 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} haus-st-jakob.de
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-RewriteRule ^sitemap.xml$ /de/96/Sitemap.html
 
 # Own error documents
 ErrorDocument 404 /de/102/404-page-not-found.html
