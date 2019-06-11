@@ -6,3 +6,4 @@ media/
 /admin-*
 /fetch-backups
 giropay_settings.php
+giropay_settings.inc
