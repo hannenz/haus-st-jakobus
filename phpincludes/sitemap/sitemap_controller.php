@@ -1,11 +1,12 @@
 <?php
-namespace DataAL;
+namespace Jakobus;
 
 use Contentomat\PsrAutoloader;
 use Contentomat\Contentomat;
 use Contentomat\Controller;
 use Contentomat\CmtPage;
 use Contentomat\DBCex;
+
 
 class SitemapController extends Controller {
 
@@ -62,7 +63,7 @@ class SitemapController extends Controller {
 
 $autoload = new PsrAutoloader();
 $autoload->addNamespace('Contentomat', INCLUDEPATHTOADMIN . "classes");
-$autoload->addNamespace('DataAL', PATHTOWEBROOT . "phpincludes/classes");
+$autoload->addNamespace('Jakobus', PATHTOWEBROOT . "phpincludes/classes");
 
 $ctl = new SitemapController();
 $content - $ctl->work();
