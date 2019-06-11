@@ -17,10 +17,11 @@
 
 [ ] CorporateData: Finalize
 [ ] Production build, clean-up, performance, w3-check, qs etc.
+[ ] Map im Footer: Controls z-index
 
 [ ] XML Sitemap
 [ ] robots.txt
-[ ] H1 als Headline
+[✓] H1 als Headline
 [ ] Meta Keywords und Description
 
 [ ] (Hybrid) Lazy loading ?
@@ -31,6 +32,8 @@
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 
 [ ] Responsive !!!
+
+[ ] Zahlungen: Fehler ins Logfile loggen
 
 
 [ ] Newsletter: PageMailer einrichten
