@@ -3,10 +3,10 @@
 	<figure class="teaser__image">
 		<a href="{VAR:course_detail_url}">
 			{IF({ISSET:event_image})}
-				<img src="/media/events/thumbnails/square/{VAR:event_image}" alt="" />
+				<img class="lazy" data-src="/media/events/thumbnails/square/{VAR:event_image}" alt="" />
 			{ELSE}
 				{IF({ISSET:course_image:VAR})}
-					<img src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
+					<img class="lazy" data-src="/media/courses/thumbnails/square/{VAR:course_image}" alt="" />
 				{ENDIF}
 			{ENDIF}
 		</a>

@@ -47,6 +47,7 @@ function APP () {
 		self.headerHeight = rect.height;
 		window.addEventListener ('scroll', self.onWindowScroll);
 
+		this.initLazyLoading();
 		this.initHomepageSlider();
 		this.initCalendarWidget();
 		this.initWidgets();
@@ -278,6 +279,15 @@ function APP () {
 			console.log(map.getCenter());
 		});
 	};
+
+
+	this.initLazyLoading = function() {
+		var lazyLoader = new LazyLoad({
+			use_polyfill: false,
+			use_native: true,
+			elements_selector: '.lazy'
+		});
+	}
 };
 
 

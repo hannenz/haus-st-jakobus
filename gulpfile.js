@@ -123,7 +123,8 @@ var settings = {
 				'./node_modules/foundation-sites/dist/js/**/*.js',
 				'./node_modules/jquery/dist/jquery.min.js',
 				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
-				'./node_modules/leaflet/dist/leaflet.js'
+				'./node_modules/leaflet/dist/leaflet.js',
+				'./node_modules/vanilla-lazyload/dist/lazyload.min.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},

@@ -2,7 +2,7 @@
 
 	<figure class="teaser__image">
 		<a href="{VAR:course_detail_url}"> 
-			<img src="/media/courses/thumbnails/square/{VAR:course_image}" /> 
+			<img class="lazy" data-src="/media/courses/thumbnails/square/{VAR:course_image}" /> 
 		</a>
 	</figure>
 

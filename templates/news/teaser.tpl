@@ -2,7 +2,7 @@
 
 	<figure class="teaser__image">
 		<a href="{VAR:postDetailUrl}">
-			<img src="/media/mlog/static/thumbnails/square/{VAR:post_image}" alt="" />
+			<img class="lazy" data-src="/media/mlog/static/thumbnails/square/{VAR:post_image}" alt="" />
 		</a>
 	</figure>
 
