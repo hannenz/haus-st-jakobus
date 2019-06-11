@@ -10,18 +10,21 @@
 [ ] Paypal Integration
 [ ] Pilgerausweise: Mehrere bestellbar
 [ ] Datenschutzbestimmungen anpassen / überarbeiten
-[ ] Spendenmöglichkeit Formular für Förderverein
+[ ] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten
 
 
 # Todos
 
 [ ] CorporateData: Finalize
-[✓] JSON+LD
 [ ] Production build, clean-up, performance, w3-check, qs etc.
+
+[ ] XML Sitemap
+[ ] robots.txt
+[ ] H1 als Headline
+[ ] Meta Keywords und Description
 
 [ ] (Hybrid) Lazy loading ?
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-[ ] Spendenmöglichkeit Formular für Förderverein-Seite
 
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
@@ -29,9 +32,6 @@
 
 [ ] Responsive !!!
 
-[ ] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
-
-[✓] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
@@ -57,6 +57,10 @@
 
 ## Erledigt
 
+[✓] JSON+LD
+[✓] Spendenmöglichkeit Formular für Förderverein-Seite
+[✓] Benachrichtigungs-Mails: Inhalte, besseres Styling ...
+[✓] Klären: Details, wie: E-Mails Betreffzeilen, Absender-Name, ...
 [✓] News: PNG Upload geht nicht
 [✓] Kurse: 2 Kalender in Reihe 
 [✓] Custom  Betrag Input: Das geht besser ;-)
