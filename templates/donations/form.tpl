@@ -12,13 +12,16 @@
 		{BREAK}
 	{ENDSWITCH}
 	{IF({ISSET:error_donation_too_small_for_receipt})}
-	<p>Eine Spendenquittung können wir Ihnen erst ab einer Spendenhöhe von <b>50,00 &euro;</b> ausstellen</p>
+		<p>Eine Spendenquittung können wir Ihnen erst ab einer Spendenhöhe von <b>50,00 &euro;</b> ausstellen</p>
 	{ENDIF}
 	{IF({ISSET:errorMessage})}
 	<p>
 		<b>Fehlermeldung:</b><br>
 		<code>{VAR:errorMessage:nl2br}</code>
 	</p>
+	{ENDIF}
+	{IF({ISSET:error_data_privacy_statement_accepted})}
+		<p>Sie müssen unseren Datenschutzbestimmungen zustimmen, damit wir Ihre Daten verarbeiten können</p>
 	{ENDIF}
 </div>
 {ENDIF}
@@ -70,8 +73,9 @@
 						<div class="form-field form-field--select">
 							<label for="donation_salutation">Anrede</label>
 							<select id="donation_salutation" name="donation_salutation">
-								<option value="Herr" {IF("{VAR:donation_salutation}" == "Herr")}selected{ENDIF}>Herr</option>
+								<option value="">-- bitte wählen --</option>
 								<option value="Frau" {IF("{VAR:donation_salutation}" == "Frau")}selected{ENDIF}>Frau</option>
+								<option value="Herr" {IF("{VAR:donation_salutation}" == "Herr")}selected{ENDIF}>Herr</option>
 							</select>
 						</div>
 					</div>
@@ -374,6 +378,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<div class="form-field form-field--flag {IF({ISSET:error_data_privacy_statement_accepted})}error{ENDIF}">
+				<input type="checkbox" name="data-privacy-statement-accepted" id="data-privacy-statement-accepted" />
+				<label for="data-privacy-statement-accepted">Ich habe die <a href="{PAGEURL:58}" target="_blank">Datenschutzerklärung</a> gelesen und erkläre mich hiermit einverstanden</label>
 			</div>
 		</details>
 	</fieldset>
