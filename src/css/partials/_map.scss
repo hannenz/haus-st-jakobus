@@ -16,6 +16,12 @@
 	}
 }
 
+.leaflet-control {
+	@media screen and (max-width: 1440px) {
+		transform: translateY(40px);
+	}
+}
+
 .leaflet-popup-content-wrapper {
 	border-radius: 0;
 }
