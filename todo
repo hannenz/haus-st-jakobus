@@ -23,6 +23,7 @@
 [ ] robots.txt
 [✓] H1 als Headline
 [ ] Meta Keywords und Description
+[ ] CANONICALURL
 
 [ ] (Hybrid) Lazy loading ?
 [ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
