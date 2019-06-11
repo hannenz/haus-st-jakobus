@@ -2,7 +2,7 @@
 	<!-- <blockquote class="motto">Kommt und ruht ein wenig aus &#38;hellip;</blockquote> -->
 	<a href="/" class="main-header__brand brand">
 		<img class="brand__logo" src="/dist/img/logo.png" alt="" />
-		<span class="brand__name">Haus St. Jakobus</span>
+		<h1 class="brand__name">Haus St. Jakobus</h1>
 	</a>
 	<div class="title-bar" data-responsive-toggle="haus-st-jakobus-menu" data-hide-for="large">
 		<button onclick="document.getElementById('hamburger').classList.toggle('hidden');document.getElementById('cross').classList.toggle('hidden');" class="menu-trigger" type="button" data-toggle="haus-st-jakobus-menu">
