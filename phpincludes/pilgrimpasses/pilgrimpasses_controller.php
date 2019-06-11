@@ -59,7 +59,7 @@ class PilgrimpassesController extends Controller {
 		$this->CmtPage = new CmtPage();
 
 		$this->templatesPath = $this->templatesPath . 'pilgrimpasses/';
-		include(PATHTOWEBROOT.'giropay_settings.php');
+		include(PATHTOWEBROOT.'giropay_settings.inc');
 		$this->giropaySettings = $giropaySettings;
 	}
 

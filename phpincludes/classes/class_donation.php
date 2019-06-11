@@ -54,7 +54,7 @@ class Donation extends Model {
 			'paymentMethod' => '/paypal|giropay/'
 		]);
 
-		include(PATHTOWEBROOT.'giropay_settings.php');
+		include(PATHTOWEBROOT.'giropay_settings.inc');
 		$this->giropaySettings = $giropaySettings;
 	}
 
