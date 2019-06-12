@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
 	<script src="/dist/js/vendor/jquery.brightbox.js"></script>
 	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
+	<script src="/dist/js/vendor/lazyload.min.js"></script>
 	{ENDIF}
 </head>
 <body id="top" class="debug-base-line-grid--is-visible">
