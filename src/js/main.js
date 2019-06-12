@@ -1,21 +1,17 @@
 /**
  * src/js/main.js
  *
- * main javascript file
+ * Main javascript file
+ *
+ * @author Johannes Braun <johannes.braun@hannenz.de>
+ * @package haus-st-jakobus
  */
-
 function APP () {
 
 	var self = this;
 	var headerHeight = 0;
 
 	self.debug = true;
-
-	self.brightboxOptions = {
-		'onInit': function() {
-			console.log("On Init!");
-		}
-	};
 
 	this.init = function() {
 
@@ -51,14 +47,22 @@ function APP () {
 		this.initHomepageSlider();
 		this.initCalendarWidget();
 		this.initWidgets();
-		this.initMap();
+
+		// Lazy init map
+		if ('IntersectionObserver' in window) {
+			var observer = new IntersectionObserver(function(entries){
+				if (entries[0].intersectionRatio > 0) {
+					self.initMap();
+				}
+			});
+			observer.observe(document.getElementById('map'));
+		}
+		else {
+			self.initMap();
+		}
 
 		// Init brightbox on galleries (fotoalbum)
-		$('.fotoalbum a').brightbox({
-			'onInit': function() {
-				console.log("On Init!");
-			}
-		});
+		$('.fotoalbum a').brightbox();
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
@@ -99,8 +103,6 @@ function APP () {
 
 
 	this.initCalendarWidget = function() {
-
-		console.log('initCalendarWidget');
 
 		var links = document.querySelectorAll('.calendar-widget__link');
 
@@ -274,9 +276,6 @@ function APP () {
 			map.scrollWheelZoom.disable();
 			map.touchZoom.disable();
 			map.dragging.disable();
-		});
-		mapElement.addEventListener('click', function() {
-			console.log(map.getCenter());
 		});
 	};
 
