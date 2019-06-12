@@ -85,7 +85,6 @@
 		 */
 		function init() {
 			// Add any initialization logic here...
-			console.log("Inside init()");
 			
 			box = $('<div class="brightbox"></div>');
 			overlay = $('<div class="brightbox-overlay" />');
