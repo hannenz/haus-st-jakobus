@@ -1,4 +1,4 @@
-n-/**
+/**
  * src/css/partials/_layout.scss
  *
  * Layout specific styles
@@ -22,7 +22,6 @@ body {
 	box-shadow: 0 0 10px rgba(30, 30, 30, 0.2);
 }
 
-
 .inner-bound {
 	max-width: calc(#{$inner-bound-width} - 2rem);
 	margin: 0 auto;
@@ -35,16 +34,15 @@ body {
 }
 
 .main-container {
-	// padding-top: 3 * $vertical-unit;
-	// padding-bottom: 3 * $vertical-unit;
 
 	min-height: 50vh;
 
 	display: flex;
-	flex-wrap: wrap;
-
 	flex-direction: row;
-	/* overflow: hidden; */
+	flex-wrap: wrap;
+	@include for-size(tablet-landscape-up) {
+		flex-wrap: nowrap;
+	}
 
 	position: relative;
 	background-color: #fff;
@@ -59,10 +57,6 @@ body {
 	margin-bottom: -32px;
 
 	z-index: 2; // Set over map
-
-	@include for-size(tablet-landscape-up) {
-		flex-wrap: nowrap;
-	}
 }
 
 .main-content {
@@ -75,8 +69,11 @@ body {
 	order: 1;
 	width: 100%;
 	margin-bottom: 1 * $vertical-unit;
-	// display: sticky;
-	// top: 0;
+
+	.sidebar-inner {
+		position: sticky;
+		top: 80px;
+	}
 	
 	> h2:first-child {
 		display: none;

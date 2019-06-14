@@ -44,7 +44,8 @@
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
 				<aside class="sidebar">
-					<div class="sticky" data-sticky data-sticky-on="large" data-margin-top="5" data-top-anchor="main-container">
+					<div class="sidebar-inner">
+					<!-- <div class="sticky" data&#45;sticky data&#45;sticky&#45;on="large" data&#45;margin&#45;top="5" data&#45;top&#45;anchor="main&#45;container"> -->
 						{INCLUDE:PATHTOWEBROOT.'phpincludes/pilgrimpasses/cart_controller.php'}
 						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
 					</div>
