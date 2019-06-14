@@ -1,7 +1,7 @@
 /**
  * Default gulpfile for HALMA projects
- * 
- * Version 2017-08-22
+ *
+ * Version 2019-03-27
  *
  * @see https://www.sitepoint.com/introduction-gulp-js/
  * @see https://nystudio107.com/blog/a-gulp-workflow-for-frontend-development-automation
@@ -10,20 +10,24 @@
 'use strict';
 
 // package vars
-const pkg = require ('./package.json');
+const pkg = require('./package.json');
 
 // gulp
-const gulp = require ('gulp');
+const gulp = require('gulp');
+const {series} = require('gulp');
 
 // Load all plugins in 'devDependencies' into the variable $
 const $ = require('gulp-load-plugins')({
 	pattern: ['*'],
-	scope: ['devDependencies']
+	scope: ['devDependencies'],
+	rename: {
+		'gulp-strip-debug': 'stripdebug'
+	}
 });
 
 // Default error handler: Log to console
 const onError = (err) => {
-	console.log (err);
+	console.log(err);
 };
 
 // A banner to output as header for dist files
@@ -40,13 +44,6 @@ const banner = [
 ].join("\n");
 
 
-
-//array of gulp task names that should be included in "gulp build" task
-var build =      ['clean:dist', 'js', 'jsvendor', 'css', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
-var build_prod = ['clean:dist', 'js-production', 'jsvendor', 'css-production', 'cssvendor', 'images', 'sprite', 'icons', 'fonts'];
-
-
-
 var svgoOptions = {
 	plugins: [
 		{ cleanupIDs: false },
@@ -58,18 +55,18 @@ var svgoOptions = {
 	]
 };
 
-// project settings (enhance if you need to ;-) )
+// Project settings
 var settings = {
 
 	browserSync: {
-		proxy:	'https://' + pkg.name + '.localhost',
+		proxy:'https://' + pkg.name + '.localhost',
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
 		notify: false,	// Don't notify on every change
 		https: {
-			// key: '/Users/johannesbraun/server.key',
-			// cert: '/Users/johannesbraun/server.crt'
-			key: '/etc/ssl/private/ssl-cert-snakeoil.key',
-			cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+			key: require('os').homedir() + '/server.key',
+			cert: require('os').homedir() + '/server.crt'
+			// key: '/etc/ssl/private/ssl-cert-snakeoil.key',
+			// cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
 		}
 	},
 
@@ -78,34 +75,27 @@ var settings = {
 		dest: pkg.project_settings.prefix + 'css/',
 		srcMain: [
 			'./src/css/main.scss',
-			'./src/css/coursemanager.scss'
+			// You can add more files here that will be built seperately,
+			// f.e. newsletter.scss
 		],
 		options: {
-
 			sass: {
-				outputStyle: 'nested',
+				outputStyle: 'compact',
 				precision: 3,
 				errLogToConsole: true,
-				includePaths: [
-					'node_modules/foundation-sites/scss',
-					'node_modules/motion-ui/src',
-					$.bourbon.includePaths
-				]
 			},
-
-			sassProduction: {
+			autoprefixer: {
+				browsers: ['last 3 versions', '>2%', 'IE 11']
+			}
+		},
+		optionsProd: {
+			sass: {
 				outputStyle: 'compressed',
 				precision: 3,
-				errLogToConsole: true,
-				includePaths: [
-					'node_modules/foundation-sites/scss',
-					'node_modules/motion-ui/src',
-					$.bourbon.includePaths
-				]
+				errLogToConsole: true
 			},
-
 			autoprefixer: {
-				browsers: ['last 2 versions', '>2%', 'IE 11']
+				browsers: ['last 3 versions', '>2%', 'IE 11']
 			}
 		}
 	},
@@ -116,24 +106,22 @@ var settings = {
 		destFile:	'main.min.js'
 	},
 
-	jsvendor: {
-		src:	[
-				'./src/js/vendor/**/*.js',
-				'./src/js/vendor/track.geo.json',
-				'./node_modules/foundation-sites/dist/js/**/*.js',
-				'./node_modules/jquery/dist/jquery.min.js',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
-				'./node_modules/leaflet/dist/leaflet.js',
-				'./node_modules/vanilla-lazyload/dist/lazyload.min.js'
+	jsVendor: {
+		src: [
+			'./src/js/vendor/**/*.js',
+			// Add single vendor files here,
+			// they will be copied as is to `{prefix}/js/vendor/`,
+			// e.g. './node_modules/flickity/dist/flickity.pkgd.min.js',
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
 
-	cssvendor: {
+	cssVendor: {
 		src:	[
-				'./src/css/vendor/**/*.css',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
-				'./node_modules/leaflet/dist/leaflet.css'
+			'./src/css/vendor/**/*.css',
+			// Add single vendor files here,
+			// they will be copied as is to `{prefix}/css/vendor/`,
+			// e.g. './node_modules/flickity/dist/flickity.min.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},
@@ -147,8 +135,8 @@ var settings = {
 		src:	'./src/img/**/*',
 		dest:	pkg.project_settings.prefix + 'img/',
 		options: [
-			$.imagemin.optipng ({ optimizationLevel: 5 }),
-			$.imagemin.svgo (svgoOptions)
+			$.imagemin.optipng({ optimizationLevel: 5 }),
+			$.imagemin.svgo(svgoOptions)
 		]
 	},
 
@@ -156,162 +144,156 @@ var settings = {
 		src:	'./src/icons/**/*.svg',
 		dest:	pkg.project_settings.prefix + 'img/icons/',
 		options: [
-			$.imagemin.svgo (svgoOptions)
+			$.imagemin.svgo(svgoOptions)
 		]
 	},
 
 	sprite: {
-		src:	'./src/icons/*.svg',
-		dest:	pkg.project_settings.prefix + 'img/',
+		src: './src/icons/*.svg',
+		dest: pkg.project_settings.prefix + 'img/',
 		destFile:	'icons.svg',
 		options: [
-			$.imagemin.svgo (svgoOptions)
+			$.imagemin.svgo(svgoOptions)
 		]
+	},
+
+	favicons: {
+		src: './src/img/favicon.svg',
+		dest: pkg.project_settings.prefix + 'img/favicons/',
+		background: '#ffffff'
 	}
 }
 
 
 
 // Clean dist before building
-gulp.task ('clean:dist', function () {
-	return $.del ([
+function cleanDist(done) {
+	return $.del([
 		pkg.project_settings.prefix + '/'
 	]);
-})
+  done();
+}
 
 /*
- *  Task: process SASS for development
+ *  Task: process SASS
  */
-gulp.task('css', function (done) {
+function cssDev(done) {
 	return gulp
 		.src(settings.css.srcMain)
 		.pipe($.plumber({ errorHandler: onError}))
-
 		.pipe($.sourcemaps.init())
 		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
 		.pipe($.autoprefixer(settings.css.options.autoprefixer))
 		.pipe($.sourcemaps.write('./'))
-
 		.pipe(gulp.dest(settings.css.dest))
-		.pipe($.browserSync.stream())
-	;	
+		.pipe($.browserSync.stream());
 	done();
-});
+}
 
-/*
- *  Task: process SASS PRODUCTION
- */
-gulp.task('css-production', function (done) {
+function cssProd(done) {
 	return gulp
 		.src(settings.css.srcMain)
-		.pipe($.sass(settings.css.options.sassProduction).on('error', $.sass.logError))
+		.pipe($.plumber({ errorHandler: onError }))
+		.pipe($.sass(settings.css.optionsProd.sass).on('error', $.sass.logError))
 		.pipe($.autoprefixer(settings.css.options.autoprefixer))
-		.pipe($.header(banner, {pkg: pkg}))
-		.pipe(gulp.dest(settings.css.dest))
-	;	
+		.pipe($.header(banner, { pkg: pkg }))
+		.pipe(gulp.dest(settings.css.dest));
 	done();
-});
-
-
+}
 
 /*
  * Task: Concat and uglify Javascript
  */
-gulp.task('js', function() {
-	return gulp.src(settings.js.src)
-		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log (jsvalidate.message); this.emit('end') }))
+function jsDev(done) {
+	return gulp
+		.src(settings.js.src)
+		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end') }))
 		.pipe($.sourcemaps.init())
 		.pipe($.concat(settings.js.destFile))
-		// .pipe($.uglify().on('error', function(uglify) { console.log (uglify.message); this.emit('end') }))
-		// .pipe($.header(banner, { pkg: pkg }))
+		.pipe($.uglify().on('error', function(uglify) { console.log(uglify.message); this.emit('end') }))
 		.pipe($.sourcemaps.write('./'))
 		.pipe(gulp.dest(settings.js.dest))
-		.pipe($.browserSync.stream())
-	;
-});
+		.pipe($.browserSync.stream());
+	done();
+}
 
-/*
- * Task: Concat and uglify Javascript for PRODUCTION
- */
-gulp.task('js-production', function() {
-	return gulp.src(settings.js.src)
-		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log (jsvalidate.message); this.emit('end') }))
+function jsProd(done) {
+	return gulp
+		.src(settings.js.src)
+		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end') }))
 		.pipe($.concat(settings.js.destFile))
-		.pipe($.stripDebug())
-		.pipe($.uglify().on('error', function(uglify) { console.log (uglify.message); this.emit('end') }))
+		.pipe($.stripdebug())
+		.pipe($.uglify().on('error', function(uglify) { console.log(uglify.message); this.emit('end') }))
 		.pipe($.header(banner, { pkg: pkg }))
-		.pipe(gulp.dest(settings.js.dest))
-	;
-});
+		.pipe(gulp.dest(settings.js.dest));
+	done();
+}
 
 
 
 /*
  * Task: Uglify vendor Javascripts
  */
-gulp.task('jsvendor', function() {
-	return gulp.src(settings.jsvendor.src)
-		.pipe(gulp.dest(settings.jsvendor.dest))
-	;
-});
+function jsVendor(done) {
+	return gulp.src(settings.jsVendor.src)
+		.pipe(gulp.dest(settings.jsVendor.dest));
+    done();
+}
 
 
 
-gulp.task('cssvendor', function() {
-	return gulp.src(settings.cssvendor.src)
-		.pipe(gulp.dest(settings.cssvendor.dest))
-	;
-});
+function cssVendor(done) {
+	return gulp.src(settings.cssVendor.src)
+		.pipe(gulp.dest(settings.cssVendor.dest));
+	done();
+}
 
 
 
-gulp.task ('fonts', function () {
-	return gulp.src (settings.fonts.src)
-		.pipe (gulp.dest (settings.fonts.dest))
-	;
-});
+function fonts(done) {
+	return gulp.src(settings.fonts.src)
+		.pipe(gulp.dest(settings.fonts.dest));
+    done();
+}
 
 
 /*
  * Task: create images
- * TODO: Check if optimization is more effectiv when it is done separately for all different image types (png, svg, jpg)
+ * TODO: Check if optimization is more effectiv when it is done separately for all different image types(png, svg, jpg)
  */
-gulp.task('images', function(done) {
+function images(done) {
 	// optimize all other images
 	// TODO: It seems that plugin in don't overwrites existing files in destination folder!??
 	return gulp.src(settings.images.src)
 		.pipe($.newer(settings.images.dest))
 		.pipe($.imagemin(settings.images.options, { verbose: true }))
-		.pipe(gulp.dest(settings.images.dest))
-	;
+		.pipe(gulp.dest(settings.images.dest));
 	done();
-});
+}
 
 
 
-gulp.task('icons', function(done) {
+function icons(done) {
 	return gulp.src(settings.icons.src)
 		.pipe($.newer(settings.icons.dest))
 		.pipe($.imagemin(settings.icons.options))
-		.pipe(gulp.dest(settings.icons.dest))
-	;
+		.pipe(gulp.dest(settings.icons.dest));
 	done();
-});
+}
 
 
 /*
  * Task: create sprites(SVG): optimize and concat SVG icons
  */
-gulp.task('sprite', function(done) {
+function sprite() {
 	return gulp.src(settings.sprite.src)
-		.pipe($.imagemin (settings.sprite.options))
+		.pipe($.imagemin(settings.sprite.options))
 		.pipe($.svgstore({
 			inlineSvg: true
 		}))
-		.pipe(gulp.dest(settings.sprite.dest))
-	;
-	done();
-});
+		.pipe($.rename(settings.sprite.destFile))
+		.pipe(gulp.dest(settings.sprite.dest));
+}
 
 
 
@@ -319,22 +301,72 @@ gulp.task('sprite', function(done) {
  * Default TASK: Watch SASS and JAVASCRIPT files for changes,
  * build CSS file and inject into browser
  */
-gulp.task('default', gulp.series('css', function () {
+function gulpDefault(done) {
 
-	// gutil.log ("Running watch task");
 	$.browserSync.init(settings.browserSync);
 
-	gulp.watch(settings.css.src, gulp.series('css'));
-	gulp.watch(settings.js.src, gulp.series('js'));
+	gulp.watch(settings.css.src, cssDev);
+	gulp.watch(settings.js.src, jsDev);
+  done();
+}
 
-}));
 
-var exec = require('child_process').exec;
+/**
+ * Generate favicons
+ */
+function favicons(done) {
+	return gulp.src(settings.favicons.src)
+		.pipe($.favicons({
+			appName: pkg.name,
+			appShortName: pkg.name,
+			appDescription: pkg.description,
+			developerName: pkg.author,
+			developerUrl: pkg.repository.url,
+			background: settings.favicons.background,
+			path: settings.favicons.dest,
+			url: pkg.project_settings.url,
+			display: "standalone",
+			orientation: "portrait",
+			scope: "/",
+			start_url: "/",
+			version: pkg.version,
+			logging: false,
+			pipeHTML: false,
+			replace: true,
+			icons: {
+				android: false,
+				appleIcon: false,
+				appleStartup: false,
+				coast: false,
+				firefox: false,
+				windows: false,
+				yandex: false,
+				favicons: true
+			}
+		}))
+		.pipe(gulp.dest(settings.favicons.dest))
+	;
+	done();
+}
+
+//var exec = require('child_process').exec;
 
 /*
  * Task: Build all
  */
-gulp.task('build', gulp.series(build));
-gulp.task('build-prod', gulp.series(build_prod));
-// gulp.task('deploy', gulp.series(build, 'deploy-production'));
+exports.buildDev = series(cleanDist, jsDev, jsVendor, cssDev, cssVendor, images, sprite, icons, fonts, favicons);
+exports.buildProd = series(cleanDist, jsProd, jsVendor, cssProd, cssVendor, images, sprite, icons, fonts, favicons);
 
+exports.default = gulpDefault;
+exports.cleanDist = cleanDist;
+exports.cssDev = cssDev;
+exports.cssProd = cssProd;
+exports.jsDev = jsDev;
+exports.jsProd = jsProd;
+exports.jsVendor = jsVendor;
+exports.cssVendor = cssVendor;
+exports.fonts = fonts;
+exports.images = images;
+exports.icons = icons;
+exports.sprite = sprite;
+exports.favicons = favicons;
