@@ -49,7 +49,7 @@
 						{IF("{VAR:event_needs_registration}" == "1")}
 
 							<p>
-							{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
+							{INCLUDE:PATHTOWEBROOT.'templates/partials/availability.tpl'}
 							{IF("{VAR:event_seats_available}" > "0")}
 								Noch {VAR:event_seats_available} Plätze frei
 							{ELSE}

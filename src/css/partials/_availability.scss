@@ -1,0 +1,78 @@
+// Availablity indicator
+//
+// A bar that indicates free and taken seats in an event
+//
+// .availability--low		- only few seats left
+// .availability--medium	- moderately booked
+// .availability--high		- lots of seats left
+//
+// Markup: templates/partials/availability.tpl
+// <div class="availability {{modifier_class}}">
+// 	<svg class="availability__image" viewBox="0 0 30 30" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+// 		<rect x="0" y="0" width="30" height="30" />
+// 	</svg>
+// 	<progress class="availability__bar" min="0" max="100" value="30" title="70 Plätze frei"></progress>
+// 	<div class="availability__text">70 Plätze frei</div>
+// </div>
+//
+// Styleguide Components.availability-indicator
+
+.availability {
+
+	margin-top: 0; //$vertical-unit;
+	margin-bottom: 4px;
+
+	&__image {
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__bar {
+		appearance: none;
+		border: 0;
+
+		background-color: $grey6;
+		height: 18px;
+		width: 160px;
+		display: inline-block;
+		vertical-align: middle;
+
+		&::-moz-progress-bar {
+			background-color: $grey4;
+		}
+	}
+
+	&__text {
+		font-size: 0.8125em;
+		color: $grey5;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	&--high {
+		.availability__image rect {
+			fill: #00cc00;
+		}
+	}
+
+	&--medium {
+		.availability__image rect {
+			fill: #ffa500;
+		}
+	}
+
+	&--low {
+		.availability__image rect {
+			fill: #cc0000;
+		}
+	}
+}
+
+.event_seats_available {
+	font-size: 0.8125em;
+	color: $grey5;
+	font-style: italic;
+	font-weight: bold;;
+}

@@ -66,7 +66,7 @@
 									<p>Keine Teilnehmerbegrenzung</p>
 								{ELSE}
 
-									{INCLUDE:PATHTOWEBROOT.'templates/partials/availability_indicator.tpl'}
+									{INCLUDE:PATHTOWEBROOT.'templates/partials/availability.tpl'}
 
 									{IF("{VAR:event_seats_taken}" != "{VAR:event_seats_max}")}
 										<div class="event_seats_available">{VAR:event_seats_available} Plätze frei</div>
