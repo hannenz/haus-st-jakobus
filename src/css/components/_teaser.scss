@@ -10,6 +10,68 @@
 	border: 0;
 }
 
+// Teaser
+//
+// A generic element to act as a teaser for all sorts of content, e.g. courses, events, news posts …
+//
+// .teaser--event 	- Teaser for events
+// .teaser--news  	- Teaser for news posts (is this used at all?)
+// .teaser--course 	- Teaser for courses (is this used at all?)
+//
+// Markup:
+// <article class="teaser teaser--event">
+// 	<figure class="teaser__image">
+// 		<a href="#">
+// 			<img src="../media/courses/thumbnails/square/adventure-1850912-1920.jpg" alt="">
+// 		</a>
+// 	</figure>
+// 	<div class="teaser__body">
+// 		<header class="teaser__header">
+// 			<div class="teaser__meta">21.06.2019</div>
+// 			<h3 class="kicker">Männerabend - Grillabend mit thematischem Impuls</h3>
+// 			<h2 class="headline">Unser angekündigter Männerabend im Juni muss leider ausfallen.</h2>
+// 		</header>
+// 		<div class="teaser__date-time">
+// 			<p>
+// 				<em>Beginn: Fr, 21. Juni 2019 18:00 Uhr Stehempfang</em><br>
+// 				<em>Ende: Fr, 21. Juni 2019 21:30 Uhr </em>
+// 			</p>
+// 		</div>
+// 		<details>
+// 			<summary class="teaser__details-trigger">Details &amp; Anmeldung</summary>
+// 			<div class="teaser__details-body">
+// 				<div class="teaser__description">
+// 					<dl>
+// 						<dt>Ort</dt>
+// 						<dd>
+// 							Cursillo-HausSt. Jakobus, Kapellenberg 58<br>
+// 							89610 Oberdischingen, Tel.: 073 05 / 91 95 75<br>
+// 							info@haus-st-jakoobus.de
+// 						</dd>
+// 					</dl>
+// 					<dl>
+// 						<dt>Leitung</dt>
+// 						<dd>Männer-Team St. Jakobus<br>
+// 						Karl, Franz, Norbert und Martin</dd>
+// 					</dl>
+// 					<dl>
+// 						<dt>Anmeldung</dt>
+// 						<dd>
+// 							<div class="event-availability">
+// 									<p>Keine Teilnehmerbegrenzung</p>
+// 							</div>
+// 							<p class="teaser__action-area">
+// 							</p>
+// 						</dd>
+// 					</dl>
+// 				</div>
+// 			</div>
+// 		</details>
+// 	</div>
+// </article>
+//
+// Styleguide: Components.teaser
+
 .teaser {
 	@include media-object-container;
 	margin-bottom: 2 * $vertical-unit;

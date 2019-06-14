@@ -4,6 +4,22 @@
  * @author Johannes Braun <johannes.braun@hannenz.de>
  * @package haus-st-jakobus
  */
+
+// Widget
+//
+// Container to be used in the sidebar for things like sub-navigation, calendars or info-boxes etc.
+//
+// Markup:
+// <aside class="widget">
+// 	<div class="widget__header">
+// 		<h4 class="widget__title">Widget Title</h4>
+// 	</div>
+// 	<div class="widget__body">
+// 		Widget Body
+// 	</div>
+// </aside>
+//
+// Styleguide Components.widget
 .widget {
 
 	background: $primary-color-soft;

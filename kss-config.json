@@ -1,0 +1,13 @@
+{
+	"title": "Style Guide Cursillo-Haus St. Jakobus <haus-st.jakobus.de?>",
+	"source": "src/css/",
+	"destination": "styleguide/",
+	"builder": "node_modules/michelangelo/kss_styleguide/custom-template/",
+	"markup": true,
+	"css": [
+		"../dist/css/main.css"
+	],
+	"js": [
+		"../dist/js/main.js"
+	]
+}
