@@ -7,18 +7,20 @@
 
 # Extra berechenbare Dinge
 
-[ ] Paypal Integration
-[ ] Pilgerausweise: Mehrere bestellbar
-[ ] Datenschutzbestimmungen anpassen / überarbeiten
-[ ] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten
-
+[ ] Paypal Integration (3h)
+[ ] Pilgerausweise: Mehrere bestellbar (6h)
+[ ] Datenschutzbestimmungen anpassen / überarbeiten (1h)
+[ ] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten (3h)
+[ ] HostEurope Rechnungen (n * 9,90)
+	= 715 + 80 
 
 # Todos
 
-[ ] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-[ ] CorporateData: Finalize
+[ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
+[✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [ ] Production build, clean-up, performance, w3-check, qs etc.
-[ ] Meta Keywords und Description >> Info an Martin
+[ ] CorporateData: Finalize
+[✓] Meta Keywords und Description >> Info an Martin
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
