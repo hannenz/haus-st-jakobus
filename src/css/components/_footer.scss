@@ -5,6 +5,52 @@
  * @package haus-st-jakobus
  */
 
+// Footer
+//
+// The website's main footer
+//
+// Markup:
+// <footer class="main-footer">
+// 	<div class="main-footer__inner inner-bound">
+// 		<div class="footer-column">
+// 			<address>
+// 				<p>
+// 					{USERVAR:cdOrgName}<br>
+// 					{USERVAR:cdStreetAddress}<br>
+// 					{USERVAR:cdCountry}&ndash;{USERVAR:cdZip} {USERVAR:cdCity}
+// 				</p>
+// 				<p>
+// 					07305&thinsp;&ndash;&thinsp;919&thinsp;575<br>
+// 					<a href="mailto:info@haus-st-jakobus.de">info@haus-st-jakobus.de</a>
+// 				</p>
+// 			</address>
+// 		</div>
+// 		<div class="footer-column">
+// 			<nav>
+// 				<ul>
+// 					<li><a href="{PAGEURL:99}">Der Weg</a></li>
+// 					<li><a href="{PAGEURL:7}">Das Haus</a></li>
+// 					<li><a href="{PAGEURL:99}">Förderverein</a></li>
+// 					<li><a href="{PAGEURL:24}">Pilgerausweise</a></li>
+// 					<li><a href="{PAGEURL:39}">Programm</a></li>
+// 				</ul>
+// 			</nav>
+// 		</div>
+// 		<div class="footer-column">
+// 			<blockquote>
+// 				Gastfreundschaft, Begegnung, Einfachheit, Heimat, Natur, Offenheit, Spiritualität, Achtsamkeit, Ort der Mitte
+// 			</blockquote>
+// 			<nav class="legal-nav">
+// 				{LOOP NAVIGATION(40)}
+// 					<a href="{NAVIGATION:link}">{NAVIGATION:title}</a>
+// 				{ENDLOOP NAVIGATION}
+// 			</nav>
+// 		</div>
+// 	</div>
+// </footer>
+// 
+// Styleguide Components.footer
+
 $footer-text-color: lighten($dark-grey, 66%);
 .main-footer {
 	padding: calc(#{$vertical-unit} + 32px) 0 #{$vertical-unit} 0;

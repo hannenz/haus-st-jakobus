@@ -1,22 +1,4 @@
-{EVAL}
-use Contentomat\PsrAutoloader;
-use Jakobus\CorporateData;
-
-$autoLoader = new PsrAutoloader();
-$autoLoader->addNamespace('Jakobus', PATHTOWEBROOT . "phpincludes/classes");
-
-try {
-	$CorporateData = new CorporateData();
-	$cdOrgName = $CorporateData->getField('address_organization');
-	$cdStreetAddress = $CorporateData->getField('address_street_address');
-	$cdZip = $CorporateData->getField('address_zip');
-	$cdCity = $CorporateData->getField('address_city');
-	$cdCountry = $CorporateData->getField('address_country');
-}
-catch (\Exception $e) {
-	die ($e->getMessage());
-}
-{ENDEVAL}
+{INCLUDE:PATHTOWEBROOT."phpincludes/corporate_data/corporate_data.php"}
  <figure class="map">
 	 <div id="map"></div>
  </figure>
@@ -31,25 +13,23 @@ catch (\Exception $e) {
 					{USERVAR:cdCountry}&ndash;{USERVAR:cdZip} {USERVAR:cdCity}
 				</p>
 				<p>
-					07305&thinsp;&ndash;&thinsp;919&thinsp;575<br>
-					<a href="mailto:info@haus-st-jakobus.de">info@haus-st-jakobus.de</a>
+					{USERVAR:cdPhone}<br>
+					<a href="mailtp:{USERVAR:cdEmail}">{USERVAR:cdEmail}</a>
 				</p>
 			</address>
 		</div>
 		<div class="footer-column">
 			<nav>
 				<ul>
-					<li><a href="{PAGEURL:25}">Der Weg</a></li>
-					<li><a href="{PAGEURL:92}">Das Haus</a></li>
-					<li><a href="{PAGEURL:61}">Förderverein</a></li>
-					<li><a href="{PAGEURL:24}">Pilgerausweise</a></li>
-					<li><a href="{PAGEURL:39}">Programm</a></li>
+					{LOOP NAVIGATION(97)}
+						<li><a href="{NAVIGATION:link}">{NAVIGATION:title}</a></li>
+					{ENDLOOP NAVIGATION}
 				</ul>
 			</nav>
 		</div>
 		<div class="footer-column">
 			<blockquote>
-				Gastfreundschaft, Begegnung, Einfachheit, Heimat, Natur, Offenheit, Spiritualität, Achtsamkeit, Ort der Mitte
+				{USERVAR:cdClaim:nl2br}
 			</blockquote>
 			<nav class="legal-nav">
 				{LOOP NAVIGATION(40)}
