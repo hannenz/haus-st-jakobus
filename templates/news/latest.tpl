@@ -14,6 +14,6 @@
 				<li> <a href="{VAR:pagingLink}">{VAR:iter}</a> </li>
 			{ENDIF}
 		{ENDLOOP VAR}
-		{IF({ISSET:nextPageUrl})}<li class="pagination-next"><a href="{VAR:nextPageUrl}">| Ältere Artikel</a></li>{ENDIF}
+		{IF({ISSET:nextPageUrl})}<li class="pagination-next"><a href="{VAR:nextPageUrl}">Ältere Artikel</a></li>{ENDIF}
 	</ul>
 </nav>

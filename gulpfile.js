@@ -75,24 +75,29 @@ var settings = {
 		dest: pkg.project_settings.prefix + 'css/',
 		srcMain: [
 			'./src/css/main.scss',
-			// You can add more files here that will be built seperately,
-			// f.e. newsletter.scss
+			'./src/css/coursemanager.scss'
 		],
 		options: {
 			sass: {
 				outputStyle: 'compact',
 				precision: 3,
 				errLogToConsole: true,
+				includePaths: [
+					'node_modules/foundation-sites/scss',
+					'node_modules/motion-ui/src',
+					$.bourbon.includePaths
+				]
 			},
-			autoprefixer: {
-				browsers: ['last 3 versions', '>2%', 'IE 11']
-			}
-		},
-		optionsProd: {
-			sass: {
+
+			sassProduction: {
 				outputStyle: 'compressed',
 				precision: 3,
-				errLogToConsole: true
+				errLogToConsole: true,
+				includePaths: [
+					'node_modules/foundation-sites/scss',
+					'node_modules/motion-ui/src',
+					$.bourbon.includePaths
+				]
 			},
 			autoprefixer: {
 				browsers: ['last 3 versions', '>2%', 'IE 11']
@@ -109,19 +114,21 @@ var settings = {
 	jsVendor: {
 		src: [
 			'./src/js/vendor/**/*.js',
-			// Add single vendor files here,
-			// they will be copied as is to `{prefix}/js/vendor/`,
-			// e.g. './node_modules/flickity/dist/flickity.pkgd.min.js',
+				'./src/js/vendor/track.geo.json',
+				'./node_modules/foundation-sites/dist/js/**/*.js',
+				'./node_modules/jquery/dist/jquery.min.js',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
+				'./node_modules/leaflet/dist/leaflet.js',
+				'./node_modules/vanilla-lazyload/dist/lazyload.min.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
 
 	cssVendor: {
 		src:	[
-			'./src/css/vendor/**/*.css',
-			// Add single vendor files here,
-			// they will be copied as is to `{prefix}/css/vendor/`,
-			// e.g. './node_modules/flickity/dist/flickity.min.css'
+				'./src/css/vendor/**/*.css',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
+				'./node_modules/leaflet/dist/leaflet.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},
@@ -194,7 +201,7 @@ function cssProd(done) {
 	return gulp
 		.src(settings.css.srcMain)
 		.pipe($.plumber({ errorHandler: onError }))
-		.pipe($.sass(settings.css.optionsProd.sass).on('error', $.sass.logError))
+		.pipe($.sass(settings.css.options.sassProduction).on('error', $.sass.logError))
 		.pipe($.autoprefixer(settings.css.options.autoprefixer))
 		.pipe($.header(banner, { pkg: pkg }))
 		.pipe(gulp.dest(settings.css.dest));
@@ -354,8 +361,8 @@ function favicons(done) {
 /*
  * Task: Build all
  */
-exports.buildDev = series(cleanDist, jsDev, jsVendor, cssDev, cssVendor, images, sprite, icons, fonts, favicons);
-exports.buildProd = series(cleanDist, jsProd, jsVendor, cssProd, cssVendor, images, sprite, icons, fonts, favicons);
+exports.buildDev = series(cleanDist, jsDev, jsVendor, cssDev, cssVendor, images, icons, fonts);
+exports.buildProd = series(cleanDist, jsProd, jsVendor, cssProd, cssVendor, images, icons, fonts);
 
 exports.default = gulpDefault;
 exports.cleanDist = cleanDist;
@@ -368,5 +375,3 @@ exports.cssVendor = cssVendor;
 exports.fonts = fonts;
 exports.images = images;
 exports.icons = icons;
-exports.sprite = sprite;
-exports.favicons = favicons;

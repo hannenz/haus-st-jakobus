@@ -9,7 +9,7 @@
 
 	<link rel="shortcut icon" href="/dist/img/favicon.png" />
 
-	<link rel="stylesheet" href="/dist/css/vendor/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+	<link rel="stylesheet" href="/dist/css/vendor/leaflet.css">
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
 
 	<link rel="canonical" href="{CANONICALURL}" />
@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="/dist/js/vendor/jquery.min.js"></script>
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
 	<script src="/dist/js/vendor/jquery.brightbox.js"></script>
-	<script src="/dist/js/vendor/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> 
+	<script src="/dist/js/vendor/leaflet.js"></script> 
 	<script src="/dist/js/vendor/lazyload.min.js"></script>
 	{ENDIF}
 </head>

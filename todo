@@ -14,8 +14,26 @@
 [ ] HostEurope Rechnungen (n * 9,90)
 	= 715 + 80 
 
+# Timing 2019-06-30
+
+- Todos fertig bearbeiten
+- E-Mail Konten 1und1: Sichern
+- E-Mail Konten bei HostEurope neu anlegen
+- SMTP Zugangsdaten entrpechend anpassen
+- Giropay: Testmodus abschalten
+- 1und1: Auth Code beantragen
+- HostEurope: Domain Transfer anstossen
+- 
+
 # Todos
 
+[ ] Sidebar pinned, ggf. opptional
+[ ] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
+[ ] Verwendungszweck Spende N.N.
+[ ] Verwendungszweck Spende: Spende Haus St Jakobus
+[ ] Spende: Sende immer eine Benachrichtigung
+[ ] Überschriften max-width wie Fliesstext
+[ ] Beim Pilgerausweis ist nicht der ganze Text im Widget sichtbar, wenn man nach unten Scrollt. 
 [ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
 [✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [ ] Production build, clean-up, performance, w3-check, qs etc.
