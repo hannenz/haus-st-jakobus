@@ -126,7 +126,7 @@ class Donation extends Model {
 			$request->addParam('merchantTxId', 'Cursillo-Haus St Jakobus');
 			$request->addParam('amount', $amount);
 			$request->addParam('currency', 'EUR');
-			$request->addParam('purpose', 'Spende Cursillo St Jakobus');
+			$request->addParam('purpose', 'Spende Haus St Jakobus');
 			$request->addParam('urlRedirect', 
 				sprintf('https://%s/%s%s?action=paymentRedirect&transaction_type=%s',
 					$_SERVER['SERVER_NAME'],

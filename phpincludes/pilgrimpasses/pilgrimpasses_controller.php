@@ -454,6 +454,8 @@ class PilgrimpassesController extends Controller {
 	public function actionPay() {
 
 		$orderId = $_REQUEST['order_id'];
+		$order = $this->Order->findById($orderId);
+
 		$transactionType = $_REQUEST['transaction_type'];
 		// if ($transactionType != 'giropay' && $transactionType != 'paypal' && $transactionType != 'sofortuw') {
 		// 	throw new \Exception("Invalid transaction type: " . $transactionType);
@@ -472,7 +474,7 @@ class PilgrimpassesController extends Controller {
 			$request->addParam('merchantTxId', 'Cursillo-Haus St Jakobus');
 			$request->addParam('amount', $amount);
 			$request->addParam('currency', 'EUR');
-			$request->addParam('purpose', 'Pilgerpass Bestellung ID ' . $orderId);
+			$request->addParam('purpose', sprintf('Pilgerausweis %s, %s',$order['order_delivery_address_lastname'], $order['order_delivery_address_firstname']));
 			$request->addParam('urlRedirect', 
 				sprintf('https://%s/%s%s?action=paymentRedirect&orderId=%u&transaction_type=%s',
 					$_SERVER['SERVER_NAME'],
