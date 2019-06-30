@@ -31,7 +31,6 @@
 # Todos
 
 [ ] Sidebar pinned, ggf. opptional als PAGEVAR lösen ...
-[ ] Überschriften max-width wie Fliesstext
 [ ] Beim Pilgerausweis ist nicht der ganze Text im Widget sichtbar, wenn man nach unten Scrollt. 
 [ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
 [ ] Production build, clean-up, performance, w3-check, qs etc.
@@ -44,6 +43,7 @@
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 
 [ ] Responsive !!!
+[✓] Überschriften max-width wie Fliesstext
 [✓] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
 [✓] Verwendungszweck Spende: Spende Haus St Jakobus
 [✓] Spende: Sende immer eine Benachrichtigung
