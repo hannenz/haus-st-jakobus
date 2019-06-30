@@ -31,6 +31,11 @@ if (class_exists('\Jakobus\NewsController') === false) {
 		 */
 		protected $postId = 0;
 
+		/**
+		 * @var Integer
+		 */
+		protected $overviewPageId = 36;
+
 
 		/**
 		 * @var Array
@@ -111,15 +116,15 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			$countPages = (int)(($totalPosts - 1) / $postsPerPage + 1);
 
 			$nextPageUrl = ($currentPage) >= $countPages ? null : sprintf('%s/%s,%u,%u.html',
-				$this->CmtPage->makePageFilePath(),
-				$this->CmtPage->makePageFileName(),
+				$this->CmtPage->makePageFilePath($this->overviewPageId),
+				$this->CmtPage->makePageFileName($this->overviewPageId),
 				$categoryId,
 				$currentPage + 1
 			);
 
 			$prevPageUrl = $currentPage <= 1 ? null : sprintf('%s/%s,%u,%u.html',
-				$this->CmtPage->makePageFilePath(),
-				$this->CmtPage->makePageFileName(),
+				$this->CmtPage->makePageFilePath($this->overviewPageId),
+				$this->CmtPage->makePageFileName($this->overviewPageId),
 				$categoryId,
 				$currentPage - 1
 			);
@@ -127,8 +132,8 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			for ($i = 1; $i <= $countPages; $i++) {
 				$pagingLinks[] = [
 					'pagingLink' => sprintf('%s/%s,%u,%u.html',
-						$this->CmtPage->makePageFilePath(),
-						$this->CmtPage->makePageFileName(),
+						$this->CmtPage->makePageFilePath($this->overviewPageId),
+						$this->CmtPage->makePageFileName($this->overviewPageId),
 						$categoryId,
 						$i),
 					'iter' => $i,
