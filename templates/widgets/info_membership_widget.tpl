@@ -7,7 +7,7 @@
 			Alle Infos zum <i>Förderverein Cursillo-Haus St. Jakobus &ndash; Schwäbische Jakobusgesellschaft &ndash; geistliche Begegenungsstätte</i> finden Sie hier
 		</p>
 		<p>
-			<a href="#" class="more">Mehr erfahren</a>
+			<a href="{PAGEURL:64}" class="more">Mehr erfahren</a>
 		</p>
 	</div>
 </div>
