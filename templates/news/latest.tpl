@@ -4,6 +4,7 @@
 	{ENDLOOP VAR}
 </div>
 
+{IF("{VAR:countPages}" != "1")}
 <nav aria-label="Pagination">
 	<ul class="pagination">
 		{IF({ISSET:prevPageUrl})}<li class="pagination-previous disabled"><a href="{VAR:prevPageUrl}">Neuere Artikel</a></li>{ENDIF}
@@ -17,3 +18,4 @@
 		{IF({ISSET:nextPageUrl})}<li class="pagination-next"><a href="{VAR:nextPageUrl}">Ältere Artikel</a></li>{ENDIF}
 	</ul>
 </nav>
+{ENDIF}

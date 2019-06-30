@@ -97,18 +97,20 @@ if (class_exists('\Jakobus\NewsController') === false) {
 				$currentPage = $matches[2];
 			}
 
+			$postsPerPage = (int)$this->applicationSettings['show_ippnumber'];
+
 			$posts = $this->News->getPosts([
 				'orderDir' => 'DESC',
 				'orderBy' => 'post_online_date',
-				'postsPerPage' => (int)$this->applicationSettings['show_ippnumber'],
+				'postsPerPage' => $postsPerPage,
 				'categoryID' => $categoryId,
 				'currentPage' => $currentPage
 			]);
 
 			$totalPosts = (int)$this->News->getTotalPosts();
-			$countPages = ($totalPosts - 1) / 3 + 1;
+			$countPages = (int)(($totalPosts - 1) / $postsPerPage + 1);
 
-			$nextPageUrl = $currentPage >= $countPages ? null : sprintf('%s/%s,%u,%u.html',
+			$nextPageUrl = ($currentPage) >= $countPages ? null : sprintf('%s/%s,%u,%u.html',
 				$this->CmtPage->makePageFilePath(),
 				$this->CmtPage->makePageFileName(),
 				$categoryId,
@@ -138,7 +140,8 @@ if (class_exists('\Jakobus\NewsController') === false) {
 				'posts' => $posts,
 				'prevPageUrl' => $prevPageUrl,
 				'nextPageUrl' => $nextPageUrl,
-				'pagingLinks' => $pagingLinks
+				'pagingLinks' => $pagingLinks,
+				'countPages' => $countPages
 			]);
 
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'latest.tpl');

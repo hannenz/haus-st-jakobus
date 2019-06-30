@@ -14,6 +14,7 @@
 [ ] HostEurope Rechnungen (n * 9,90)
 	= 715 + 80 
 
+
 # Timing 2019-06-30
 
 - Todos fertig bearbeiten
@@ -24,13 +25,12 @@
 - Giropay: Testmodus abschalten
 - 1und1: Auth Code beantragen
 - HostEurope: Domain Transfer anstossen
+- SSL Zertifikat einrichten
+
 
 # Todos
 
 [ ] Sidebar pinned, ggf. opptional als PAGEVAR lösen ...
-[ ] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
-[✓] Verwendungszweck Spende: Spende Haus St Jakobus
-[ ] Spende: Sende immer eine Benachrichtigung
 [ ] Überschriften max-width wie Fliesstext
 [ ] Beim Pilgerausweis ist nicht der ganze Text im Widget sichtbar, wenn man nach unten Scrollt. 
 [ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
@@ -44,12 +44,18 @@
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
 
 [ ] Responsive !!!
+[✓] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
+[✓] Verwendungszweck Spende: Spende Haus St Jakobus
+[✓] Spende: Sende immer eine Benachrichtigung
 [✓] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
 [✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [✓] Meta Keywords und Description >> Info an Martin
 
 ## Zurückgestellt
 
+## Erledigt
+
+[✓] Home: News Pagination weird
 [✓] Map im Footer: Controls z-index
 [✓] (Hybrid) Lazy loading ?
 [✓] XML Sitemap
