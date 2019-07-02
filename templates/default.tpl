@@ -38,19 +38,20 @@
 		{ENDIF}
 
 
-		<section id="main-container" class="main-container inner-bound" data-sticky-container>
+		<div class="main-container-wrapper">
 			{INCLUDE:PATHTOWEBROOT.'phpincludes/navigation/topbarnav_controller.php'}
-				<div class="main-content">
-					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
-				</div>
-				<aside class="sidebar">
-					<div class="sidebar-inner">
-					<!-- <div class="sticky" data&#45;sticky data&#45;sticky&#45;on="large" data&#45;margin&#45;top="5" data&#45;top&#45;anchor="main&#45;container"> -->
-						{INCLUDE:PATHTOWEBROOT.'phpincludes/pilgrimpasses/cart_controller.php'}
-						{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+			<section id="main-container" class="main-container inner-bound" data-sticky-container>
+					<div class="main-content">
+						{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 					</div>
-				</aside>
-		</section>
+					<aside class='sidebar'>
+						<div{IF("{PAGEVAR:jakobus_sidebar_is_pinned}" == "1")} class="sticky" data-sticky data-sticky-on="large" data-margin-top="5" data-anchor="main-container"{ENDIF}>
+							{INCLUDE:PATHTOWEBROOT.'phpincludes/pilgrimpasses/cart_controller.php'}
+							{LOOP CONTENT(2)}{ENDLOOP CONTENT}
+						</div>
+					</aside>
+			</section>
+		</div>
 
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 

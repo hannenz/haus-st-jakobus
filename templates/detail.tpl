@@ -35,15 +35,17 @@
 		<div class="mood" style="background-image:url('{CONSTANT:MOODIMAGE}');"></div>
 
 
-		<section class="main-container inner-bound">
+		<div class="main-container-wrapper">
 			{INCLUDE:PATHTOWEBROOT."phpincludes/navigation/topbarnav_controller.php"}
+			<section class="main-container inner-bound">
 				<div class="main-content">
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
 				<aside class="sidebar">
 					{LOOP CONTENT(2)}{ENDLOOP CONTENT}
 				</aside>
-		</section>
+			</section>
+		</div>
 
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 	</div>

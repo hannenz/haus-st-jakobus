@@ -30,11 +30,8 @@
 
 # Todos
 
-[ ] Sidebar pinned, ggf. opptional als PAGEVAR lösen ...
-[ ] Beim Pilgerausweis ist nicht der ganze Text im Widget sichtbar, wenn man nach unten Scrollt. 
 [ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
 [ ] Production build, clean-up, performance, w3-check, qs etc.
-[ ] CorporateData: Finalize
 [ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 [ ] Zahlungen: Fehler ins Logfile loggen
@@ -51,10 +48,28 @@
 [✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
 [✓] Meta Keywords und Description >> Info an Martin
 
+
+## Klären
+
+[ ] Impressum, Datenschutz, Kontakt: Ambientebild
+[ ] Footer-Navigation: Definieren
+
+
+## Anmerkungen Inhalte
+
+- allgemein: Nutzung von Ellipsen (…) zu viel, Gedanken- und Bindestriche: einheitlich und korrekt setzen ..., Leerzeichen, k
+- Haus und Ort: Alle Unterseiten sind recht knapp, würde sich anbieten, als eine Seite mit Untersektionen?
+
+
+
+
 ## Zurückgestellt
 
 ## Erledigt
 
+[✓] CorporateData: Finalize
+[✓] Sidebar pinned, ggf. opptional als PAGEVAR lösen ...
+[✓] Beim Pilgerausweis ist nicht der ganze Text im Widget sichtbar, wenn man nach unten Scrollt. 
 [✓] Home: News Pagination weird
 [✓] Map im Footer: Controls z-index
 [✓] (Hybrid) Lazy loading ?

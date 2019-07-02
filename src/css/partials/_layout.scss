@@ -33,18 +33,7 @@ body {
 	}
 }
 
-.main-container {
-
-	min-height: 50vh;
-
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	@include for-size(tablet-landscape-up) {
-		flex-wrap: nowrap;
-	}
-
-	position: relative;
+.main-container-wrapper {
 	background-color: #fff;
 	padding: 1 * $vertical-unit $gutter;
 	@include for-size(tablet-portrait-up) {
@@ -57,6 +46,19 @@ body {
 	margin-bottom: -32px;
 
 	z-index: 2; // Set over map
+	position: relative;
+}
+.main-container {
+
+	min-height: 50vh;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	@include for-size(tablet-landscape-up) {
+		flex-wrap: nowrap;
+	}
+
 }
 
 .main-content {

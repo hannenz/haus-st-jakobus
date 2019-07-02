@@ -38,12 +38,14 @@
 		{ENDIF}
 
 
-		<section id="main-container" class="main-container inner-bound" data-sticky-container>
+		<div class="main-container-wrapper">
 			{INCLUDE:PATHTOWEBROOT.'phpincludes/navigation/topbarnav_controller.php'}
+			<section id="main-container" class="main-container inner-bound" data-sticky-container>
 				<div class="main-content">
 					{LOOP CONTENT(1)}{ENDLOOP CONTENT}
 				</div>
-		</section>
+			</section>
+		</div>
 
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/footer.tpl'}
 	</div>
