@@ -39,9 +39,9 @@ catch (\Exception $e) {
 		<div class="footer-column">
 			<nav>
 				<ul>
-					<li><a href="{PAGEURL:99}">Der Weg</a></li>
-					<li><a href="{PAGEURL:7}">Das Haus</a></li>
-					<li><a href="{PAGEURL:99}">Förderverein</a></li>
+					<li><a href="{PAGEURL:25}">Der Weg</a></li>
+					<li><a href="{PAGEURL:92}">Das Haus</a></li>
+					<li><a href="{PAGEURL:61}">Förderverein</a></li>
 					<li><a href="{PAGEURL:24}">Pilgerausweise</a></li>
 					<li><a href="{PAGEURL:39}">Programm</a></li>
 				</ul>
