@@ -54,5 +54,3 @@
 	{ENDSWITCH}
 {ENDIF}
 
-<p>Sie werden per E-Mail an <em>&lt;{VAR:order_delivery_address_email}&gt;</em> informiert, sobald der/die Pilgerausweis/e versendet werden</p>
-

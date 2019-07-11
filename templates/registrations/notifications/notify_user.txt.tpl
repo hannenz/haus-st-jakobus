@@ -1,6 +1,6 @@
 Sehr geehrte{IF("{VAR:registration_salutation}" == "Herr")}r{ENDIF} {VAR:registration_salutation} {VAR:registration_lastname}
 
-Hiermit  bestätigen wir Ihnen die Anmeldung zum Kurs {VAR:course_title} am {VAR:event_date_fmt}
+Vielen Dank, Ihre Anmeldedaten sind bei uns eingegangen. Wir melden uns zeitnah bei Ihnen
 
 Ihr Cursillo-Team
 
