@@ -25,7 +25,7 @@ class Notification {
 	protected $PageMailerAppId = 152;
 	
 
-	protected $adminNotificationRecipient = 'pilgerpass_neu@haus-st-jakobus.de';
+	protected $adminNotificationRecipient = 'pilgerpass@haus-st-jakobus.de';
 
 	/**
 	 * Constructor
