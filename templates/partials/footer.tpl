@@ -1,4 +1,23 @@
-{INCLUDE:PATHTOWEBROOT."phpincludes/corporate_data/corporate_data.php"}
+{EVAL}
+use Contentomat\PsrAutoloader;
+use Jakobus\CorporateData;
+
+$autoLoader = new PsrAutoloader();
+$autoLoader->addNamespace('Jakobus', PATHTOWEBROOT . "phpincludes/classes");
+
+try {
+	$CorporateData = new CorporateData();
+	$cdOrgName = $CorporateData->getField('address_organization');
+	$cdStreetAddress = $CorporateData->getField('address_street_address');
+	$cdZip = $CorporateData->getField('address_zip');
+	$cdCity = $CorporateData->getField('address_city');
+	$cdCountry = $CorporateData->getField('address_country');
+	$cdClaim = $CorporateData->getField('claim');
+}
+catch (\Exception $e) {
+	die ($e->getMessage());
+}
+{ENDEVAL}
  <figure class="map">
 	 <div id="map"></div>
  </figure>
@@ -21,9 +40,11 @@
 		<div class="footer-column">
 			<nav>
 				<ul>
-					{LOOP NAVIGATION(97)}
-						<li><a href="{NAVIGATION:link}">{NAVIGATION:title}</a></li>
-					{ENDLOOP NAVIGATION}
+					<li><a href="{PAGEURL:25}">Der Weg</a></li>
+					<li><a href="{PAGEURL:92}">Das Haus</a></li>
+					<li><a href="{PAGEURL:61}">Förderverein</a></li>
+					<li><a href="{PAGEURL:24}">Pilgerausweise</a></li>
+					<li><a href="{PAGEURL:39}">Programm</a></li>
 				</ul>
 			</nav>
 		</div>
