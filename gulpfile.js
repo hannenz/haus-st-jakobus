@@ -98,9 +98,6 @@ var settings = {
 					'node_modules/motion-ui/src',
 					$.bourbon.includePaths
 				]
-			},
-			autoprefixer: {
-				browsers: ['last 3 versions', '>2%', 'IE 11']
 			}
 		}
 	},
