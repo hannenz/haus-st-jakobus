@@ -46,7 +46,7 @@
 [ ] News: Ambientebild global (immer ein festes)
 [ ] Benutzergruppe: Hospitalleros nur Leserecht + Versandstatus ändern
 
-[ ] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
+[✓] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
 [ ] Production build, clean-up, performance, w3-check, qs etc.
 <<<<<<< HEAD
 =======

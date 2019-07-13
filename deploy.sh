@@ -50,7 +50,7 @@ FTP_USERNAME=
 ##
 # @var string
 # Remote base directory path, relative to login path, no leading or trailing slashes!
-REMOTE_DIR=/var/www/vhosts/lvps83-169-35-13.dedicated.hosteurope.de/httpdocs
+REMOTE_DIR=/var/www/vhosts/lvps83-169-35-13.dedicated.hosteurope.de/haus-st-jakobus.de
 
 ##
 # @var string 
