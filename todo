@@ -15,17 +15,27 @@
 	= 715 + 80 
 
 
+# Zu klären
+
+- Domain jakobusgesellschaft.de auch umziehen? (Vermutlich ja)
+- Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
+- Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
+- Plesk: PHP 7.3 aktivieren
+
+
+
+
 # Timing 2019-06-30
 
 - Todos fertig bearbeiten
-- E-Mail Konten 1und1: Sichern
-- E-Mail Konten bei HostEurope neu anlegen
+[✓] E-Mail Konten 1und1: Sichern
+[✓] E-Mail Konten bei HostEurope neu anlegen
 - neue E-Mail Zugangsdaten an Martin schicken (Read 2 Burn)
-- SMTP Zugangsdaten  anpassen in CMT: Tabellenmanager > Einstellungen > Pagemailer
+[✓] SMTP Zugangsdaten  anpassen in CMT: Tabellenmanager > Einstellungen > Pagemailer
 - Giropay: Testmodus abschalten
-- 1und1: Auth Code beantragen
-- HostEurope: Domain Transfer anstossen
-- SSL Zertifikat einrichten
+[✓] 1und1: Auth Code beantragen
+[✓] HostEurope: Domain Transfer anstossen
+[✓] SSL Zertifikat einrichten
 
 
 # Todos
