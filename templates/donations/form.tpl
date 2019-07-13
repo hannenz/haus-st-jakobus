@@ -43,7 +43,7 @@
 					<div class="form-field form-field--select">
 						<label for="payment_method">Ich bezahle mit …</label>
 						<select name="payment_method">
-							<option value="paypal" {IF("{VAR:payment_method}" == "paypal")}selected{ENDIF}>PayPal</option>
+							<!-- <option value="paypal" {IF("{VAR:payment_method}" == "paypal")}selected{ENDIF}>PayPal</option> -->
 							<option value="giropay" {IF("{VAR:payment_method}" == "giropay")}selected{ENDIF}>Giropay</option>
 						</select>
 					</div>
