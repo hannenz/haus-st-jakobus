@@ -114,8 +114,7 @@ var settings = {
 				'./src/js/vendor/track.geo.json',
 				'./node_modules/foundation-sites/dist/js/**/*.js',
 				'./node_modules/jquery/dist/jquery.min.js',
-				// './node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
-				'./node_modules/jquery.appendgrid/dist/AppendGrid.js',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
 				'./node_modules/leaflet/dist/leaflet.js',
 				'./node_modules/vanilla-lazyload/dist/lazyload.min.js'
 		],
@@ -125,7 +124,7 @@ var settings = {
 	cssVendor: {
 		src:	[
 				'./src/css/vendor/**/*.css',
-				// './node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
+				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
 				'./node_modules/leaflet/dist/leaflet.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
