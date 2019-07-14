@@ -16,7 +16,7 @@ RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 #Force HTTPS
 RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} haus-st-jakob.de
+#RewriteCond %{HTTP_HOST} haus-st-jakob.de
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 
