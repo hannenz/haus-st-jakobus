@@ -80,14 +80,9 @@ body {
 .headline--section-title {
 	// Test
 	padding: 10px 16px;
-	background: linear-gradient(to right, 
-		rgba($primary-color, 1) 0,
-		rgba($primary-color, 1) 4px,
-		rgba($red3, 1) 4px,
-		rgba($red3, 0) 100% 
-	);
+	background-image: linear-gradient(to right, rgba($primary-color, 1) 0, rgba($primary-color, 1) 4px, rgba($red3, 1) 4px, rgba($red3, 0) 100% );
 
-	span { 
+	span {
 		font-weight: normal;
 		// color: $red4;
 	}
@@ -110,7 +105,7 @@ body {
 
 .body-text {
 	@include type-setting(0, $vertical-unit);
-	max-width:44rem;
+	max-width: 44rem;
 }
 
 h1,h2,h3,h4,h5,h6 {

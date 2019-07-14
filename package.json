@@ -43,19 +43,20 @@
     "michelangelo": "^0.8.0",
     "moment": "^2.24.0",
     "motion-ui": "^2.0.3",
-    "vanilla-lazyload": "^12.0.0"
+    "stylelint": "^10.1.0"
   },
   "dependencies": {
     "foundation-sites": "^6.5.3",
     "jquery": "^3.4.1",
     "jquery.appendgrid": "^1.7.1",
-    "leaflet": "^1.5.1"
+    "leaflet": "^1.5.1",
+    "vanilla-lazyload": "^12.0.0"
   },
   "project_settings": {
     "prefix": "./dist/"
   },
   "browserslist": [
-    "defaults"
+    "defaults and > 3%"
   ],
   "stylelint": {
     "extends": "/home/hannenz/.stylelintrc.json"

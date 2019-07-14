@@ -1,67 +1,67 @@
 /* brightbox.css
- * 
+ *
  * Johannes Braun <j.braun@agentur-halma.de>
  * 2012
  */
 
 .brightbox-overlay {
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	text-align:center;
-	overflow:hidden;
-	background-color:#000;
-	opacity:1;
-	z-index:1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	overflow: hidden;
+	background-color: #000;
+	opacity: 1;
+	z-index: 1000;
 }
 
 .brightbox {
-	background:#fff;
-	position:fixed;
-	box-sizing:border-box;
-	width:300;
-	height:200;
-	overflow:visible;
-	padding:0;
-	opacity:1;
-	z-index:1001;
+	background: #fff;
+	position: fixed;
+	box-sizing: border-box;
+	width: 300;
+	height: 200;
+	overflow: visible;
+	padding: 0;
+	opacity: 1;
+	z-index: 1001;
 }
 
 .brightbox.busy {
-	background:#fff url('../images/ajax-loader.gif') no-repeat 50% 50%;
+	background: #fff url('../images/ajax-loader.gif') no-repeat 50% 50%;
 }
 
 .brightbox-button {
-	font-family:sans-serif;
-	font-weight:bold;
-	font-size:32px;
-	line-height:24px;
-	height:24px;
-	width:24px;
-	height:24px;
-	position:absolute;
-	text-align:center;
-	color : #4d4d4d;
-	display : block;
-	background:#ffffff;
-	z-index:1003;
-	opacity:0;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 32px;
+	line-height: 24px;
+	height: 24px;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	text-align: center;
+	color: #4d4d4d;
+	display: block;
+	background: #ffffff;
+	z-index: 1003;
+	opacity: 0;
 }
 
 .brightbox-button,
 .brightbox-info-box {
-	transition:opacity 0.2s ease;
+	transition: opacity 0.2s ease;
 }
- 
+
 .brightbox:hover .brightbox-button {
-	opacity:1.0
+	opacity: 1.0;
 }
 
 .brightbox-prev, .brightbox-next, .brightbox-close {
-	height:40px;
-	width:40px;
+	height: 40px;
+	width: 40px;
 	transition: 250ms;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
 	color: $primary-color;
@@ -75,60 +75,60 @@
 	}
 
 	&:hover {
-		background-color: $primary-color;;
+		background-color: $primary-color;
 		color: #fff;
 	}
 }
 
 .brightbox-close {
-	top : 0px;
-	right : 0px;
-	padding:4px;
+	top: 0;
+	right: 0;
+	padding: 4px;
 }
 
 .brightbox-next {
-	top : 50%;
+	top: 50%;
 	transform: translateY(-50%);
-	right : 0px;
+	right: 0;
 }
 .brightbox-prev {
-	top:50%;
+	top: 50%;
 	transform: translateY(-50%);
-	left:0;
+	left: 0;
 }
 
 .brightbox-info-box {
-	background:rgba(0, 0, 0, 0.3);
-	color:#fff;
-	font-size:16px;
-	padding:8px 8px;
-	line-height:1.2em;
-	margin-top:30px;
-	position:absolute;
-	bottom:0;
-	left:0;
-	width:100%;
-	z-index:1005;
-	opacity:0;
+	background: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	font-size: 16px;
+	padding: 8px 8px;
+	line-height: 1.2em;
+	margin-top: 30px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1005;
+	opacity: 0;
 }
 
 .brightbox:hover .brightbox-info-box {
-	opacity:1.0;
+	opacity: 1;
 }
 
 .brightbox img {
-	display:block;
-	position:absolute;
-	top:0;
-	left:0;
-	z-index:1002;
-	cursor:pointer;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1002;
+	cursor: pointer;
 }
 
 .brightbox-busy {
-	color:#888;
-	text-align:left;
-	font-size:12px;
-	line-height:1;
-	padding:10px;
+	color: #888;
+	text-align: left;
+	font-size: 12px;
+	line-height: 1;
+	padding: 10px;
 }

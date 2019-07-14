@@ -43,7 +43,7 @@
 			img {
 				margin-bottom: $vertical-unit;
 			}
-				margin-bottom: 2 * $vertical-unit;
+			margin-bottom: 2 * $vertical-unit;
 		}
 	}
 }
@@ -57,14 +57,14 @@
 	&__image {
 		width: 33%;
 		@include media-object-section;
-		@include media-object-stack;	
+		@include media-object-stack;
 		flex-basis: auto;
 	}
 
 	&__body {
 		width: 66%;
 		@include media-object-section;
-		@include media-object-stack;	
+		@include media-object-stack;
 	}
 
 	&__meta {
@@ -117,7 +117,7 @@
 			display: none;
 		}
 
-		&__image, 
+		&__image,
 		&__body {
 			width: 100%;
 		}
