@@ -27,12 +27,11 @@
 
 # Timing 2019-06-30
 
-- Todos fertig bearbeiten
+[ ] Giropay: Testmodus abschalten
 [✓] E-Mail Konten 1und1: Sichern
 [✓] E-Mail Konten bei HostEurope neu anlegen
-- neue E-Mail Zugangsdaten an Martin schicken (Read 2 Burn)
+[✓] neue E-Mail Zugangsdaten an Martin schicken (Read 2 Burn)
 [✓] SMTP Zugangsdaten  anpassen in CMT: Tabellenmanager > Einstellungen > Pagemailer
-- Giropay: Testmodus abschalten
 [✓] 1und1: Auth Code beantragen
 [✓] HostEurope: Domain Transfer anstossen
 [✓] SSL Zertifikat einrichten
@@ -41,7 +40,7 @@
 # Todos
 
 [ ] Veranstaltungen: Möglichkeit Flyer DL
-[ ] Kurse: Medien geht nicht !
+[✓] Kurse: Medien geht nicht !
 
 [ ] News: Ambientebild global (immer ein festes)
 [✓] Benutzergruppe: Hospitaleros nur Leserecht + Versandstatus ändern
