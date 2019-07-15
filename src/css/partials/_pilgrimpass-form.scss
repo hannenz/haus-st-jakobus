@@ -80,18 +80,22 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		background-color: #fff;
-		width: calc(50% - 2 * #{$gutter});
-		max-width: calc(50% - 2 * #{$gutter});
-		margin: 0 $gutter $gutter $gutter;
 		flex: 1 0 auto;
+		background-color: #fff;
+		width: calc(100% - 2 * #{$gutter});
+		margin: 0 $gutter $gutter $gutter;
+
+		@include for-size(desktop-up) {
+			width: calc(50% - 2 * #{$gutter});
+			max-width: calc(50% - 2 * #{$gutter});
+		}
 	}
 
 
 	table {
 
 		flex: 1 0 auto;
-		min-width: 400px;
+		// min-width: 320px;
 
 		td, th {
 			vertical-align: top;

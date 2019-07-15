@@ -19,12 +19,30 @@ form {
 		max-width: 300px;
 	}
 
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		> label {
+			// flex: 1 0 auto;
+			margin-top: auto;
+		}
+
+		> label + * {
+			// flex: 0 0 auto;
+			margin-bottom: $vertical-unit;
+		}
+	}
+
 	// Checkboxes
 	.form-field--flag {
-		vertical-align: middle;;
+		vertical-align: middle;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		margin: $vertical-unit 0;
+		padding-left: 0.5 * $gutter;
+		padding-right: 0.5 * $gutter;
 
 		label {
 			display: inline-block;
