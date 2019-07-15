@@ -79,7 +79,8 @@ class Pilgrimpass extends Model {
 	public function notifyAdmin($data) {
 		$this->Parser->setMultipleParserVars($data);
 		$data['passes_count'] = count($data['pilgrimpasses']);
-		return $this->Notification->notifyAdmin("Antrag Pilgerausweis", "notify_admin", $data);
+		$subject = sprintf("Antrag Pilgerausweis: %s %s", $data['order_delivery_address_firstname'], $data['order_delivery_address_lastname']);
+		return $this->Notification->notifyAdmin($subject, "notify_admin", $data);
 	}
 
 	/**
