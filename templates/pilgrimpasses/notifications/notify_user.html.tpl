@@ -148,12 +148,11 @@
 {ENDIF}
 
 <p>
-	Sie erhalten einen Benachrichtigung sobald die Pilgerausweise versendet wurden.<br />
-	Vielen Dank,
+	Vielen Dank für Ihre Bestellung - die wir zeitnah bearbeiten werden.
 </p>
 
 <p>
-	Ihr Cursillo-Team
+	Ihr Jakobus-Team
 </p>
 
 

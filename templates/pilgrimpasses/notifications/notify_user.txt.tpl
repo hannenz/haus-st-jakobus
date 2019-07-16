@@ -55,8 +55,7 @@ Hiermit  bestätigen wir Ihnen die Beantragung eines Pilgerausweises mit den fol
 
 
 
-Sie erhalten einen Benachrichtigung sobald die Pilgerausweise versendet wurden.
-Vielen Dank,
+Vielen Dank für Ihre Bestellung - die wir zeitnah bearbeiten werden.
 
-Ihr Cursillo-Team
+Ihr Jakobus-Team
 
