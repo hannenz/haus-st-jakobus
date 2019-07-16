@@ -21,7 +21,7 @@ class Donation extends Model {
 	/**
 	 * @var string
 	 */
-	protected $adminNotificationRecipient = 'jbhannenz@gmail.com';
+	protected $adminNotificationRecipient = 'info@haus-st-jakobus.de';
 
 	/**
 	 * @var int
