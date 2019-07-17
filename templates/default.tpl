@@ -27,8 +27,6 @@
 <body id="top" class="debug-base-line-grid--is-visible">
 	<div class="outer-container">
 		
-		<div class="debug-base-line-grid"> </div>
-
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 		{IF("{PAGEID}" == "2")}

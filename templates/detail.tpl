@@ -26,10 +26,6 @@
 <body id="top" class="debug-base-line-grid--is-visible">
 	<div class="outer-container">
 		
-		<div class="debug-base-line-grid"> </div>
-		<!-- Inject SVG sprites -->
-		<!-- <object type="image/svg+xml" data="/img/icons.svg" onload="this.parentNode.replaceChild(this.getSVGDocument().childNodes[0], this)"> </object> -->
-
 		{INCLUDE:PATHTOWEBROOT.'templates/partials/header.tpl'}
 
 		<div class="mood" style="background-image:url('{CONSTANT:MOODIMAGE}');"></div>
