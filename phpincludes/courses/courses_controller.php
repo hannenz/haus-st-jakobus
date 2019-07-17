@@ -154,7 +154,6 @@ class CoursesController extends Controller {
 		->order(['event_begin' => 'ASC'])
 		->findAll();
 
-
 		define('COURSETITLE', $course['course_title']);
 		define('MOODIMAGE', '/media/courses/'.$course['course_image']);
 

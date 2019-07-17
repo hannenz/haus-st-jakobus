@@ -2,6 +2,7 @@
 namespace Jakobus;
 
 use Jakobus\Course;
+use Contentomat\TableMedia;
 use \Exception;
 
 /**
@@ -39,12 +40,17 @@ class Event extends Model {
 	 */
 	protected $Course;
 
+	/**
+	 * @var Contentomat\TableMedia
+	 */
+	protected $TableMedia;
 
 
 	public function init() {
 		setlocale (LC_ALL, 'de_DE.utf-8');
 		$this->setTableName ('jakobus_events');
 		$this->Course = new Course();
+		$this->TableMedia = new TableMedia ();
 		// $this->Registration = new Registration();
 	}
 
@@ -388,6 +394,27 @@ EOS;
 		else {
 			$event['event_seats_availability_class'] = 'high';
 		}
+
+		// Read images
+		$images = $this->TableMedia->getMedia ([
+			'tableName' => $this->tableName,
+			'entryID' => $event['id'],
+			'mediaType' => 'image'
+		]);
+
+		$event['images'] = $images;
+
+		// Read documents
+		$documents = $this->TableMedia->getMedia([
+			'tableName' => $this->tableName,
+			'entryID' => $event['id'],
+			'mediaType' => 'document'
+		]);
+		foreach ($documents as  &$document) {
+			$info = pathinfo(PATHTOWEBROOT . 'media/events/'.$document['media_document_file_internal']);
+			$document['media_document_file_extension'] = $info['extension'];
+		}
+		$event['documents'] = $documents;
 		return $event;
 	}
 

@@ -51,6 +51,16 @@
 							<dd>{VAR:event_remark:nl2br}</dd>
 						</dl>
 						{ENDIF}
+						{IF({COUNT:documents})}
+						<dl>
+							<dt>Downloads</dt>
+							<dd>
+								{LOOP VAR(documents)}
+									<a href="/media/events/{VAR:media_document_file_internal}" title="{VAR:media_title}" download>{VAR:media_document_file}</a>
+								{ENDLOOP VAR}
+							</dd>
+						</dl>
+						{ENDIF}
 					</dl>
 
 					<dl>
