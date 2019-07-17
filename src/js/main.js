@@ -62,7 +62,9 @@ function APP () {
 		}
 
 		// Init brightbox on galleries (fotoalbum)
-		$('.fotoalbum a').brightbox();
+		if ($('.fotoalbum a').length > 0) {
+			$('.fotoalbum a').brightbox();
+		}
 
 		if (document.getElementById('pilgrimpass-form')) {
 			this.initPilgrimpassForm();
