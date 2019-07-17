@@ -21,7 +21,7 @@
 - Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
 - Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
 - Plesk: PHP 7.3 aktivieren
-
+- Zertifikat E-Mail ist nicht richtig?
 
 
 
@@ -39,9 +39,9 @@
 
 # Todos
 
-[ ] jakobusgesellschaft.de auch noch umziehen + E-Mail Adresse info@jakobusgesellschaft.de anlegen
-[ ] Info an  Martin: Zugangsdaten hospitalero
-[ ] Veranstaltungen: Möglichkeit Flyer DL
+[✓] jakobusgesellschaft.de auch noch umziehen + E-Mail Adresse info@jakobusgesellschaft.de anlegen
+[✓] Info an  Martin: Zugangsdaten hospitalero
+[✓] Veranstaltungen: Möglichkeit Flyer DL
 [✓] Kurse: Medien geht nicht !
 
 [ ] News: Ambientebild global (immer ein festes)

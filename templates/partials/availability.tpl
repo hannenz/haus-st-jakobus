@@ -3,5 +3,5 @@
 		<rect x="0" y="0" width="30" height="30" />
 	</svg>
 	<progress class="availability__bar" max="100" value="{VAR:event_seats_perc}" title="{VAR:event_seats_available} Plätze frei"></progress>
-	<div class="availability__text">{VAR:event_seats_available} Plätze frei</div>
+	<!-- <div class="availability__text">{VAR:event_seats_available} Plätze frei</div> -->
 </div>
