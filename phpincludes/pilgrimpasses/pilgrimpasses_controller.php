@@ -629,6 +629,36 @@ class PilgrimpassesController extends Controller {
 			exit;
 		}
 	}
+
+	public function actionOrderToggleShipped() {
+
+		$applicationId = $this->Session->getSessionVar('cmtLastApplicationID');
+
+		$id = $this->getvars['id'];
+		$order = $this->Order->findById($id);
+		if (!empty($order)) {
+			if ($order['order_shipping_status'] == 'shipped') {
+				$order['order_shipping_status'] = 'open';
+				$order['order_shipping_date'] = '';
+			}
+			else {
+				$order['order_shipping_status'] = 'shipped';
+				$order['order_shipping_date'] = strftime('%F %T');
+			}
+			$this->Order->save($order);
+		}
+
+		$redirectUrl = sprintf("//%s/admin/cmt_applauncher.php?sid=%s&launch=%u",
+			$_SERVER['SERVER_NAME'],
+			SID,
+			$applicationId
+		);
+
+		header('Location: ' . $redirectUrl);
+		exit;
+
+		echo '<pre>'; var_dump($redirectUrl); echo '</pre>'; die();
+	}
 }
 
 
