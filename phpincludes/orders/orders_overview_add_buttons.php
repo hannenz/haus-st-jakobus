@@ -29,14 +29,16 @@ $Order = new Order();
 $orderId = $cmtTableData['id'];
 
 $order = $Order->findById($orderId);
+$shipped = $order['order_shipping_state'] == 'shipped';
 
-$button = sprintf('<a class="cmtButton" href="//%s%s%s?action=orderToggleShipped&id=%u" title="%s">%s</a>', 
+$button = sprintf('<a class="cmtButton %s" href="//%s%s%s?action=orderToggleShipped&id=%u" title="%s">%s</a>', 
+	$shipped ? 'cmtButtonSuccess' : '',
 	$_SERVER['SERVER_NAME'],
 	$CmtPage->makePageFilePath($pageId),
 	$CmtPage->makePageFileName($pageId),
 	$orderId,
-	($order['order_shipping_status'] != 'shipped') ? 'Diese Bestellung als \'versendet\' markieren' : 'Diese Bestellnug als \'nicht versendet\' markieren',
-	($order['order_shipping_status'] != 'shipped') ? 'Versendet' : 'Nicht versendet'
+	$shipped ? 'Diese Bestellung als \'versendet\' markieren' : 'Diese Bestellnug als \'nicht versendet\' markieren',
+	$shipped ? 'Versendet' : 'Nicht versendet'
 );
 
 array_push($cmt_functions, $button);
