@@ -1,45 +1,23 @@
 <?php
-namespace Jakobus;
 /**
- * Add a button to toggle shipping status
- * in order's overview
+ * Add a button to toggle shipping status in order's overview
+ * Code-Manager Event: before-show-row (Vor dem Anzeigen einer Zeile)
  *
  * @author Johannes Braun <johannes.braun@hannenz.de>
  * @package haus-st-jakobus
  * @version 2019-07-19
  */
+namespace Jakobus;
 
-use Contentomat\PsrAutoloader;
-use Contentomat\Contentomat;
-use Contentomat\CmtPage;
-use Jakobus\Order;
+$isShipped = ($cmtTableData['order_shipping_status'] == 'Versendet');
 
-
-$autoload = new PsrAutoloader();
-$autoload->addNamespace("Contentomat", INCLUDEPATHTOADMIN . 'classes');
-$autoload->addNamespace("Jakobus", PATHTOWEBROOT . 'phpincludes/classes');
-
-
-// Is this safe?
-$pageId = 24;
-
-
-$CmtPage  = new CmtPage();
-$Order = new Order();
-$orderId = $cmtTableData['id'];
-
-$order = $Order->findById($orderId);
-$shipped = $order['order_shipping_state'] == 'shipped';
-
-$button = sprintf('<a class="cmtButton %s" href="//%s%s%s?action=orderToggleShipped&id=%u" title="%s">%s</a>', 
-	$shipped ? 'cmtButtonSuccess' : '',
-	$_SERVER['SERVER_NAME'],
-	$CmtPage->makePageFilePath($pageId),
-	$CmtPage->makePageFileName($pageId),
-	$orderId,
-	$shipped ? 'Diese Bestellung als \'versendet\' markieren' : 'Diese Bestellnug als \'nicht versendet\' markieren',
-	$shipped ? 'Versendet' : 'Nicht versendet'
+$button = sprintf('<a class="cmtIcon cmtIconShipped %s" href="%s&amp;action=orderToggleShipped&amp;id=%u" title="%s">%s</a>', 
+	$isShipped ? 'cmtIconShipped--is-shipped' : '',
+	SELFURL,
+	$cmtTableData['id'],
+	$isShipped ? 'Diese Bestellung als \'nicht versendet\' markieren' : 'Diese Bestellnug als \'versendet\' markieren',
+	$isShipped ? 'Offen' : 'Versendet'
 );
 
-array_push($cmt_functions, $button);
+array_unshift($cmt_functions, $button);
 ?>
