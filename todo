@@ -17,11 +17,13 @@
 
 # Zu klären
 
-- Domain jakobusgesellschaft.de auch umziehen? (Vermutlich ja)
 - Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
 - Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
 - Plesk: PHP 7.3 aktivieren
 - Zertifikat E-Mail ist nicht richtig?
+- E-Mail: Auffallend viele Mail Delivery Failures
+- Einstellen PDF / Flyer bei Veranstaltung: Prüfen warum das nicht funktioniert
+- Hospitalero-Laptop: Firefox Passwort speichern
 
 
 
