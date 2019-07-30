@@ -9,14 +9,15 @@
  */
 namespace Jakobus;
 
-$isShipped = ($cmtTableData['order_shipping_status'] == 'Versendet');
+$isShipped = ($cmtTableDataRaw['order_shipping_status'] == 'shipped');
+$id = $cmtTableDataRaw['id'];
 
-$button = sprintf('<a class="cmtIcon cmtIconShipped %s" href="%s&amp;action=orderToggleShipped&amp;id=%u" title="%s">%s</a>', 
-	$isShipped ? 'cmtIconShipped--is-shipped' : '',
+$button = sprintf('<span><input id="order-shipped-cb-%u" type="checkbox" %s onchange=\'window.location="%s&amp;action=orderToggleShipped&amp;id=%u";\' /><label for="order-shipped-cb-%u">Versendet</label></span>',
+	$id,
+	$isShipped ? 'checked' : '',
 	SELFURL,
-	$cmtTableData['id'],
-	$isShipped ? 'Diese Bestellung als \'nicht versendet\' markieren' : 'Diese Bestellnug als \'versendet\' markieren',
-	$isShipped ? 'Offen' : 'Versendet'
+	$id,
+	$id
 );
 
 array_unshift($cmt_functions, $button);

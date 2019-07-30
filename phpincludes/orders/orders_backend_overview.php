@@ -24,15 +24,8 @@ class OrdersBackendController extends ApplicationController {
 	protected $Order;
 
 
-	/**
-	 * @var \Contentomat\Parser
-	 */
-	protected $XParser;
-
-
 	public function init() {
 		$this->Order = new Order();
-		$this->XParser = new \Contentomat\Parser();
 		$this->templatesPath = PATHTOWEBROOT . 'templates/orders/';
 		$this->initActions($this->action);
 	}
@@ -46,7 +39,7 @@ class OrdersBackendController extends ApplicationController {
 	 */
 	public function actionDefault() {
 		$template = $this->templatesPath . 'service_default_frame.tpl';
-		$this->content .= $this->XParser->parseTemplate($template);
+		$this->content .= $this->parser->parseTemplate($template);
 	}
 
 
