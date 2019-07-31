@@ -98,16 +98,20 @@ class Event extends Model {
 	 * @param int year
 	 * @param int month, optional
 	 * @param int day, optional
+	 * @param bool onlyUpcoming, optional, default: false, fetchc only upcoming (and ongoing!) events
 	 * @return array
 	 * @access public
 	 */
-	public function findByPeriod($year, $month = null, $day = null) {
+	public function findByPeriod($year, $month = null, $day = null, $onlyUpcoming = false) {
 		$query = sprintf ("SELECT Event.* FROM jakobus_events AS Event WHERE YEAR(event_begin)=%u", (int)$year);
 		if ($month != null) {
 			$query .= sprintf(" AND MONTH(event_begin)=%u", (int)$month);
 		}
 		if ($day != null) {
 			$query .= sprintf(" AND DAY(event_begin)=%u", (int)$day);
+		}
+		if ($onlyUpcoming) {
+			$query .= sprintf(" AND event_end > NOW()");
 		}
 		$query .= " ORDER BY event_begin ASC";
 		if ($this->db->query($query) !== 0) {

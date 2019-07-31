@@ -89,10 +89,8 @@ class EventsController extends Controller {
 		$currentMonth = (int)date('m');
 		$currentYear = (int)date('Y');
 
-		// $currentMonth = 1;
-
 		for ($month = $currentMonth; $month <= 12; $month++) {
-			$events = $this->Event->findByPeriod($currentYear, $month);
+			$events = $this->Event->findByPeriod($currentYear, $month, null, true);
 
 			if (!empty($events)) {
 				$this->parser->setMultipleParserVars([
