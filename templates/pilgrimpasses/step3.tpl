@@ -11,7 +11,6 @@
 
 			<p>{IF("{VAR:pilgrimpassesCount}" == "1")}Der Pilgerausweis ist{ELSE}Die Pilgerausweise sind{ENDIF} umsonst. Durch <strong>Ihr Spende</strong> unterstützen Sie unsere Arbeit.</p>
 			<p>Sie haben {VAR:pilgrimpassesCount} Pilgerausweis{IF("{VAR:pilgrimpassesCount}" != "1")}e{ENDIF} bestellt. Wie viel möchten Sie spenden?<br><small>(Wenn Sie nichts spenden möchten, wählen Sie <em>«Anderer Betrag»</em> und tragen eine <em>«0» (Null)</em> ein)</small></p>
-			
 			<div class="button-group">
 				<input id="payment-amount-1" type="radio" name="order_amount" value="{VAR:amount1}" {IF("{VAR:order_amount}" == "{VAR:amount1}")}checked{ENDIF}>
 				<label for="payment-amount-1" class="button">{VAR:amount1} &euro;</label>
@@ -28,6 +27,8 @@
 				<input type="text" id="payment-amount-custom-text" name="order_amount_custom" value="{VAR:order_amount_custom}" placeholder="Beliebigen Euro-Betrag eingeben">
 				<label for="payment-amount-custom-text">&euro;</label>
 			</div>
+			<p>Als Spendenbescheinigung fürs Finanzamt genügt (bis 200 &euro;) der Kontoauszug.<br>
+			Spendenbescheinigungen stellen wir ab 50 € aus.</p>
 		</div>
 
 		<div id="payment" class="form-field form-field--select">
