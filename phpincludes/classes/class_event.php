@@ -299,9 +299,9 @@ EOS;
 
 		if ($y1 == $y2 && $m1 == $m2 && $d1 == $d2) {
 			$event['event_date_fmt'] = strftime('%d.%m.%Y', strtotime ($event['event_begin']));
-			if (!empty($event['event_begin_annotation'])) {
-				$event['event_datrhe_fmt'] .= " " . $event['event_begin_annotation'];
-			}
+			// if (!empty($event['event_begin_annotation'])) {
+			// 	$event['event_datrhe_fmt'] .= " " . $event['event_begin_annotation'];
+			// }
 		}
 		else {
 			$fmt = '%d.%m';
