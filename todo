@@ -7,23 +7,22 @@
 
 # Extra berechenbare Dinge
 
-[ ] Paypal Integration (3h)
-[ ] Pilgerausweise: Mehrere bestellbar (6h)
-[ ] Datenschutzbestimmungen anpassen / überarbeiten (1h)
-[ ] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten (3h)
-[ ] HostEurope Rechnungen (n * 9,90)
+[✓] Paypal Integration (3h)
+[✓] Pilgerausweise: Mehrere bestellbar (6h)
+[✓] Datenschutzbestimmungen anpassen / überarbeiten (1h)
+[✓] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten (3h)
+[✓] HostEurope Rechnungen (n * 9,90)
 	= 715 + 80 
 
 
 # Zu klären
 
-- Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
-- Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
-- Plesk: PHP 7.3 aktivieren
-- Zertifikat E-Mail ist nicht richtig?
-- E-Mail: Auffallend viele Mail Delivery Failures
-- Einstellen PDF / Flyer bei Veranstaltung: Prüfen warum das nicht funktioniert
-- Hospitalero-Laptop: Firefox Passwort speichern
+[ ] Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
+[ ] Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
+[ ] Plesk: PHP 7.3 aktivieren
+[?] Zertifikat E-Mail ist nicht richtig?
+[✓] Einstellen PDF / Flyer bei Veranstaltung: Prüfen warum das nicht funktioniert
+[✓] Hospitalero-Laptop: Firefox Passwort speichern
 
 
 
