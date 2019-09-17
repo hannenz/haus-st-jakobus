@@ -17,6 +17,7 @@
 
 # Zu klären
 
+
 [ ] Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
 [ ] Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
 [ ] Plesk: PHP 7.3 aktivieren
@@ -38,8 +39,20 @@
 [✓] SSL Zertifikat einrichten
 
 
+
 # Todos
 
+[ ] Bildrechte !!!
+[ ] Moodbild verzerrt ?!?
+[ ] Bestellungen: Sortieren nach Datum absteogend (neueste zuerst)
+[ ] Bestellungen kommen öfter mehrfach mit einigen leer
+[ ] Bestellungen: Pilgerausweise: E-Mail verlinken (mailto, für Rückfragen)
+[ ] Tabelle Bestellungen: bezahlstatus rausnehmen (wann allgemein deaktiviert werden)
+[ ] Kontonummer bei Spende, Zahlungsart Überweisung
+[ ] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
+
+
+[ ] Formular: Namen mit Bindestrich erlauben
 [ ] Events: Begin Zeit 00:00 >> keine Ausgabe
 [ ] Events: Annotation nicht in Kicker ausgeben
 [ ] Events Beginn/Ende untereinander ausrichten
