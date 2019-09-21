@@ -47,15 +47,16 @@
 [ ] Bestellungen: Sortieren nach Datum absteogend (neueste zuerst)
 [ ] Bestellungen kommen öfter mehrfach mit einigen leer
 [ ] Bestellungen: Pilgerausweise: E-Mail verlinken (mailto, für Rückfragen)
-[ ] Tabelle Bestellungen: bezahlstatus rausnehmen (wann allgemein deaktiviert werden)
+[ ] Tabelle Bestellungen: bezahlstatus rausnehmen (kann allgemein deaktiviert werden)
 [ ] Kontonummer bei Spende, Zahlungsart Überweisung
 [ ] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
 
 
-[ ] Formular: Namen mit Bindestrich erlauben
+[ ] Events: JSON+LD schema.org (andere Bereiche auch sinnvoll?)
+[✓] Formular: Namen mit Whitespace erlauben
 [ ] Events: Begin Zeit 00:00 >> keine Ausgabe
 [ ] Events: Annotation nicht in Kicker ausgeben
-[ ] Events Beginn/Ende untereinander ausrichten
+[✓] Events Beginn/Ende untereinander ausrichten
 [ ] E-Mail von Martin 
 [✓] lvsp-Version abschalten
 

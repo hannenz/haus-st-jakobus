@@ -20,12 +20,14 @@
 			<h2 class="headline">{VAR:event_title}</h2>
 		</header>
 
-		<div class="teaser__date-time">
-			<p>
-				<em>Beginn: {DATEFMT:"{VAR:event_begin}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_begin_annotation})}{VAR:event_begin_annotation}{ENDIF}</em><br>
-				<em>Ende: {DATEFMT:"{VAR:event_end}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_end_annotation})}{VAR:event_end_annotation}{ENDIF}</em>
-			</p>
-		</div>
+		<table class="teaser__date-time">
+			<tr>
+				<td>Beginn:</td><td>{DATEFMT:"{VAR:event_begin}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_begin_annotation})}{VAR:event_begin_annotation}{ENDIF}</td>
+			</tr>
+			<tr>
+				<td>Ende:</td><td>{DATEFMT:"{VAR:event_end}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_end_annotation})}{VAR:event_end_annotation}{ENDIF}</td>
+			</tr>
+		</table>
 
 		<details>
 			<summary class="teaser__details-trigger">Details & Anmeldung</summary>

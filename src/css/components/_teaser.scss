@@ -161,5 +161,15 @@
 		text-decoration: none;
 		color: inherit;
 	}
+
+	table.teaser__date-time {
+		border: 0 !important;
+		tr:first-child, tr, td {
+			border: 0 !important;
+		}
+		td {
+			padding: 2px 0;
+		}
+	}
 }
 
