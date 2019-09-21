@@ -40,10 +40,10 @@ class Pilgrimpass extends Model {
 		$this->setTableName('jakobus_pilgrimpasses');
 		$this->setValidationRules([
 			'pilgrimpass_firstname' => [
-				'not-empty' => '/^\S+$/',
+				'not-empty' => '/^\S.+$/',
 			],
 			'pilgrimpass_lastname' => [
-				'not-empty' => '/^\S+$/',
+				'not-empty' => '/^\S.+$/',
 			],
 			'pilgrimpass_birthday' => '/^\d{4}-\d{2}-\d{2}$/',
 			'pilgrimpass_street_address' => '/^.+$/',
