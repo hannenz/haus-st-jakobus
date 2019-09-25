@@ -28,7 +28,9 @@
 				<label for="payment-amount-custom-text">&euro;</label>
 			</div>
 			<p>Als Spendenbescheinigung fürs Finanzamt genügt (bis 200 &euro;) der Kontoauszug.<br>
-			Spendenbescheinigungen stellen wir ab 50 € aus.</p>
+				Spendenbescheinigungen stellen wir ab 50 € aus.<br>
+				<a href="{PAGEURL:93}#info-spendenbescheinigung" target="_blank">Weitere Informationen zur Spendenbescheinigung</a>
+			</p>
 		</div>
 
 		<div id="payment" class="form-field form-field--select">
