@@ -15,32 +15,25 @@
 
 [ ] Giropay: Testmodus abschalten
 [ ] Bildrechte !!! Pixabay doesn't require attribution.
-[ ] Moodbild verzerrt ?!?
 
 [?] Kontonummer bei Spende, Zahlungsart Überweisung
 
 
 # CMT / Backend
 
-[ ] Bestellungen: Sortieren nach Datum absteogend (neueste zuerst)
-[ ] Bestellungen kommen öfter mehrfach mit einigen leer
-[ ] Bestellungen: Pilgerausweise: E-Mail verlinken (mailto, für Rückfragen)
-[ ] Tabelle Bestellungen: bezahlstatus rausnehmen (kann allgemein deaktiviert werden)
-[ ] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
+[?] Bestellungen kommen öfter mehrfach mit einigen leer
+[?] Bestellungen: Pilgerausweise: E-Mail verlinken (mailto, für Rückfragen)
+
+[✓] Bestellungen: Sortieren nach Datum absteogend (neueste zuerst)
+[✓] Tabelle Bestellungen: bezahlstatus rausnehmen (kann allgemein deaktiviert werden)
+[✓] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
+
 [ ] News: Ambientebild global (immer ein festes)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 [ ] Zahlungen: Fehler ins Logfile loggen
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-
-
-## Anmerkungen Inhalte
-
-- allgemein: Nutzung von Ellipsen (…) zu viel, Gedanken- und Bindestriche: einheitlich und korrekt setzen ..., Leerzeichen, k
-- Haus und Ort: Alle Unterseiten sind recht knapp, würde sich anbieten, als eine Seite mit Untersektionen?
-
-
 
 
 
