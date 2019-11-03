@@ -52,12 +52,11 @@
 [ ] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
 
 
-[ ] Events: JSON+LD schema.org (andere Bereiche auch sinnvoll?)
+[✓] Events: JSON+LD schema.org (andere Bereiche auch sinnvoll?)
 [✓] Formular: Namen mit Whitespace erlauben
 [ ] Events: Begin Zeit 00:00 >> keine Ausgabe
-[ ] Events: Annotation nicht in Kicker ausgeben
+[✓] Events: Annotation nicht in Kicker ausgeben
 [✓] Events Beginn/Ende untereinander ausrichten
-[ ] E-Mail von Martin 
 [✓] lvsp-Version abschalten
 
 [✓] jakobusgesellschaft.de auch noch umziehen + E-Mail Adresse info@jakobusgesellschaft.de anlegen
