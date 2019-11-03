@@ -38,7 +38,7 @@ Hiermit  bestätigen wir Ihnen die Beantragung eines Pilgerausweises mit den fol
 
 -----
 
-3. Bezahlart
+3. Bezahlung
 
 	Zahlungsmethode: {SWITCH("{VAR:order_payment_method}")} {CASE("paypal")}PayPal{BREAK} {CASE("giropay")}GiroPay{BREAK} {CASE("ueberweisung")}Überweisung{BREAK} {CASE("bargeld")}Bargeld{BREAK} {ENDSWITCH}
 	Betrag:  {VAR:order_amount} EUR
