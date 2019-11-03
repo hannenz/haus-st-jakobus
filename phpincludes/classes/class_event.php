@@ -292,6 +292,8 @@ EOS;
 		$event['event_begin_fmt'] = strftime('%a, %d.%m.%Y', strtotime ($event['event_begin']));
 		$event['event_end_fmt'] = strftime('%d.%m.%Y', strtotime ($event['event_end']));
 		$event['event_time_fmt'] = strftime('%H:%M', strtotime($event['event_begin']));
+		$event['event_begin_iso8601'] = (new \DateTime($event['event_begin']))->format('c');
+		$event['event_end_iso8601'] = (new \DateTime($event['event_end']))->format('c');
 
 		// Test if begin and end date are at the same day
 		$y1 = date('y', strtotime($event['event_begin']));

@@ -1,4 +1,18 @@
-<article class="teaser teaser--event">
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Event",
+		"location": {
+			"@type": "PostalAddress",
+			"streetAddress": "{VAR:event_location}"
+		},
+		"name": "{VAR:course_title}{IF({ISSET:event_title})} - {VAR:event_title}{ENDIF}"
+		"url": "https://www.haus-st-jakobus.de{PAGEURL}#event-{VAR:id}",
+		"startDate": "{VAR:event_begin_iso8601}",
+		"endDate": "{VAR:event_end_iso8601}",
+	}
+</script>
+<article id="event-{VAR:id}" class="teaser teaser--event">
 
 	<figure class="teaser__image">
 		<a href="{VAR:course_detail_url}">
@@ -102,18 +116,3 @@
 
 	</div>
 </article>
-<script type='application/ld+json'> 
-{
-  "@context": "http://www.schema.org",
-  "@type": "Event",
-  "name": "{VAR:course_title} / {VAR:event_title}",
-  "url": "{SELFURL}",
-  "description": "{VAR:event_remark}",
-  "startDate": "{VAR:event_begin}",
-  "endDate": "{VAR:event_end}",
-  "location": {
-	"@type": "Place",
-	"name": "{VAR:event_location}",
-  }
-}
-</script>
