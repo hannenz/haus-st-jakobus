@@ -36,10 +36,10 @@
 
 		<table class="teaser__date-time">
 			<tr>
-				<td>Beginn:</td><td>{DATEFMT:"{VAR:event_begin}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_begin_annotation})}{VAR:event_begin_annotation}{ENDIF}</td>
+				<td>Beginn:</td><td>{DATEFMT:"{VAR:event_begin}":"%a, %d. %B %Y":de_DE.UTF-8}{IF("{DATEFMT:"{VAR:event_begin}":"%H:%M"}" != "00:00")} {DATEFMT:"{VAR:event_begin}":"%H:%M"} Uhr{ENDIF}{IF({ISSET:event_begin_annotation})} {VAR:event_begin_annotation}{ENDIF}</td>
 			</tr>
 			<tr>
-				<td>Ende:</td><td>{DATEFMT:"{VAR:event_end}":"%a, %d. %B %Y %H:%M Uhr":de_DE.UTF-8} {IF({ISSET:event_end_annotation})}{VAR:event_end_annotation}{ENDIF}</td>
+				<td>Ende:</td><td>{DATEFMT:"{VAR:event_end}":"%a, %d. %B %Y":de_DE.UTF-8}{IF("{DATEFMT:"{VAR:event_end}":"%H:%M"}" != "00:00")} {DATEFMT:"{VAR:event_end}":"%H:%M"} Uhr{ENDIF}{IF({ISSET:event_end_annotation})} {VAR:event_end_annotation}{ENDIF}</td>
 			</tr>
 		</table>
 
