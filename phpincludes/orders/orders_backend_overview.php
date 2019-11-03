@@ -10,6 +10,7 @@ namespace Jakobus;
 error_reporting(E_ALL & ~E_NOTICE);
 ini_set('display_errors', true);
 
+use Contentomat\Contentomat;
 use Contentomat\PsrAutoloader;
 use Contentomat\Parser;
 use Contentomat\ApplicationController;
@@ -38,6 +39,10 @@ class OrdersBackendController extends ApplicationController {
 	 * @access public
 	 */
 	public function actionDefault() {
+		if (empty($_REQUEST['sort_by'][1])) {
+			$this->Cmt = Contentomat::getContentomat();
+			$this->Cmt->setVar('cmtAddQuery', ' ORDER BY order_date DESC');
+		}
 		$template = $this->templatesPath . 'service_default_frame.tpl';
 		$this->content .= $this->parser->parseTemplate($template);
 	}
