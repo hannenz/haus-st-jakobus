@@ -2,96 +2,37 @@
 
 [ ] Bestätigungsmails: HTML, z. Bsp. bei Anmeldung zu Kurs noch einmal den Kurs anteasern (Mehraufwand)
 [ ] Idee: E-Mail Texte auch als Seiten anlegen und Texte daraus entnehmen?
-[✓] Weitere Bezahlarten: SOFORT, PayPal ..?
-
-
-# Extra berechenbare Dinge
-
-[✓] Paypal Integration (3h)
-[✓] Pilgerausweise: Mehrere bestellbar (6h)
-[✓] Datenschutzbestimmungen anpassen / überarbeiten (1h)
-[✓] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten (3h)
-[✓] HostEurope Rechnungen (n * 9,90)
-	= 715 + 80 
 
 
 # Zu klären
 
-
-[ ] Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
+[…] Transfer Hosteurope Kundenkonti und Domain Ownership auf Cursillo Haus
 [ ] Giropay: PayPal LIVE Modus geht nicht -- Bankverbindung? Support kontaktieren
 [ ] Plesk: PHP 7.3 aktivieren
-[?] Zertifikat E-Mail ist nicht richtig?
-[✓] Einstellen PDF / Flyer bei Veranstaltung: Prüfen warum das nicht funktioniert
-[✓] Hospitalero-Laptop: Firefox Passwort speichern
-
-
-
-# Timing 2019-06-30
-
-[ ] Giropay: Testmodus abschalten
-[✓] E-Mail Konten 1und1: Sichern
-[✓] E-Mail Konten bei HostEurope neu anlegen
-[✓] neue E-Mail Zugangsdaten an Martin schicken (Read 2 Burn)
-[✓] SMTP Zugangsdaten  anpassen in CMT: Tabellenmanager > Einstellungen > Pagemailer
-[✓] 1und1: Auth Code beantragen
-[✓] HostEurope: Domain Transfer anstossen
-[✓] SSL Zertifikat einrichten
-
 
 
 # Todos
 
-[ ] Bildrechte !!!
+[ ] Giropay: Testmodus abschalten
+[ ] Bildrechte !!! Pixabay doesn't require attribution.
 [ ] Moodbild verzerrt ?!?
+
+[?] Kontonummer bei Spende, Zahlungsart Überweisung
+
+
+# CMT / Backend
+
 [ ] Bestellungen: Sortieren nach Datum absteogend (neueste zuerst)
 [ ] Bestellungen kommen öfter mehrfach mit einigen leer
 [ ] Bestellungen: Pilgerausweise: E-Mail verlinken (mailto, für Rückfragen)
 [ ] Tabelle Bestellungen: bezahlstatus rausnehmen (kann allgemein deaktiviert werden)
-[ ] Kontonummer bei Spende, Zahlungsart Überweisung
 [ ] Anmeldungen: Haken "in Teilnehmerliste übernommen" o.ä.
-
-
-[✓] Events: JSON+LD schema.org (andere Bereiche auch sinnvoll?)
-[✓] Formular: Namen mit Whitespace erlauben
-[ ] Events: Begin Zeit 00:00 >> keine Ausgabe
-[✓] Events: Annotation nicht in Kicker ausgeben
-[✓] Events Beginn/Ende untereinander ausrichten
-[✓] lvsp-Version abschalten
-
-[✓] jakobusgesellschaft.de auch noch umziehen + E-Mail Adresse info@jakobusgesellschaft.de anlegen
-[✓] Info an  Martin: Zugangsdaten hospitalero
-[✓] Veranstaltungen: Möglichkeit Flyer DL
-[✓] Kurse: Medien geht nicht !
-
 [ ] News: Ambientebild global (immer ein festes)
-[✓] Benutzergruppe: Hospitaleros nur Leserecht + Versandstatus ändern
-
-[✓] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
-[✓] Production build, clean-up, performance, w3-check, qs etc.
-[✓] CorporateData: Finalize
-[✓] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
-[ ] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
 [ ] Pilgerausweise: Benachrichtigung versenden, wenn Versandstatus auf "Gesendet" gesetzt wird
 [ ] Zahlungen: Fehler ins Logfile loggen
 [ ] Newsletter: PageMailer einrichten
 [ ] Programm: PDF Ausgabe, inkl. Inhaltsverzeichnis, redaktionellen Seiten...
 [ ] Kursmanager: nach Speichern landet man bei Veranstaltungen
-
-[✓] Responsive !!!
-[✓] Überschriften max-width wie Fliesstext
-[✓] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
-[✓] Verwendungszweck Spende: Spende Haus St Jakobus
-[✓] Spende: Sende immer eine Benachrichtigung
-[✓] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
-[✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
-[✓] Meta Keywords und Description >> Info an Martin
-
-
-## Klären
-
-[ ] Impressum, Datenschutz, Kontakt: Ambientebild
-[ ] Footer-Navigation: Definieren
 
 
 ## Anmerkungen Inhalte
@@ -102,9 +43,10 @@
 
 
 
-## Zurückgestellt
 
+## -------------------------------------------------------------------------------------------------------------------------
 ## Erledigt
+## -------------------------------------------------------------------------------------------------------------------------
 
 [✓] CorporateData: Finalize
 [✓] Sidebar pinned, ggf. opptional als PAGEVAR lösen ...
@@ -322,3 +264,52 @@ Besprechen / Klären
 [✓] Pilgerausweis-Bestellung: Abbrechen: Bestätigungs-Prompt einbauen (Sidebar-Widget und Formulare)
 [✓] Pilgerausweis-Bestellung: Checkbox so wie bei Kursanmeldungs-Formular
 [✓] Custom Amount: Autofokus
+[✓] Weitere Bezahlarten: SOFORT, PayPal ..?
+
+
+# Extra berechenbare Dinge
+
+[✓] Paypal Integration (3h)
+[✓] Pilgerausweise: Mehrere bestellbar (6h)
+[✓] Datenschutzbestimmungen anpassen / überarbeiten (1h)
+[✓] Spendenmöglichkeit Formular für Förderverein 3 Std. angeboten (3h)
+[✓] HostEurope Rechnungen (n * 9,90)
+	= 715 + 80 
+[✓] Zertifikat E-Mail ist nicht richtig?
+[✓] Einstellen PDF / Flyer bei Veranstaltung: Prüfen warum das nicht funktioniert
+[✓] Hospitalero-Laptop: Firefox Passwort speichern
+[✓] E-Mail Konten 1und1: Sichern
+[✓] E-Mail Konten bei HostEurope neu anlegen
+[✓] neue E-Mail Zugangsdaten an Martin schicken (Read 2 Burn)
+[✓] SMTP Zugangsdaten  anpassen in CMT: Tabellenmanager > Einstellungen > Pagemailer
+[✓] 1und1: Auth Code beantragen
+[✓] HostEurope: Domain Transfer anstossen
+[✓] SSL Zertifikat einrichten
+[✓] Events: JSON+LD schema.org (andere Bereiche auch sinnvoll?)
+[✓] Formular: Namen mit Whitespace erlauben
+[✓] Events: Begin Zeit 00:00 >> keine Ausgabe
+[✓] Events: Annotation nicht in Kicker ausgeben
+[✓] Events Beginn/Ende untereinander ausrichten
+[✓] lvsp-Version abschalten
+
+[✓] jakobusgesellschaft.de auch noch umziehen + E-Mail Adresse info@jakobusgesellschaft.de anlegen
+[✓] Info an  Martin: Zugangsdaten hospitalero
+[✓] Veranstaltungen: Möglichkeit Flyer DL
+[✓] Kurse: Medien geht nicht !
+
+[✓] Benutzergruppe: Hospitaleros nur Leserecht + Versandstatus ändern
+
+[✓] SSL Zertifikat (ggf. Plesk: Let's Encrypt möglich?)
+[✓] Production build, clean-up, performance, w3-check, qs etc.
+[✓] CorporateData: Finalize
+[✓] E-Mail Zustellung: SMTP Zugangsdaten ändern, läuft im Moment über 1und1 (kursanmeldung@haus-st-jakobus.de)
+[✓] Responsive !!!
+[✓] Überschriften max-width wie Fliesstext
+[✓] Verwendungszweck Pilgerausweis: Pilgerausweis N.N.
+[✓] Verwendungszweck Spende: Spende Haus St Jakobus
+[✓] Spende: Sende immer eine Benachrichtigung
+[✓] Umzug: E-Mail Adressen sollen bei 1und1 bleiben oder doch mit umziehen? Optionen prüfen
+[✓] Layout: Sidebar: Fix overlap on footer / handle cases when sidebar is taller than viewport 
+[✓] Meta Keywords und Description >> Info an Martin
+[✓] Impressum, Datenschutz, Kontakt: Ambientebild
+[✓] Footer-Navigation: Definieren
