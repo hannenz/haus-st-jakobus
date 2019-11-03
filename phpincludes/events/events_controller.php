@@ -8,6 +8,8 @@ use Contentomat\Debug;
 use Jakobus\Course;
 use Jakobus\Event;
 
+use Contentomat\DBCex;
+
 use \Exception;
 
 
@@ -86,26 +88,40 @@ class EventsController extends Controller {
 	 * Overview of upcoming events in the current year from current month 
 	 */
 	public function actionDefault() {
+
+		// Get the most future event
+		$lastEvent = $this->Event->getLastEvent();
+		$lastYearMonthStr = strftime('%Y-%m', strtotime($lastEvent['event_begin']));
+
+		// Current year / month
 		$currentMonth = (int)date('m');
 		$currentYear = (int)date('Y');
 
-		for ($month = $currentMonth; $month <= 12; $month++) {
-			$events = $this->Event->findByPeriod($currentYear, $month, null, true);
+		// Loop until latest event's Year-Month
+		$month = $currentMonth;
+		$year = $currentYear;
+		while (sprintf('%4u-%02u', $year, $month) != $lastYearMonthStr) {
+
+			$events = $this->Event->findByPeriod($year, $month, null, true);
 
 			if (!empty($events)) {
 				$this->parser->setMultipleParserVars([
 					'month' => $month,
-					'month_fmt' => strftime('%B', strtotime(sprintf("%04u-%02u-01", $currentYear, $month))),
-					'year' => $currentYear
+					'month_fmt' => strftime('%B', strtotime(sprintf("%04u-%02u-01", $year, $month))),
+					'year' => $year
 				]);	
 
 				$this->parser->setParserVar('events', $events);
 				$this->content .= $this->parser->parseTemplate($this->templatesPath . 'by_month.tpl');
 			}
+
+			$month++;
+			if ($month > 12) {
+				$month = 1;
+				$year++;
+			}
 		}
 	}
-
-
 
 	public function actionByDay() {
 		$year = (int)$this->getvars['year'];

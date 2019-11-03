@@ -440,5 +440,17 @@ EOS;
 	public function getOverviewPageId () {
 	    return $this->overviewPageId ;
 	}
+
+
+	/**
+	 * Returns the most future event which course is active
+	 *
+	 * @return Array
+	 */
+	public function getLastEvent() {
+		$query = 'SELECT * FROM jakobus_events AS Event LEFT JOIN jakobus_courses AS Course ON Course.id = Event.event_course_id WHERE Course.course_is_active = 1 ORDER BY event_begin DESC LIMIT 1';
+		$this->db->query($query);
+		return $this->db->get();
+	}
 }
 ?>
