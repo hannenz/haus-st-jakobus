@@ -34,13 +34,22 @@
 		</div>
 
 		<div id="payment" class="form-field form-field--select">
-			<label for="order_payment_method">Zahlungsart</label>
+			<label for="order_payment_method">Bitte Zahlungsart wählen</label>
 			<select name="order_payment_method" id="order_payment_method">
 				<!-- <option value="paypal" {IF("{VAR:order_payment_method}" == "paypal")}selected{ENDIF}>PayPal</option> -->
 				<option value="giropay" {IF("{VAR:order_payment_method}" == "giropay")}selected{ENDIF}>Giropay</option>
 				<option value="ueberweisung" {IF("{VAR:order_payment_method}" == "ueberweisung")}selected{ENDIF}>Überweisung</option>
 				<option value="bargeld" {IF("{VAR:order_payment_method}" == "bargeld")}selected{ENDIF}>Bargeld</option>
 			</select>
+
+			<div hidden id="bank-details">
+				<p>
+				Falls Sie nicht über Giropay spenden möchten, hier unsere Bankverbindung:<br>
+				Kreissparkasse Ulm<br>
+				IBAN: DE94 6305 0000 0002 0678 69<br>
+				BIC: SOLADES1ULM
+				</p>
+			</div>
 		</div>
 		<!-- <div class="form&#45;field form&#45;field&#45;&#45;flag"> -->
 		<!-- 	<input type="checkbox" name="order_express" id="order_express" {IF({ISSET:order_express})}checked{ENDIF} /> -->
@@ -65,3 +74,11 @@
 	</div>
 </form>
 
+<script>
+var select = document.getElementById('order_payment_method');
+select.addEventListener('change', onChange);
+function onChange() {
+	document.getElementById('bank-details').hidden = (select.value != 'ueberweisung');
+}
+onChange();
+</script>
