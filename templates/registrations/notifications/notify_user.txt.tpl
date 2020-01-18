@@ -2,5 +2,4 @@ Sehr geehrte{IF("{VAR:registration_salutation}" == "Herr")}r{ENDIF} {VAR:registr
 
 Vielen Dank, Ihre Anmeldedaten sind bei uns eingegangen. Wir melden uns zeitnah bei Ihnen
 
-Mit freundlichen Grüßen,
-Julia Kohler
+{VAR:complimentary_close}

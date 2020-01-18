@@ -5,6 +5,7 @@ use Contentomat\Mail;
 use Contentomat\Parser;
 use Contentomat\Logger;
 use Contentomat\ApplicationHandler;
+use Jakobus\CorporateData;
 
 
 
@@ -21,6 +22,7 @@ class Notification {
 	protected $Parser;
 	protected $ApplicationHandler;
 	protected $templatesPath;
+	protected $CorporateData;
 
 	protected $PageMailerAppId = 152;
 	
@@ -34,6 +36,7 @@ class Notification {
 	 */
 	public function __construct() {
 		$this->ApplicationHandler = new ApplicationHandler();
+		$this->CorporateData = new CorporateData();
 		$pageMailerSettings = $this->ApplicationHandler->getApplicationSettings($this->PageMailerAppId);
 
 		$this->Mail = new Mail([
@@ -59,6 +62,9 @@ class Notification {
 	 * @return boolean 	Success
 	 */
 	public function notify($recipient, $subject, $template, $data) {
+
+		$this->Parser->setParserVar('complimentary_close', $this->CorporateData->getField('complimentary_close'));
+
 		$this->Parser->setMultipleParserVars($data);
 		$textContent = $this->Parser->parseTemplate($this->templatesPath . $template . '.txt.tpl');
 		$this->Parser->setParserVar('mailContent', $textContent);
