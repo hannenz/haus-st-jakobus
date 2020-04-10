@@ -46,8 +46,8 @@
 				<p>
 				Falls Sie nicht über Giropay spenden möchten, hier unsere Bankverbindung:<br>
 				Kreissparkasse Ulm<br>
-				IBAN: DE94 6305 0000 0002 0678 69<br>
-				BIC: SOLADES1ULM
+				{VAR:corporate_data_bank_account_iban}<br>
+				{VAR:corporate_data_bank_account_bic}
 				</p>
 			</div>
 		</div>

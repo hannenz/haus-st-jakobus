@@ -61,6 +61,9 @@ class PilgrimpassesController extends Controller {
 		$this->templatesPath = $this->templatesPath . 'pilgrimpasses/';
 		include(PATHTOWEBROOT.'giropay_settings.inc');
 		$this->giropaySettings = $giropaySettings;
+
+		$corporateData = $this->CorporateData->getData();
+		$this->parser->setMultipleParserVars($corporateData);
 	}
 
 
