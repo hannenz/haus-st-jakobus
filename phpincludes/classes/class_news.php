@@ -99,6 +99,10 @@ class News extends Posts {
 			$this->CmtPage->makePageFileName($this->overviewPageId)
 		);
 
+		// This should not be necessary! I don't know why it is needed here once
+		// again but in fact it does not work on the production server if
+		// ommited (clobbers Umlauts f.e. in "März")
+		setlocale(LC_TIME, 'de_DE.UTF-8');
 		$post['post_date_fmt_date'] = strftime('%a. %d. %b %Y', strtotime($post['post_online_date']));
 		$post['post_date_fmt_datetime'] = strftime('%d.%m.%Y %H:%M', strtotime($post['post_online_date']));
 		$post['post_time_fmt_time'] = strftime('%H:%M', strtotime($post['post_online__date']));
