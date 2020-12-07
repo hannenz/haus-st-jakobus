@@ -221,64 +221,66 @@ function APP () {
 
 	this.initMap = function() {
 
-		var mapCenterPos = [48.32681, 9.82074];
-		var pinPos = [48.29870,9.82624];
+		var mapCenterPos = [9.82074, 48.32681];
+		var pinPos = [9.82624, 48.29870];
 
-		var mapOptions = {
-			zoomControl: true,
-			scrollWheelZoom: false,
-			touchZoom: false,
-			dragging: false
-		};
-
-		var mapElement = document.getElementById('map');
-
-		var map = L.map(mapElement, mapOptions).setView(mapCenterPos, 11);
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog', {
-			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			maxZoom: 18,
-			minZoom: 7,
-			id: 'mapbox.outdoors',
-			accessToken: 'pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog'
-		}).addTo(map);
-
-		var shellIcon = L.icon({
-			iconUrl: '/dist/img/shell-icon.png',
-			iconSize: [25 * 1.4, 41 * 1.4],
-			iconAnchor: [25 * 0.7, 41 * 1.4],
-			popupAnchor: [0, -60]
+		mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVueiIsImEiOiJPMktpVm1BIn0.qMq_8uPobOFc-eBXIFVtog';
+		var map = new mapboxgl.Map({
+			container: document.getElementById('map'),
+			style: 'mapbox://styles/mapbox/outdoors-v11',
+			center: mapCenterPos,
+			zoom: 11,
+			scrollZoom: false
 		});
-		var marker = L.marker(pinPos, {icon: shellIcon}).addTo(map);
+		map.on('load', function() {
+			// Load the GeoJSON track to display ("the Jakobsweg")
+			// Since the track is quite large we load it via AJAX
+			var req = new XMLHttpRequest();
+			req.open('GET', '/dist/js/vendor/track.geo.json');
+			req.responseType = 'json';
+			req.onload = function() {
 
-		var popup = L.popup().setContent("<b>Cursillo-Haus St. Jakobus</b><br><i>N 48.29870 E 9.82624</i>");
-		marker.bindPopup(popup).openPopup();
+				var data = req.response;
+				console.log(data);
 
-		// Load the GeoJSON track to display ("the Jakobsweg")
-		// Since the track is quite large we load it via AJAX
-		var req = new XMLHttpRequest();
-		req.open('GET', '/dist/js/vendor/track.geo.json');
-		req.responseType = 'json';
-		req.onload = function() {
-			var trackStyle = {
-				"color": "#af1e23",
-				"weight": 5,
-				"opacity": 0.6
-			}
-			L.geoJSON(req.response, {style: trackStyle}).addTo(map);
-		};
-		req.send();
-
-		// Enable interaction only when focused (e.g. clicked inside)
-		mapElement.addEventListener('focus', function() {
-			map.scrollWheelZoom.enable();
-			map.touchZoom.enable();
-			map.dragging.enable();
+				map.addSource('route', {
+					'type': 'geojson',
+					'data': data.features[0]
+				});
+				map.addLayer({
+					'id': 'route',
+					'type': 'line',
+					'source': 'route',
+					'layout': {
+						'line-join': 'round',
+						'line-cap': 'round'
+					},
+					'paint': {
+						'line-color': '#af1e23',
+						'line-width': 5
+					}
+				});
+			};
+			req.send();
 		});
-		mapElement.addEventListener('blur', function() {
-			map.scrollWheelZoom.disable();
-			map.touchZoom.disable();
-			map.dragging.disable();
-		});
+
+
+		var nav = new mapboxgl.NavigationControl();
+		map.addControl(nav, 'bottom-left');
+
+		var markerEl = document.createElement('div');
+		markerEl.className = 'marker';
+		markerEl.style.backgroundImage = 'url(/dist/img/shell-icon.png)';
+		markerEl.style.width = '50px';
+		markerEl.style.height = '82px';
+
+		var marker = new mapboxgl.Marker({
+				'element': markerEl,
+				'anchor': 'bottom'
+			})
+			.setLngLat(pinPos)
+			.addTo(map)
+		;
 	};
 
 

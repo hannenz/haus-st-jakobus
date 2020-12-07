@@ -119,7 +119,8 @@ var settings = {
 				'./node_modules/jquery/dist/jquery.min.js',
 				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
 				'./node_modules/leaflet/dist/leaflet.js',
-				'./node_modules/vanilla-lazyload/dist/lazyload.min.js'
+				'./node_modules/vanilla-lazyload/dist/lazyload.min.js',
+				'./node_modules/mapbox-gl/dist/mapbox-gl.js'
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
@@ -128,7 +129,8 @@ var settings = {
 		src:	[
 				'./src/css/vendor/**/*.css',
 				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
-				'./node_modules/leaflet/dist/leaflet.css'
+				'./node_modules/leaflet/dist/leaflet.css',
+				'./node_modules/mapbox-gl/dist/mapbox-gl.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},

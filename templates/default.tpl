@@ -10,6 +10,7 @@
 	<link rel="shortcut icon" href="/dist/img/favicon.png" />
 
 	<link rel="stylesheet" href="/dist/css/vendor/leaflet.css">
+	<link rel="stylesheet" href="/dist/css/vendor/mapbox-gl.css">
 	<link rel="stylesheet" type="text/css" href="/dist/css/main.css" />
 
 	<link rel="canonical" href="{CANONICALURL}" />
@@ -21,6 +22,7 @@
 	<script type="text/javascript" src="/dist/js/vendor/foundation.min.js"></script>
 	<script src="/dist/js/vendor/jquery.brightbox.js"></script>
 	<script src="/dist/js/vendor/leaflet.js"></script> 
+	<script src="/dist/js/vendor/mapbox-gl.js"></script> 
 	<script src="/dist/js/vendor/lazyload.min.js"></script>
 	{ENDIF}
 </head>
