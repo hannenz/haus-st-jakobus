@@ -50,7 +50,19 @@ form {
 		}
 
 		input[type=checkbox] {
-			display: none;
+			// display: none;
+			width: 0;
+			height: 0;
+			overflow: hidden;
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+			padding: 0;
+			border: 0;
+
+
+			&:focus + label::before {
+				outline: 1px solid #8a8a8a;
+			}
 		}
 
 		label {
@@ -210,3 +222,8 @@ label {
 	}
 }
 
+// Honeypot in registration form
+label[for=registration_country],
+input[name=registration_country] {
+	display: none !important;
+}

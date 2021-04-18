@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form id="registration" action="" method="post">
 
 	{IF({ISSET:saveFailed:VAR})}
 		<div class="error message">Bitte prüfen Sie Ihre Eingabe und versuchen Sie es noch einmal!</div>
@@ -49,10 +49,18 @@
 
 		<div class="grid-x grid-padding-x">
 			<div class="cell medium-6">
+				<label for="registration_country">Land</label>
+				<input id="registration_country" type="text" value="" name="registration_country" />
+			</div>
+		</div>
+
+
+		<div class="grid-x grid-padding-x">
+			<div class="cell medium-6">
 				{VAR:registration_email}
 			</div>
 		</div>
-	
+
 		<div class="grid-x grid-padding-x">
 			<div class="cell medium-6">
 				{VAR:registration_is_member}

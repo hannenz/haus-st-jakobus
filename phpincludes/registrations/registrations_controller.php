@@ -67,6 +67,15 @@ class RegistrationsController extends Controller {
 				}
 				$data['registration_date'] = strftime('%Y-%m-%d %H:%I:%S');
 				$data['registration_is_member'] = !empty($this->postvars['registration_is_member']);
+
+				// This is a honeypot! If `registration_country` is present, it must have been
+				// a bot, so we don't save anything but proceed as if everything
+				// would be ok
+				if (!empty($data['registration_country'])) {
+					$data = array_merge($data, $event);
+					return $this->changeAction('success');
+				}
+
 				if (!$this->Registration->save ($data)) {
 					$this->parser->setParserVar('saveFailed', true);
 				}
