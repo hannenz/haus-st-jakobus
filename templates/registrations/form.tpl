@@ -50,7 +50,7 @@
 		<div class="grid-x grid-padding-x">
 			<div class="cell medium-6">
 				<label for="registration_country">Land</label>
-				<input id="registration_country" type="text" value="" name="registration_country" />
+				<input id="registration_country" type="text" value="" name="registration_country" autocomplete="off" />
 			</div>
 		</div>
 
