@@ -7,6 +7,7 @@ use Contentomat\Controller;
 use Contentomat\Paging;
 use Contentomat\CmtPage;
 use Contentomat\ApplicationHandler;
+use Contentomat\MLog\MediaBaseHandler;
 use Jakobus\News;
 
 define('APPLICATION_ID', 25);
@@ -43,10 +44,16 @@ if (class_exists('\Jakobus\NewsController') === false) {
 		protected $applicationSettings;
 
 
+		/**
+		 * @var Contentomat\MLog\MediaBaseHandler
+		 */
+		protected $MediaBaseHandler;
+
 
 		public function init() {
 			$this->CmtPage = new CmtPage();
 			$this->ApplicationHandler = new ApplicationHandler();
+			$this->MediaBaseHandler = new MediaBaseHandler();
 			$this->News = new News();
 			$this->templatesPath = $this->templatesPath . 'news/';
 			$contentData = Contentomat::getContentomat()->getVar('cmtContentData');
@@ -60,12 +67,15 @@ if (class_exists('\Jakobus\NewsController') === false) {
 
 			// Get table settings
 			$this->applicationSettings = $this->ApplicationHandler->getApplicationSettings(APPLICATION_ID);
-
 		}
 
 
 
 		public function initActions($action = 'default') {
+			if (!empty($this->getvars['action'])) {
+				$this->action = $this->getvars['action'];
+				return;
+			}
 
 			if (!empty($this->params[0])) {
 				$this->action = trim($this->params[0]);
@@ -176,6 +186,14 @@ if (class_exists('\Jakobus\NewsController') === false) {
 					]);
 				}
 
+				if ($post['hasMedia']['hasdocument']) {
+					$this->parser->setMultipleParserVars([
+						'hasDocument' => $post['hasMedia']['hasDocument'],
+						'documents' => $post['postMedia']['document']
+					]);
+				}
+
+
 				if ($post['hasMedia']['haslink']) {
 					$this->parser->setMultipleParserVars([
 						'hasLink' => $post['hasMedia']['hasLink'],
@@ -199,6 +217,12 @@ if (class_exists('\Jakobus\NewsController') === false) {
 			]);
 			$this->parser->setParserVar('posts', $posts);
 			$this->content = $this->parser->parseTemplate($this->templatesPath . 'sidebar_teasers.tpl');
+		}
+
+
+		public function actionDownloadMedia() {
+			$this->mediaId = intval($this->getvars['mediaId']);
+			$this->MediaBaseHandler->downloadMediaById($this->mediaId);
 		}
 	}
 }

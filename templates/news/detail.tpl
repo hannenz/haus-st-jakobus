@@ -6,6 +6,21 @@
 	<div class="post__text">{VAR:post_text}</div>
 
 
+	{IF("{VAR:hasDocument}" != "0")}
+		<ul class="post__links bullets">
+			{LOOP VAR(documents)}
+				<li>{IF({ISSET:media_title})}
+					<a href="{PAGEURL}?action=downloadMedia&mediaId={VAR:id}" download>
+						{VAR:media_title}
+					</a>
+					{ELSE}
+						Datei herunterladen: <a href="{PAGEURL}?action=downloadMedia&mediaId={VAR:id}" download>{VAR:media_file} </a>
+					{ENDIF}
+				</li>
+			{ENDLOOP VAR}
+		</ul>
+	{ENDIF}
+
 	{IF("{VAR:hasLink}" != "0")}
 		<ul class="post__links bullets">
 			{LOOP VAR(links)}
