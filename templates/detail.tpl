@@ -47,7 +47,7 @@
 	</div>
 
 	{IF(!{LAYOUTMODE})}
-		<script src="/dist/js/main.min.js"></script>
+		<script src="/dist/js/main.js"></script>
 	{ENDIF}
 	{LAYOUTMODE_ENDSCRIPT}
 </body>

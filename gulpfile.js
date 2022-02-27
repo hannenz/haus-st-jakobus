@@ -1,22 +1,34 @@
 /**
  * Default gulpfile for HALMA projects
  *
- * Version 2019-03-27
+ * Version 2021-05-20
  *
  * @see https://www.sitepoint.com/introduction-gulp-js/
  * @see https://nystudio107.com/blog/a-gulp-workflow-for-frontend-development-automation
  * @see https://nystudio107.com/blog/a-better-package-json-for-the-frontend
+ *
+ * @usage
+ * gulp : Start browser-sync, watch css and js files for changes and run development builds on change
+ * gulp build : run a development build
+ * gulp build --production : run a production build
+ * gulp --tasks : Show available tasks (if you want to run a single specific task)
  */
 'use strict';
 
+// Read command line paramters (arguments)
+const argv = require('yargs').argv;
+
+// Check if we want a prodcution build
+// Call like `gulp build --production` (or a single task instead of `build`)
+const isProduction = (argv.production !== undefined);
+
 // package vars
 const pkg = require('./package.json');
+const fs = require('fs');
 
 // gulp
 const gulp = require('gulp');
 const {series} = require('gulp');
-
-// const gulpStylelint = require('gulp-stylelint');
 
 // Load all plugins in 'devDependencies' into the variable $
 const $ = require('gulp-load-plugins')({
@@ -24,9 +36,10 @@ const $ = require('gulp-load-plugins')({
 	scope: ['devDependencies'],
 	rename: {
 		'gulp-strip-debug': 'stripdebug',
-		'gulp-stylelint': 'gulpStylelint'
+		'fancy-log' : 'log'
 	}
 });
+
 
 // Default error handler: Log to console
 const onError = (err) => {
@@ -46,31 +59,40 @@ const banner = [
 	""
 ].join("\n");
 
-
-var svgoOptions = {
+// Settings for SVG optimization, used in other settings (see below)
+let svgoOptions =  {
 	plugins: [
 		{ cleanupIDs: false },
 		{ mergePaths: false },
 		{ removeViewBox: false },
 		{ convertStyleToAttrs: false },
 		{ removeUnknownsAndDefaults: false },
-		{ cleanupAttrs: false }
+		{ cleanupAttrs: false },
+		{ inlineStyles: false }
 	]
 };
+
 
 // Project settings
 var settings = {
 
 	browserSync: {
-		proxy:'https://' + pkg.name + '.localhost',
+		proxy:'https://' + pkg.name + '.' + require('os').userInfo().username + '.localhost',
 		open: false,	// Don't open browser, change to "local" if you want or see https://browsersync.io/docs/options#option-open
 		notify: false,	// Don't notify on every change
-		https: {
+		https:  {
 			key: require('os').homedir() + '/server.key',
 			cert: require('os').homedir() + '/server.crt'
-			// key: '/etc/ssl/private/ssl-cert-snakeoil.key',
-			// cert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
 		}
+	},
+
+	templates: {
+		// Only used for browser-sync / auto-refresh when saving templates 
+		src: [
+			"./templates/**/*.tpl",
+			"./**/*.html"
+		],
+		active: false
 	},
 
 	css: {
@@ -78,11 +100,12 @@ var settings = {
 		dest: pkg.project_settings.prefix + 'css/',
 		srcMain: [
 			'./src/css/main.scss',
-			'./src/css/coursemanager.scss'
+			// You can add more files here that will be built seperately,
+			// f.e. newsletter.scss
 		],
 		options: {
 			sass: {
-				outputStyle: 'compact',
+				outputStyle: 'expanded',
 				precision: 3,
 				errLogToConsole: true,
 				includePaths: [
@@ -90,9 +113,10 @@ var settings = {
 					'node_modules/motion-ui/src',
 					$.bourbon.includePaths
 				]
-			},
-
-			sassProduction: {
+			}
+		},
+		optionsProd: {
+			sass: {
 				outputStyle: 'compressed',
 				precision: 3,
 				errLogToConsole: true,
@@ -105,32 +129,46 @@ var settings = {
 		}
 	},
 
+	/** TODO: Refactor to use module / exports etc. / modern Javascript 
+	 * so we can handle it like with CSS -> multiple targets
+	 */
 	js: {
 		src:	'./src/js/*.js',
 		dest:	pkg.project_settings.prefix + 'js/',
-		destFile:	'main.min.js'
+		destFile:	'main.js'
+	},
+
+	jsModules: {
+		src: 	'./src/js/modules/*.?js',
+		dest: 	pkg.project_settings.prefix + 'js/modules/'
 	},
 
 	jsVendor: {
 		src: [
 			'./src/js/vendor/**/*.js',
-				'./src/js/vendor/track.geo.json',
-				'./node_modules/foundation-sites/dist/js/**/*.js',
-				'./node_modules/jquery/dist/jquery.min.js',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
-				'./node_modules/leaflet/dist/leaflet.js',
-				'./node_modules/vanilla-lazyload/dist/lazyload.min.js',
-				'./node_modules/mapbox-gl/dist/mapbox-gl.js'
+			'./src/js/vendor/track.geo.json',
+			'./node_modules/foundation-sites/dist/js/**/*.js',
+			'./node_modules/jquery/dist/jquery.min.js',
+			'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.js',
+			'./node_modules/leaflet/dist/leaflet.js',
+			'./node_modules/vanilla-lazyload/dist/lazyload.min.js',
+			'./node_modules/mapbox-gl/dist/mapbox-gl.js'
+			// Add single vendor files here,
+			// they will be copied as is to `{prefix}/js/vendor/`,
+			// e.g. './node_modules/flickity/dist/flickity.pkgd.min.js',
 		],
 		dest:	pkg.project_settings.prefix + 'js/vendor/'
 	},
 
 	cssVendor: {
 		src:	[
-				'./src/css/vendor/**/*.css',
-				'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
-				'./node_modules/leaflet/dist/leaflet.css',
-				'./node_modules/mapbox-gl/dist/mapbox-gl.css'
+			'./src/css/vendor/**/*.css',
+			'./node_modules/jquery.appendgrid/jquery.appendGrid-1.7.1.min.css',
+			'./node_modules/leaflet/dist/leaflet.css',
+			'./node_modules/mapbox-gl/dist/mapbox-gl.css'
+			// Add single vendor files here,
+			// they will be copied as is to `{prefix}/css/vendor/`,
+			// e.g. './node_modules/flickity/dist/flickity.min.css'
 		],
 		dest:	pkg.project_settings.prefix + 'css/vendor/'
 	},
@@ -158,7 +196,7 @@ var settings = {
 	},
 
 	sprite: {
-		src: './src/icons/*.svg',
+		src: './src/icons/**/*.svg',
 		dest: pkg.project_settings.prefix + 'img/',
 		destFile:	'icons.svg',
 		options: [
@@ -167,134 +205,165 @@ var settings = {
 	},
 
 	favicons: {
-		src: './src/img/favicon.svg',
+		src: './src/img/favicon.png',
 		dest: pkg.project_settings.prefix + 'img/favicons/',
 		background: '#ffffff'
 	}
-}
+};
 
 
 
 // Clean dist before building
-function cleanDist(done) {
+function cleanDist() {
 	return $.del([
 		pkg.project_settings.prefix + '/'
 	]);
-  done();
 }
 
-
-
 /*
- *  Task: process SASS
+ *  Task: Compile SASS to CSS
  */
-function cssDev(done) {
-	return gulp
-		.src(settings.css.srcMain)
-		.pipe($.plumber({ errorHandler: onError}))
-		.pipe($.gulpStylelint({
-			reporters: [
-				{ "formatter": 'string', console: true }
-			]
+function css() {
+
+	$.log("Building CSS" + ((isProduction) ? " [production build]" : " [development build]"));
+
+	var stream = 
+		gulp.src(settings.css.srcMain, { sourcemaps: !isProduction })
+			.pipe($.plumber({ errorHandler: onError}))
+	;
+
+	var options = (isProduction) ? settings.css.optionsProd.sass : settings.css.options.sass;
+	stream = stream
+		.pipe($.sass(options).on('error', $.sass.logError))
+		.pipe($.autoprefixer(settings.css.options.autoprefixer))
+	;
+
+	if (isProduction) {
+		stream = stream.pipe($.cleanCss())
+			.pipe($.header(banner, { pkg: pkg }));
+	}
+
+	stream = stream
+		.pipe(gulp.dest(settings.css.dest, {
+			sourcemaps: (!isProduction ? '.' : false)  
 		}))
-		.pipe($.sourcemaps.init())
-		.pipe($.sass(settings.css.options.sass).on('error', $.sass.logError))
-		.pipe($.autoprefixer(settings.css.options.autoprefixer))
-		.pipe($.sourcemaps.write('./'))
-		.pipe(gulp.dest(settings.css.dest))
 		.pipe($.browserSync.stream());
-	done();
+
+	return stream;
 }
 
-function cssProd(done) {
-	return gulp
-		.src(settings.css.srcMain)
-		.pipe($.plumber({ errorHandler: onError }))
-		.pipe($.sass(settings.css.options.sassProduction).on('error', $.sass.logError))
-		.pipe($.autoprefixer(settings.css.options.autoprefixer))
-		.pipe($.header(banner, { pkg: pkg }))
-		.pipe(gulp.dest(settings.css.dest));
-	done();
-}
-
-/*
- * Task: Concat and uglify Javascript
- */
-function jsDev(done) {
-	return gulp
-		.src(settings.js.src)
-		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end') }))
-		.pipe($.sourcemaps.init())
-		.pipe($.concat(settings.js.destFile))
-		.pipe($.uglify().on('error', function(uglify) { console.log(uglify.message); this.emit('end') }))
-		.pipe($.sourcemaps.write('./'))
-		.pipe(gulp.dest(settings.js.dest))
-		.pipe($.browserSync.stream());
-	done();
-}
-
-function jsProd(done) {
-	return gulp
-		.src(settings.js.src)
-		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end') }))
-		.pipe($.concat(settings.js.destFile))
-		.pipe($.stripdebug())
-		.pipe($.uglify().on('error', function(uglify) { console.log(uglify.message); this.emit('end') }))
-		.pipe($.header(banner, { pkg: pkg }))
-		.pipe(gulp.dest(settings.js.dest));
-	done();
-}
-
-
-
-/*
- * Task: Uglify vendor Javascripts
- */
-function jsVendor(done) {
-	return gulp.src(settings.jsVendor.src)
-		.pipe(gulp.dest(settings.jsVendor.dest));
-    done();
-}
-
-
-
-function cssVendor(done) {
+function cssVendor() {
 	return gulp.src(settings.cssVendor.src)
 		.pipe(gulp.dest(settings.cssVendor.dest));
-	done();
+}
+
+
+/*
+ * Task: Concat and uglify Javascript with terser
+ */
+function js() {
+
+	$.log("Building Javascript" + ((isProduction) ? " [production build]" : " [development build]"));
+
+	var stream = gulp
+		.src(settings.js.src, { sourcemaps: !isProduction })
+			.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end'); }));
+
+
+	stream = stream.pipe($.concat(settings.js.destFile));
+
+	if (isProduction) {
+		stream = stream
+			// Not possible to use strip-debug for modules for the time being,
+			// see issue: https://github.com/sindresorhus/strip-debug/issues/23
+			// .pipe($.stripdebug())
+			.pipe($.terser()).on('error', function (error) {
+				if (error.plugin !== "gulp-terser-js") {
+					console.log(error.message);
+				}
+				this.emit('end');
+			})
+			.pipe($.header(banner, { pkg: pkg }));
+	}
+
+	stream = stream
+		.pipe(gulp.dest(settings.js.dest, {
+			sourcemaps: (!isProduction ? '.' : false)
+		}))
+		.pipe($.browserSync.stream());
+
+	return stream;
+}
+
+function jsModules() {
+	// return gulp.src(settings.jsModules.src)
+	// 	.pipe(gulp.dest(settings.jsModules.dest))
+	// 	.pipe($.browserSync.stream());
+	$.log("Building Javascript modules " + ((isProduction) ? " [production build]" : " [development build]"));
+
+	var stream = gulp
+		.src(settings.jsModules.src, { sourcemaps: !isProduction })
+		.pipe($.jsvalidate().on('error', function(jsvalidate) { console.log(jsvalidate.message); this.emit('end'); }));
+
+	if (isProduction) {
+		stream = stream
+			// Not possible to use strip-debug for modules for the time being,
+			// see issue: https://github.com/sindresorhus/strip-debug/issues/23
+			// .pipe($.stripdebug())
+			.pipe($.terser()).on('error', function (error) {
+				if (error.plugin !== "gulp-terser-js") {
+					console.log(error.message);
+				}
+				this.emit('end');
+			})
+			.pipe($.header(banner, { pkg: pkg }));
+	}
+
+	stream = stream
+		.pipe(gulp.dest(settings.jsModules.dest, {
+			sourcemaps: (!isProduction ? '.' : false)
+		}))
+		.pipe($.browserSync.stream());
+
+	return stream;
 }
 
 
 
-function fonts(done) {
+function jsVendor() {
+	return gulp.src(settings.jsVendor.src)
+		.pipe(gulp.dest(settings.jsVendor.dest));
+}
+
+
+
+function fonts() {
 	return gulp.src(settings.fonts.src)
 		.pipe(gulp.dest(settings.fonts.dest));
-    done();
 }
+
 
 
 /*
  * Task: create images
  * TODO: Check if optimization is more effectiv when it is done separately for all different image types(png, svg, jpg)
  */
-function images(done) {
+function images() {
 	// optimize all other images
 	// TODO: It seems that plugin in don't overwrites existing files in destination folder!??
 	return gulp.src(settings.images.src)
 		.pipe($.newer(settings.images.dest))
 		.pipe($.imagemin(settings.images.options, { verbose: true }))
 		.pipe(gulp.dest(settings.images.dest));
-	done();
 }
 
 
 
-function icons(done) {
+function icons() {
 	return gulp.src(settings.icons.src)
 		.pipe($.newer(settings.icons.dest))
 		.pipe($.imagemin(settings.icons.options))
 		.pipe(gulp.dest(settings.icons.dest));
-	done();
 }
 
 
@@ -312,6 +381,14 @@ function sprite() {
 }
 
 
+/**
+ * Task: Dummy task to perform reload on template change
+ */
+function templates(done) {
+	$.browserSync.reload();
+	done();
+}
+
 
 /*
  * Default TASK: Watch SASS and JAVASCRIPT files for changes,
@@ -319,18 +396,25 @@ function sprite() {
  */
 function gulpDefault(done) {
 
+	checkKey();
 	$.browserSync.init(settings.browserSync);
 
-	gulp.watch(settings.css.src, cssDev);
-	gulp.watch(settings.js.src, jsDev);
-  done();
+	gulp.watch(settings.css.src, css);
+	gulp.watch(settings.js.src, js);
+	gulp.watch(settings.jsModules.src, jsModules);
+	
+	if (settings.templates.active) {
+		gulp.watch(settings.templates.src, templates);
+	}
+	
+	done();
 }
 
 
 /**
  * Generate favicons
  */
-function favicons(done) {
+function favicons() {
 	return gulp.src(settings.favicons.src)
 		.pipe($.favicons({
 			appName: pkg.name,
@@ -360,27 +444,34 @@ function favicons(done) {
 				favicons: true
 			}
 		}))
-		.pipe(gulp.dest(settings.favicons.dest))
-	;
-	done();
+		.pipe(gulp.dest(settings.favicons.dest));
 }
 
-//var exec = require('child_process').exec;
+// Check if SSL Key exists in default Directory
+function checkKey() {
+	try {
+		fs.accessSync(settings.browserSync.https.key, fs.constants.R_OK);
+	}
+	catch (err) {
+		settings.browserSync.https = null;
+		settings.browserSync.proxy = 'http://' + pkg.name + '.' + require('os').userInfo().username + '.localhost';
+	}
+}
 
 /*
  * Task: Build all
  */
-exports.buildDev = series(cleanDist, jsDev, jsVendor, cssDev, cssVendor, images, icons, fonts);
-exports.buildProd = series(cleanDist, jsProd, jsVendor, cssProd, cssVendor, images, icons, fonts);
+exports.build = series(cleanDist, js, jsModules, jsVendor, css, cssVendor, images, sprite, icons, fonts, favicons);
 
 exports.default = gulpDefault;
 exports.cleanDist = cleanDist;
-exports.cssDev = cssDev;
-exports.cssProd = cssProd;
-exports.jsDev = jsDev;
-exports.jsProd = jsProd;
+exports.css = css;
+exports.js = js;
 exports.jsVendor = jsVendor;
 exports.cssVendor = cssVendor;
 exports.fonts = fonts;
 exports.images = images;
 exports.icons = icons;
+exports.sprite = sprite;
+exports.favicons = favicons;
+exports.jsModules = jsModules;
