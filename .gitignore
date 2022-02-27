@@ -8,3 +8,4 @@ media/
 giropay_settings.php
 giropay_settings.inc
 /styleguide
+package-lock.json
