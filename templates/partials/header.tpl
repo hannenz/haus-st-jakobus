@@ -1,5 +1,5 @@
 <header class="main-header">
-	<!-- <blockquote class="motto">Kommt und ruht ein wenig aus &#38;hellip;</blockquote> -->
+	<blockquote class="motto">Kommt und ruht ein wenig aus &hellip;</blockquote>
 	<a href="/" class="main-header__brand brand">
 		<img class="brand__logo" src="/dist/img/logo.png" alt="" />
 		<h1 class="brand__name">Haus St. Jakobus</h1>
