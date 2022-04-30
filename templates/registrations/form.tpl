@@ -10,7 +10,7 @@
 	<fieldset class="fieldset">
 		<legend>Anmeldung zur Veranstaltung</legend>
 		<div>
-			<strong>Kurs: {VAR:course_title}</strong><br>
+			<strong>Veranstaltung: {VAR:event_title}</strong><br>
 			<em>Termin: {VAR:event_date_fmt}</em>
 			<input type="hidden" readonly name="registration_event_id" value="{VAR:id}" />
 		</div>

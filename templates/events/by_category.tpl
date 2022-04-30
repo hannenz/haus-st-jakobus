@@ -1,4 +1,4 @@
-<h3 class="">{VAR:course_category_name}</h3>
+<h3 class="headline headline--section-title">{VAR:course_category_name}</h3>
 
 {IF({COUNT:events} == 0)}
 	<p>
@@ -6,7 +6,7 @@
 		&rarr; Bitte wählen Sie eine andere Kategorie in der Auswahl
 	</p>
 {ELSE}
-	<p>{COUNT:events} Veranstaltungen</p>
+	<!-- <p>{COUNT:events} Veranstaltungen</p> -->
 	<div class="events events--by-category">
 		{LOOP VAR(events)}
 			{INCLUDE:PATHTOWEBROOT."templates/events/teaser.tpl"}

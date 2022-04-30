@@ -17,12 +17,19 @@ class CourseCategory extends Model {
 
 	protected $hasMany = [
 		[
-			'name' => 'Courses',
-			'className' => 'Jakobus\Course',
-			'foreignKeyField' => 'course_category_id',
+			'name' => 'Events',
+			'className' => 'Jakobus\Event',
+			'foreignKeyField' => 'event_course_category_id',
 			'foreignKey' => 'id',
 			'order' => 'course_pos ASC'
 		]
+		// [
+		// 	'name' => 'Courses',
+		// 	'className' => 'Jakobus\Course',
+		// 	'foreignKeyField' => 'course_category_id',
+		// 	'foreignKey' => 'id',
+		// 	'order' => 'course_pos ASC'
+		// ]
 	];
 
 	public function init () {

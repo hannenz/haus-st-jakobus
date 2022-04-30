@@ -186,11 +186,29 @@ class EventsController extends Controller {
 
 	public function actionListByCategory() {
 		$categoryId = (int)$_REQUEST['categoryId'];
-		$events = $this->Event->filter([
-			'event_course_category_id' => $categoryId
-		])->findAll();
-		$this->parser->setParserVar('events', $events);
-		$this->parser->setMultipleParserVars($this->CourseCategory->findById($categoryId));
+		if (empty($categoryId)) {
+			$data = [];
+			$categories = $this->CourseCategory->findAll();
+			// foreach ($categories as $category) {
+			// 	$events = $this->Event->filter(['event_course_category_id' => $category['id']]);
+			// 	if (!empty($events)) {
+			// 		$data[] = array_merge($category, [
+			// 			'events' => $events
+			// 		]);
+			// 	}
+			// }
+			$this->parser->setParserVar('categories', $categories);
+			$this->content = $this->parser->parseTemplate($this->templatesPath . 'all_categories.tpl');
+			return;
+
+		}
+		else {
+			$events = $this->Event->filter([
+				'event_course_category_id' => $categoryId
+			])->findAll();
+			$this->parser->setParserVar('events', $events);
+			$this->parser->setMultipleParserVars($this->CourseCategory->findById($categoryId));
+		}
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'by_category.tpl');
 	}
 
