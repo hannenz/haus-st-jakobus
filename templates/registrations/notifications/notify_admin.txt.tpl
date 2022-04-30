@@ -6,7 +6,6 @@ Anschrift: 		{VAR:registration_street_address}
 E-Mail: 		{VAR:registration_email}
 Mitglied im Förderverein: {IF("{VAR:registration_is_member}" == "1")}Ja{ELSE}Nein{ENDIF}
 
-Kurs: {VAR:course_name}
 Veranstaltung: {VAR:event_title} am {VAR:event_date_fmt}
 
 --

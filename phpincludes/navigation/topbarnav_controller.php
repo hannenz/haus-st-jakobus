@@ -31,7 +31,7 @@ class TopbarnavController extends Controller {
 				$siblings = [];
 				foreach ($children as $child) {
 
-					if ($child['cmt_showinnav']) {
+					if ($child['cmt_showinnav'] == 1) {
 						$child['linkUrl'] = sprintf('%s%s', $this->CmtPage->makePageFilePath($child['id'], $this->pageLang), $this->CmtPage->makePageFileName($child['id'], $this->pageLang));
 						$siblings[] = $child;
 					}

@@ -46,7 +46,7 @@ class Notification {
 			'smtpHost' => $pageMailerSettings['smtpHost'],
 			'smtpUsername' => $pageMailerSettings['smtpUsername'],
 			'smtpPassword' => $pageMailerSettings['smtpPassword'],
-			'smtpPort' => $pageMailerSettings['smtpPort'],
+			'smtpPort' => $pageMailerSettings['smtpPort']
 		]);
 		$this->Parser = new Parser();
 	}
@@ -72,6 +72,11 @@ class Notification {
 		$htmlContent = $this->Parser->parseTemplate($this->templatesPath . $template . '.html.tpl');
 		$this->Parser->setParserVar('mailContent', $htmlContent);
 		$html = $this->Parser->parseTemplate(PATHTOWEBROOT . "templates/email.html.tpl");
+
+
+		if (preg_match('/localhost/', $_SERVER['SERVER_NAME'])) {
+			$recipient = 'me@hannenz.de';
+		}
 
 		$success = $this->Mail->send([
 			'recipient' => $recipient,

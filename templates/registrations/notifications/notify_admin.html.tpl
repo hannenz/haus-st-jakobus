@@ -24,10 +24,6 @@
 
 <table style="margin-top: 64px">
 	<tr style="border-top: 1px solid #e0e0e0;">
-		<td style="vertical-align: top; padding: 4px">Kurs</td>
-		<td style="vertical-align: top; padding: 4px">{VAR:course_title}</td>
-	</tr>
-	<tr style="border-top: 1px solid #e0e0e0;">
 		<td style="vertical-align: top; padding: 4px">Veranstaltung</td>
 		<td style="vertical-align: top; padding: 4px">{VAR:event_title} am {VAR:event_date_fmt}</td>
 	</tr>
