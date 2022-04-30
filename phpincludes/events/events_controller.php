@@ -6,6 +6,7 @@ use Contentomat\PsrAutoloader;
 use Contentomat\Controller;
 use Contentomat\Debug;
 use Jakobus\Course;
+use Jakobus\CourseCategory;
 use Jakobus\Event;
 
 use Contentomat\DBCex;
@@ -38,6 +39,7 @@ class EventsController extends Controller {
 
 		// $this->Course = new Course();
 		$this->Event = new Event();
+		$this->CourseCategory = new CourseCategory();
 
 		$this->Event->setLanguage($this->pageLang);
 
@@ -88,6 +90,10 @@ class EventsController extends Controller {
 	 * Overview of upcoming events in the current year from current month 
 	 */
 	public function actionDefault() {
+
+		if (PAGEID == 107) {
+			return $this->actionListByCategory();
+		}
 
 		// Get the most future event
 		$lastEvent = $this->Event->getLastEvent();
@@ -177,6 +183,16 @@ class EventsController extends Controller {
 		$this->content = $this->parser->parseTemplate($this->templatesPath . 'soirees.tpl');
 	}
 
+
+	public function actionListByCategory() {
+		$categoryId = (int)$_REQUEST['categoryId'];
+		$events = $this->Event->filter([
+			'event_course_category_id' => $categoryId
+		])->findAll();
+		$this->parser->setParserVar('events', $events);
+		$this->parser->setMultipleParserVars($this->CourseCategory->findById($categoryId));
+		$this->content = $this->parser->parseTemplate($this->templatesPath . 'by_category.tpl');
+	}
 
 
 	public function actionDetail() {

@@ -6,7 +6,7 @@
 		<ul class="menu vertical">
 			{LOOP VAR(course_categories)}
 				<li class="menu__item">
-					<a href="{VAR:course_overview_url}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
+					<a href="{VAR:event_overview_url}?action=listByCategory&categoryId={VAR:id}">{VAR:course_category_name}</a>
 				</li>
 			{ENDLOOP VAR}
 		</ul>

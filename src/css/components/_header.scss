@@ -37,13 +37,21 @@
 
 .motto {
 
-	// font-family: 'Dynalight';
-	// font-style: normal;
-	margin-left: auto;
 	color: #fff;
 	font-weight: bold;
-	@include type-setting(1);
-	// quotes: "„" "“";
+	@include type-setting(0);
+	line-height: 1;
+
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	line-height: 1;
+	color: $primary-color;
+	background-color: $primary-color-soft;
+	padding: 10px 1rem 8px 1rem;
+	text-align: right;
+
 	&::before {
 		content: open-quote;
 	}
@@ -51,6 +59,20 @@
 		content: close-quote;
 	}
 }
+
+@include for-size(tablet-landscape-up) {
+	.motto {
+		@include type-setting(1);
+		position: static;
+		width: max-content;
+		color: #fff;
+		background-color: transparent;
+		height: 60px;
+		line-height: 60px;
+		margin-left: auto;
+	}
+}
+
 
 .hero {
 	height: 66vh;

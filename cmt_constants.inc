@@ -40,6 +40,7 @@ define('CMT_MODREWRITE', '1');
 // Standardzeitzone für PHP-Funktion 'date'
 define('CMT_DEFAULTTIMEZONE', 'Europe/Berlin');
 
+define('CMT_ERRORREPORTING_LEVEL', 'error');
 
 /* [[UPDATES HERE]] */
 

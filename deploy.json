@@ -58,11 +58,11 @@
 	},
 	"staging": {
 		"mode": "ssh",
-		"hostname": "changeme.halma.dyndns.org",
+		"hostname": "haus-st-jakobus.de",
 		"ftp_hostname": "",
 		"ftp_username": "",
 		"ftp_password": "",
-		"remote_dir": "/var/www/html/changeme",
+		"remote_dir": "staging.haus-st-jakobus.de",
 		"local_dir": ".",
 		"db_settings_file": "admin/settings_db.inc",
 		"deploy_dirs": [

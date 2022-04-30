@@ -22,7 +22,7 @@ class Event extends Model {
 	/**
 	 * @var int
 	 */
-	private $overviewPageId = 38;
+	private $overviewPageId = 107; //38;
 
 	/**
 	 * @var int
@@ -445,7 +445,7 @@ EOS;
 	 * @return Array
 	 */
 	public function getLastEvent() {
-		$query = 'SELECT * FROM jakobus_events AS Event LEFT JOIN jakobus_courses AS Course ON Course.id = Event.event_course_id WHERE Course.course_is_active = 1 ORDER BY event_begin DESC LIMIT 1';
+		$query = 'SELECT * FROM jakobus_events ORDER BY event_begin DESC LIMIT 1';
 		$this->db->query($query);
 		return $this->db->get();
 	}

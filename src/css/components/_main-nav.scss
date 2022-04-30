@@ -77,7 +77,7 @@ $break-size: tablet-landscape-up;
 
 .brand {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
 
 	color: #fff;
@@ -89,9 +89,9 @@ $break-size: tablet-landscape-up;
 	}
 
 	&__logo {
-		height: 1.5 * $vertical-unit;
-		height: 3.5 * $vertical-unit;
-		height: 36px;
+		// height: 1.5 * $vertical-unit;
+		// height: 3.5 * $vertical-unit;
+		height: 24px;
 		width: auto;
 		margin-right: 10px;
 	}
@@ -101,8 +101,10 @@ $break-size: tablet-landscape-up;
 		position: relative;
 		top: 3px;
 		color: #fff;
+		margin: 0;
 
-		@include type-setting(0);
+		// @include type-setting(0);
+		font-size: 11px;
 	}
 }
 
